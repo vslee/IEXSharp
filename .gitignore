@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/IEX/bin
+/IEX/obj
+/IEX.Test/bin
+/IEX.Test/obj
+/IEX.Test/Properties/launchSettings.json
