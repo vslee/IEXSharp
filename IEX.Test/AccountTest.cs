@@ -1,10 +1,10 @@
-using IEX.V2.Model.Account.Requests;
+using IEX.V2.Model.Account.Request;
 using IEX.V2.Model.Account.Response;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 
-namespace Tests
+namespace IEX.Test
 {
     public class AccountTest
     {
@@ -62,6 +62,22 @@ namespace Tests
             Assert.IsNotNull(allResponse);
             Assert.IsNotNull(messageResponse);
             Assert.IsNotNull(messageResponse.messages);
+        }
+
+        [Test]
+        [TestCase(true)]
+        [TestCase(false)]
+        public void PayAsYouGoTest(bool allow)
+        {
+            Assert.Throws<NotImplementedException>(() => sandBoxClient.Account.PayAsYouGo(allow));
+        }
+
+        [Test]
+        [TestCase(true)]
+        [TestCase(false)]
+        public async Task PayAsYouGoAsyncTest(bool allow)
+        {
+            Assert.ThrowsAsync<NotImplementedException>(async () => await sandBoxClient.Account.PayAsYouGoAsync(allow));
         }
     }
 }

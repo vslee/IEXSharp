@@ -1,5 +1,6 @@
 ﻿using IEX.V2.Helper;
 using IEX.V2.Service.Account;
+using IEX.V2.Service.Stock;
 using System;
 
 namespace IEX.V2
@@ -11,6 +12,7 @@ namespace IEX.V2
         private string sk;
 
         private IAccountService accountService;
+        private IStockService stockService;
 
         public IAccountService Account
         {
@@ -21,6 +23,17 @@ namespace IEX.V2
                     this.accountService = new AccountService(this.client, this.pk, this.sk);
                 }
                 return this.accountService;
+            }
+        }
+        public IStockService Stock
+        {
+            get
+            {
+                if (this.stockService == null)
+                {
+                    this.stockService = new StockService(this.client, this.pk, this.sk);
+                }
+                return this.stockService;
             }
         }
 

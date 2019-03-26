@@ -1,5 +1,5 @@
 ﻿using IEX.V2.Helper;
-using IEX.V2.Model.Account.Requests;
+using IEX.V2.Model.Account.Request;
 using IEX.V2.Model.Account.Response;
 using Newtonsoft.Json;
 using System;
@@ -74,7 +74,7 @@ namespace IEX.V2.Service.Account
         {
             UsageResponse response;
             var content = string.Empty;
-            string url = "account/usage";
+            var url = "account/usage";
             switch (type)
             {
                 case UsageType.Messages:
@@ -97,6 +97,7 @@ namespace IEX.V2.Service.Account
                         }
                     }
                     return response;
+
                 case UsageType.Rules:
                     url += "/rules";
                     throw new NotImplementedException("Not implemented due to missing data structure");
@@ -134,7 +135,7 @@ namespace IEX.V2.Service.Account
         {
             UsageResponse response;
             var content = string.Empty;
-            string url = "account/usage";
+            var url = "account/usage";
             switch (type)
             {
                 case UsageType.Messages:
@@ -157,6 +158,7 @@ namespace IEX.V2.Service.Account
                         }
                     }
                     return response;
+
                 case UsageType.Rules:
                     url += "/rules";
                     throw new NotImplementedException("Not implemented due to missing data structure");
@@ -184,6 +186,23 @@ namespace IEX.V2.Service.Account
                     }
                     return response;
             }
+        }
+
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#pay-as-you-go"/>
+        /// </summary>
+        /// <param name="allow"></param>
+        public void PayAsYouGo(bool allow)
+        {
+            throw new NotImplementedException("Not implemented due to API failed");
+        }
+
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#pay-as-you-go"/>
+        /// </summary>
+        public Task PayAsYouGoAsync(bool allow)
+        {
+            throw new NotImplementedException("Not implemented due to API failed");
         }
     }
 }

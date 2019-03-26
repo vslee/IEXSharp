@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IEX.V2.Model.Account.Requests
+﻿namespace IEX.V2.Model.Account.Request
 {
     public enum UsageType
     {
