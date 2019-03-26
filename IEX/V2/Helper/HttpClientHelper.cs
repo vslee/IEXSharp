@@ -12,21 +12,60 @@ namespace IEX.V2.Helper
         internal HttpClient client;
         internal static string token;
         internal static string secret;
+        internal static string host;
 
-        public HttpClientHelper(string Token, string Secret)
+        public HttpClientHelper(string Token, string Secret, bool Sandbox)
         {
             token = Token;
             secret = Secret;
+            if (Sandbox)
+            {
+                host = "sandbox.iexapis.com";
+            }
+            else
+            {
+                host = "cloud.iexapis.com";
+            }
             this.client = new HttpClient()
             {
-                BaseAddress = new Uri("https://cloud.iexapis.com/beta/")
+                BaseAddress = new Uri($"https://{host}/beta/")
             };
             this.client.DefaultRequestHeaders.Add("User-Agent", "zh-code IEX API V2 .Net Wrapper");
         }
 
-        public async Task<HttpResponseMessage> GetAsync(string url, string queryString)
+        /// <summary>
+        /// Original HttpClient GetAsync
+        /// </summary>
+        /// <param name="url">Url</param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> GetAsync(string url)
         {
-            (string iexdate, string authorization_header) = await getAuth("GET", url, queryString);
+            return await client.GetAsync(url);
+        }
+
+        /// <summary>
+        /// Original HttpClient PostAsync
+        /// </summary>
+        /// <param name="url">Url</param>
+        /// <param name="content">HttpContent</param>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> PostAsync(string url, HttpContent content)
+        {
+            return await client.PostAsync(url, content);
+        }
+
+        /// <summary>
+        /// Signed HttpClient GetAsync
+        /// </summary>
+        /// <param name="url">Url</param>
+        /// <param name="queryString">QueryString</param>
+        /// <example>
+        /// client.GetSignedAsync("account/metadata", $"token={sk}&opt={opt}")
+        /// </example>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> GetSignedAsync(string url, string queryString)
+        {
+            (string iexdate, string authorization_header) = getAuth("GET", url, queryString);
             client.DefaultRequestHeaders.Remove("x-iex-date");
             client.DefaultRequestHeaders.Remove("Authorization");
             client.DefaultRequestHeaders.Add("x-iex-date", iexdate);
@@ -34,9 +73,20 @@ namespace IEX.V2.Helper
             return await client.GetAsync($"{url}?{queryString}");
         }
 
-        public async Task<HttpResponseMessage> PostAsync(string url, string queryString, object content)
+        /// <summary>
+        /// Signed HttpClient PostAsync
+        /// </summary>
+        /// <param name="url">Url</param>
+        /// <param name="queryString">QueryString</param>
+        /// <param name="content">Object(NOT HTTPCONTENT)</param>
+        /// <example>
+        /// TestObject obj = new TestObject();
+        /// client.PostSignedAsync("account/metadata", $"token={sk}&opt={opt}", obj)
+        /// </example>
+        /// <returns></returns>
+        public async Task<HttpResponseMessage> PostSignedAsync(string url, string queryString, object content)
         {
-            (string iexdate, string authorization_header) = await getAuth("GET", url, queryString, JsonConvert.SerializeObject(content));
+            (string iexdate, string authorization_header) = getAuth("GET", url, queryString, JsonConvert.SerializeObject(content));
             client.DefaultRequestHeaders.Remove("x-iex-date");
             client.DefaultRequestHeaders.Remove("Authorization");
             client.DefaultRequestHeaders.Add("x-iex-date", iexdate);
@@ -45,12 +95,12 @@ namespace IEX.V2.Helper
             return await client.PostAsync($"{url}?{queryString}", httpContent);
         }
 
-        private async Task<(string iexdate, string authorization_header)> getAuth(string method, string url, string queryString, string payload = "")
+        private (string iexdate, string authorization_header) getAuth(string method, string url, string queryString, string payload = "")
         {
-            DateTime now = DateTime.UtcNow;
+            DateTime now = new DateTime(2019, 3, 25, 21, 57, 30);//DateTime.UtcNow;
             string iexdate = now.ToString("yyyyMMddTHHmmssZ");
             var datestamp = now.ToString("yyyyMMdd");
-            var canonical_headers = $"host:cloud.iexapis.com\nx-iex-date:{iexdate}\n";
+            var canonical_headers = $"host:{host}\nx-iex-date:{iexdate}\n";
             var payload_hash = SHA256HexHashString(payload);
             var canonical_request = $"{method}\n/{url}\n{queryString}\n{canonical_headers}\nhost;x-iex-date\n{payload_hash}";
             var credential_scope = $"{datestamp}/iex_request";

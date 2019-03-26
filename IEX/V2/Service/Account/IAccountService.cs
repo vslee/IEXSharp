@@ -1,4 +1,5 @@
-﻿using IEX.V2.Model.Account;
+﻿using IEX.V2.Model.Account.Requests;
+using IEX.V2.Model.Account.Response;
 using System.Threading.Tasks;
 
 namespace IEX.V2.Service.Account
@@ -8,5 +9,9 @@ namespace IEX.V2.Service.Account
         MetadataResponse Metadata();
 
         Task<MetadataResponse> MetadataAsync();
+
+        UsageResponse Usage(UsageType type);
+
+        Task<UsageResponse> UsageAsync(UsageType type);
     }
 }

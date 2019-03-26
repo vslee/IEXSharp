@@ -7,7 +7,8 @@ namespace IEX.V2
     public class IEXClient : IDisposable
     {
         private HttpClientHelper client;
-        private string token;
+        private string pk;
+        private string sk;
 
         private IAccountService accountService;
 
@@ -17,16 +18,17 @@ namespace IEX.V2
             {
                 if (this.accountService == null)
                 {
-                    this.accountService = new AccountService(this.client, this.token);
+                    this.accountService = new AccountService(this.client, this.pk, this.sk);
                 }
                 return this.accountService;
             }
         }
 
-        public IEXClient(string token, string secret)
+        public IEXClient(string pk, string sk, bool sandBox)
         {
-            this.token = token;
-            this.client = new HttpClientHelper(token, secret);
+            this.pk = pk;
+            this.sk = sk;
+            this.client = new HttpClientHelper(pk, sk, sandBox);
         }
 
         private bool disposed = false;

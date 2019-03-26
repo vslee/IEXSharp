@@ -1,6 +1,8 @@
 ﻿using IEX.V2.Helper;
-using IEX.V2.Model.Account;
+using IEX.V2.Model.Account.Requests;
+using IEX.V2.Model.Account.Response;
 using Newtonsoft.Json;
+using System;
 using System.Threading.Tasks;
 
 namespace IEX.V2.Service.Account
@@ -8,36 +10,180 @@ namespace IEX.V2.Service.Account
     internal class AccountService : IAccountService
     {
         private HttpClientHelper client;
-        private string token;
+        private string pk;
+        private string sk;
 
-        public AccountService(HttpClientHelper client, string token)
+        public AccountService(HttpClientHelper client, string pk, string sk)
         {
             this.client = client;
-            this.token = token;
+            this.pk = pk;
+            this.sk = sk;
         }
 
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#metadata"/>
+        /// </summary>
+        /// <returns></returns>
         public MetadataResponse Metadata()
         {
             MetadataResponse response;
             var content = string.Empty;
-            using (var responseContent = this.client.GetAsync("account/metadata", $"token={token}").Result)
+            using (var responseContent = this.client.GetSignedAsync("account/metadata", $"token={sk}").Result)
             {
-                content = responseContent.Content.ReadAsStringAsync().Result;
-                response = JsonConvert.DeserializeObject<MetadataResponse>(content);
+                try
+                {
+                    content = responseContent.Content.ReadAsStringAsync().Result;
+                    response = JsonConvert.DeserializeObject<MetadataResponse>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
             }
             return response;
         }
 
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#metadata"/>
+        /// </summary>
+        /// <returns></returns>
         public async Task<MetadataResponse> MetadataAsync()
         {
             MetadataResponse response;
             var content = string.Empty;
-            using (var responseContent = await this.client.GetAsync("account/metadata", $"token={token}"))
+            using (var responseContent = await this.client.GetSignedAsync("account/metadata", $"token={sk}"))
             {
-                content = await responseContent.Content.ReadAsStringAsync();
-                response = JsonConvert.DeserializeObject<MetadataResponse>(content);
+                try
+                {
+                    content = await responseContent.Content.ReadAsStringAsync();
+                    response = JsonConvert.DeserializeObject<MetadataResponse>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
             }
             return response;
+        }
+
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#usage"/>
+        /// </summary>
+        /// <returns></returns>
+        public UsageResponse Usage(UsageType type)
+        {
+            UsageResponse response;
+            var content = string.Empty;
+            string url = "account/usage";
+            switch (type)
+            {
+                case UsageType.Messages:
+                    url += "/messages";
+                    using (var responseContent = this.client.GetSignedAsync(url, $"token={sk}").Result)
+                    {
+                        try
+                        {
+                            content = responseContent.Content.ReadAsStringAsync().Result;
+                            Model.Account.Response.UsageResponseMessages messages =
+                                JsonConvert.DeserializeObject<Model.Account.Response.UsageResponseMessages>(content);
+                            response = new UsageResponse
+                            {
+                                messages = messages
+                            };
+                        }
+                        catch (JsonException ex)
+                        {
+                            throw new JsonException(content, ex);
+                        }
+                    }
+                    return response;
+                case UsageType.Rules:
+                    url += "/rules";
+                    throw new NotImplementedException("Not implemented due to missing data structure");
+                case UsageType.RuleRecords:
+                    url += "/rule-records";
+                    throw new NotImplementedException("Not implemented due to API restrictions");
+                case UsageType.Alerts:
+                    url += "/alerts";
+                    throw new NotImplementedException("Not implemented due to API restrictions");
+                case UsageType.AlertRecords:
+                    url += "/alert-records";
+                    throw new NotImplementedException("Not implemented due to API restrictions");
+                default:
+                    using (var responseContent = this.client.GetSignedAsync(url, $"token={sk}").Result)
+                    {
+                        try
+                        {
+                            content = responseContent.Content.ReadAsStringAsync().Result;
+                            response = JsonConvert.DeserializeObject<UsageResponse>(content);
+                        }
+                        catch (JsonException ex)
+                        {
+                            throw new JsonException(content, ex);
+                        }
+                    }
+                    return response;
+            }
+        }
+
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#usage"/>
+        /// </summary>
+        /// <returns></returns>
+        public async Task<UsageResponse> UsageAsync(UsageType type)
+        {
+            UsageResponse response;
+            var content = string.Empty;
+            string url = "account/usage";
+            switch (type)
+            {
+                case UsageType.Messages:
+                    url += "/messages";
+                    using (var responseContent = await this.client.GetSignedAsync(url, $"token={sk}"))
+                    {
+                        try
+                        {
+                            content = await responseContent.Content.ReadAsStringAsync();
+                            Model.Account.Response.UsageResponseMessages messages =
+                                JsonConvert.DeserializeObject<Model.Account.Response.UsageResponseMessages>(content);
+                            response = new UsageResponse
+                            {
+                                messages = messages
+                            };
+                        }
+                        catch (JsonException ex)
+                        {
+                            throw new JsonException(content, ex);
+                        }
+                    }
+                    return response;
+                case UsageType.Rules:
+                    url += "/rules";
+                    throw new NotImplementedException("Not implemented due to missing data structure");
+                case UsageType.RuleRecords:
+                    url += "/rule-records";
+                    throw new NotImplementedException("Not implemented due to API restrictions");
+                case UsageType.Alerts:
+                    url += "/alerts";
+                    throw new NotImplementedException("Not implemented due to API restrictions");
+                case UsageType.AlertRecords:
+                    url += "/alert-records";
+                    throw new NotImplementedException("Not implemented due to API restrictions");
+                default:
+                    using (var responseContent = await this.client.GetSignedAsync(url, $"token={sk}"))
+                    {
+                        try
+                        {
+                            content = await responseContent.Content.ReadAsStringAsync();
+                            response = JsonConvert.DeserializeObject<UsageResponse>(content);
+                        }
+                        catch (JsonException ex)
+                        {
+                            throw new JsonException(content, ex);
+                        }
+                    }
+                    return response;
+            }
         }
     }
 }
