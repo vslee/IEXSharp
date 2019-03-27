@@ -32,10 +32,6 @@ namespace ZH.Code
         }
         public static (string iexdate, string authorization_header) Sign(string method, string url, string queryString, string payload = "")
         {
-            if (!string.IsNullOrWhiteSpace(url) && url[0] != '/')
-            {
-                url = $"/{url}";
-            }
             DateTime now = DateTime.UtcNow;
             string iexdate = now.ToString("yyyyMMddTHHmmssZ");
             var datestamp = now.ToString("yyyyMMdd");
