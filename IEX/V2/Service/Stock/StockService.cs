@@ -31,9 +31,14 @@ namespace IEX.V2.Service.Stock
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="period"></param>
+        /// <param name="last"></param>
         /// <returns></returns>
         public BalanceSheetResponse BalanceSheet(string symbol, Period period, int last = 1)
         {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
             BalanceSheetResponse response;
             var content = string.Empty;
             var qs = string.Empty;
@@ -68,9 +73,14 @@ namespace IEX.V2.Service.Stock
         /// </summary>
         /// <param name="symbol"></param>
         /// <param name="period"></param>
+        /// <param name="last"></param>
         /// <returns></returns>
         public async Task<BalanceSheetResponse> BalanceSheetAsync(string symbol, Period period, int last = 1)
         {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
             BalanceSheetResponse response;
             var content = string.Empty;
             var qs = string.Empty;
@@ -111,6 +121,10 @@ namespace IEX.V2.Service.Stock
         /// <returns></returns>
         public string BalanceSheetField(string symbol, Period period, string field, int last = 1)
         {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
             if (string.IsNullOrWhiteSpace(field))
             {
                 throw new ArgumentNullException("Field property cannout be null");
@@ -155,9 +169,13 @@ namespace IEX.V2.Service.Stock
         /// <returns></returns>
         public async Task<string> BalanceSheetFieldAsync(string symbol, Period period, string field, int last = 1)
         {
-            if (string.IsNullOrWhiteSpace(field))
+            if (string.IsNullOrWhiteSpace(symbol))
             {
-                throw new ArgumentNullException("Field property cannout be null");
+                throw new ArgumentException("Symbol cannot be null");
+            }
+            else if (string.IsNullOrWhiteSpace(field))
+            {
+                throw new ArgumentNullException("Field cannout be null");
             }
             else
             {
@@ -193,8 +211,20 @@ namespace IEX.V2.Service.Stock
         #endregion Balance Sheet
 
         #region Batch Request
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="types"></param>
+        /// <param name="range"></param>
+        /// <param name="last"></param>
+        /// <returns></returns>
         public BatchBySymbolResponse BatchBySymbol(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
         {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
             if (types?.Count() < 1 || string.IsNullOrWhiteSpace(symbol))
             {
                 return null;
@@ -227,7 +257,7 @@ namespace IEX.V2.Service.Stock
             qsBuilder.Add("token", this.pk);
 
 
-            using (var responseContent = this.client.GetAsync($"stock/{symbol}/batch?{qsBuilder.Build()}").Result)
+            using (var responseContent = this.client.GetAsync($"stock/{symbol}/batch{qsBuilder.Build()}").Result)
             {
                 try
                 {
@@ -252,7 +282,11 @@ namespace IEX.V2.Service.Stock
         /// <returns></returns>
         public async Task<BatchBySymbolResponse> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
         {
-            if (types?.Count() < 1 || string.IsNullOrWhiteSpace(symbol))
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
+            else if (types?.Count() < 1)
             {
                 return null;
             }
@@ -302,7 +336,7 @@ namespace IEX.V2.Service.Stock
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
         /// </summary>
-        /// <param name="symbol"></param>
+        /// <param name="symbols"></param>
         /// <param name="types"></param>
         /// <param name="range"></param>
         /// <param name="last"></param>
@@ -360,7 +394,7 @@ namespace IEX.V2.Service.Stock
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
         /// </summary>
-        /// <param name="symbol"></param>
+        /// <param name="symbols"></param>
         /// <param name="types"></param>
         /// <param name="range"></param>
         /// <param name="last"></param>
@@ -425,6 +459,10 @@ namespace IEX.V2.Service.Stock
         /// <returns></returns>
         public BookResponse Book(string symbol)
         {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
             BookResponse response;
             var content = string.Empty;
             using (var responseContent = this.client.GetAsync($"stock/{symbol}/book?token={this.pk}").Result)
@@ -449,6 +487,10 @@ namespace IEX.V2.Service.Stock
         /// <returns></returns>
         public async Task<BookResponse> BookAsync(string symbol)
         {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
             BookResponse response;
             var content = string.Empty;
             using (var responseContent = await this.client.GetAsync($"stock/{symbol}/book?token={this.pk}"))
@@ -464,6 +506,183 @@ namespace IEX.V2.Service.Stock
                 }
             }
             return response;
+        }
+        #endregion
+
+        #region Cash Flow
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#cash-flow"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="period"></param>
+        /// <param name="last"></param>
+        /// <returns></returns>
+        public CashFlowResponse CashFlow(string symbol, Period period, int last = 1)
+        {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
+            CashFlowResponse response;
+            var content = string.Empty;
+            var qs = string.Empty;
+            switch (period)
+            {
+                case Period.Quarter:
+                    qs = $"token={pk}&period=quarter";
+                    break;
+
+                case Period.Annual:
+                    qs = $"token={pk}&period=annual";
+                    break;
+            }
+
+            using (var responseContent = this.client.GetAsync($"stock/{symbol}/cash-flow/{last}?{qs}").Result)
+            {
+                try
+                {
+                    content = responseContent.Content.ReadAsStringAsync().Result;
+                    response = JsonConvert.DeserializeObject<CashFlowResponse>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
+            }
+            return response;
+        }
+
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#cash-flow"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="period"></param>
+        /// <param name="last"></param>
+        public async Task<CashFlowResponse> CashFlowAsync(string symbol, Period period, int last = 1)
+        {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
+            CashFlowResponse response;
+            var content = string.Empty;
+            var qs = string.Empty;
+            switch (period)
+            {
+                case Period.Quarter:
+                    qs = $"token={pk}&period=quarter";
+                    break;
+
+                case Period.Annual:
+                    qs = $"token={pk}&period=annual";
+                    break;
+            }
+
+            using (var responseContent = await this.client.GetAsync($"stock/{symbol}/cash-flow/{last}?{qs}"))
+            {
+                try
+                {
+                    content = responseContent.Content.ReadAsStringAsync().Result;
+                    response = JsonConvert.DeserializeObject<CashFlowResponse>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
+            }
+            return response;
+        }
+
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#cash-flow"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="period"></param>
+        /// <param name="last"></param>
+        public string CashFlowField(string symbol, Period period, string field, int last = 1)
+        {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
+            else if (string.IsNullOrWhiteSpace(field))
+            {
+                throw new ArgumentNullException("Field property cannout be null");
+            }
+            else
+            {
+                var content = string.Empty;
+                var qs = string.Empty;
+                switch (period)
+                {
+                    case Period.Quarter:
+                        qs = $"token={pk}&period=quarter";
+                        break;
+
+                    case Period.Annual:
+                        qs = $"token={pk}&period=annual";
+                        break;
+                }
+
+                using (var responseContent = this.client.GetAsync($"stock/{symbol}/cash-flow/{last}/{field}?{qs}").Result)
+                {
+                    try
+                    {
+                        content = responseContent.Content.ReadAsStringAsync().Result;
+                    }
+                    catch (JsonException ex)
+                    {
+                        throw new JsonException(content, ex);
+                    }
+                }
+                return content;
+            }
+        }
+
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#cash-flow"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="period"></param>
+        /// <param name="last"></param>
+        public async Task<string> CashFlowFieldAsync(string symbol, Period period, string field, int last = 1)
+        {
+            if (string.IsNullOrWhiteSpace(symbol))
+            {
+                throw new ArgumentException("Symbol cannot be null");
+            }
+            else if (string.IsNullOrWhiteSpace(field))
+            {
+                throw new ArgumentNullException("Field property cannout be null");
+            }
+            else
+            {
+                var content = string.Empty;
+                var qs = string.Empty;
+                switch (period)
+                {
+                    case Period.Quarter:
+                        qs = $"token={pk}&period=quarter";
+                        break;
+
+                    case Period.Annual:
+                        qs = $"token={pk}&period=annual";
+                        break;
+                }
+
+                using (var responseContent = await this.client.GetAsync($"stock/{symbol}/cash-flow/{last}/{field}?{qs}"))
+                {
+                    try
+                    {
+                        content = await responseContent.Content.ReadAsStringAsync();
+                    }
+                    catch (JsonException ex)
+                    {
+                        throw new JsonException(content, ex);
+                    }
+                }
+                return content;
+            }
         }
         #endregion
     }

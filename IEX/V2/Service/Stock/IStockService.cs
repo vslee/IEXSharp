@@ -19,5 +19,10 @@ namespace IEX.V2.Service.Stock
 
         BookResponse Book(string symbol);
         Task<BookResponse> BookAsync(string symbol);
+
+        CashFlowResponse CashFlow(string symbol, Period period, int last = 1);
+        Task<CashFlowResponse> CashFlowAsync(string symbol, Period period, int last = 1);
+        string CashFlowField(string symbol, Period period, string field, int last = 1);
+        Task<string> CashFlowFieldAsync(string symbol, Period period, string field, int last = 1);
     }
 }

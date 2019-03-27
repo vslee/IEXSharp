@@ -140,5 +140,47 @@ namespace IEX.Test
             Assert.IsNotNull(response.trades);
             Assert.IsNotNull(response.systemEvent);
         }
+
+        [Test]
+        [TestCase("aapl", Period.Quarter)]
+        [TestCase("aapl", Period.Annual)]
+        public void CashFlowTest(string symbol, Period period)
+        {
+            CashFlowResponse response = sandBoxClient.Stock.CashFlow(symbol, period);
+
+            Assert.IsNotNull(response);
+            Assert.GreaterOrEqual(response.cashflow.Count, 1);
+        }
+
+        [Test]
+        [TestCase("aapl", Period.Quarter)]
+        [TestCase("aapl", Period.Annual)]
+        public async Task CashFlowAsyncTest(string symbol, Period period)
+        {
+            CashFlowResponse response = await sandBoxClient.Stock.CashFlowAsync(symbol, period);
+
+            Assert.IsNotNull(response);
+            Assert.GreaterOrEqual(response.cashflow.Count, 1);
+        }
+
+        [Test]
+        [TestCase("aapl", Period.Quarter, "cashChange", 1)]
+        [TestCase("aapl", Period.Quarter, "cashChange", 2)]
+        public void CashFlowFieldTest(string symbol, Period period, string field, int last)
+        {
+            object response = sandBoxClient.Stock.CashFlowField(symbol, period, field, last);
+
+            Assert.IsTrue(long.TryParse(response.ToString(), out long test));
+        }
+
+        [Test]
+        [TestCase("aapl", Period.Quarter, "cashChange", 1)]
+        [TestCase("aapl", Period.Quarter, "cashChange", 2)]
+        public async Task CashFlowFieldAsyncTest(string symbol, Period period, string field, int last)
+        {
+            object response = await sandBoxClient.Stock.CashFlowFieldAsync(symbol, period, field, last);
+
+            Assert.IsTrue(long.TryParse(response.ToString(), out long test));
+        }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace IEX.V2.Model.Stock.Response
 {
@@ -31,5 +29,4 @@ namespace IEX.V2.Model.Stock.Response
         public string systemEvent { get; set; }
         public long timestamp { get; set; }
     }
-
 }

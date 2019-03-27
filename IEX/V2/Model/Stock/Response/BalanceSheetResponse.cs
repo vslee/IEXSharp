@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace IEX.V2.Model.Stock.Response
 {
-    /// <summary>
-    /// <see cref="https://iexcloud.io/docs/api/#balance-sheet"/>
-    /// </summary>
     public class BalanceSheetResponse
     {
         public string symbol { get; set; }
