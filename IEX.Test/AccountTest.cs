@@ -14,8 +14,10 @@ namespace IEX.Test
         [SetUp]
         public void Setup()
         {
-            sandBoxClient = new IEX.V2.IEXClient("", "", true);
-            prodClient = new IEX.V2.IEXClient("", "", false);
+            sandBoxClient = new IEX.V2.IEXClient("Tpk_d1e87a5a345b434d8f151269fb62071b",
+                "Tsk_73e92cf1e5b1432699f90a17c25f0f88", true);
+            prodClient = new IEX.V2.IEXClient("pk_7c46062bc0aa4a8698a550dcbd788e3c",
+                "sk_45d242d9d05a4f238082d6113c49529f", false);
         }
 
         [Test]

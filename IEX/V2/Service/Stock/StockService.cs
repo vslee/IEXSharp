@@ -1,19 +1,23 @@
 ﻿using IEX.V2.Helper;
-using IEX.V2.Model.Stock.Requests;
+using IEX.V2.Model.Stock.Request;
 using IEX.V2.Model.Stock.Response;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace IEX.V2.Service.Stock
 {
     internal class StockService : IStockService
     {
-        private HttpClientHelper client;
+        private HttpClient client;
         private string pk;
         private string sk;
 
-        public StockService(HttpClientHelper client, string pk, string sk)
+        public StockService(HttpClient client, string pk, string sk)
         {
             this.client = client;
             this.pk = pk;
@@ -187,5 +191,230 @@ namespace IEX.V2.Service.Stock
         }
 
         #endregion Balance Sheet
+
+        #region Batch Request
+        public BatchBySymbolResponse BatchBySymbol(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
+        {
+            if (types?.Count() < 1 || string.IsNullOrWhiteSpace(symbol))
+            {
+                return null;
+            }
+            var qsBuilder = new QueryStringBuilder();
+            var qsType = new List<string>();
+            var content = string.Empty;
+            var response = new BatchBySymbolResponse();
+            foreach (BatchType x in types)
+            {
+                switch (x)
+                {
+                    case BatchType.Quote:
+                        qsType.Add("quote");
+                        break;
+                    case BatchType.News:
+                        qsType.Add("news");
+                        break;
+                    case BatchType.Chart:
+                        qsType.Add("chart");
+                        break;
+                }
+            }
+            qsBuilder.Add("types", string.Join(",", qsType));
+            if (!string.IsNullOrWhiteSpace(range))
+            {
+                qsBuilder.Add("range", range);
+            }
+            qsBuilder.Add("last", last);
+            qsBuilder.Add("token", this.pk);
+
+
+            using (var responseContent = this.client.GetAsync($"stock/{symbol}/batch?{qsBuilder.Build()}").Result)
+            {
+                try
+                {
+                    content = responseContent.Content.ReadAsStringAsync().Result;
+                    response = JsonConvert.DeserializeObject<BatchBySymbolResponse>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
+            }
+            return response;
+        }
+        
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="types"></param>
+        /// <param name="range"></param>
+        /// <param name="last"></param>
+        /// <returns></returns>
+        public async Task<BatchBySymbolResponse> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
+        {
+            if (types?.Count() < 1 || string.IsNullOrWhiteSpace(symbol))
+            {
+                return null;
+            }
+            var qsBuilder = new QueryStringBuilder();
+            var qsType = new List<string>();
+            var content = string.Empty;
+            var response = new BatchBySymbolResponse();
+            foreach (BatchType x in types)
+            {
+                switch (x)
+                {
+                    case BatchType.Quote:
+                        qsType.Add("quote");
+                        break;
+                    case BatchType.News:
+                        qsType.Add("news");
+                        break;
+                    case BatchType.Chart:
+                        qsType.Add("chart");
+                        break;
+                }
+            }
+            qsBuilder.Add("types", string.Join(",", qsType));
+            if (!string.IsNullOrWhiteSpace(range))
+            {
+                qsBuilder.Add("range", range);
+            }
+            qsBuilder.Add("last", last);
+            qsBuilder.Add("token", this.pk);
+
+
+            using (var responseContent = await this.client.GetAsync($"stock/{symbol}/batch{qsBuilder.Build()}"))
+            {
+                try
+                {
+                    content = await responseContent.Content.ReadAsStringAsync();
+                    response = JsonConvert.DeserializeObject<BatchBySymbolResponse>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
+            }
+            return response;
+        }
+        
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="types"></param>
+        /// <param name="range"></param>
+        /// <param name="last"></param>
+        /// <returns></returns>
+        public Dictionary<string, BatchBySymbolResponse> BatchByMarket(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1)
+        {
+            if (types?.Count() < 1 || symbols?.Count() < 1)
+            {
+                return null;
+            }
+            var qsBuilder = new QueryStringBuilder();
+            var qsType = new List<string>();
+            var content = string.Empty;
+            var response = new Dictionary<string, BatchBySymbolResponse>();
+            foreach (BatchType x in types)
+            {
+                switch (x)
+                {
+                    case BatchType.Quote:
+                        qsType.Add("quote");
+                        break;
+                    case BatchType.News:
+                        qsType.Add("news");
+                        break;
+                    case BatchType.Chart:
+                        qsType.Add("chart");
+                        break;
+                }
+            }
+            qsBuilder.Add("symbols", string.Join(",", symbols));
+            qsBuilder.Add("types", string.Join(",", qsType));
+            if (!string.IsNullOrWhiteSpace(range))
+            {
+                qsBuilder.Add("range", range);
+            }
+            qsBuilder.Add("last", last);
+            qsBuilder.Add("token", this.pk);
+
+
+            using (var responseContent = this.client.GetAsync($"stock/market/batch{qsBuilder.Build()}").Result)
+            {
+                try
+                {
+                    content = responseContent.Content.ReadAsStringAsync().Result;
+                    response = JsonConvert.DeserializeObject<Dictionary<string, BatchBySymbolResponse>>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
+            }
+            return response;
+        }
+        
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="types"></param>
+        /// <param name="range"></param>
+        /// <param name="last"></param>
+        /// <returns></returns>
+        public async Task<Dictionary<string, BatchBySymbolResponse>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1)
+        {
+
+            if (types?.Count() < 1 || symbols?.Count() < 1)
+            {
+                return null;
+            }
+            var qsBuilder = new QueryStringBuilder();
+            var qsType = new List<string>();
+            var content = string.Empty;
+            var response = new Dictionary<string, BatchBySymbolResponse>();
+            foreach (BatchType x in types)
+            {
+                switch (x)
+                {
+                    case BatchType.Quote:
+                        qsType.Add("quote");
+                        break;
+                    case BatchType.News:
+                        qsType.Add("news");
+                        break;
+                    case BatchType.Chart:
+                        qsType.Add("chart");
+                        break;
+                }
+            }
+            qsBuilder.Add("symbols", string.Join(",", symbols));
+            qsBuilder.Add("types", string.Join(",", qsType));
+            if (!string.IsNullOrWhiteSpace(range))
+            {
+                qsBuilder.Add("range", range);
+            }
+            qsBuilder.Add("last", last);
+            qsBuilder.Add("token", this.pk);
+
+
+            using (var responseContent = await this.client.GetAsync($"stock/market/batch{qsBuilder.Build()}"))
+            {
+                try
+                {
+                    content = await responseContent.Content.ReadAsStringAsync();
+                    response = JsonConvert.DeserializeObject<Dictionary<string, BatchBySymbolResponse>>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
+            }
+            return response;
+        }
+        #endregion
     }
 }

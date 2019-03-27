@@ -1,4 +1,4 @@
-﻿namespace IEX.V2.Model.Stock.Requests
+﻿namespace IEX.V2.Model.Stock.Request
 {
     public enum Period
     {

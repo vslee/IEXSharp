@@ -2,12 +2,13 @@
 using IEX.V2.Service.Account;
 using IEX.V2.Service.Stock;
 using System;
+using System.Net.Http;
 
 namespace IEX.V2
 {
     public class IEXClient : IDisposable
     {
-        private HttpClientHelper client;
+        private HttpClient client;
         private string pk;
         private string sk;
 
@@ -41,7 +42,16 @@ namespace IEX.V2
         {
             this.pk = pk;
             this.sk = sk;
-            this.client = new HttpClientHelper(pk, sk, sandBox);
+            this.client = new HttpClient();
+            if (!sandBox)
+            {
+                client.BaseAddress = new Uri("https://cloud.iexapis.com/beta/");
+            }
+            else
+            {
+                client.BaseAddress = new Uri("https://sandbox.iexapis.com/beta/");
+            }
+            this.client.DefaultRequestHeaders.Add("User-Agent", "zh-code IEX API V2 .Net Wrapper");
         }
 
         private bool disposed = false;

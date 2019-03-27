@@ -1,19 +1,19 @@
-﻿using IEX.V2.Helper;
-using IEX.V2.Model.Account.Request;
+﻿using IEX.V2.Model.Account.Request;
 using IEX.V2.Model.Account.Response;
 using Newtonsoft.Json;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace IEX.V2.Service.Account
 {
     internal class AccountService : IAccountService
     {
-        private HttpClientHelper client;
+        private HttpClient client;
         private string pk;
         private string sk;
 
-        public AccountService(HttpClientHelper client, string pk, string sk)
+        public AccountService(HttpClient client, string pk, string sk)
         {
             this.client = client;
             this.pk = pk;
@@ -28,7 +28,7 @@ namespace IEX.V2.Service.Account
         {
             MetadataResponse response;
             var content = string.Empty;
-            using (var responseContent = this.client.GetSignedAsync("account/metadata", $"token={sk}").Result)
+            using (var responseContent = this.client.GetAsync($"account/metadata?token={sk}").Result)
             {
                 try
                 {
@@ -51,7 +51,7 @@ namespace IEX.V2.Service.Account
         {
             MetadataResponse response;
             var content = string.Empty;
-            using (var responseContent = await this.client.GetSignedAsync("account/metadata", $"token={sk}"))
+            using (var responseContent = await this.client.GetAsync($"account/metadata?token={sk}"))
             {
                 try
                 {
@@ -74,12 +74,12 @@ namespace IEX.V2.Service.Account
         {
             UsageResponse response;
             var content = string.Empty;
-            var url = "account/usage";
+            string url = "account/usage";
             switch (type)
             {
                 case UsageType.Messages:
                     url += "/messages";
-                    using (var responseContent = this.client.GetSignedAsync(url, $"token={sk}").Result)
+                    using (var responseContent = this.client.GetAsync($"{url}?token={sk}").Result)
                     {
                         try
                         {
@@ -111,7 +111,7 @@ namespace IEX.V2.Service.Account
                     url += "/alert-records";
                     throw new NotImplementedException("Not implemented due to API restrictions");
                 default:
-                    using (var responseContent = this.client.GetSignedAsync(url, $"token={sk}").Result)
+                    using (var responseContent = this.client.GetAsync($"{url}?token={sk}").Result)
                     {
                         try
                         {
@@ -140,7 +140,7 @@ namespace IEX.V2.Service.Account
             {
                 case UsageType.Messages:
                     url += "/messages";
-                    using (var responseContent = await this.client.GetSignedAsync(url, $"token={sk}"))
+                    using (var responseContent = await this.client.GetAsync($"{url}?token={sk}"))
                     {
                         try
                         {
@@ -172,7 +172,7 @@ namespace IEX.V2.Service.Account
                     url += "/alert-records";
                     throw new NotImplementedException("Not implemented due to API restrictions");
                 default:
-                    using (var responseContent = await this.client.GetSignedAsync(url, $"token={sk}"))
+                    using (var responseContent = await this.client.GetAsync($"{url}?token={sk}"))
                     {
                         try
                         {
