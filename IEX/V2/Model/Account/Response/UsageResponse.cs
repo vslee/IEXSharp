@@ -9,7 +9,6 @@ namespace IEX.V2.Model.Account.Response
     {
         public UsageResponseMessages messages { get; set; }
         public List<object> rules { get; set; }
-
     }
 
     public class UsageResponseMessages

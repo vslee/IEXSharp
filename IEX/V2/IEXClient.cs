@@ -1,5 +1,4 @@
-﻿using IEX.V2.Helper;
-using IEX.V2.Service.Account;
+﻿using IEX.V2.Service.Account;
 using IEX.V2.Service.Stock;
 using System;
 using System.Net.Http;
@@ -26,6 +25,7 @@ namespace IEX.V2
                 return this.accountService;
             }
         }
+
         public IStockService Stock
         {
             get

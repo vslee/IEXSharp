@@ -79,5 +79,4 @@ namespace IEX.V2.Helper
             return response;
         }
     }
-
 }

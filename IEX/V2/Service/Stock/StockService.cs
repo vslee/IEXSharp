@@ -1,7 +1,6 @@
 ﻿using IEX.V2.Helper;
 using IEX.V2.Model.Stock.Request;
 using IEX.V2.Model.Stock.Response;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
