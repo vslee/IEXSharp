@@ -112,5 +112,33 @@ namespace IEX.Test
             Assert.IsNotNull(response["AAPL"].quote);
             Assert.IsNotNull(response["FB"].quote);
         }
+
+        [Test]
+        [TestCase("aapl")]
+        public void BookTest(string symbol)
+        {
+            BookResponse response = sandBoxClient.Stock.Book(symbol);
+
+            Assert.IsNotNull(response);
+            Assert.IsNotNull(response.quote);
+            Assert.IsEmpty(response.bids);
+            Assert.IsEmpty(response.asks);
+            Assert.IsNotNull(response.trades);
+            Assert.IsNotNull(response.systemEvent);
+        }
+
+        [Test]
+        [TestCase("aapl")]
+        public async Task BookAsyncTest(string symbol)
+        {
+            BookResponse response = await sandBoxClient.Stock.BookAsync(symbol);
+
+            Assert.IsNotNull(response);
+            Assert.IsNotNull(response.quote);
+            Assert.IsEmpty(response.bids);
+            Assert.IsEmpty(response.asks);
+            Assert.IsNotNull(response.trades);
+            Assert.IsNotNull(response.systemEvent);
+        }
     }
 }

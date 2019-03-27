@@ -17,6 +17,7 @@ namespace IEX.V2.Service.Stock
         Dictionary<string, BatchBySymbolResponse> BatchByMarket(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
         Task<Dictionary<string, BatchBySymbolResponse>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
 
-
+        BookResponse Book(string symbol);
+        Task<BookResponse> BookAsync(string symbol);
     }
 }

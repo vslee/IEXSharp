@@ -416,5 +416,55 @@ namespace IEX.V2.Service.Stock
             return response;
         }
         #endregion
+
+        #region Book
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#book"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns></returns>
+        public BookResponse Book(string symbol)
+        {
+            BookResponse response;
+            var content = string.Empty;
+            using (var responseContent = this.client.GetAsync($"stock/{symbol}/book?token={this.pk}").Result)
+            {
+                try
+                {
+                    content = responseContent.Content.ReadAsStringAsync().Result;
+                    response = JsonConvert.DeserializeObject<BookResponse>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
+            }
+            return response;
+        }
+
+        /// <summary>
+        /// <see cref="https://iexcloud.io/docs/api/#book"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns></returns>
+        public async Task<BookResponse> BookAsync(string symbol)
+        {
+            BookResponse response;
+            var content = string.Empty;
+            using (var responseContent = await this.client.GetAsync($"stock/{symbol}/book?token={this.pk}"))
+            {
+                try
+                {
+                    content = await responseContent.Content.ReadAsStringAsync();
+                    response = JsonConvert.DeserializeObject<BookResponse>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
+            }
+            return response;
+        }
+        #endregion
     }
 }
