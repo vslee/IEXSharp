@@ -32,16 +32,16 @@ namespace ZH.Code
         }
         public static (string iexdate, string authorization_header) Sign(string method, string url, string queryString, string payload = "")
         {
-            if (!string.IsNullOrWhiteSpace(url) && url[0] == '/')
+            if (!string.IsNullOrWhiteSpace(url) && url[0] != '/')
             {
-                url = url.Substring(1);
+                url = $"/{url}";
             }
             DateTime now = DateTime.UtcNow;
             string iexdate = now.ToString("yyyyMMddTHHmmssZ");
             var datestamp = now.ToString("yyyyMMdd");
             var canonical_headers = $"host:{_host}\nx-iex-date:{iexdate}\n";
             var payload_hash = SHA256HexHashString(payload);
-            var canonical_request = $"{method}\n/{url}\n{queryString}\n{canonical_headers}\nhost;x-iex-date\n{payload_hash}";
+            var canonical_request = $"{method}\n{url}\n{queryString}\n{canonical_headers}\nhost;x-iex-date\n{payload_hash}";
             var credential_scope = $"{datestamp}/iex_request";
             var string_to_sign = $"IEX-HMAC-SHA256\n{iexdate}\n{credential_scope}\n{SHA256HexHashString(canonical_request)}";
             var signing_key = HMACSHA256HexHashString(HMACSHA256HexHashString(_sk, datestamp), "iex_request");
