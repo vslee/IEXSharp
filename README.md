@@ -25,10 +25,10 @@ string url = "/account/metadata"; // "/" is required at the beginning
 string queryString = "namea=1&nameb=2";
 string payload = "{\"test\":123,\"obj\":456}";
 
-\\For GET requests
+//For GET requests
 (string iexdate, string authorization_header) headers = Sign(method, url, queryString);
 
-\\For POST requests
+//For POST requests
 (string iexdate, string authorization_header) headers = Sign(method, url, queryString, payload);
 ```
 
