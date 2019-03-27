@@ -12,15 +12,15 @@ namespace IEX.V2.Service.Stock
 {
     internal class StockService : IStockService
     {
-        private HttpClient client;
         private string pk;
         private string sk;
+        private Executor executor;
 
         public StockService(HttpClient client, string pk, string sk)
         {
-            this.client = client;
             this.pk = pk;
             this.sk = sk;
+            executor = new Executor(client);
         }
 
         /// <summary>
@@ -51,9 +51,7 @@ namespace IEX.V2.Service.Stock
             pathNVC.Add("symbol", symbol);
             pathNVC.Add("last", last.ToString());
 
-            Executor<BalanceSheetResponse> executor = new Executor<BalanceSheetResponse>(this.client, this.pk, this.sk);
-
-            return await executor.ExecuteAsync(urlPattern, pathNVC, qsb);
+            return await executor.ExecuteAsync<BalanceSheetResponse>(urlPattern, pathNVC, qsb);
         }
 
         /// <summary>
@@ -86,9 +84,7 @@ namespace IEX.V2.Service.Stock
             pathNVC.Add("last", last.ToString());
             pathNVC.Add("field", field);
 
-            Executor executor = new Executor(this.client, this.pk, this.sk);
-
-            return await executor.ExecuteAsync(urlPattern, pathNVC, qsb);
+            return await executor.ExecuteAsync<string>(urlPattern, pathNVC, qsb);
         }
 
         /// <summary>
@@ -138,9 +134,7 @@ namespace IEX.V2.Service.Stock
             var pathNVC = new NameValueCollection();
             pathNVC.Add("symbol", symbol);
 
-            Executor<BatchBySymbolResponse> executor = new Executor<BatchBySymbolResponse>(this.client, this.pk, this.sk);
-
-            return await executor.ExecuteAsync(urlPattern, pathNVC, qsb);
+            return await executor.ExecuteAsync<BatchBySymbolResponse>(urlPattern, pathNVC, qsb);
         }
 
         /// <summary>
@@ -193,10 +187,8 @@ namespace IEX.V2.Service.Stock
             qsb.Add("last", last);
 
             var pathNVC = new NameValueCollection();
-
-            Executor<Dictionary<string, BatchBySymbolResponse>> executor = new Executor<Dictionary<string, BatchBySymbolResponse>>(this.client, this.pk, this.sk);
-
-            return await executor.ExecuteAsync(urlPattern, pathNVC, qsb);
+            
+            return await executor.ExecuteAsync<Dictionary<string, BatchBySymbolResponse>>(urlPattern, pathNVC, qsb);
         }
 
         /// <summary>
@@ -214,9 +206,7 @@ namespace IEX.V2.Service.Stock
             var pathNVC = new NameValueCollection();
             pathNVC.Add("symbol", symbol);
 
-            Executor<BookResponse> executor = new Executor<BookResponse>(this.client, this.pk, this.sk);
-
-            return await executor.ExecuteAsync(urlPattern, pathNVC, qsb);
+            return await executor.ExecuteAsync<BookResponse>(urlPattern, pathNVC, qsb);
         }
 
         /// <summary>
@@ -246,9 +236,7 @@ namespace IEX.V2.Service.Stock
             pathNVC.Add("symbol", symbol);
             pathNVC.Add("last", last.ToString());
 
-            Executor<CashFlowResponse> executor = new Executor<CashFlowResponse>(this.client, this.pk, this.sk);
-
-            return await executor.ExecuteAsync(urlPattern, pathNVC, qsb);
+            return await executor.ExecuteAsync<CashFlowResponse>(urlPattern, pathNVC, qsb);
         }
 
         /// <summary>
@@ -280,9 +268,7 @@ namespace IEX.V2.Service.Stock
             pathNVC.Add("last", last.ToString());
             pathNVC.Add("field", field);
 
-            Executor executor = new Executor(this.client, this.pk, this.sk);
-
-            return await executor.ExecuteAsync(urlPattern, pathNVC, qsb);
+            return await executor.ExecuteAsync<string>(urlPattern, pathNVC, qsb);
         }
 
         #region Collections - Not implemented

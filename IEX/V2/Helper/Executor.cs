@@ -6,23 +6,41 @@ using System.Threading.Tasks;
 
 namespace IEX.V2.Helper
 {
-    internal class Executor<ReturnType> where ReturnType : class
+    internal class Executor
     {
         private HttpClient client;
         private string pk;
         private string sk;
 
-        public Executor(HttpClient client, string pk, string sk)
+        public Executor(HttpClient client)
         {
             this.client = client;
-            this.pk = pk;
-            this.sk = sk;
         }
 
-        public async Task<ReturnType> ExecuteAsync(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb)
+        public async Task<ReturnType> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb) where ReturnType : class
         {
-            #region validation
+            ValidateParams(ref urlPattern, ref pathNVC, ref qsb);
 
+            ReturnType response;
+            var content = string.Empty;
+
+            using (var responseContent = await this.client.GetAsync($"{urlPattern}{qsb.Build()}"))
+            {
+                try
+                {
+                    content = await responseContent.Content.ReadAsStringAsync();
+                    response = JsonConvert.DeserializeObject<ReturnType>(content);
+                }
+                catch (JsonException ex)
+                {
+                    throw new JsonException(content, ex);
+                }
+            }
+            return response;
+        }
+
+        private static void ValidateParams(ref string urlPattern, ref NameValueCollection pathNVC, ref QueryStringBuilder qsb)
+        {
             if (string.IsNullOrWhiteSpace(urlPattern))
             {
                 throw new ArgumentException("urlPattern cannot be null");
@@ -58,25 +76,6 @@ namespace IEX.V2.Helper
                     }
                 }
             }
-
-            #endregion validation
-
-            ReturnType response;
-            var content = string.Empty;
-
-            using (var responseContent = await this.client.GetAsync($"{urlPattern}{qsb.Build()}"))
-            {
-                try
-                {
-                    content = await responseContent.Content.ReadAsStringAsync();
-                    response = JsonConvert.DeserializeObject<ReturnType>(content);
-                }
-                catch (JsonException ex)
-                {
-                    throw new JsonException(content, ex);
-                }
-            }
-            return response;
         }
     }
 }
