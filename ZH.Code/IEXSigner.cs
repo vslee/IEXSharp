@@ -21,12 +21,12 @@ namespace ZH.Code
             _host = host;
         }
 
-        public static void SetPublishKey(string pk)
+        public static void SetPublishToken(string pk)
         {
             _pk = pk;
         }
 
-        public static void SetSecretKey(string sk)
+        public static void SetSecretToken(string sk)
         {
             _sk = sk;
         }
