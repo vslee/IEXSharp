@@ -26,6 +26,11 @@ namespace IEX.V2.Helper
             nvc.Remove(name);
         }
 
+        public int Count()
+        {
+            return nvc.Count;
+        }
+
         public string Build()
         {
             return "?" + nvc.ToString();
