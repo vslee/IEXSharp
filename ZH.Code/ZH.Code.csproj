@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>IEX.API.V2.Signer</PackageId>
+    <Authors>Zhirong Huang</Authors>
+    <Company>zh-code.com</Company>
+    <Product>IEX.API.V2.Signer</Product>
+    <Description>IEX API V2 request signer</Description>
+    <PackageLicenseUrl>https://git.zh-code.com/zhironghuang/iex.api.v2.signer/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://git.zh-code.com/zhironghuang/iex.api.v2.signer</PackageProjectUrl>
+    <PackageIconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tools.svg/128px-Tools.svg.png</PackageIconUrl>
+    <RepositoryUrl>https://git.zh-code.com/zhironghuang/iex.api.v2.signer</RepositoryUrl>
+    <RepositoryType>Gitlab</RepositoryType>
+    <PackageTags>IEX api v2 stock cloud</PackageTags>
+  </PropertyGroup>
+
+</Project>
