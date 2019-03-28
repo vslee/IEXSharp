@@ -14,6 +14,8 @@
     <RepositoryUrl>https://git.zh-code.com/zhironghuang/iex.api.v2.signer</RepositoryUrl>
     <RepositoryType>Gitlab</RepositoryType>
     <PackageTags>IEX api v2 stock cloud</PackageTags>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Change PublishToken as a parameter based on recommandations from IEX.</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>

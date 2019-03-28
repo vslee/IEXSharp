@@ -7,12 +7,10 @@ namespace ZH.Code
     public static class IEXSigner
     {
         private static string _host;
-        private static string _pk;
         private static string _sk;
-        public static void Init(string host, string pk, string sk)
+        public static void Init(string host, string sk)
         {
             _host = host;
-            _pk = pk;
             _sk = sk;
         }
 
@@ -21,19 +19,15 @@ namespace ZH.Code
             _host = host;
         }
 
-        public static void SetPublishToken(string pk)
-        {
-            _pk = pk;
-        }
-
         public static void SetSecretToken(string sk)
         {
             _sk = sk;
         }
-        public static (string iexdate, string authorization_header) Sign(string method, string url, string queryString, string payload = "")
+
+        public static (string iexdate, string authorization_header) Sign(string pk, string method, string url, string queryString, string payload = "")
         {
-            DateTime now = DateTime.UtcNow;
-            string iexdate = now.ToString("yyyyMMddTHHmmssZ");
+            var now = DateTime.UtcNow;
+            var iexdate = now.ToString("yyyyMMddTHHmmssZ");
             var datestamp = now.ToString("yyyyMMdd");
             var canonical_headers = $"host:{_host}\nx-iex-date:{iexdate}\n";
             var payload_hash = SHA256HexHashString(payload);
@@ -42,7 +36,7 @@ namespace ZH.Code
             var string_to_sign = $"IEX-HMAC-SHA256\n{iexdate}\n{credential_scope}\n{SHA256HexHashString(canonical_request)}";
             var signing_key = HMACSHA256HexHashString(HMACSHA256HexHashString(_sk, datestamp), "iex_request");
             var signature = HMACSHA256HexHashString(signing_key, string_to_sign);
-            string authorization_header = $"IEX-HMAC-SHA256 Credential={_pk}/{credential_scope}, SignedHeaders=host;x-iex-date, Signature={signature}";
+            var authorization_header = $"IEX-HMAC-SHA256 Credential={pk}/{credential_scope}, SignedHeaders=host;x-iex-date, Signature={signature}";
             return (iexdate, authorization_header);
         }
 
@@ -69,7 +63,7 @@ namespace ZH.Code
         }
         private static string ToHex(byte[] bytes, bool upperCase)
         {
-            StringBuilder result = new StringBuilder(bytes.Length * 2);
+            var result = new StringBuilder(bytes.Length * 2);
             for (int i = 0; i < bytes.Length; i++)
             {
                 result.Append(bytes[i].ToString(upperCase ? "X2" : "x2"));
