@@ -20,10 +20,6 @@ namespace ZH.Code.IEX.V2.Service.Account
             this.sk = sk;
         }
 
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#metadata"/>
-        /// </summary>
-        /// <returns></returns>
         public MetadataResponse Metadata()
         {
             MetadataResponse response;
@@ -43,10 +39,6 @@ namespace ZH.Code.IEX.V2.Service.Account
             return response;
         }
 
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#metadata"/>
-        /// </summary>
-        /// <returns></returns>
         public async Task<MetadataResponse> MetadataAsync()
         {
             MetadataResponse response;
@@ -66,10 +58,6 @@ namespace ZH.Code.IEX.V2.Service.Account
             return response;
         }
 
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#usage"/>
-        /// </summary>
-        /// <returns></returns>
         public UsageResponse Usage(UsageType type)
         {
             UsageResponse response;
@@ -127,10 +115,6 @@ namespace ZH.Code.IEX.V2.Service.Account
             }
         }
 
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#usage"/>
-        /// </summary>
-        /// <returns></returns>
         public async Task<UsageResponse> UsageAsync(UsageType type)
         {
             UsageResponse response;
@@ -188,18 +172,11 @@ namespace ZH.Code.IEX.V2.Service.Account
             }
         }
 
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#pay-as-you-go"/>
-        /// </summary>
-        /// <param name="allow"></param>
         public void PayAsYouGo(bool allow)
         {
             throw new NotImplementedException("Not implemented due to API failed");
         }
 
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#pay-as-you-go"/>
-        /// </summary>
         public Task PayAsYouGoAsync(bool allow)
         {
             throw new NotImplementedException("Not implemented due to API failed");
