@@ -12,8 +12,4 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\IEX\IEX.csproj" />
-  </ItemGroup>
-
 </Project>

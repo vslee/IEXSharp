@@ -3,9 +3,9 @@
 ################################################################################
 
 /.vs
-/IEX/bin
-/IEX/obj
 /IEX.Test/bin
 /IEX.Test/obj
 /IEX.Test/Properties/launchSettings.json
 /TestResults
+/ZH.Code/bin/Debug/netstandard2.0
+/ZH.Code/obj

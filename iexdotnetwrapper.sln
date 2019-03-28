@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEX", "IEX\IEX.csproj", "{21F03DE6-A9A2-4E08-92EA-BC6EDCCDD0E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IEX.Test", "IEX.Test\IEX.Test.csproj", "{A160D061-AE1F-4BFB-97A4-86FDBB34ECE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEX.Test", "IEX.Test\IEX.Test.csproj", "{A160D061-AE1F-4BFB-97A4-86FDBB34ECE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZH.Code", "ZH.Code\ZH.Code.csproj", "{93479437-2960-4004-8B0D-4D2246C57B8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{21F03DE6-A9A2-4E08-92EA-BC6EDCCDD0E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21F03DE6-A9A2-4E08-92EA-BC6EDCCDD0E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21F03DE6-A9A2-4E08-92EA-BC6EDCCDD0E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21F03DE6-A9A2-4E08-92EA-BC6EDCCDD0E6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A160D061-AE1F-4BFB-97A4-86FDBB34ECE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A160D061-AE1F-4BFB-97A4-86FDBB34ECE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A160D061-AE1F-4BFB-97A4-86FDBB34ECE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A160D061-AE1F-4BFB-97A4-86FDBB34ECE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93479437-2960-4004-8B0D-4D2246C57B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93479437-2960-4004-8B0D-4D2246C57B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93479437-2960-4004-8B0D-4D2246C57B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93479437-2960-4004-8B0D-4D2246C57B8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
