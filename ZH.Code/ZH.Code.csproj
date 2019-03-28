@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="V2\Model\AlternativeData\Request\" />
-    <Folder Include="V2\Model\ForexCurrencies\Request\" />
-    <Folder Include="V2\Model\InvestorsExchangeData\Request\" />
-    <Folder Include="V2\Model\ReferenceData\Request\" />
-    <Folder Include="V2\Model\Shared\Request\" />
+    <Folder Include="IEX.V2\Model\AlternativeData\Request\" />
+    <Folder Include="IEX.V2\Model\ForexCurrencies\Request\" />
+    <Folder Include="IEX.V2\Model\InvestorsExchangeData\Request\" />
+    <Folder Include="IEX.V2\Model\ReferenceData\Request\" />
+    <Folder Include="IEX.V2\Model\Shared\Request\" />
   </ItemGroup>
 
   <ItemGroup>
