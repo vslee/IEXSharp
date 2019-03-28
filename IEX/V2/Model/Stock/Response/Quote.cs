@@ -40,5 +40,9 @@
         public decimal week52High { get; set; }
         public decimal week52Low { get; set; }
         public decimal ytdChange { get; set; }
+        public decimal? bidPrice { get; set; }
+        public decimal? bidSize { get; set; }
+        public decimal? askPrice { get; set; }
+        public decimal? askSize { get; set; }
     }
 }

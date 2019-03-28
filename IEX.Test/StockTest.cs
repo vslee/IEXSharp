@@ -13,7 +13,8 @@ namespace IEX.Test
         [SetUp]
         public void Setup()
         {
-            sandBoxClient = new IEX.V2.IEXClient("", "", true);
+            sandBoxClient = new IEX.V2.IEXClient("Tpk_d1e87a5a345b434d8f151269fb62071b",
+                "Tsk_73e92cf1e5b1432699f90a17c25f0f88", true);
         }
 
         [Test]

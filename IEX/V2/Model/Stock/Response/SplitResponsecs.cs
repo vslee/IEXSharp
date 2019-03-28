@@ -1,6 +1,6 @@
 ﻿namespace IEX.V2.Model.Stock.Response
 {
-    public class DividendResponse : Dividend
+    public class SplitResponsecs : Split
     {
     }
 }
