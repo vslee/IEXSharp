@@ -187,7 +187,7 @@ namespace IEX.V2.Service.Stock
             qsb.Add("last", last);
 
             var pathNVC = new NameValueCollection();
-            
+
             return await executor.ExecuteAsync<Dictionary<string, BatchBySymbolResponse>>(urlPattern, pathNVC, qsb);
         }
 
