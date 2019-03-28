@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using IEX.V2.Model.Shared.Response;
+using System.Collections.Generic;
 
 namespace IEX.V2.Model.Stock.Response
 {

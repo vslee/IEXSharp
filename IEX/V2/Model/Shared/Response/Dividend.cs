@@ -1,4 +1,8 @@
-﻿namespace IEX.V2.Model.Stock.Response
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace IEX.V2.Model.Shared.Response
 {
     public class Dividend
     {

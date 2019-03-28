@@ -1,8 +1,5 @@
 ﻿namespace IEX.V2.Model.Account.Response
 {
-    /// <summary>
-    /// <see cref="https://iexcloud.io/docs/api/#metadata"/>
-    /// </summary>
     public class MetadataResponse
     {
         public bool payAsYouGoEnabled { get; set; }

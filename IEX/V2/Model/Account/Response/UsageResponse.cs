@@ -2,9 +2,6 @@
 
 namespace IEX.V2.Model.Account.Response
 {
-    /// <summary>
-    /// <see cref="https://iexcloud.io/docs/api/#usage"/>
-    /// </summary>
     public class UsageResponse
     {
         public UsageResponseMessages messages { get; set; }
