@@ -10,31 +10,13 @@ namespace ZH.Code.IEX.V2.Service.Account
         /// <see cref="https://iexcloud.io/docs/api/#metadata"/>
         /// </summary>
         /// <returns></returns>
-        MetadataResponse Metadata();
-
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#metadata"/>
-        /// </summary>
-        /// <returns></returns>
         Task<MetadataResponse> MetadataAsync();
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#usage"/>
         /// </summary>
         /// <returns></returns>
-        UsageResponse Usage(UsageType type);
-
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#usage"/>
-        /// </summary>
-        /// <returns></returns>
         Task<UsageResponse> UsageAsync(UsageType type);
-
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#pay-as-you-go"/>
-        /// </summary>
-        /// <param name="allow"></param>
-        void PayAsYouGo(bool allow);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#pay-as-you-go"/>
