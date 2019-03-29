@@ -284,7 +284,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         /// </summary>
         /// <param name="symbol"></param>
         /// <returns></returns>
-        Task<IEnumerable<LogoResponse>> LogoAsync(string symbol);
+        Task<LogoResponse> LogoAsync(string symbol);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#market-volume-u-s"/>
@@ -305,7 +305,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         /// </summary>
         /// <param name="symbol"></param>
         /// <returns></returns>
-        Task<IEnumerable<OHLCResponse>> OHLCAsync(string symbol);
+        Task<OHLCResponse> OHLCAsync(string symbol);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#peers"/>

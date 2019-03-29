@@ -345,55 +345,47 @@ namespace ZH.Code.IEX.V2.Service.Stock
             return await _executor.ExecuteAsync<IPOCalendar>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<KeyStatsResponse> KeyStatsAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<KeyStatsResponse> KeyStatsAsync(string symbol) =>
+            await _executor.SymbolExecuteAsync<KeyStatsResponse>("stock/[symbol]/stats", symbol, _pk);
 
         public async Task<string> KeyStatsStatAsync(string symbol, string stat)
         {
-            throw new NotImplementedException();
+            const string urlPattern = "stock/[symbol]/stats/[stat]";
+
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", _pk);
+
+            var pathNvc = new NameValueCollection { { "symbol", symbol }, { "stat", stat } };
+
+            return await _executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<IEnumerable<LargestTradeResponse>> LargestTradesAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<LargestTradeResponse>> LargestTradesAsync(string symbol) => await _executor.SymbolExecuteAsync<IEnumerable<LargestTradeResponse>>("stock/[symbol]/largest-trades", symbol, _pk);
 
         public async Task<IEnumerable<Quote>> ListAsync(string listType)
         {
-            throw new NotImplementedException();
+            const string urlPattern = "stock/market/list/[list-type]";
+
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", _pk);
+
+            var pathNvc = new NameValueCollection { { "list-type", listType } };
+
+            return await _executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<IEnumerable<LogoResponse>> LogoAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<LogoResponse> LogoAsync(string symbol) => await _executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol, _pk);
 
-        public async Task<IEnumerable<USMarketVolumeResponse>> USMarketVolumeAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<USMarketVolumeResponse>> USMarketVolumeAsync() =>
+            await _executor.NoParamExecute<IEnumerable<USMarketVolumeResponse>>("/market", _pk);
 
-        public async Task<IEnumerable<NewsResponse>> NewsAsync(string symbol, int last = 10)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<NewsResponse>> NewsAsync(string symbol, int last = 10) => await _executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last, _pk);
 
-        public async Task<IEnumerable<OHLCResponse>> OHLCAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<OHLCResponse> OHLCAsync(string symbol) => await _executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol, _pk);
 
-        public async Task<IEnumerable<string>> PeersAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<string>> PeersAsync(string symbol) => await _executor.SymbolExecuteAsync<IEnumerable<string>>("stock/[symbol]/peers", symbol, _pk);
 
-        public async Task<HistoricalPriceResponse> PreviousDayPriceAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<HistoricalPriceResponse> PreviousDayPriceAsync(string symbol) => await _executor.SymbolExecuteAsync<HistoricalPriceResponse>("stock/[symbol]/previous", symbol, _pk);
 
         public async Task<decimal> PriceAsync(string symbol)
         {
