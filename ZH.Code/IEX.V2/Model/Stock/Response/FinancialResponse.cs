@@ -1,6 +1,5 @@
-﻿using ZH.Code.IEX.V2.Model.Shared.Response;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using ZH.Code.IEX.V2.Model.Shared.Response;
 
 namespace ZH.Code.IEX.V2.Model.Stock.Response
 {

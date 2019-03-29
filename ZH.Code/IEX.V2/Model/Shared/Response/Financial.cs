@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ZH.Code.IEX.V2.Model.Shared.Response
 {

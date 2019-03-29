@@ -8,13 +8,11 @@ namespace ZH.Code.IEX.V2.Helper
 {
     internal class Executor
     {
-        private HttpClient client;
-        private string pk;
-        private string sk;
+        private readonly HttpClient _client;
 
         public Executor(HttpClient client)
         {
-            this.client = client;
+            this._client = client;
         }
 
         public async Task<ReturnType> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb) where ReturnType : class
@@ -24,7 +22,7 @@ namespace ZH.Code.IEX.V2.Helper
             ReturnType response;
             var content = string.Empty;
 
-            using (var responseContent = await this.client.GetAsync($"{urlPattern}{qsb.Build()}"))
+            using (var responseContent = await this._client.GetAsync($"{urlPattern}{qsb.Build()}"))
             {
                 try
                 {

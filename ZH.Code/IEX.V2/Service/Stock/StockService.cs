@@ -13,59 +13,56 @@ namespace ZH.Code.IEX.V2.Service.Stock
 {
     internal class StockService : IStockService
     {
-        private string pk;
-        private string sk;
-        private Executor executor;
+        private readonly string _pk;
+        private readonly Executor _executor;
 
-        public StockService(HttpClient client, string pk, string sk)
+        public StockService(HttpClient client, string pk)
         {
-            this.pk = pk;
-            this.sk = sk;
-            executor = new Executor(client);
+            _pk = pk;
+            _executor = new Executor(client);
         }
 
         public async Task<BalanceSheetResponse> BalanceSheetAsync(string symbol, Period period, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/balance-sheet/[last]";
+            const string urlPattern = "stock/[symbol]/balance-sheet/[last]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
             qsb.Add("period", period.ToString().ToLower());
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
+            var pathNvc = new NameValueCollection
+            {
+                { "symbol", symbol },
+                { "last", last.ToString() }
+            };
 
-            return await executor.ExecuteAsync<BalanceSheetResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<BalanceSheetResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<string> BalanceSheetFieldAsync(string symbol, Period period, string field, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/balance-sheet/[last]/[field]";
+            const string urlPattern = "stock/[symbol]/balance-sheet/[last]/[field]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
             qsb.Add("period", period.ToString().ToLower());
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
-            pathNVC.Add("field", field);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}, {"field", field}};
 
-            return await executor.ExecuteAsync<string>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<BatchBySymbolResponse> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
         {
             if (types?.Count() < 1)
             {
-                throw new ArgumentNullException("batchTypes cannot be null");
+                throw new ArgumentNullException(nameof(types));
             }
 
-            var urlPattern = "stock/[symbol]/batch";
+            const string urlPattern = "stock/[symbol]/batch";
 
             var qsType = new List<string>();
-            foreach (BatchType x in types)
+            foreach (var x in types)
             {
                 switch (x)
                 {
@@ -80,10 +77,12 @@ namespace ZH.Code.IEX.V2.Service.Stock
                     case BatchType.Chart:
                         qsType.Add("chart");
                         break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(types));
                 }
             }
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
             qsb.Add("types", string.Join(",", qsType));
             if (!string.IsNullOrWhiteSpace(range))
             {
@@ -91,10 +90,9 @@ namespace ZH.Code.IEX.V2.Service.Stock
             }
             qsb.Add("last", last);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}};
 
-            return await executor.ExecuteAsync<BatchBySymbolResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<BatchBySymbolResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<Dictionary<string, BatchBySymbolResponse>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1)
@@ -108,10 +106,10 @@ namespace ZH.Code.IEX.V2.Service.Stock
                 throw new ArgumentNullException("symbols cannot be null");
             }
 
-            var urlPattern = "stock/market/batch";
+            const string urlPattern = "stock/market/batch";
 
             var qsType = new List<string>();
-            foreach (BatchType x in types)
+            foreach (var x in types)
             {
                 switch (x)
                 {
@@ -126,10 +124,12 @@ namespace ZH.Code.IEX.V2.Service.Stock
                     case BatchType.Chart:
                         qsType.Add("chart");
                         break;
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(types));
                 }
             }
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
             qsb.Add("symbols", string.Join(",", symbols));
             qsb.Add("types", string.Join(",", qsType));
             if (!string.IsNullOrWhiteSpace(range))
@@ -138,231 +138,206 @@ namespace ZH.Code.IEX.V2.Service.Stock
             }
             qsb.Add("last", last);
 
-            var pathNVC = new NameValueCollection();
+            var pathNvc = new NameValueCollection();
 
-            return await executor.ExecuteAsync<Dictionary<string, BatchBySymbolResponse>>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<Dictionary<string, BatchBySymbolResponse>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<BookResponse> BookAsync(string symbol)
         {
-            var urlPattern = "stock/[symbol]/book";
+            const string urlPattern = "stock/[symbol]/book";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}};
 
-            return await executor.ExecuteAsync<BookResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<BookResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<CashFlowResponse> CashFlowAsync(string symbol, Period period, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/cash-flow/[last]";
+            const string urlPattern = "stock/[symbol]/cash-flow/[last]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
             qsb.Add("period", period.ToString().ToLower());
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}};
 
-            return await executor.ExecuteAsync<CashFlowResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<CashFlowResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<string> CashFlowFieldAsync(string symbol, Period period, string field, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/cash-flow/[last]/[field]";
+            const string urlPattern = "stock/[symbol]/cash-flow/[last]/[field]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
             qsb.Add("period", period.ToString().ToLower());
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
-            pathNVC.Add("field", field);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}, {"field", field}};
 
-            return await executor.ExecuteAsync<string>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<IEnumerable<Quote>> CollectionsAsync(CollectionType collection, string collectionName)
         {
-            var urlPattern = "stock/market/collection/[collectionType]";
+            const string urlPattern = "stock/market/collection/[collectionType]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("collectionType", collection.ToString().ToLower());
+            var pathNvc = new NameValueCollection {{"collectionType", collection.ToString().ToLower()}};
 
-            return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<CompanyResponse> CompanyAsync(string symbol)
         {
-            var urlPattern = "stock/[symbol]/company";
+            const string urlPattern = "stock/[symbol]/company";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}};
 
-            return await executor.ExecuteAsync<CompanyResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<CompanyResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<DelayedQuoteResponse> DelayedQuoteAsync(string symbol)
         {
-            var urlPattern = "stock/[symbol]/delayed-quote";
+            const string urlPattern = "stock/[symbol]/delayed-quote";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}};
 
-            return await executor.ExecuteAsync<DelayedQuoteResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<DelayedQuoteResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<IEnumerable<DividendResponse>> DividendAsync(string symbol, DividendRange range)
         {
-            var urlPattern = "stock/[symbol]/dividends/[range]";
+            const string urlPattern = "stock/[symbol]/dividends/[range]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("range", range.ToString().ToLower().Replace("_", ""));
+            var pathNvc = new NameValueCollection
+            {
+                {"symbol", symbol}, {"range", range.ToString().ToLower().Replace("_", "")}
+            };
 
-            return await executor.ExecuteAsync<IEnumerable<DividendResponse>>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<IEnumerable<DividendResponse>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<EarningResponse> EarningAsync(string symbol, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/earnings/[last]";
+            const string urlPattern = "stock/[symbol]/earnings/[last]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}};
 
-            return await executor.ExecuteAsync<EarningResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<EarningResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<string> EarningFieldAsync(string symbol, string field, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/earnings/[last]/[field]";
+            const string urlPattern = "stock/[symbol]/earnings/[last]/[field]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
-            pathNVC.Add("field", field);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}, {"field", field}};
 
-            return await executor.ExecuteAsync<string>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<Dictionary<string, EarningTodayResponse>> EarningTodayAsync()
         {
-            var urlPattern = "stock/market/today-earnings";
+            const string urlPattern = "stock/market/today-earnings";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
+            var pathNvc = new NameValueCollection();
 
-            return await executor.ExecuteAsync<Dictionary<string, EarningTodayResponse>>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<Dictionary<string, EarningTodayResponse>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<IEnumerable<EffectiveSpreadResponse>> EffectiveSpreadAsync(string symbol)
         {
-            var urlPattern = "stock/[symbol]/effective-spread";
+            const string urlPattern = "stock/[symbol]/effective-spread";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}};
 
-            return await executor.ExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<EstimateResponse> EstimateAsync(string symbol, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/estimates/[last]";
+            const string urlPattern = "stock/[symbol]/estimates/[last]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}};
 
-            return await executor.ExecuteAsync<EstimateResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<EstimateResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<string> EstimateFieldAsync(string symbol, string field, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/estimates/[last]/[field]";
+            const string urlPattern = "stock/[symbol]/estimates/[last]/[field]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
-            pathNVC.Add("field", field);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}, {"field", field}};
 
-            return await executor.ExecuteAsync<string>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<FinancialResponse> FinancialAsync(string symbol, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/financials/[last]";
+            const string urlPattern = "stock/[symbol]/financials/[last]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}};
 
-            return await executor.ExecuteAsync<FinancialResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<FinancialResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<string> FinancialFieldAsync(string symbol, string field, int last = 1)
         {
-            var urlPattern = "stock/[symbol]/financials/[last]/[field]";
+            const string urlPattern = "stock/[symbol]/financials/[last]/[field]";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
-            pathNVC.Add("last", last.ToString());
-            pathNVC.Add("field", field);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}, {"field", field}};
 
-            return await executor.ExecuteAsync<string>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<FundOwnershipResponse> FundOwnershipAsync(string symbol)
         {
-            var urlPattern = "stock/[symbol]/fund-ownership";
+            const string urlPattern = "stock/[symbol]/fund-ownership";
 
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", this.pk);
+            qsb.Add("token", _pk);
 
-            var pathNVC = new NameValueCollection();
-            pathNVC.Add("symbol", symbol);
+            var pathNvc = new NameValueCollection {{"symbol", symbol}};
 
-            return await executor.ExecuteAsync<FundOwnershipResponse>(urlPattern, pathNVC, qsb);
+            return await _executor.ExecuteAsync<FundOwnershipResponse>(urlPattern, pathNvc, qsb);
         }
     }
 }

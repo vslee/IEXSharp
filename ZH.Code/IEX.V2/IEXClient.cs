@@ -7,65 +7,44 @@ namespace ZH.Code.IEX.V2
 {
     public class IEXClient : IDisposable
     {
-        private HttpClient client;
-        private string pk;
-        private string sk;
+        private readonly HttpClient _client;
+        private readonly string _pk;
+        private readonly string _sk;
 
         private IAccountService accountService;
         private IStockService stockService;
 
-        public IAccountService Account
-        {
-            get
-            {
-                if (this.accountService == null)
-                {
-                    this.accountService = new AccountService(this.client, this.pk, this.sk);
-                }
-                return this.accountService;
-            }
-        }
+        public IAccountService Account =>
+            accountService ??
+            (accountService = new AccountService(_client, _sk));
 
-        public IStockService Stock
-        {
-            get
-            {
-                if (this.stockService == null)
-                {
-                    this.stockService = new StockService(this.client, this.pk, this.sk);
-                }
-                return this.stockService;
-            }
-        }
+        public IStockService Stock => stockService ?? (stockService = new StockService(_client, _pk));
 
         public IEXClient(string pk, string sk, bool sandBox)
         {
-            this.pk = pk;
-            this.sk = sk;
-            this.client = new HttpClient();
-            if (!sandBox)
+            _pk = pk;
+            _sk = sk;
+            _client = new HttpClient
             {
-                client.BaseAddress = new Uri("https://cloud.iexapis.com/beta/");
-            }
-            else
-            {
-                client.BaseAddress = new Uri("https://sandbox.iexapis.com/beta/");
-            }
-            this.client.DefaultRequestHeaders.Add("User-Agent", "zh-code IEX API V2 .Net Wrapper");
+                BaseAddress = !sandBox
+                    ? new Uri("https://cloud.iexapis.com/beta/")
+                    : new Uri("https://sandbox.iexapis.com/beta/")
+            };
+            _client.DefaultRequestHeaders.Add("User-Agent", "zh-code IEX API V2 .Net Wrapper");
         }
 
-        private bool disposed = false;
+        private bool disposed;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
-                    this.client.Dispose();
+                    _client.Dispose();
                 }
             }
-            this.disposed = true;
+            disposed = true;
         }
 
         public void Dispose()

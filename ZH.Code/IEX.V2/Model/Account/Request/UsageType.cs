@@ -7,6 +7,6 @@
         Rules,
         RuleRecords,
         Alerts,
-        AlertRecords,
+        AlertRecords
     }
 }
