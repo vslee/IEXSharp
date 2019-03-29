@@ -37,6 +37,48 @@ namespace ZH.Code.IEX.V2.Helper
             return response;
         }
 
+        public async Task<ReturnType> NoParamExecute<ReturnType>(string url, string token) where ReturnType : class
+        {
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", token);
+
+            var pathNvc = new NameValueCollection();
+
+            return await ExecuteAsync<ReturnType>(url, pathNvc, qsb);
+        }
+
+        public async Task<ReturnType> SymbolExecuteAsync<ReturnType>(string urlPattern, string symbol, string token)
+            where ReturnType : class
+        {
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", token);
+
+            var pathNvc = new NameValueCollection { { "symbol", symbol } };
+
+            return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb);
+        }
+
+        public async Task<ReturnType> SymbolLastExecuteAsync<ReturnType>(string urlPattern, string symbol, int last, string token)
+            where ReturnType : class
+        {
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", token);
+
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}};
+
+            return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb);
+        }
+
+        public async Task<string> SymbolLastFieldExecuteAsync(string urlPattern, string symbol, string field, int last, string token)
+        {
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", token);
+
+            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}, {"field", field}};
+
+            return await ExecuteAsync<string>(urlPattern, pathNvc, qsb);
+        }
+
         private static void ValidateParams(ref string urlPattern, ref NameValueCollection pathNVC, ref QueryStringBuilder qsb)
         {
             if (string.IsNullOrWhiteSpace(urlPattern))

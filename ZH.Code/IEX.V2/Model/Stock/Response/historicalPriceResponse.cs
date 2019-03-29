@@ -3,19 +3,19 @@
     public class HistoricalPriceResponse
     {
         public string date { get; set; }
-        public long open { get; set; }
-        public long high { get; set; }
-        public long low { get; set; }
-        public long close { get; set; }
+        public decimal open { get; set; }
+        public decimal close { get; set; }
+        public decimal high { get; set; }
+        public decimal low { get; set; }
         public long volume { get; set; }
-        public long uOpen { get; set; }
-        public long uHigh { get; set; }
-        public long uLow { get; set; }
-        public long uClose { get; set; }
+        public decimal uOpen { get; set; }
+        public decimal uClose { get; set; }
+        public decimal uHigh { get; set; }
+        public decimal uLow { get; set; }
         public long uVolume { get; set; }
-        public long change { get; set; }
+        public decimal change { get; set; }
         public long changePercent { get; set; }
-        public string label { get; set; }
         public long changeOverTime { get; set; }
+        public string symbol { get; set; }
     }
 }

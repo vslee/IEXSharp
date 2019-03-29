@@ -14,11 +14,17 @@ namespace ZH.Code.IEX.V2
         private IAccountService accountService;
         private IStockService stockService;
 
-        public IAccountService Account =>
-            accountService ??
-            (accountService = new AccountService(_client, _sk));
+        public IAccountService Account
+        {
+            get =>
+                accountService ??
+                (accountService = new AccountService(_client, _sk));
+        }
 
-        public IStockService Stock => stockService ?? (stockService = new StockService(_client, _pk));
+        public IStockService Stock
+        {
+            get => stockService ?? (stockService = new StockService(_client, _pk));
+        }
 
         public IEXClient(string pk, string sk, bool sandBox)
         {
