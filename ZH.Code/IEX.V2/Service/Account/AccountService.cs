@@ -38,7 +38,7 @@ namespace ZH.Code.IEX.V2.Service.Account
             var qsb = new QueryStringBuilder();
             qsb.Add("token", _sk);
 
-            var pathNVC = new NameValueCollection {{"type", type.ToString().ToLower()}};
+            var pathNVC = new NameValueCollection { { "type", type.ToString().ToLower() } };
 
             return await _executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb);
         }

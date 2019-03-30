@@ -23,18 +23,14 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
         public async Task<Dictionary<string, DeepAuctionResponse>> DeepActionAsync(string symbol)
           => await _executor.SymbolExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbol, _pk);
 
-
         public async Task<DeepResponse> DeepAsync(IEnumerable<string> symbols)
            => await _executor.SymbolsExecuteAsync<DeepResponse>("deep", symbols, _pk);
-
 
         public async Task<Dictionary<string, DeepBookResponse>> DeepBookAsync(IEnumerable<string> symbols)
            => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepBookResponse>>("deep/book", symbols, _pk);
 
-
-        public async Task<Dictionary<string, DeepOfficialPriceResponse>> DeepOfficialPriceAsync(IEnumerable<string> symbols) 
+        public async Task<Dictionary<string, DeepOfficialPriceResponse>> DeepOfficialPriceAsync(IEnumerable<string> symbols)
             => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOfficialPriceResponse>>("deep/official-price", symbols, _pk);
-
 
         public async Task<Dictionary<string, DeepOperationalHaltStatusResponse>> DeepOperationHaltStatusAsync(IEnumerable<string> symbols)
             => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOperationalHaltStatusResponse>>("deep/op-halt-status", symbols, _pk);
@@ -62,7 +58,6 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
 
         public async Task<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol)
             => await _executor.SymbolExecuteAsync<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>("stock/[symbol]/threshold-securities", symbol, _pk);
-
 
         public async Task<IEnumerable<ListedShortInterestListResponse>> ListedShortInterestListAsync(string symbol)
             => await _executor.SymbolExecuteAsync<IEnumerable<ListedShortInterestListResponse>>("stock/[symbol]/short-interest", symbol, _pk);
@@ -108,7 +103,6 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
 
         public async Task<StatsIntradayResponse> StatsIntradayAsync()
             => await _executor.NoParamExecute<StatsIntradayResponse>("stats/intraday", _pk);
-
 
         public async Task<IEnumerable<StatsRecentResponse>> StatsRecentAsync()
             => await _executor.NoParamExecute<IEnumerable<StatsRecentResponse>>("stats/recent", _pk);

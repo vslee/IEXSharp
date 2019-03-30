@@ -1,6 +1,6 @@
-﻿using ZH.Code.IEX.V2.Model.Account.Request;
+﻿using System.Threading.Tasks;
+using ZH.Code.IEX.V2.Model.Account.Request;
 using ZH.Code.IEX.V2.Model.Account.Response;
-using System.Threading.Tasks;
 
 namespace ZH.Code.IEX.V2.Service.Account
 {

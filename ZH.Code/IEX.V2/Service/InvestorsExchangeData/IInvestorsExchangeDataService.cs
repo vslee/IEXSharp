@@ -126,7 +126,6 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
         /// <returns></returns>
         Task<IEnumerable<StatsHisoricalDailyResponse>> StatsHistoricalDailyByLastAsync(int last);
 
-
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#stats-historical-summary"/>
         /// </summary>

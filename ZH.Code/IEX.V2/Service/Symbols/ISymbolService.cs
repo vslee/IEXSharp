@@ -54,7 +54,7 @@ namespace ZH.Code.IEX.V2.Service.Symbols
         /// <param name="last"></param>
         /// <param name="startDate"></param>
         /// <returns></returns>
-        Task<IEnumerable<USHolidaysAndTradingDatesResponse>> USHolidaysAndTradingDatesAsync(DateType type, 
+        Task<IEnumerable<USHolidaysAndTradingDatesResponse>> USHolidaysAndTradingDatesAsync(DateType type,
             DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null);
 
         /// <summary>

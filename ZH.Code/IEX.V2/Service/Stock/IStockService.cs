@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using ZH.Code.IEX.V2.Model.Shared.Response;
 using ZH.Code.IEX.V2.Model.Stock.Request;
 using ZH.Code.IEX.V2.Model.Stock.Response;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ZH.Code.IEX.V2.Service.Stock
 {

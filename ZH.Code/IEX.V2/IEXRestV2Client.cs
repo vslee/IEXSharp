@@ -1,12 +1,12 @@
-﻿using ZH.Code.IEX.V2.Service.Account;
-using ZH.Code.IEX.V2.Service.Stock;
-using System;
+﻿using System;
 using System.Net.Http;
+using ZH.Code.IEX.V2.Service.Account;
 using ZH.Code.IEX.V2.Service.AlternativeData;
-using ZH.Code.IEX.V2.Service.Symbols;
+using ZH.Code.IEX.V2.Service.APISystemMetadata;
 using ZH.Code.IEX.V2.Service.ForexCurrencies;
 using ZH.Code.IEX.V2.Service.InvestorsExchangeData;
-using ZH.Code.IEX.V2.Service.APISystemMetadata;
+using ZH.Code.IEX.V2.Service.Stock;
+using ZH.Code.IEX.V2.Service.Symbols;
 
 namespace ZH.Code.IEX.V2
 {

@@ -21,7 +21,6 @@ namespace ZH.Code.IEX.V2.Service.AlternativeData
 
         public async Task<Quote> CryptoAsync(string symbol) => await _executor.SymbolExecuteAsync<Quote>("crypto/[symbol]/quote", symbol, _pk);
 
-
         public async Task<SocialSentimentDailyResponse> SocialSentimentDailyAsync(string symbol, DateTime? date = null)
         {
             const string urlPattern = "stock/[symbol]/sentiment/daily/[date]";
