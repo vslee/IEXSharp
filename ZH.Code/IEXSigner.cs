@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ZH.Code
+namespace IEXSigner
 {
     public class IEXSigner
     {
