@@ -1,6 +1,6 @@
-﻿namespace ZH.Code.IEX.V2.Model.Shared.Response
+﻿namespace ZH.Code.IEX.V2.Model.InvestorsExchangeData.Response
 {
-    public class SsrStatus
+    public class DeepShortSalePriceTestStatusResponse
     {
         public bool isSSR { get; set; }
         public string detail { get; set; }

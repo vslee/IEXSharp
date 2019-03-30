@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -54,6 +56,18 @@ namespace ZH.Code.IEX.V2.Helper
             qsb.Add("token", token);
 
             var pathNvc = new NameValueCollection { { "symbol", symbol } };
+
+            return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb);
+        }
+
+        public async Task<ReturnType> SymbolsExecuteAsync<ReturnType>(string urlPattern, IEnumerable<string> symbols, string token)
+            where ReturnType : class
+        {
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", token);
+            qsb.Add("symbols", string.Join(",", symbols));
+
+            var pathNvc = new NameValueCollection();
 
             return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb);
         }

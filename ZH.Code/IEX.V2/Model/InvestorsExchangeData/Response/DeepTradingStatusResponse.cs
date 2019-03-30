@@ -1,6 +1,6 @@
-﻿namespace ZH.Code.IEX.V2.Model.Shared.Response
+﻿namespace ZH.Code.IEX.V2.Model.InvestorsExchangeData.Response
 {
-    public class TradingStatus
+    public class DeepTradingStatusResponse
     {
         public string status { get; set; }
         public string reason { get; set; }

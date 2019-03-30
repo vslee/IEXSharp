@@ -1,6 +1,6 @@
-﻿namespace ZH.Code.IEX.V2.Model.Shared.Response
+﻿namespace ZH.Code.IEX.V2.Model.InvestorsExchangeData.Response
 {
-    public class Auction
+    public class DeepAuctionResponse
     {
         public string auctionType { get; set; }
         public int pairedShares { get; set; }

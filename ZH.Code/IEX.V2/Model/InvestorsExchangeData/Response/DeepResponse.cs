@@ -14,13 +14,13 @@ namespace ZH.Code.IEX.V2.Model.InvestorsExchangeData.Response
         public long lastUpdated { get; set; }
         public List<Bid> bids { get; set; }
         public List<Ask> asks { get; set; }
-        public SystemEvent systemEvent { get; set; }
-        public TradingStatus tradingStatus { get; set; }
-        public OpHaltStatus opHaltStatus { get; set; }
-        public SsrStatus ssrStatus { get; set; }
-        public SecurityEvent securityEvent { get; set; }
-        public List<Trade> trades { get; set; }
-        public List<Trade> tradeBreaks { get; set; }
-        public Auction auction { get; set; }
+        public DeepSystemEventResponse systemEvent { get; set; }
+        public DeepTradingStatusResponse tradingStatus { get; set; }
+        public DeepOperationalHaltStatusResponse opHaltStatus { get; set; }
+        public DeepShortSalePriceTestStatusResponse ssrStatus { get; set; }
+        public DeepSecurityEventResponse securityEvent { get; set; }
+        public List<DeepTradeResponse> trades { get; set; }
+        public List<DeepTradeResponse> tradeBreaks { get; set; }
+        public DeepAuctionResponse auction { get; set; }
     }
 }

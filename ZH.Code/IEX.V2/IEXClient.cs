@@ -4,6 +4,8 @@ using System;
 using System.Net.Http;
 using ZH.Code.IEX.V2.Service.AlternativeData;
 using ZH.Code.IEX.V2.Service.Symbols;
+using ZH.Code.IEX.V2.Service.ForexCurrencies;
+using ZH.Code.IEX.V2.Service.InvestorsExchangeData;
 
 namespace ZH.Code.IEX.V2
 {
@@ -17,6 +19,8 @@ namespace ZH.Code.IEX.V2
         private IStockService stockService;
         private IAlternativeDataService alternativeDataService;
         private ISymbolService symbolService;
+        private IForexCurrenciesService forexCurrenciesService;
+        private IInvestorsExchangeDataService investorsExchangeDataService;
 
         public IAccountService Account
         {
@@ -38,6 +42,16 @@ namespace ZH.Code.IEX.V2
         public ISymbolService Symbol
         {
             get => symbolService ?? (symbolService = new SymbolService(_client, _pk));
+        }
+
+        public IForexCurrenciesService ForexCurrencies
+        {
+            get => forexCurrenciesService ?? (forexCurrenciesService = new ForexCurrenciesService(_client, _pk));
+        }
+
+        public IInvestorsExchangeDataService InvestorsExchangeData
+        {
+            get => investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(_client, _pk));
         }
 
         public IEXClient(string pk, string sk, bool sandBox)
