@@ -4,27 +4,27 @@ using System.Text;
 
 namespace ZH.Code
 {
-    public static class IEXSigner
+    public class IEXSigner
     {
-        private static string _host;
-        private static string _sk;
-        public static void Init(string host, string sk)
+        private string _host;
+        private string _sk;
+        public void Init(string host, string sk)
         {
             _host = host;
             _sk = sk;
         }
 
-        public static void SetHost(string host)
+        public void SetHost(string host)
         {
             _host = host;
         }
 
-        public static void SetSecretToken(string sk)
+        public void SetSecretToken(string sk)
         {
             _sk = sk;
         }
 
-        public static (string iexdate, string authorization_header) Sign(string pk, string method, string url, string queryString, string payload = "")
+        public (string iexdate, string authorization_header) Sign(string pk, string method, string url, string queryString, string payload = "")
         {
             var now = DateTime.UtcNow;
             var iexdate = now.ToString("yyyyMMddTHHmmssZ");
@@ -40,7 +40,7 @@ namespace ZH.Code
             return (iexdate, authorization_header);
         }
 
-        private static string HMACSHA256HexHashString(string key, string StringIn)
+        private string HMACSHA256HexHashString(string key, string StringIn)
         {
             string hashString;
             using (var hmacsha256 = new HMACSHA256(Encoding.Default.GetBytes(key)))
@@ -51,7 +51,7 @@ namespace ZH.Code
             return hashString;
         }
 
-        private static string SHA256HexHashString(string StringIn)
+        private string SHA256HexHashString(string StringIn)
         {
             string hashString;
             using (var sha256 = SHA256Managed.Create())
@@ -61,7 +61,7 @@ namespace ZH.Code
             }
             return hashString;
         }
-        private static string ToHex(byte[] bytes, bool upperCase)
+        private string ToHex(byte[] bytes, bool upperCase)
         {
             var result = new StringBuilder(bytes.Length * 2);
             for (int i = 0; i < bytes.Length; i++)
