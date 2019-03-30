@@ -8,7 +8,12 @@ namespace ZH.Code
     {
         private string _host;
         private string _sk;
-        public void Init(string host, string sk)
+
+        public IEXSigner()
+        {
+        }
+
+        public IEXSigner(string host, string sk)
         {
             _host = host;
             _sk = sk;
@@ -61,6 +66,7 @@ namespace ZH.Code
             }
             return hashString;
         }
+
         private string ToHex(byte[] bytes, bool upperCase)
         {
             var result = new StringBuilder(bytes.Length * 2);

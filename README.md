@@ -11,12 +11,13 @@ string host = "sandbox.iexapis.com"; //Sandbox host
 string pk = "PublishToken";
 string sk = "SecretToken";
 
-IEXSigner.Init(host, sk);
+IEXSigner signer = new IEXSigner(host, sk);
 
 /*
  * If run separately
-IEXSigner.SetHost(host);
-IEXSigner.SetSecretToken(sk);
+IEXSigner signer = new IEXSigner();
+signer.SetHost(host);
+signer.SetSecretToken(sk);
 */
 
 string method = "GET";
@@ -25,10 +26,10 @@ string queryString = "namea=1&nameb=2";
 string payload = "{\"test\":123,\"obj\":456}";
 
 //For GET requests
-(string iexdate, string authorization_header) headers = Sign(pk, method, url, queryString);
+(string iexdate, string authorization_header) headers = signer.Sign(pk, method, url, queryString);
 
 //For POST requests
-(string iexdate, string authorization_header) headers = Sign(pk, method, url, queryString, payload);
+(string iexdate, string authorization_header) headers = signer.Sign(pk, method, url, queryString, payload);
 ```
 
 Set request header [Read More](https://iexcloud.io/docs/api/#signed-requests)
