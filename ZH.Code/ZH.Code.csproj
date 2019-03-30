@@ -17,6 +17,8 @@ Only available to Grow and Scale users</Description>
     <PackageTags>IEX api v2 stock cloud</PackageTags>
     <Version>1.0.4</Version>
     <PackageReleaseNotes>Update namespace void confusion</PackageReleaseNotes>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>ZH.Code.IEXSigner.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>
