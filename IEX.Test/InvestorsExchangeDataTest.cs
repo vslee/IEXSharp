@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ZH.Code.IEX.V2;
 
@@ -11,15 +9,11 @@ namespace IEX.Test
     public class InvestorsExchangeDataTest
     {
         private IEXRestV2Client sandBoxClient;
-        private static IEnumerable<string> testSourceAAPL;
-        private static IEnumerable<string> testSourceFB;
 
         [SetUp]
         public void Setup()
         {
             sandBoxClient = new IEXRestV2Client(TestGlobal.pk, TestGlobal.sk, false, true);
-            testSourceAAPL = new string[] { "AAPL" };
-            testSourceFB = new string[] { "FB" };
         }
 
         [Test]
@@ -71,6 +65,7 @@ namespace IEX.Test
 
             Assert.IsNotNull(response);
         }
+
         [Test]
         [TestCase("AAPL")]
         [TestCase("FB")]
@@ -98,7 +93,6 @@ namespace IEX.Test
 
             Assert.IsNotNull(response);
         }
-
 
         [Test]
         [TestCase("AAPL")]
@@ -194,6 +188,7 @@ namespace IEX.Test
 
             Assert.IsNotNull(response);
         }
+
         [Test]
         public async Task StatsRecentAsyncTest()
         {
@@ -202,6 +197,7 @@ namespace IEX.Test
             Assert.IsNotNull(response);
             Assert.GreaterOrEqual(response.Count(), 1);
         }
+
         [Test]
         public async Task StatsRecordAsyncTest()
         {
