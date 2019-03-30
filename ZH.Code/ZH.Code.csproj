@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="IEX.API.V2.Signer" Version="1.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="ZH.Code.QueryStringBuilder" Version="1.0.3" />
   </ItemGroup>

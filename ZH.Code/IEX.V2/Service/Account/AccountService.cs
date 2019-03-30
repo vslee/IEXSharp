@@ -13,10 +13,10 @@ namespace ZH.Code.IEX.V2.Service.Account
         private readonly string _sk;
         private readonly Executor _executor;
 
-        public AccountService(HttpClient client, string sk)
+        public AccountService(HttpClient client, string sk, string pk, bool sign)
         {
             _sk = sk;
-            _executor = new Executor(client);
+            _executor = new Executor(client, sk, pk, sign);
         }
 
         public async Task<MetadataResponse> MetadataAsync()

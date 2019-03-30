@@ -11,10 +11,10 @@ namespace ZH.Code.IEX.V2.Service.ForexCurrencies
         private readonly string _pk;
         private readonly Executor _executor;
 
-        public ForexCurrenciesService(HttpClient client, string pk)
+        public ForexCurrenciesService(HttpClient client, string sk, string pk, bool sign)
         {
             _pk = pk;
-            _executor = new Executor(client);
+            _executor = new Executor(client, sk, pk, sign);
         }
 
         public async Task<ExchangeRateResponse> ExchangeRateAsync(string from, string to)

@@ -14,10 +14,10 @@ namespace ZH.Code.IEX.V2.Service.Symbols
         private readonly string _pk;
         private readonly Executor _executor;
 
-        public SymbolService(HttpClient client, string pk)
+        public SymbolService(HttpClient client, string sk, string pk, bool sign)
         {
             _pk = pk;
-            _executor = new Executor(client);
+            _executor = new Executor(client, sk, pk, sign);
         }
 
         public async Task<IEnumerable<SymbolResponse>> SymbolsAsync() => await _executor.NoParamExecute<IEnumerable<SymbolResponse>>("ref-data/symbols", _pk);

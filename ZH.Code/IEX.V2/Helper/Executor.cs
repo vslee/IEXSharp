@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
@@ -11,10 +10,17 @@ namespace ZH.Code.IEX.V2.Helper
     internal class Executor
     {
         private readonly HttpClient _client;
+        private readonly IEXSigner signer;
+        private readonly bool _sign;
 
-        public Executor(HttpClient client)
+        public Executor(HttpClient client, string sk, string pk, bool sign)
         {
-            this._client = client;
+            _client = client;
+            if (sign)
+            {
+                signer = new IEXSigner(client.BaseAddress.Host, sk, pk);
+            }
+            _sign = sign;
         }
 
         public async Task<ReturnType> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb) where ReturnType : class
@@ -24,7 +30,17 @@ namespace ZH.Code.IEX.V2.Helper
             ReturnType response;
             var content = string.Empty;
 
-            using (var responseContent = await this._client.GetAsync($"{urlPattern}{qsb.Build()}"))
+            if (_sign)
+            {
+                _client.DefaultRequestHeaders.Remove("x-iex-date");
+                _client.DefaultRequestHeaders.Remove("Authorization");
+
+                (string iexdate, string authorization_header) headers = signer.Sign("GET", urlPattern, qsb.Build());
+                _client.DefaultRequestHeaders.TryAddWithoutValidation("x-iex-date", headers.iexdate);
+                _client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", headers.authorization_header);
+            }
+
+            using (var responseContent = await _client.GetAsync($"{urlPattern}{qsb.Build()}"))
             {
                 try
                 {
@@ -78,7 +94,7 @@ namespace ZH.Code.IEX.V2.Helper
             var qsb = new QueryStringBuilder();
             qsb.Add("token", token);
 
-            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}};
+            var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
             return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb);
         }
@@ -88,7 +104,7 @@ namespace ZH.Code.IEX.V2.Helper
             var qsb = new QueryStringBuilder();
             qsb.Add("token", token);
 
-            var pathNvc = new NameValueCollection {{"symbol", symbol}, {"last", last.ToString()}, {"field", field}};
+            var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
             return await ExecuteAsync<string>(urlPattern, pathNvc, qsb);
         }

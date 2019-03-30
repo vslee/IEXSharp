@@ -14,10 +14,10 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
         private readonly string _pk;
         private readonly Executor _executor;
 
-        public InvestorsExchangeDataService(HttpClient client, string pk)
+        public InvestorsExchangeDataService(HttpClient client, string sk, string pk, bool sign)
         {
             _pk = pk;
-            _executor = new Executor(client);
+            _executor = new Executor(client, sk, pk, sign);
         }
 
         public async Task<Dictionary<string, DeepAuctionResponse>> DeepActionAsync(string symbol)

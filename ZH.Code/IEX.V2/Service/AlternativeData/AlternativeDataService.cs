@@ -13,10 +13,10 @@ namespace ZH.Code.IEX.V2.Service.AlternativeData
         private readonly string _pk;
         private readonly Executor _executor;
 
-        public AlternativeDataService(HttpClient client, string pk)
+        public AlternativeDataService(HttpClient client, string sk, string pk, bool sign)
         {
             _pk = pk;
-            _executor = new Executor(client);
+            _executor = new Executor(client, sk, pk, sign);
         }
 
         public async Task<Quote> CryptoAsync(string symbol) => await _executor.SymbolExecuteAsync<Quote>("crypto/[symbol]/quote", symbol, _pk);
