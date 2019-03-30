@@ -15,7 +15,7 @@
         public string latestSource { get; set; }
         public string latestTime { get; set; }
         public long latestUpdate { get; set; }
-        public int latestVolume { get; set; }
+        public long latestVolume { get; set; }
         public decimal iexRealtimePrice { get; set; }
         public int iexRealtimeSize { get; set; }
         public long iexLastUpdated { get; set; }

@@ -8,14 +8,14 @@ using ZH.Code.IEX.V2.Helper;
 using ZH.Code.IEX.V2.Model.ReferenceData.Request;
 using ZH.Code.IEX.V2.Model.ReferenceData.Response;
 
-namespace ZH.Code.IEX.V2.Service.Symbols
+namespace ZH.Code.IEX.V2.Service.ReferenceData
 {
-    internal class SymbolService : ISymbolService
+    internal class ReferenceDataService : IReferenceDataService
     {
         private readonly string _pk;
         private readonly Executor _executor;
 
-        public SymbolService(HttpClient client, string sk, string pk, bool sign)
+        public ReferenceDataService(HttpClient client, string sk, string pk, bool sign)
         {
             _pk = pk;
             _executor = new Executor(client, sk, pk, sign);
@@ -59,9 +59,9 @@ namespace ZH.Code.IEX.V2.Service.Symbols
             return await _executor.ExecuteAsync<IEnumerable<InternationalSymbolResponse>>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<MutualFundSymbolResponse> MutualFundSymbolsAsync() => await _executor.NoParamExecute<MutualFundSymbolResponse>("ref-data/mutual-funds/symbols", _pk);
+        public async Task<IEnumerable<MutualFundSymbolResponse>> MutualFundSymbolsAsync() => await _executor.NoParamExecute<IEnumerable<MutualFundSymbolResponse>>("ref-data/mutual-funds/symbols", _pk);
 
-        public async Task<OTCSymbolResponse> OTCSymbolsAsync() => await _executor.NoParamExecute<OTCSymbolResponse>("ref-data/otc/symbols", _pk);
+        public async Task<IEnumerable<OTCSymbolResponse>> OTCSymbolsAsync() => await _executor.NoParamExecute<IEnumerable<OTCSymbolResponse>>("ref-data/otc/symbols", _pk);
 
         public async Task<IEnumerable<USExchangeResponse>> USExchangeAsync() => await _executor.NoParamExecute<IEnumerable<USExchangeResponse>>("ref-data/market/us/exchanges", _pk);
 

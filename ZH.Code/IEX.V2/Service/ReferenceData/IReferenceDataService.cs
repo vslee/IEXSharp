@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using ZH.Code.IEX.V2.Model.ReferenceData.Request;
 using ZH.Code.IEX.V2.Model.ReferenceData.Response;
 
-namespace ZH.Code.IEX.V2.Service.Symbols
+namespace ZH.Code.IEX.V2.Service.ReferenceData
 {
-    public interface ISymbolService
+    public interface IReferenceDataService
     {
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#symbols"/>
@@ -61,13 +61,13 @@ namespace ZH.Code.IEX.V2.Service.Symbols
         /// <see cref="https://iexcloud.io/docs/api/#mutual-fund-symbols"/>
         /// </summary>
         /// <returns></returns>
-        Task<MutualFundSymbolResponse> MutualFundSymbolsAsync();
+        Task<IEnumerable<MutualFundSymbolResponse>> MutualFundSymbolsAsync();
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#otc-symbols"/>
         /// </summary>
         /// <returns></returns>
-        Task<OTCSymbolResponse> OTCSymbolsAsync();
+        Task<IEnumerable<OTCSymbolResponse>> OTCSymbolsAsync();
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#fx-symbols"/>

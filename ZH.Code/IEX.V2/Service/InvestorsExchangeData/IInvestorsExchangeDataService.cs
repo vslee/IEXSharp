@@ -31,9 +31,9 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#deep-auction"/>
         /// </summary>
-        /// <param name="symbol"></param>
+        /// <param name="symbols"></param>
         /// <returns></returns>
-        Task<Dictionary<string, DeepAuctionResponse>> DeepActionAsync(string symbol);
+        Task<Dictionary<string, DeepAuctionResponse>> DeepActionAsync(IEnumerable<string> symbols);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#deep-book"/>
@@ -75,7 +75,7 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
         /// </summary>
         /// <param name="symbols"></param>
         /// <returns></returns>
-        Task<DeepSystemEventResponse> DeepSystemEventAsync(IEnumerable<string> symbols);
+        Task<DeepSystemEventResponse> DeepSystemEventAsync();
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#deep-trades"/>
@@ -149,6 +149,6 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
         /// <see cref="https://iexcloud.io/docs/api/#stats-records"/>
         /// </summary>
         /// <returns></returns>
-        Task<StatsRecentResponse> StatsRecordAsync();
+        Task<StatsRecordResponse> StatsRecordAsync();
     }
 }

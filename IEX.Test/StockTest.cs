@@ -348,8 +348,6 @@ namespace IEX.Test
             Assert.GreaterOrEqual(response.Count(), 1);
         }
 
-
-
         [Test]
         [TestCase("AAPL")]
         [TestCase("FB")]
@@ -370,7 +368,6 @@ namespace IEX.Test
 
             Assert.IsNotNull(response);
         }
-
 
         [Test]
         [TestCase("AAPL")]
@@ -479,7 +476,6 @@ namespace IEX.Test
             Assert.IsNotNull(response);
         }
 
-
         [Test]
         [TestCase("AAPL")]
         [TestCase("FB")]
@@ -489,8 +485,6 @@ namespace IEX.Test
 
             Assert.IsNotNull(response);
         }
-
-
 
         [Test]
         [TestCase("AAPL")]
@@ -502,7 +496,6 @@ namespace IEX.Test
             Assert.IsNotNull(response);
         }
 
-
         [Test]
         [TestCase("AAPL")]
         [TestCase("FB")]
@@ -512,8 +505,6 @@ namespace IEX.Test
 
             Assert.IsNotNull(response);
         }
-
-
 
         [Test]
         [TestCase("AAPL", "companyName")]
@@ -588,7 +579,6 @@ namespace IEX.Test
 
             Assert.IsNotNull(response);
         }
-
 
         [Test]
         [TestCase("AAPL")]

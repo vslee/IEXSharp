@@ -4,7 +4,7 @@
     {
         public decimal averageDailyVolume { get; set; }
         public decimal averageDailyRoutedVolume { get; set; }
-        public int averageMarketShare { get; set; }
+        public decimal averageMarketShare { get; set; }
         public int averageOrderSize { get; set; }
         public int averageFillSize { get; set; }
         public decimal bin100Percent { get; set; }
@@ -31,7 +31,7 @@
         public decimal venueBATYFirstWaveWeight { get; set; }
         public decimal venueEDGAFirstWaveWeight { get; set; }
         public decimal venueEDGXFirstWaveWeight { get; set; }
-        public int venueOverallFirstWaveWeight { get; set; }
+        public decimal venueOverallFirstWaveWeight { get; set; }
         public decimal venueXASEFirstWaveWeight { get; set; }
         public decimal venueXBOSFirstWaveWeight { get; set; }
         public decimal venueXCHIFirstWaveWeight { get; set; }

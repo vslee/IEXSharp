@@ -21,8 +21,8 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
             _executor = new Executor(client, sk, pk, sign);
         }
 
-        public async Task<Dictionary<string, DeepAuctionResponse>> DeepActionAsync(string symbol)
-          => await _executor.SymbolExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbol, _pk);
+        public async Task<Dictionary<string, DeepAuctionResponse>> DeepActionAsync(IEnumerable<string> symbols)
+          => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbols, _pk);
 
         public async Task<DeepResponse> DeepAsync(IEnumerable<string> symbols)
            => await _executor.SymbolsExecuteAsync<DeepResponse>("deep", symbols, _pk);
@@ -42,8 +42,8 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
         public async Task<Dictionary<string, DeepShortSalePriceTestStatusResponse>> DeepShortSalePriceTestStatusAsync(IEnumerable<string> symbols)
             => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepShortSalePriceTestStatusResponse>>("deep/ssr-status", symbols, _pk);
 
-        public async Task<DeepSystemEventResponse> DeepSystemEventAsync(IEnumerable<string> symbols)
-            => await _executor.SymbolsExecuteAsync<DeepSystemEventResponse>("deep/system-event", symbols, _pk);
+        public async Task<DeepSystemEventResponse> DeepSystemEventAsync()
+            => await _executor.NoParamExecute<DeepSystemEventResponse>("deep/system-event", _pk);
 
         public async Task<Dictionary<string, IEnumerable<DeepTradeResponse>>> DeepTradeAsync(IEnumerable<string> symbols)
             => await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades", symbols, _pk);
@@ -55,7 +55,7 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
             => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepTradingStatusResponse>>("deep/trades-status", symbols, _pk);
 
         public async Task<IEnumerable<LastResponse>> LastAsync(IEnumerable<string> symbols)
-            => await _executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("last", symbols, _pk);
+            => await _executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols, _pk);
 
         public async Task<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol)
             => await _executor.SymbolExecuteAsync<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>("stock/[symbol]/threshold-securities", symbol, _pk);
@@ -108,8 +108,8 @@ namespace ZH.Code.IEX.V2.Service.InvestorsExchangeData
         public async Task<IEnumerable<StatsRecentResponse>> StatsRecentAsync()
             => await _executor.NoParamExecute<IEnumerable<StatsRecentResponse>>("stats/recent", _pk);
 
-        public async Task<StatsRecentResponse> StatsRecordAsync()
-            => await _executor.NoParamExecute<StatsRecentResponse>("stats/records", _pk);
+        public async Task<StatsRecordResponse> StatsRecordAsync()
+            => await _executor.NoParamExecute<StatsRecordResponse>("stats/records", _pk);
 
         public async Task<IEnumerable<TOPResponse>> TOPSAsync(IEnumerable<string> symbols)
         {

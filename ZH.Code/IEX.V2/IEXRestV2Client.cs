@@ -5,8 +5,8 @@ using ZH.Code.IEX.V2.Service.AlternativeData;
 using ZH.Code.IEX.V2.Service.APISystemMetadata;
 using ZH.Code.IEX.V2.Service.ForexCurrencies;
 using ZH.Code.IEX.V2.Service.InvestorsExchangeData;
+using ZH.Code.IEX.V2.Service.ReferenceData;
 using ZH.Code.IEX.V2.Service.Stock;
-using ZH.Code.IEX.V2.Service.Symbols;
 
 namespace ZH.Code.IEX.V2
 {
@@ -20,7 +20,7 @@ namespace ZH.Code.IEX.V2
         private IAccountService accountService;
         private IStockService stockService;
         private IAlternativeDataService alternativeDataService;
-        private ISymbolService symbolService;
+        private IReferenceDataService referenceDataService;
         private IForexCurrenciesService forexCurrenciesService;
         private IInvestorsExchangeDataService investorsExchangeDataService;
         private IAPISystemMetadataService apiSystemMetadataService;
@@ -42,9 +42,9 @@ namespace ZH.Code.IEX.V2
             get => alternativeDataService ?? (alternativeDataService = new AlternativeDataService(_client, _sk, _pk, _sign));
         }
 
-        public ISymbolService Symbol
+        public IReferenceDataService ReferenceData
         {
-            get => symbolService ?? (symbolService = new SymbolService(_client, _sk, _pk, _sign));
+            get => referenceDataService ?? (referenceDataService = new ReferenceDataService(_client, _sk, _pk, _sign));
         }
 
         public IForexCurrenciesService ForexCurrencies
