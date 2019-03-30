@@ -6,6 +6,7 @@ using ZH.Code.IEX.V2.Service.AlternativeData;
 using ZH.Code.IEX.V2.Service.Symbols;
 using ZH.Code.IEX.V2.Service.ForexCurrencies;
 using ZH.Code.IEX.V2.Service.InvestorsExchangeData;
+using ZH.Code.IEX.V2.Service.APISystemMetadata;
 
 namespace ZH.Code.IEX.V2
 {
@@ -21,6 +22,7 @@ namespace ZH.Code.IEX.V2
         private ISymbolService symbolService;
         private IForexCurrenciesService forexCurrenciesService;
         private IInvestorsExchangeDataService investorsExchangeDataService;
+        private IAPISystemMetadataService apiSystemMetadataService;
 
         public IAccountService Account
         {
@@ -52,6 +54,11 @@ namespace ZH.Code.IEX.V2
         public IInvestorsExchangeDataService InvestorsExchangeData
         {
             get => investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(_client, _pk));
+        }
+
+        public IAPISystemMetadataService ApiSystemMetadata
+        {
+            get => apiSystemMetadataService ?? (apiSystemMetadataService = new APISystemMetadata(_client, _pk));
         }
 
         public IEXClient(string pk, string sk, bool sandBox)
