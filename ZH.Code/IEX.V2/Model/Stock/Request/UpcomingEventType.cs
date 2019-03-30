@@ -2,10 +2,10 @@
 {
     public enum UpcomingEventType
     {
-        events,
-        dividends,
-        splits,
-        earnings,
-        ipos
+        Events,
+        Dividends,
+        Splits,
+        Earnings,
+        IPOs
     }
 }

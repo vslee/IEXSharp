@@ -2,6 +2,8 @@
 using ZH.Code.IEX.V2.Service.Stock;
 using System;
 using System.Net.Http;
+using ZH.Code.IEX.V2.Service.AlternativeData;
+using ZH.Code.IEX.V2.Service.Symbols;
 
 namespace ZH.Code.IEX.V2
 {
@@ -13,6 +15,8 @@ namespace ZH.Code.IEX.V2
 
         private IAccountService accountService;
         private IStockService stockService;
+        private IAlternativeDataService alternativeDataService;
+        private ISymbolService symbolService;
 
         public IAccountService Account
         {
@@ -24,6 +28,16 @@ namespace ZH.Code.IEX.V2
         public IStockService Stock
         {
             get => stockService ?? (stockService = new StockService(_client, _pk));
+        }
+
+        public IAlternativeDataService AlternativeData
+        {
+            get => alternativeDataService ?? (alternativeDataService = new AlternativeDataService(_client, _pk));
+        }
+
+        public ISymbolService Symbol
+        {
+            get => symbolService ?? (symbolService = new SymbolService(_client, _pk));
         }
 
         public IEXClient(string pk, string sk, bool sandBox)

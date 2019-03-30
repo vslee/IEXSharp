@@ -369,7 +369,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         /// <param name="symbol"></param>
         /// <param name="range"></param>
         /// <returns></returns>
-        Task<IEnumerable<SplitResponse>> SplitAsync(string symbol, SplitRange range);
+        Task<IEnumerable<SplitResponse>> SplitAsync(string symbol, SplitRange range = SplitRange._1m);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#upcoming-events"/>
@@ -385,7 +385,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         /// <param name="symbol"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        Task<UpcomingEventMarketResponse> UpcomingEventMarketAsync(string symbol, UpcomingEventType type);
+        Task<UpcomingEventMarketResponse> UpcomingEventMarketAsync(UpcomingEventType type);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#volume-by-venue"/>

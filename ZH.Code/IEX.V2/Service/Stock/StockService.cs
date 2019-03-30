@@ -210,7 +210,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
 
             var pathNvc = new NameValueCollection
             {
-                {"symbol", symbol}, {"range", range.ToString().ToLower().Replace("_", "")}
+                {"symbol", symbol}, {"range", range.ToString().ToLower().Replace("_", string.Empty)}
             };
 
             return await _executor.ExecuteAsync<IEnumerable<DividendResponse>>(urlPattern, pathNvc, qsb);
@@ -265,7 +265,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
             var pathNvc = new NameValueCollection
             {
                 {"symbol", symbol},
-                {"range", range.ToString().Replace("_", "")},
+                {"range", range.ToString().Replace("_", string.Empty)},
                 {"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
             };
 
@@ -389,52 +389,67 @@ namespace ZH.Code.IEX.V2.Service.Stock
 
         public async Task<decimal> PriceAsync(string symbol)
         {
-            throw new NotImplementedException();
+            var returnValue = await _executor.SymbolExecuteAsync<string>("stock/[symbol]/price", symbol, _pk);
+            return decimal.Parse(returnValue);
         }
 
-        public async Task<PriceTargetResponse> PriceTargetAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<PriceTargetResponse> PriceTargetAsync(string symbol) => await _executor.SymbolExecuteAsync<PriceTargetResponse>("stock/[symbol]/price-target", symbol, _pk);
 
-        public async Task<Quote> QuoteAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<Quote> QuoteAsync(string symbol) => await _executor.SymbolExecuteAsync<Quote>("stock/[symbol]/quote", symbol, _pk);
 
         public async Task<string> QuoteFieldAsync(string symbol, string field)
         {
-            throw new NotImplementedException();
+            const string urlPattern = "stock/[symbol]/quote/[field]";
+
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", _pk);
+
+            var pathNvc = new NameValueCollection { { "symbol", symbol }, { "field", field } };
+
+            return await _executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<IEnumerable<RecommendationTrendResponse>> RecommendationTrendAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<RecommendationTrendResponse>> RecommendationTrendAsync(string symbol) => await _executor.SymbolExecuteAsync<IEnumerable<RecommendationTrendResponse>>("stock/[symbol]/recommendation-trends", symbol, _pk);
 
-        public async Task<IEnumerable<SectorPerformanceResponse>> SectorPerformanceAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<SectorPerformanceResponse>> SectorPerformanceAsync() =>
+            await _executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance", _pk);
 
-        public async Task<IEnumerable<SplitResponse>> SplitAsync(string symbol, SplitRange range)
+        public async Task<IEnumerable<SplitResponse>> SplitAsync(string symbol, SplitRange range = SplitRange._1m)
         {
-            throw new NotImplementedException();
+            const string urlPattern = "stock/[symbol]/splits/[range]";
+
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", _pk);
+
+            var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.ToString().Replace("_", string.Empty) } };
+
+            return await _executor.ExecuteAsync<IEnumerable<SplitResponse>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<UpcomingEventSymbolResponse> UpcomingEventSymbolAsync(string symbol, UpcomingEventType type)
         {
-            throw new NotImplementedException();
+            const string urlPattern = "stock/[symbol]/upcoming-[type]";
+
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", _pk);
+
+            var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", type.ToString().ToLower() } };
+
+            return await _executor.ExecuteAsync<UpcomingEventSymbolResponse>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<UpcomingEventMarketResponse> UpcomingEventMarketAsync(string symbol, UpcomingEventType type)
+        public async Task<UpcomingEventMarketResponse> UpcomingEventMarketAsync(UpcomingEventType type)
         {
-            throw new NotImplementedException();
+            const string urlPattern = "stock/market/upcoming-[type]";
+
+            var qsb = new QueryStringBuilder();
+            qsb.Add("token", _pk);
+
+            var pathNvc = new NameValueCollection { { "range", type.ToString().ToLower() } };
+
+            return await _executor.ExecuteAsync<UpcomingEventMarketResponse>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<VolumeByVenueResponse> VolumeByVenueAsync(string symbol)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<VolumeByVenueResponse> VolumeByVenueAsync(string symbol) => await _executor.SymbolExecuteAsync<VolumeByVenueResponse>("stock/[symbol]/delayed-quote", symbol, _pk);
     }
 }
