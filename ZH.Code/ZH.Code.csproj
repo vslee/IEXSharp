@@ -2,6 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>IEXClient</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>zh-code.com</Authors>
+    <Company>zh-code.comzh-code.com</Company>
+    <Product>IEXClient</Product>
+    <Description>IEX API V2 .Net Wrapper</Description>
+    <PackageProjectUrl>https://git.zh-code.com/zhironghuang/iexdotnetwrapper</PackageProjectUrl>
+    <RepositoryUrl>https://git.zh-code.com/zhironghuang/iexdotnetwrapper</RepositoryUrl>
+    <PackageLicenseUrl>https://git.zh-code.com/zhironghuang/iexdotnetwrapper/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>https://git.zh-code.com/zhironghuang/iexdotnetwrapper/blob/master/LICENSE</RepositoryType>
+    <PackageTags>IEX API V2 Rest Wrapper</PackageTags>
+    <PackageIconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tools.svg/128px-Tools.svg.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,9 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IEX.API.V2.Signer" Version="1.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="ZH.Code.QueryStringBuilder" Version="1.0.3" />
+    <PackageReference Include="QSBuilder" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

@@ -10,7 +10,7 @@ using ZH.Code.IEX.V2.Service.Symbols;
 
 namespace ZH.Code.IEX.V2
 {
-    public class IEXClient : IDisposable
+    public class IEXRestV2Client : IDisposable
     {
         private readonly HttpClient _client;
         private readonly string _pk;
@@ -62,7 +62,7 @@ namespace ZH.Code.IEX.V2
             get => apiSystemMetadataService ?? (apiSystemMetadataService = new APISystemMetadata(_client, _sk, _pk, _sign));
         }
 
-        public IEXClient(string pk, string sk, bool signRequest, bool sandBox)
+        public IEXRestV2Client(string pk, string sk, bool signRequest, bool sandBox)
         {
             _pk = pk;
             _sk = sk;

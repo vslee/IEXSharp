@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QSBuilder;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -224,8 +225,8 @@ namespace ZH.Code.IEX.V2.Service.Stock
             await _executor.SymbolLastFieldExecuteAsync("stock/[symbol]/earnings/[last]/[field]", symbol, field, last,
                 _pk);
 
-        public async Task<Dictionary<string, EarningTodayResponse>> EarningTodayAsync() =>
-            await _executor.NoParamExecute<Dictionary<string, EarningTodayResponse>>("stock/market/today-earnings",
+        public async Task<EarningTodayResponse> EarningTodayAsync() =>
+            await _executor.NoParamExecute<EarningTodayResponse>("stock/market/today-earnings",
                 _pk);
 
         public async Task<IEnumerable<EffectiveSpreadResponse>> EffectiveSpreadAsync(string symbol) =>
@@ -251,7 +252,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         public async Task<FundOwnershipResponse> FundOwnershipAsync(string symbol) =>
             await _executor.SymbolExecuteAsync<FundOwnershipResponse>("stock/[symbol]/fund-ownership", symbol, _pk);
 
-        public async Task<HistoricalPriceResponse> HistoricalPriceAsync(string symbol,
+        public async Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceAsync(string symbol,
             ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
         {
             const string urlPattern = "stock/[symbol]/chart/[range]/[date]";
@@ -269,7 +270,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
                 {"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
             };
 
-            return await _executor.ExecuteAsync<HistoricalPriceResponse>(urlPattern, pathNvc, qsb);
+            return await _executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<HistoricalPriceDynamicResponse> HistoricalPriceDynamicAsync(string symbol,
@@ -317,7 +318,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
             return await _executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<IEnumerable<InsiderRosterResponse>> InsiderRosterResponseAsync(string symbol) =>
+        public async Task<IEnumerable<InsiderRosterResponse>> InsiderRosterAsync(string symbol) =>
             await _executor.SymbolExecuteAsync<IEnumerable<InsiderRosterResponse>>("stock/[symbol]/insider-roster",
                 symbol, _pk);
 
@@ -333,7 +334,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
 
         public async Task<IEnumerable<IntradayPriceResponse>> IntradayPriceAsync(string symbol) => await _executor.SymbolExecuteAsync<IEnumerable<IntradayPriceResponse>>("stock/[symbol]/intraday-prices", symbol, _pk);
 
-        public async Task<IPOCalendar> IPOCanlendarAsync(IPOType ipoType)
+        public async Task<IPOCalendar> IPOCalendarAsync(IPOType ipoType)
         {
             const string urlPattern = "stock/market/[ipoType]";
 
@@ -348,7 +349,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         public async Task<KeyStatsResponse> KeyStatsAsync(string symbol) =>
             await _executor.SymbolExecuteAsync<KeyStatsResponse>("stock/[symbol]/stats", symbol, _pk);
 
-        public async Task<string> KeyStatsStatAsync(string symbol, string stat)
+        public async Task<KeyStatsResponse> KeyStatsStatAsync(string symbol, string stat)
         {
             const string urlPattern = "stock/[symbol]/stats/[stat]";
 
@@ -357,7 +358,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
 
             var pathNvc = new NameValueCollection { { "symbol", symbol }, { "stat", stat } };
 
-            return await _executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
+            return await _executor.ExecuteAsync<KeyStatsResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<IEnumerable<LargestTradeResponse>> LargestTradesAsync(string symbol) => await _executor.SymbolExecuteAsync<IEnumerable<LargestTradeResponse>>("stock/[symbol]/largest-trades", symbol, _pk);
@@ -377,7 +378,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         public async Task<LogoResponse> LogoAsync(string symbol) => await _executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol, _pk);
 
         public async Task<IEnumerable<USMarketVolumeResponse>> USMarketVolumeAsync() =>
-            await _executor.NoParamExecute<IEnumerable<USMarketVolumeResponse>>("/market", _pk);
+            await _executor.NoParamExecute<IEnumerable<USMarketVolumeResponse>>("market", _pk);
 
         public async Task<IEnumerable<NewsResponse>> NewsAsync(string symbol, int last = 10) => await _executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last, _pk);
 
@@ -433,7 +434,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
             var qsb = new QueryStringBuilder();
             qsb.Add("token", _pk);
 
-            var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", type.ToString().ToLower() } };
+            var pathNvc = new NameValueCollection { { "symbol", symbol }, { "type", type.ToString().ToLower() } };
 
             return await _executor.ExecuteAsync<UpcomingEventSymbolResponse>(urlPattern, pathNvc, qsb);
         }
@@ -445,7 +446,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
             var qsb = new QueryStringBuilder();
             qsb.Add("token", _pk);
 
-            var pathNvc = new NameValueCollection { { "range", type.ToString().ToLower() } };
+            var pathNvc = new NameValueCollection { { "type", type.ToString().ToLower() } };
 
             return await _executor.ExecuteAsync<UpcomingEventMarketResponse>(urlPattern, pathNvc, qsb);
         }

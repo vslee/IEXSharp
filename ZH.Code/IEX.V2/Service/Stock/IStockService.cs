@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QSBuilder;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ZH.Code.IEX.V2.Model.Shared.Response;
@@ -122,7 +123,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         /// <see cref="https://iexcloud.io/docs/api/#earnings-today"/>
         /// </summary>
         /// <returns></returns>
-        Task<Dictionary<string, EarningTodayResponse>> EarningTodayAsync();
+        Task<EarningTodayResponse> EarningTodayAsync();
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#effective-spread"/>
@@ -179,7 +180,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         /// <param name="range"></param>
         /// <param name="qsb">Additional optional querystring</param>
         /// <returns></returns>
-        Task<HistoricalPriceResponse> HistoricalPriceAsync(string symbol, ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null);
+        Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceAsync(string symbol, ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#historical-prices"/>
@@ -213,7 +214,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         /// </summary>
         /// <param name="symbol"></param>
         /// <returns></returns>
-        Task<IEnumerable<InsiderRosterResponse>> InsiderRosterResponseAsync(string symbol);
+        Task<IEnumerable<InsiderRosterResponse>> InsiderRosterAsync(string symbol);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#insider-summary"/>
@@ -248,7 +249,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         /// </summary>
         /// <param name="ipoType"></param>
         /// <returns></returns>
-        Task<IPOCalendar> IPOCanlendarAsync(IPOType ipoType);
+        Task<IPOCalendar> IPOCalendarAsync(IPOType ipoType);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#key-stats"/>
@@ -263,7 +264,7 @@ namespace ZH.Code.IEX.V2.Service.Stock
         /// <param name="symbol"></param>
         /// <param name="stat"></param>
         /// <returns></returns>
-        Task<string> KeyStatsStatAsync(string symbol, string stat);
+        Task<KeyStatsResponse> KeyStatsStatAsync(string symbol, string stat);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#largest-trades"/>

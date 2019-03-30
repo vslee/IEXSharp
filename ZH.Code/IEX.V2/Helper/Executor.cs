@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using QSBuilder;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -12,6 +13,7 @@ namespace ZH.Code.IEX.V2.Helper
         private readonly HttpClient _client;
         private readonly IEXSigner signer;
         private readonly bool _sign;
+        private readonly JsonSerializerSettings jsonSerializerSettings;
 
         public Executor(HttpClient client, string sk, string pk, bool sign)
         {
@@ -21,6 +23,10 @@ namespace ZH.Code.IEX.V2.Helper
                 signer = new IEXSigner(client.BaseAddress.Host, sk, pk);
             }
             _sign = sign;
+            jsonSerializerSettings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            };
         }
 
         public async Task<ReturnType> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb) where ReturnType : class
@@ -45,7 +51,7 @@ namespace ZH.Code.IEX.V2.Helper
                 try
                 {
                     content = await responseContent.Content.ReadAsStringAsync();
-                    response = JsonConvert.DeserializeObject<ReturnType>(content);
+                    response = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings);
                 }
                 catch (JsonException ex)
                 {
