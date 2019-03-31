@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>QueryStringBuilder</PackageId>
+    <Version>1.0.2</Version>
+    <Authors>zh-code.com</Authors>
+    <PackageProjectUrl>https://git.zh-code.com/zhironghuang/qsbuilder</PackageProjectUrl>
+    <PackageIconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tools.svg/128px-Tools.svg.png</PackageIconUrl>
+    <Description>Simple query string builder</Description>
+    <PackageLicenseUrl>https://git.zh-code.com/zhironghuang/qsbuilder/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://git.zh-code.com/zhironghuang/qsbuilder</RepositoryUrl>
+    <RepositoryType>Gitlab</RepositoryType>
+    <PackageTags>querystring query string web http api request https rest</PackageTags>
+  </PropertyGroup>
+
+</Project>
