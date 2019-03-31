@@ -5,13 +5,16 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>IEXClient</PackageId>
     <Authors>zh-code.com</Authors>
-    <Description>IEX API V2 .Net Wrapper</Description>
+    <Description>IEX API .Net Wrapper
+For API V1 and V2</Description>
     <PackageLicenseUrl>https://git.zh-code.com/zhironghuang/iexdotnetwrapper/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://git.zh-code.com/zhironghuang/iexdotnetwrapper</PackageProjectUrl>
     <PackageIconUrl>https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tools.svg/128px-Tools.svg.png</PackageIconUrl>
     <RepositoryUrl></RepositoryUrl>
     <RepositoryType></RepositoryType>
     <PackageTags>IEX Stock API Rest</PackageTags>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Add API V1 support</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
