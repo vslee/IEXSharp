@@ -1,78 +1,39 @@
-﻿using System;
+﻿using IEXClient.Model.ReferenceData.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IEXClient.Model.ReferenceData.Request;
-using IEXClient.Model.ReferenceData.Response;
 
-namespace IEXClient.Service.V2.ReferenceData
+namespace IEXClient.Service.V1.ReferenceData
 {
     public interface IReferenceDataService
     {
         /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#symbols"/>
+        /// <see cref="https://iextrading.com/developer/docs/#symbols"/>
         /// </summary>
         /// <returns></returns>
         Task<IEnumerable<SymbolResponse>> SymbolsAsync();
 
         /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#iex-symbols"/>
+        /// <see cref="https://iextrading.com/developer/docs/#iex-corporate-actions"/>
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<IEXSymbolResponse>> IEXSymbolsAsync();
+        Task<IEnumerable<IEXCorporateActionsResponse>> IEXCorporateActionsAsync();
 
         /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#international-symbols"/>
+        /// <see cref="https://iextrading.com/developer/docs/#iex-dividends"/>
         /// </summary>
-        /// <param name="region"></param>
         /// <returns></returns>
-        Task<IEnumerable<InternationalSymbolResponse>> InternationalRegionSymbolsAsync(string region);
+        Task<IEnumerable<IEXDividendsResponse>> IEXDividentsAsync();
 
         /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#international-symbols"/>
+        /// <see cref="https://iextrading.com/developer/docs/#iex-next-day-ex-date"/>
         /// </summary>
-        /// <param name="exchange"></param>
         /// <returns></returns>
-        Task<IEnumerable<InternationalSymbolResponse>> InternationalExchangeSymbolsAsync(string exchange);
+        Task<IEnumerable<IEXNextDayExDateResponse>> IEXNextDayExDateAsync();
 
         /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#international-exchanges"/>
+        /// <see cref="https://iextrading.com/developer/docs/#iex-listed-symbol-directory"/>
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<InternationalExchangeResponse>> InternationalExchangeAsync();
-
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#u-s-exchanges"/>
-        /// </summary>
-        /// <returns></returns>
-        Task<IEnumerable<USExchangeResponse>> USExchangeAsync();
-
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates"/>
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="direction"></param>
-        /// <param name="last"></param>
-        /// <param name="startDate"></param>
-        /// <returns></returns>
-        Task<IEnumerable<USHolidaysAndTradingDatesResponse>> USHolidaysAndTradingDatesAsync(DateType type,
-            DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null);
-
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#mutual-fund-symbols"/>
-        /// </summary>
-        /// <returns></returns>
-        Task<IEnumerable<MutualFundSymbolResponse>> MutualFundSymbolsAsync();
-
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#otc-symbols"/>
-        /// </summary>
-        /// <returns></returns>
-        Task<IEnumerable<OTCSymbolResponse>> OTCSymbolsAsync();
-
-        /// <summary>
-        /// <see cref="https://iexcloud.io/docs/api/#fx-symbols"/>
-        /// </summary>
-        /// <returns></returns>
-        Task<FXSymbolResponse> FXSymbolAsync();
+        Task<IEnumerable<IEXListedSymbolDirectoryResponse>> IEXListedSymbolDirectoryAsync();
     }
 }

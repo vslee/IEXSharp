@@ -1,4 +1,5 @@
-﻿using IEXClient.Model.Shared.Response;
+﻿using IEXClient.Model.InvestorsExchangeData.Response;
+using IEXClient.Model.Shared.Response;
 using IEXClient.Model.Stock.Request;
 using IEXClient.Model.Stock.Response;
 using QueryString;
@@ -93,18 +94,8 @@ namespace IEXClient.Service.V1.Stock
         /// <see cref="https://iextrading.com/developer/docs/#earnings"/>
         /// </summary>
         /// <param name="symbol"></param>
-        /// <param name="last"></param>
         /// <returns></returns>
-        Task<EarningResponse> EarningAsync(string symbol, int last = 1);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#earnings"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <param name="field"></param>
-        /// <param name="last"></param>
-        /// <returns></returns>
-        Task<string> EarningFieldAsync(string symbol, string field, int last = 1);
+        Task<EarningResponse> EarningAsync(string symbol);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#earnings-today"/>
@@ -120,101 +111,12 @@ namespace IEXClient.Service.V1.Stock
         Task<IEnumerable<EffectiveSpreadResponse>> EffectiveSpreadAsync(string symbol);
 
         /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#estimates"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <param name="last"></param>
-        /// <returns></returns>
-        Task<EstimateResponse> EstimateAsync(string symbol, int last = 1);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#estimates"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <param name="field"></param>
-        /// <param name="last"></param>
-        /// <returns></returns>
-        Task<string> EstimateFieldAsync(string symbol, string field, int last = 1);
-
-        /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#financials"/>
         /// </summary>
         /// <param name="symbol"></param>
-        /// <param name="last"></param>
-        /// <returns></returns>
-        Task<FinancialResponse> FinancialAsync(string symbol, int last = 1);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#financials"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <param name="field"></param>
-        /// <param name="last"></param>
-        /// <returns></returns>
-        Task<string> FinancialFieldAsync(string symbol, string field, int last = 1);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#fund-ownership"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
-        Task<FundOwnershipResponse> FundOwnershipAsync(string symbol);
-
-        
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#income-statement"/>
-        /// </summary>
-        /// <param name="symbol"></param>
         /// <param name="period"></param>
-        /// <param name="last"></param>
         /// <returns></returns>
-        Task<IncomeStatementResponse> IncomeStatementAsync(string symbol, Period period = Period.Quarter, int last = 1);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#income-statement"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <param name="field"></param>
-        /// <param name="period"></param>
-        /// <param name="last"></param>
-        /// <returns></returns>
-        Task<string> IncomeStatementFieldAsync(string symbol, string field, Period period = Period.Quarter, int last = 1);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#insider-roster"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
-        Task<IEnumerable<InsiderRosterResponse>> InsiderRosterAsync(string symbol);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#insider-summary"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
-        Task<IEnumerable<InsiderSummaryResponse>> InsiderSummaryAsync(string symbol);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#insider-transactions"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
-        Task<IEnumerable<InsiderTransactionResponse>> InsiderTransactionAsync(string symbol);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#institutional-ownership"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
-        Task<IEnumerable<InstitutionalOwnershipResponse>> InstitutionalOwnerShipAsync(string symbol);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#institutional-ownership"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
-        Task<IEnumerable<IntradayPriceResponse>> IntradayPriceAsync(string symbol);
+        Task<FinancialResponse> FinancialAsync(string symbol, Period period = Period.Quarter);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#intraday-prices"/>
@@ -224,20 +126,26 @@ namespace IEXClient.Service.V1.Stock
         Task<IPOCalendar> IPOCalendarAsync(IPOType ipoType);
 
         /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#key-stats"/>
+        /// <see cref="https://iextrading.com/developer/docs/#iex-regulation-sho-threshold-securities-list"/>
         /// </summary>
         /// <param name="symbol"></param>
         /// <returns></returns>
-        Task<KeyStatsResponse> KeyStatsAsync(string symbol);
+        Task<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol);
+
+        /// <summary>
+        /// <see cref="https://iextrading.com/developer/docs/#iex-short-interest-list"/>
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <returns></returns>
+        Task<IEnumerable<ListedShortInterestListResponse>> ListedShortInterestListAsync(string symbol);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#key-stats"/>
         /// </summary>
         /// <param name="symbol"></param>
-        /// <param name="stat"></param>
         /// <returns></returns>
-        Task<KeyStatsResponse> KeyStatsStatAsync(string symbol, string stat);
-
+        Task<KeyStatsResponse> KeyStatsAsync(string symbol);
+        
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#largest-trades"/>
         /// </summary>
@@ -258,12 +166,6 @@ namespace IEXClient.Service.V1.Stock
         /// <param name="symbol"></param>
         /// <returns></returns>
         Task<LogoResponse> LogoAsync(string symbol);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#market-volume-u-s"/>
-        /// </summary>
-        /// <returns></returns>
-        Task<IEnumerable<USMarketVolumeResponse>> USMarketVolumeAsync();
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#news"/>
@@ -302,13 +204,6 @@ namespace IEXClient.Service.V1.Stock
         Task<decimal> PriceAsync(string symbol);
 
         /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#price-target"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <returns></returns>
-        Task<PriceTargetResponse> PriceTargetAsync(string symbol);
-
-        /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#quote"/>
         /// </summary>
         /// <param name="symbol"></param>
@@ -316,19 +211,11 @@ namespace IEXClient.Service.V1.Stock
         Task<Quote> QuoteAsync(string symbol);
 
         /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#quote"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <param name="field"></param>
-        /// <returns></returns>
-        Task<string> QuoteFieldAsync(string symbol, string field);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#recommendation-trends"/>
+        /// <see cref="https://iextrading.com/developer/docs/#relevant"/>
         /// </summary>
         /// <param name="symbol"></param>
         /// <returns></returns>
-        Task<IEnumerable<RecommendationTrendResponse>> RecommendationTrendAsync(string symbol);
+        Task<RelevantResponse> RelevantAsync(string symbol);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#sector-performance"/>
@@ -344,21 +231,6 @@ namespace IEXClient.Service.V1.Stock
         /// <returns></returns>
         Task<IEnumerable<SplitResponse>> SplitAsync(string symbol, SplitRange range = SplitRange._1m);
 
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#upcoming-events"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        Task<UpcomingEventSymbolResponse> UpcomingEventSymbolAsync(string symbol, UpcomingEventType type);
-
-        /// <summary>
-        /// <see cref="https://iextrading.com/developer/docs/#upcoming-events"/>
-        /// </summary>
-        /// <param name="symbol"></param>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        Task<UpcomingEventMarketResponse> UpcomingEventMarketAsync(UpcomingEventType type);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#volume-by-venue"/>

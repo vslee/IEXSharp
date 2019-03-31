@@ -67,7 +67,10 @@ namespace IEXClient.Helper
         public async Task<ReturnType> NoParamExecute<ReturnType>(string url, string token) where ReturnType : class
         {
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", token);
+            if (!string.IsNullOrEmpty(token))
+            {
+                qsb.Add("token", token);
+            }
 
             var pathNvc = new NameValueCollection();
 
@@ -78,7 +81,10 @@ namespace IEXClient.Helper
             where ReturnType : class
         {
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", token);
+            if (!string.IsNullOrEmpty(token))
+            {
+                qsb.Add("token", token);
+            }
 
             var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
@@ -89,7 +95,10 @@ namespace IEXClient.Helper
             where ReturnType : class
         {
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", token);
+            if (!string.IsNullOrEmpty(token))
+            {
+                qsb.Add("token", token);
+            }
             qsb.Add("symbols", string.Join(",", symbols));
 
             var pathNvc = new NameValueCollection();
@@ -101,7 +110,10 @@ namespace IEXClient.Helper
             where ReturnType : class
         {
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", token);
+            if (!string.IsNullOrEmpty(token))
+            {
+                qsb.Add("token", token);
+            }
 
             var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
@@ -111,7 +123,10 @@ namespace IEXClient.Helper
         public async Task<string> SymbolLastFieldExecuteAsync(string urlPattern, string symbol, string field, int last, string token)
         {
             var qsb = new QueryStringBuilder();
-            qsb.Add("token", token);
+            if (!string.IsNullOrEmpty(token))
+            {
+                qsb.Add("token", token);
+            }
 
             var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 

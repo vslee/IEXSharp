@@ -72,7 +72,7 @@ namespace IEXClient
                     ? new Uri("https://cloud.iexapis.com/beta/")
                     : new Uri("https://sandbox.iexapis.com/beta/")
             };
-            _client.DefaultRequestHeaders.Add("User-Agent", "zh-code IEX API V2 .Net Wrapper");
+            _client.DefaultRequestHeaders.Add("User-Agent", "zh-code.com IEX API V2 .Net Wrapper");
             _sign = signRequest;
         }
 
