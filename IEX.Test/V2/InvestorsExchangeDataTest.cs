@@ -59,6 +59,16 @@ namespace IEX.Test.V2
         [Test]
         [TestCase("AAPL")]
         [TestCase("FB")]
+        public async Task DeepOperationHaltStatusAsyncTest(params string[] symbols)
+        {
+            var response = await sandBoxClient.InvestorsExchangeData.DeepOperationHaltStatusAsync(symbols);
+
+            Assert.IsNotNull(response);
+        }
+
+        [Test]
+        [TestCase("AAPL")]
+        [TestCase("FB")]
         public async Task DeepSecurityEventAsyncTest(params string[] symbols)
         {
             var response = await sandBoxClient.InvestorsExchangeData.DeepSecurityEventAsync(symbols);
@@ -122,7 +132,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.InvestorsExchangeData.LastAsync(symbols);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -133,7 +143,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.InvestorsExchangeData.ListedRegulationSHOThresholdSecuritiesListAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -144,7 +154,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.InvestorsExchangeData.ListedShortInterestListAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -155,7 +165,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.InvestorsExchangeData.StatsHistoricalDailyByDateAsync(date);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -166,7 +176,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.InvestorsExchangeData.StatsHistoricalDailyByLastAsync(last);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -195,7 +205,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.InvestorsExchangeData.StatsRecentAsync();
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]

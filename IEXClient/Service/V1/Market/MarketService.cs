@@ -33,15 +33,23 @@ namespace IEXClient.Service.V1.Market
         public async Task<IEnumerable<LastResponse>> LastAsync(IEnumerable<string> symbols)
             => await _executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols, "");
 
-        public async Task<IEnumerable<HISTResponse>> HISTAsync(DateTime? date = null)
+        public async Task<Dictionary<string, IEnumerable<HISTResponse>>> HISTAsync()
         {
             const string urlPattern = "hist";
 
             var qsb = new QueryStringBuilder();
-            if (date != null)
-            {
-                qsb.Add("date", ((DateTime)date).ToString("yyyyMMdd"));
-            }
+
+            var pathNvc = new NameValueCollection();
+
+            return await _executor.ExecuteAsync<Dictionary<string, IEnumerable<HISTResponse>>>(urlPattern, pathNvc, qsb);
+        }
+
+        public async Task<IEnumerable<HISTResponse>> HISTByDateAsync(DateTime date)
+        {
+            const string urlPattern = "hist";
+
+            var qsb = new QueryStringBuilder();
+            qsb.Add("date", ((DateTime)date).ToString("yyyyMMdd"));
 
             var pathNvc = new NameValueCollection();
 

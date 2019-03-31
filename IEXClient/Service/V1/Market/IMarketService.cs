@@ -26,9 +26,15 @@ namespace IEXClient.Service.V1.Market
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#hist"/>
         /// </summary>
+        /// <returns></returns>
+        Task<Dictionary<string, IEnumerable<HISTResponse>>> HISTAsync();
+
+        /// <summary>
+        /// <see cref="https://iextrading.com/developer/docs/#hist"/>
+        /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        Task<IEnumerable<HISTResponse>> HISTAsync(DateTime? date = null);
+        Task<IEnumerable<HISTResponse>> HISTByDateAsync(DateTime date);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#deep"/>

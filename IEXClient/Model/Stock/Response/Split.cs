@@ -1,9 +1,22 @@
-﻿namespace IEXClient.Model.Stock.Response
+﻿using System;
+
+namespace IEXClient.Model.Stock.Response
 {
+    public class SplitV1
+    {
+        public DateTime exDate { get; set; }
+        public DateTime declaredDate { get; set; }
+        public DateTime recordDate { get; set; }
+        public DateTime paymentDate { get; set; }
+        public double ratio { get; set; }
+        public int toFactor { get; set; }
+        public int forFactor { get; set; }
+    }
+
     public class Split
     {
-        public string exDate { get; set; }
-        public string declaredDate { get; set; }
+        public DateTime exDate { get; set; }
+        public DateTime declaredDate { get; set; }
         public decimal ratio { get; set; }
         public int toFactor { get; set; }
         public int fromFactor { get; set; }

@@ -19,7 +19,7 @@ namespace IEXClient.Service.V1.Stock
         /// <param name="range"></param>
         /// <param name="last"></param>
         /// <returns></returns>
-        Task<BatchBySymbolResponse> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1);
+        Task<BatchBySymbolV1Response> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#batch-requests"/>
@@ -29,7 +29,7 @@ namespace IEXClient.Service.V1.Stock
         /// <param name="range"></param>
         /// <param name="last"></param>
         /// <returns></returns>
-        Task<Dictionary<string, BatchBySymbolResponse>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
+        Task<Dictionary<string, BatchBySymbolV1Response>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#book"/>
@@ -173,7 +173,7 @@ namespace IEXClient.Service.V1.Stock
         /// <param name="symbol"></param>
         /// <param name="last"></param>
         /// <returns></returns>
-        Task<IEnumerable<NewsResponse>> NewsAsync(string symbol, int last = 10);
+        Task<IEnumerable<NewsV1Response>> NewsAsync(string symbol, int last = 10);
 
         /// <summary>
         /// https://iextrading.com/developer/docs/#ohlc
@@ -229,7 +229,7 @@ namespace IEXClient.Service.V1.Stock
         /// <param name="symbol"></param>
         /// <param name="range"></param>
         /// <returns></returns>
-        Task<IEnumerable<SplitResponse>> SplitAsync(string symbol, SplitRange range = SplitRange._1m);
+        Task<IEnumerable<SplitV1Response>> SplitAsync(string symbol, SplitRange range = SplitRange._1m);
 
 
         /// <summary>

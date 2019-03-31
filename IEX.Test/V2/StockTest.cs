@@ -104,7 +104,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.CollectionsAsync(collection, collectionName);
 
             Assert.IsNotNull(response);
-            //Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -246,7 +246,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range, date, qsb);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -255,7 +255,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.HistoricalPriceAsync("AAPL", ChartRange._1m, new DateTime(2019, 3, 25));
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         public async Task HistoricalPriceAsyncQsbTest()
@@ -265,7 +265,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.HistoricalPriceAsync("AAPL", ChartRange._1m, null, qsb);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -309,7 +309,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.InsiderRosterAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         // Not supported for free account
@@ -321,7 +321,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.InsiderSummaryAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         // Not supported for free account
@@ -333,7 +333,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.InsiderTransactionAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         // Not supported for free account
@@ -345,7 +345,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.InstitutionalOwnerShipAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -356,7 +356,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.IntradayPriceAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -397,7 +397,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.LargestTradesAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -412,7 +412,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.ListAsync(listType);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -431,7 +431,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.USMarketVolumeAsync();
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -442,7 +442,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.NewsAsync(symbol, last);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -463,7 +463,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.PeersAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -524,7 +524,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.RecommendationTrendAsync(symbol);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -533,7 +533,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.SectorPerformanceAsync();
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -550,7 +550,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.Stock.SplitAsync(symbol, range);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]

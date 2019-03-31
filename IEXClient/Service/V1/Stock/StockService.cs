@@ -22,7 +22,7 @@ namespace IEXClient.Service.V1.Stock
             _executor = new Executor(client, string.Empty, string.Empty, false);
         }
 
-        public async Task<BatchBySymbolResponse> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,
+        public async Task<BatchBySymbolV1Response> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,
             string range = "", int last = 1)
         {
             if (types?.Count() < 1)
@@ -66,10 +66,10 @@ namespace IEXClient.Service.V1.Stock
 
             var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
-            return await _executor.ExecuteAsync<BatchBySymbolResponse>(urlPattern, pathNvc, qsb);
+            return await _executor.ExecuteAsync<BatchBySymbolV1Response>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<Dictionary<string, BatchBySymbolResponse>> BatchByMarketAsync(IEnumerable<string> symbols,
+        public async Task<Dictionary<string, BatchBySymbolV1Response>> BatchByMarketAsync(IEnumerable<string> symbols,
             IEnumerable<BatchType> types, string range = "", int last = 1)
         {
             if (types?.Count() < 1)
@@ -118,7 +118,7 @@ namespace IEXClient.Service.V1.Stock
 
             var pathNvc = new NameValueCollection();
 
-            return await _executor.ExecuteAsync<Dictionary<string, BatchBySymbolResponse>>(urlPattern, pathNvc, qsb);
+            return await _executor.ExecuteAsync<Dictionary<string, BatchBySymbolV1Response>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<BookResponse> BookAsync(string symbol) =>
@@ -250,7 +250,7 @@ namespace IEXClient.Service.V1.Stock
 
         public async Task<LogoResponse> LogoAsync(string symbol) => await _executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol, "");
         
-        public async Task<IEnumerable<NewsResponse>> NewsAsync(string symbol, int last = 10) => await _executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last, "");
+        public async Task<IEnumerable<NewsV1Response>> NewsAsync(string symbol, int last = 10) => await _executor.SymbolLastExecuteAsync<IEnumerable<NewsV1Response>>("stock/[symbol]/news/last/[last]", symbol, last, "");
 
         public async Task<OHLCResponse> OHLCAsync(string symbol) => await _executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol, "");
 
@@ -271,7 +271,7 @@ namespace IEXClient.Service.V1.Stock
         public async Task<IEnumerable<SectorPerformanceResponse>> SectorPerformanceAsync() =>
             await _executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance", "");
 
-        public async Task<IEnumerable<SplitResponse>> SplitAsync(string symbol, SplitRange range = SplitRange._1m)
+        public async Task<IEnumerable<SplitV1Response>> SplitAsync(string symbol, SplitRange range = SplitRange._1m)
         {
             const string urlPattern = "stock/[symbol]/splits/[range]";
 
@@ -279,7 +279,7 @@ namespace IEXClient.Service.V1.Stock
 
             var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.ToString().Replace("_", string.Empty) } };
 
-            return await _executor.ExecuteAsync<IEnumerable<SplitResponse>>(urlPattern, pathNvc, qsb);
+            return await _executor.ExecuteAsync<IEnumerable<SplitV1Response>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<VolumeByVenueResponse> VolumeByVenueAsync(string symbol) => await _executor.SymbolExecuteAsync<VolumeByVenueResponse>("stock/[symbol]/delayed-quote", symbol, "");

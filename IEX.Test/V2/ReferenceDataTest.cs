@@ -63,7 +63,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.ReferenceData.InternationalExchangeSymbolsAsync(exchange);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -73,7 +73,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.ReferenceData.InternationalRegionSymbolsAsync(region);
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -82,7 +82,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.ReferenceData.MutualFundSymbolsAsync();
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace IEX.Test.V2
             var response = await sandBoxClient.ReferenceData.OTCSymbolsAsync();
 
             Assert.IsNotNull(response);
-            Assert.GreaterOrEqual(response.Count(), 1);
+            Assert.GreaterOrEqual(response.Count(), 0);
         }
 
         [Test]
