@@ -1,11 +1,11 @@
-﻿using NUnit.Framework;
-using QSBuilder;
+﻿using IEXClient;
+using IEXClient.Model.Stock.Request;
+using NUnit.Framework;
+using QueryString;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IEXClient;
-using IEXClient.Model.Stock.Request;
 
 namespace IEX.Test
 {
