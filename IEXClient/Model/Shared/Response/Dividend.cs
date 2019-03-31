@@ -1,11 +1,26 @@
-﻿namespace IEXClient.Model.Shared.Response
+﻿using System;
+
+namespace IEXClient.Model.Shared.Response
 {
+    public class DividendV1
+    {
+        public DateTime exDate { get; set; }
+        public DateTime paymentDate { get; set; }
+        public DateTime recordDate { get; set; }
+        public DateTime declaredDate { get; set; }
+        public decimal amount { get; set; }
+        public string flag { get; set; }
+        public string type { get; set; }
+        public string qualified { get; set; }
+        public decimal indicated { get; set; }
+    }
+
     public class Dividend
     {
-        public string exDate { get; set; }
-        public string paymentDate { get; set; }
-        public string recordDate { get; set; }
-        public string declaredDate { get; set; }
+        public DateTime exDate { get; set; }
+        public DateTime paymentDate { get; set; }
+        public DateTime recordDate { get; set; }
+        public DateTime declaredDate { get; set; }
         public decimal amount { get; set; }
         public string flag { get; set; }
         public string currency { get; set; }

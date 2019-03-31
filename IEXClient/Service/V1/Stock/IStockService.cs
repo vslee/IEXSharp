@@ -88,7 +88,7 @@ namespace IEXClient.Service.V1.Stock
         /// <param name="symbol"></param>
         /// <param name="range"></param>
         /// <returns></returns>
-        Task<IEnumerable<DividendResponse>> DividendAsync(string symbol, DividendRange range);
+        Task<IEnumerable<DividendV1Response>> DividendAsync(string symbol, DividendRange range);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#earnings"/>

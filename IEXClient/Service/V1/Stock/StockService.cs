@@ -175,7 +175,7 @@ namespace IEXClient.Service.V1.Stock
         public async Task<DelayedQuoteResponse> DelayedQuoteAsync(string symbol) =>
             await _executor.SymbolExecuteAsync<DelayedQuoteResponse>("stock/[symbol]/delayed-quote", symbol, "");
 
-        public async Task<IEnumerable<DividendResponse>> DividendAsync(string symbol, DividendRange range)
+        public async Task<IEnumerable<DividendV1Response>> DividendAsync(string symbol, DividendRange range)
         {
             const string urlPattern = "stock/[symbol]/dividends/[range]";
 
@@ -186,7 +186,7 @@ namespace IEXClient.Service.V1.Stock
                 {"symbol", symbol}, {"range", range.ToString().ToLower().Replace("_", string.Empty)}
             };
 
-            return await _executor.ExecuteAsync<IEnumerable<DividendResponse>>(urlPattern, pathNvc, qsb);
+            return await _executor.ExecuteAsync<IEnumerable<DividendV1Response>>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<EarningResponse> EarningAsync(string symbol) =>
