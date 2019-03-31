@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>IEXClient</PackageId>
+    <Authors>zh-code.com</Authors>
   </PropertyGroup>
 
   <ItemGroup>
