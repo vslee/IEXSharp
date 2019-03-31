@@ -11,11 +11,11 @@ string host = "sandbox.iexapis.com"; //Sandbox host
 string pk = "PublishToken";
 string sk = "SecretToken";
 
-IEXSigner signer = new IEXSigner(host, sk);
+IEXSigner.Signer signer = new IEXSigner.Signer(host, sk);
 
 /*
  * If run separately
-IEXSigner signer = new IEXSigner();
+IEXSigner.Signer signer = new IEXSigner.Signer();
 signer.SetHost(host);
 signer.SetSecretToken(sk);
 */

@@ -3,6 +3,5 @@
 ################################################################################
 
 /.vs
-/ZH.Code/bin/Debug
-/ZH.Code/obj
-/ZH.Code/ZH.Code.IEXSigner.snk
+/IEXSigner/bin/Debug/netstandard2.0
+/IEXSigner/obj

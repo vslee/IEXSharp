@@ -4,16 +4,16 @@ using System.Text;
 
 namespace IEXSigner
 {
-    public class IEXSigner
+    public class Signer
     {
         private string _host;
         private string _sk;
 
-        public IEXSigner()
+        public Signer()
         {
         }
 
-        public IEXSigner(string host, string sk)
+        public Signer(string host, string sk)
         {
             _host = host;
             _sk = sk;
