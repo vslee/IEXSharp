@@ -4,6 +4,8 @@ This is an unofficial .Net Wrapper for IEX API V2
 
 # Usage
 
+Package is available at [Nuget](https://www.nuget.org/packages/IEXClient/)
+
 ## V1
 
 ```c#
