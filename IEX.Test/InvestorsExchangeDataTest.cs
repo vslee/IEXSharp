@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using ZH.Code.IEX.V2;
+using IEXClient;
 
 namespace IEX.Test
 {

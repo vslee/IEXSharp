@@ -1,8 +1,8 @@
 using NUnit.Framework;
 using System.Threading.Tasks;
-using ZH.Code.IEX.V2;
-using ZH.Code.IEX.V2.Model.Account.Request;
-using ZH.Code.IEX.V2.Model.Account.Response;
+using IEXClient;
+using IEXClient.Model.Account.Request;
+using IEXClient.Model.Account.Response;
 
 namespace IEX.Test
 {

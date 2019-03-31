@@ -2,8 +2,8 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using ZH.Code.IEX.V2;
-using ZH.Code.IEX.V2.Model.ReferenceData.Request;
+using IEXClient;
+using IEXClient.Model.ReferenceData.Request;
 
 namespace IEX.Test
 {

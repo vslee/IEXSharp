@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ZH.Code.IEX.V2;
-using ZH.Code.IEX.V2.Model.Stock.Request;
+using IEXClient;
+using IEXClient.Model.Stock.Request;
 
 namespace IEX.Test
 {

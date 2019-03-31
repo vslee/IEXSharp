@@ -7,5 +7,5 @@
 /IEX.Test/obj
 /IEX.Test/Properties/launchSettings.json
 /TestResults
-/ZH.Code/bin
-/ZH.Code/obj
+/IEXClient/bin/Debug/netstandard2.0
+/IEXClient/obj

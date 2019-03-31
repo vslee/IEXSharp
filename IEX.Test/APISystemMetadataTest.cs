@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using ZH.Code.IEX.V2;
+using IEXClient;
 
 namespace IEX.Test
 {
