@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Net.Http;
-using IEXClient.Service.Account;
-using IEXClient.Service.AlternativeData;
-using IEXClient.Service.APISystemMetadata;
-using IEXClient.Service.ForexCurrencies;
-using IEXClient.Service.InvestorsExchangeData;
-using IEXClient.Service.ReferenceData;
-using IEXClient.Service.Stock;
+using IEXClient.Service.V2.Account;
+using IEXClient.Service.V2.AlternativeData;
+using IEXClient.Service.V2.APISystemMetadata;
+using IEXClient.Service.V2.ForexCurrencies;
+using IEXClient.Service.V2.InvestorsExchangeData;
+using IEXClient.Service.V2.ReferenceData;
+using IEXClient.Service.V2.Stock;
 
 namespace IEXClient
 {
