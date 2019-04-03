@@ -13,8 +13,8 @@ For API V1 and V2</Description>
     <RepositoryUrl></RepositoryUrl>
     <RepositoryType></RepositoryType>
     <PackageTags>IEX Stock API Rest</PackageTags>
-    <Version>1.0.1</Version>
-    <PackageReleaseNotes>Add API V1 support</PackageReleaseNotes>
+    <Version>1.0.2</Version>
+    <PackageReleaseNotes>Update data structure for TOPS</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
