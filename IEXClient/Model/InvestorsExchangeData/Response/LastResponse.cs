@@ -5,6 +5,6 @@
         public string symbol { get; set; }
         public decimal price { get; set; }
         public int size { get; set; }
-        public string time { get; set; }
+        public long time { get; set; }
     }
 }

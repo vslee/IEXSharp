@@ -111,13 +111,13 @@ namespace IEXClient.Service.V2.InvestorsExchangeData
         public async Task<StatsRecordResponse> StatsRecordAsync()
             => await _executor.NoParamExecute<StatsRecordResponse>("stats/records", _pk);
 
-        public async Task<IEnumerable<TOPResponse>> TOPSAsync(IEnumerable<string> symbols)
+        public async Task<IEnumerable<TOPSResponse>> TOPSAsync(IEnumerable<string> symbols)
         {
             if (symbols.Count() > 0)
             {
-                return await _executor.SymbolsExecuteAsync<IEnumerable<TOPResponse>>("tops", symbols, _pk);
+                return await _executor.SymbolsExecuteAsync<IEnumerable<TOPSResponse>>("tops", symbols, _pk);
             }
-            return await _executor.NoParamExecute<IEnumerable<TOPResponse>>("tops", _pk);
+            return await _executor.NoParamExecute<IEnumerable<TOPSResponse>>("tops", _pk);
         }
     }
 }

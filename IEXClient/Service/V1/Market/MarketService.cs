@@ -21,13 +21,13 @@ namespace IEXClient.Service.V1.Market
             _executor = new Executor(client, "", "", false);
         }
 
-        public async Task<IEnumerable<TOPResponse>> TOPSAsync(IEnumerable<string> symbols)
+        public async Task<IEnumerable<TOPSResponse>> TOPSAsync(IEnumerable<string> symbols)
         {
             if (symbols.Count() > 0)
             {
-                return await _executor.SymbolsExecuteAsync<IEnumerable<TOPResponse>>("tops", symbols, "");
+                return await _executor.SymbolsExecuteAsync<IEnumerable<TOPSResponse>>("tops", symbols, "");
             }
-            return await _executor.NoParamExecute<IEnumerable<TOPResponse>>("tops", "");
+            return await _executor.NoParamExecute<IEnumerable<TOPSResponse>>("tops", "");
         }
 
         public async Task<IEnumerable<LastResponse>> LastAsync(IEnumerable<string> symbols)

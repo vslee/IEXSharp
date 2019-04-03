@@ -14,7 +14,7 @@ namespace IEXClient.Service.V1.Market
         /// </summary>
         /// <param name="symbols"></param>
         /// <returns></returns>
-        Task<IEnumerable<TOPResponse>> TOPSAsync(IEnumerable<string> symbols);
+        Task<IEnumerable<TOPSResponse>> TOPSAsync(IEnumerable<string> symbols);
 
         /// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#last"/>
