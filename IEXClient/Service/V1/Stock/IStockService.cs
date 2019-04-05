@@ -45,7 +45,7 @@ namespace IEXClient.Service.V1.Stock
         /// <param name="range"></param>
         /// <param name="qsb">Additional optional querystring</param>
         /// <returns></returns>
-        Task<IEnumerable<HistoricalPriceResponse>> ChartAsync(string symbol, ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null);
+        Task<IEnumerable<ChartResponse>> ChartAsync(string symbol, ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#chart"/>
@@ -53,7 +53,7 @@ namespace IEXClient.Service.V1.Stock
         /// <param name="symbol"></param>
         /// <param name="qsb">Additional optional querystring</param>
         /// <returns></returns>
-        Task<HistoricalPriceDynamicResponse> ChartAsync(string symbol, QueryStringBuilder qsb = null);
+        Task<ChartDynamicResponse> ChartDynamicAsync(string symbol, QueryStringBuilder qsb = null);
 
         /// <summary>
         /// <see cref="https://iextrading.com/developer/docs/#collections"/>

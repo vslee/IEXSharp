@@ -76,6 +76,16 @@ namespace IEX.Test.V1
             Assert.GreaterOrEqual(response.Count(), 0);
         }
 
+
+        [Test]
+        public async Task ChartDynamicAsyncDateTest()
+        {
+            var response = await prodClient.Stock.ChartDynamicAsync("AAPL", null);
+
+            Assert.IsNotNull(response);
+            Assert.GreaterOrEqual(response.data.Count(), 0);
+        }
+
         [Test]
         [TestCase(CollectionType.List, "iexvolume")]
         [TestCase(CollectionType.Sector, "Health Care")]

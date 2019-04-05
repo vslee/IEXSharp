@@ -124,7 +124,7 @@ namespace IEXClient.Service.V1.Stock
         public async Task<BookResponse> BookAsync(string symbol) =>
             await _executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol, "");
 
-        public async Task<IEnumerable<HistoricalPriceResponse>> ChartAsync(string symbol,
+        public async Task<IEnumerable<ChartResponse>> ChartAsync(string symbol,
             ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
         {
             const string urlPattern = "stock/[symbol]/chart/[range]/[date]";
@@ -138,10 +138,10 @@ namespace IEXClient.Service.V1.Stock
                 {"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
             };
 
-            return await _executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);
+            return await _executor.ExecuteAsync<IEnumerable<ChartResponse>>(urlPattern, pathNvc, qsb);
         }
 
-        public async Task<HistoricalPriceDynamicResponse> ChartAsync(string symbol,
+        public async Task<ChartDynamicResponse> ChartDynamicAsync(string symbol,
             QueryStringBuilder qsb = null)
         {
             const string urlPattern = "stock/[symbol]/chart/dynamic";
@@ -153,7 +153,7 @@ namespace IEXClient.Service.V1.Stock
                 {"symbol", symbol}
             };
 
-            return await _executor.ExecuteAsync<HistoricalPriceDynamicResponse>(urlPattern, pathNvc, qsb);
+            return await _executor.ExecuteAsync<ChartDynamicResponse>(urlPattern, pathNvc, qsb);
         }
 
         public async Task<IEnumerable<Quote>> CollectionsAsync(CollectionType collection, string collectionName)
