@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IEXSigner
 {
-    public class Signer
+    internal class Signer
     {
         private string _host;
         private string _sk;

@@ -25,7 +25,6 @@ For API V1 and V2</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IEX.API.V2.Signer" Version="1.0.6" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="QueryStringBuilder" Version="1.0.2" />
   </ItemGroup>
