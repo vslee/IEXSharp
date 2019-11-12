@@ -1,8 +1,8 @@
 ﻿namespace IEXSharp.Model.Shared.Response
 {
-    public class SecurityEvent
-    {
-        public string securityEvent { get; set; }
-        public long timestamp { get; set; }
-    }
+	public class SecurityEvent
+	{
+		public string securityEvent { get; set; }
+		public long timestamp { get; set; }
+	}
 }

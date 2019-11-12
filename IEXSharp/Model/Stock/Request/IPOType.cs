@@ -1,8 +1,8 @@
 ﻿namespace IEXSharp.Model.Stock.Request
 {
-    public enum IPOType
-    {
-        Upcoming,
-        Today
-    }
+	public enum IPOType
+	{
+		Upcoming,
+		Today
+	}
 }

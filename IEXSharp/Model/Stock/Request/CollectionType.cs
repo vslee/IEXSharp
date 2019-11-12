@@ -1,9 +1,9 @@
 ﻿namespace IEXSharp.Model.Stock.Request
 {
-    public enum CollectionType
-    {
-        Sector,
-        Tag,
-        List
-    }
+	public enum CollectionType
+	{
+		Sector,
+		Tag,
+		List
+	}
 }

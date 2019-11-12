@@ -4,7 +4,7 @@ using System.Text;
 
 namespace IEXSharp
 {
-    class IEXSocketClient
-    {
-    }
+	class IEXSocketClient
+	{
+	}
 }

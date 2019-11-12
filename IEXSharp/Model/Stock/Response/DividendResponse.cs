@@ -2,9 +2,9 @@
 
 namespace IEXSharp.Model.Stock.Response
 {
-    public class DividendV1Response : DividendV1 { }
+	public class DividendV1Response : DividendV1 { }
 
-    public class DividendResponse : Dividend
-    {
-    }
+	public class DividendResponse : Dividend
+	{
+	}
 }

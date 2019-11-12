@@ -5,59 +5,59 @@ using System.Threading.Tasks;
 
 namespace IEXSharpTest.V1
 {
-    public class ReferenceDataTest
-    {
-        private IEXRestV1Client prodClient;
+	public class ReferenceDataTest
+	{
+		private IEXRestV1Client prodClient;
 
-        [SetUp]
-        public void Setup()
-        {
-            prodClient = new IEXRestV1Client();
-        }
+		[SetUp]
+		public void Setup()
+		{
+			prodClient = new IEXRestV1Client();
+		}
 
-        [Test]
-        public async Task SymbolsAsyncTest()
-        {
-            var resposne = await prodClient.ReferenceData.SymbolsAsync();
+		[Test]
+		public async Task SymbolsAsyncTest()
+		{
+			var resposne = await prodClient.ReferenceData.SymbolsAsync();
 
-            Assert.IsNotNull(resposne);
-            Assert.GreaterOrEqual(resposne.Count(), 1);
-        }
+			Assert.IsNotNull(resposne);
+			Assert.GreaterOrEqual(resposne.Count(), 1);
+		}
 
-        [Test]
-        public async Task IEXCorporateActionsAsyncTest()
-        {
-            var resposne = await prodClient.ReferenceData.IEXCorporateActionsAsync();
+		[Test]
+		public async Task IEXCorporateActionsAsyncTest()
+		{
+			var resposne = await prodClient.ReferenceData.IEXCorporateActionsAsync();
 
-            Assert.IsNotNull(resposne);
-            Assert.GreaterOrEqual(resposne.Count(), 1);
-        }
+			Assert.IsNotNull(resposne);
+			Assert.GreaterOrEqual(resposne.Count(), 1);
+		}
 
-        [Test]
-        public async Task IEXDividentsAsyncTest()
-        {
-            var resposne = await prodClient.ReferenceData.IEXDividentsAsync();
+		[Test]
+		public async Task IEXDividentsAsyncTest()
+		{
+			var resposne = await prodClient.ReferenceData.IEXDividentsAsync();
 
-            Assert.IsNotNull(resposne);
-            Assert.GreaterOrEqual(resposne.Count(), 1);
-        }
+			Assert.IsNotNull(resposne);
+			Assert.GreaterOrEqual(resposne.Count(), 1);
+		}
 
-        [Test]
-        public async Task IEXNextDayExDateAsyncTest()
-        {
-            var resposne = await prodClient.ReferenceData.IEXNextDayExDateAsync();
+		[Test]
+		public async Task IEXNextDayExDateAsyncTest()
+		{
+			var resposne = await prodClient.ReferenceData.IEXNextDayExDateAsync();
 
-            Assert.IsNotNull(resposne);
-            Assert.GreaterOrEqual(resposne.Count(), 1);
-        }
+			Assert.IsNotNull(resposne);
+			Assert.GreaterOrEqual(resposne.Count(), 1);
+		}
 
-        [Test]
-        public async Task IEXListedSymbolDirectoryAsyncTest()
-        {
-            var resposne = await prodClient.ReferenceData.IEXListedSymbolDirectoryAsync();
+		[Test]
+		public async Task IEXListedSymbolDirectoryAsyncTest()
+		{
+			var resposne = await prodClient.ReferenceData.IEXListedSymbolDirectoryAsync();
 
-            Assert.IsNotNull(resposne);
-            Assert.GreaterOrEqual(resposne.Count(), 1);
-        }
-    }
+			Assert.IsNotNull(resposne);
+			Assert.GreaterOrEqual(resposne.Count(), 1);
+		}
+	}
 }

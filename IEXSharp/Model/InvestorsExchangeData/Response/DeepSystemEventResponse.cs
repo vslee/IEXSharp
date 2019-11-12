@@ -2,7 +2,7 @@
 
 namespace IEXSharp.Model.InvestorsExchangeData.Response
 {
-    public class DeepSystemEventResponse : SystemEvent
-    {
-    }
+	public class DeepSystemEventResponse : SystemEvent
+	{
+	}
 }

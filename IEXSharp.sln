@@ -5,7 +5,14 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IEXSharpTest", "IEXSharpTest\IEXSharpTest.csproj", "{5DB6CDAD-80AB-44AB-A510-AD018DBFBD81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEXSharp", "IEXSharp\IEXSharp.csproj", "{2DD4B9DD-19C4-48D6-A3AE-CE81F56D2184}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IEXSharp", "IEXSharp\IEXSharp.csproj", "{2DD4B9DD-19C4-48D6-A3AE-CE81F56D2184}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{389DDAD4-C2B8-4786-9573-191085D0885A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

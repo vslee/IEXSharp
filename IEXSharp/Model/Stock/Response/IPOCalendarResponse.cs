@@ -1,6 +1,6 @@
 ﻿namespace IEXSharp.Model.Stock.Response
 {
-    public class IPOCalendarResponse : IPOCalendar
-    {
-    }
+	public class IPOCalendarResponse : IPOCalendar
+	{
+	}
 }

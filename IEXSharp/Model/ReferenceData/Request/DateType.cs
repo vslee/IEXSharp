@@ -1,8 +1,8 @@
 ﻿namespace IEXSharp.Model.ReferenceData.Request
 {
-    public enum DateType
-    {
-        Trade,
-        Holiday
-    }
+	public enum DateType
+	{
+		Trade,
+		Holiday
+	}
 }

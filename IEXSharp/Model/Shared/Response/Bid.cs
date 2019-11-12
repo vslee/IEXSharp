@@ -1,6 +1,6 @@
 ﻿namespace IEXSharp.Model.Shared.Response
 {
-    public class Bid : Ask
-    {
-    }
+	public class Bid : Ask
+	{
+	}
 }

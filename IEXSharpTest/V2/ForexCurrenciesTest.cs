@@ -7,24 +7,24 @@ using IEXSharp;
 
 namespace IEXSharpTest.V2
 {
-    public class ForexCurrenciesTest
-    {
-        private IEXRestV2Client sandBoxClient;
+	public class ForexCurrenciesTest
+	{
+		private IEXRestV2Client sandBoxClient;
 
-        [SetUp]
-        public void Setup()
-        {
-            sandBoxClient = new IEXRestV2Client(TestGlobal.pk, TestGlobal.sk, false, true);
-        }
+		[SetUp]
+		public void Setup()
+		{
+			sandBoxClient = new IEXRestV2Client(TestGlobal.pk, TestGlobal.sk, false, true);
+		}
 
-        // Not supported for free account
-        [Test]
-        [TestCase("EUR", "USD")]
-        public async Task ExchangeRateAsync(string from, string to)
-        {
-            var response = await sandBoxClient.ForexCurrencies.ExchangeRateAsync(from, to);
+		// Not supported for free account
+		[Test]
+		[TestCase("EUR", "USD")]
+		public async Task ExchangeRateAsync(string from, string to)
+		{
+			var response = await sandBoxClient.ForexCurrencies.ExchangeRateAsync(from, to);
 
-            Assert.IsNotNull(response);
-        }
-    }
+			Assert.IsNotNull(response);
+		}
+	}
 }

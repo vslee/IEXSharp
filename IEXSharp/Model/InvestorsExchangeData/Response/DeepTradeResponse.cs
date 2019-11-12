@@ -2,7 +2,7 @@
 
 namespace IEXSharp.Model.InvestorsExchangeData.Response
 {
-    public class DeepTradeResponse : Trade
-    {
-    }
+	public class DeepTradeResponse : Trade
+	{
+	}
 }
