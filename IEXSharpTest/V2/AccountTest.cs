@@ -4,7 +4,7 @@ using IEXClient;
 using IEXClient.Model.Account.Request;
 using IEXClient.Model.Account.Response;
 
-namespace IEX.Test.V2
+namespace IEXSharpTest.V2
 {
     public class AccountTest
     {

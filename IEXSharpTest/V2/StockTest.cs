@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IEX.Test.V2
+namespace IEXSharpTest.V2
 {
     public class StockTest
     {

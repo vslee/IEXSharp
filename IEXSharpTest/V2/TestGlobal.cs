@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IEX.Test.V2
+namespace IEXSharpTest.V2
 {
     public static class TestGlobal
     {

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using IEXClient;
 using IEXClient.Model.ReferenceData.Request;
 
-namespace IEX.Test.V2
+namespace IEXSharpTest.V2
 {
     public class ReferenceDataTest
     {

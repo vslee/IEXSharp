@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IEX.Test.V1
+namespace IEXSharpTest.V1
 {
     public class ReferenceDataTest
     {

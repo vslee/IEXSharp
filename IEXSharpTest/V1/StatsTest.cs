@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IEX.Test.V1
+namespace IEXSharpTest.V1
 {
     public class StatsTest
     {

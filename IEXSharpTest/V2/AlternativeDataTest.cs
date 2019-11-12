@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using IEXClient;
 
-namespace IEX.Test.V2
+namespace IEXSharpTest.V2
 {
     public class AlternativeDataTest
     {
