@@ -1,7 +1,0 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/.vs
-/IEXSigner/bin/Debug/netstandard2.0
-/IEXSigner/obj
