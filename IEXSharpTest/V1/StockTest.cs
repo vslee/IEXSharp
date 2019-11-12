@@ -1,5 +1,5 @@
-﻿using IEXClient;
-using IEXClient.Model.Stock.Request;
+﻿using IEXSharp;
+using IEXSharp.Model.Stock.Request;
 using NUnit.Framework;
 using QueryString;
 using System;

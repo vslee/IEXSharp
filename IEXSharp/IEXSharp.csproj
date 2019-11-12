@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.1.0</Version>
+    <Authors>Victor Lee</Authors>
+    <Company />
+    <Description>IEX Cloud API</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/vslee/IEXSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/vslee/IEXSharp/IEXSharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>IEX Cloud Stock API Rest</PackageTags>
+    <PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\AlternativeData\Request\" />
+    <Folder Include="Model\ForexCurrencies\Request\" />
+    <Folder Include="Model\InvestorsExchangeData\Request\" />
+    <Folder Include="Model\Shared\Request\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>

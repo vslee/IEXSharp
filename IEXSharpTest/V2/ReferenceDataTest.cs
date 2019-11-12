@@ -2,8 +2,8 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using IEXClient;
-using IEXClient.Model.ReferenceData.Request;
+using IEXSharp;
+using IEXSharp.Model.ReferenceData.Request;
 
 namespace IEXSharpTest.V2
 {

@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using IEXClient;
+using IEXSharp;
 
 namespace IEXSharpTest.V2
 {

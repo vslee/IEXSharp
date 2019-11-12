@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IEXClient", "IEXClient\IEXClient.csproj", "{D918C9D2-0A76-4168-B4B6-DB47A33D2ACF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IEXSharpTest", "IEXSharpTest\IEXSharpTest.csproj", "{5DB6CDAD-80AB-44AB-A510-AD018DBFBD81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IEXSharp", "IEXSharp\IEXSharp.csproj", "{2DD4B9DD-19C4-48D6-A3AE-CE81F56D2184}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D918C9D2-0A76-4168-B4B6-DB47A33D2ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D918C9D2-0A76-4168-B4B6-DB47A33D2ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D918C9D2-0A76-4168-B4B6-DB47A33D2ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D918C9D2-0A76-4168-B4B6-DB47A33D2ACF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5DB6CDAD-80AB-44AB-A510-AD018DBFBD81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5DB6CDAD-80AB-44AB-A510-AD018DBFBD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DB6CDAD-80AB-44AB-A510-AD018DBFBD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DB6CDAD-80AB-44AB-A510-AD018DBFBD81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DD4B9DD-19C4-48D6-A3AE-CE81F56D2184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DD4B9DD-19C4-48D6-A3AE-CE81F56D2184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DD4B9DD-19C4-48D6-A3AE-CE81F56D2184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DD4B9DD-19C4-48D6-A3AE-CE81F56D2184}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

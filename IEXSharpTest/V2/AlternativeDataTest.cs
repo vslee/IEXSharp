@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
-using IEXClient;
+using IEXSharp;
 
 namespace IEXSharpTest.V2
 {

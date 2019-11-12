@@ -1,8 +1,8 @@
 using NUnit.Framework;
 using System.Threading.Tasks;
-using IEXClient;
-using IEXClient.Model.Account.Request;
-using IEXClient.Model.Account.Response;
+using IEXSharp;
+using IEXSharp.Model.Account.Request;
+using IEXSharp.Model.Account.Response;
 
 namespace IEXSharpTest.V2
 {

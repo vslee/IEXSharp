@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Authors>Victor Lee</Authors>
+
+    <Company />
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IEXClient\IEXClient.csproj" />
+    <ProjectReference Include="..\IEXSharp\IEXSharp.csproj" />
   </ItemGroup>
 
 </Project>
