@@ -1,16 +1,15 @@
-﻿using System;
+﻿using IEXSharp.Helper;
+using IEXSharp.Model.InvestorsExchangeData.Response;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IEXSharp.Helper;
-using IEXSharp.Model.InvestorsExchangeData.Response;
-using QueryString;
 
 namespace IEXSharp.Service.V2.InvestorsExchangeData
 {
-    internal class InvestorsExchangeDataService : IInvestorsExchangeDataService
+	internal class InvestorsExchangeDataService : IInvestorsExchangeDataService
     {
         private readonly string _pk;
         private readonly Executor _executor;

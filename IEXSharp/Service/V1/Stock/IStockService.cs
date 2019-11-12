@@ -2,7 +2,7 @@
 using IEXSharp.Model.Shared.Response;
 using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.Stock.Response;
-using QueryString;
+using IEXSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

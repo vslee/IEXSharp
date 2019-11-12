@@ -1,7 +1,6 @@
 ﻿using IEXSharp.Helper;
 using IEXSharp.Model.ReferenceData.Request;
 using IEXSharp.Model.ReferenceData.Response;
-using QueryString;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IEXSharp.Service.V2.ReferenceData
 {
-    internal class ReferenceDataService : IReferenceDataService
+	internal class ReferenceDataService : IReferenceDataService
     {
         private readonly string _pk;
         private readonly Executor _executor;

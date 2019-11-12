@@ -1,6 +1,5 @@
 ﻿using IEXSharp.Helper;
 using IEXSharp.Model.InvestorsExchangeData.Response;
-using QueryString;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IEXSharp.Service.V1.Stats
 {
-    internal class StatsService : IStatsService
+	internal class StatsService : IStatsService
     {
         private Executor _executor;
 

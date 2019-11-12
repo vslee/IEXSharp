@@ -1,13 +1,12 @@
 ﻿using IEXSharp.Helper;
 using IEXSharp.Model.ForexCurrencies.Response;
-using QueryString;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace IEXSharp.Service.V2.ForexCurrencies
 {
-    internal class ForexCurrenciesService : IForexCurrenciesService
+	internal class ForexCurrenciesService : IForexCurrenciesService
     {
         private readonly string _pk;
         private readonly Executor _executor;

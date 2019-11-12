@@ -1,9 +1,17 @@
 ﻿using System.Collections.Specialized;
 using System.Web;
 
-namespace QueryString
+namespace IEXSharp.Helper
 {
-    public class QueryStringBuilder
+	/// <summary>
+	/// Simple query string builder
+	/// Usage:
+	/// var qsb = new QueryStringBuilder();
+	/// qsb.Add("name", "value");
+	/// qsb.Add("name1", "value1");
+	/// qsb.Build(); // returns "?name=value&name1=value1"
+	/// </summary>
+	public class QueryStringBuilder
     {
         private readonly NameValueCollection nvc;
 

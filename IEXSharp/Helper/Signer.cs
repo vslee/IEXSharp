@@ -2,9 +2,39 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace IEXSigner
+namespace IEXSharp.Helper
 {
-    internal class Signer
+	/// <summary>
+	/// Sign request for IEX API V2
+	/// Only available to Grow and Scale users
+	/// usage:
+	/// string host = "sandbox.iexapis.com"; //Sandbox host
+	/// //string host = "cloud.iexapis.com" //Production host
+	/// string pk = "PublishToken";
+	/// string sk = "SecretToken";
+	/// 
+	/// IEXSigner.Signer signer = new IEXSigner.Signer(host, sk);
+	/// 
+	/// /*
+	/// * If run separately
+	/// IEXSigner.Signer signer = new IEXSigner.Signer();
+	/// signer.SetHost(host);
+	/// signer.SetSecretToken(sk);
+	/// */
+	/// 
+	/// string method = "GET";
+	/// string url = "/account/metadata"; // "/" is required at the beginning
+	/// string queryString = "namea=1&nameb=2";
+	/// string payload = "{\"test\":123,\"obj\":456}";
+	/// 
+	/// //For GET requests
+	/// (string iexdate, string authorization_header) headers = signer.Sign(pk, method, url, queryString);
+	/// 
+	/// //For POST requests
+	/// (string iexdate, string authorization_header) headers = signer.Sign(pk, method, url, queryString, payload);
+	/// 
+	/// </summary>
+	internal class Signer
     {
         private string _host;
         private string _sk;

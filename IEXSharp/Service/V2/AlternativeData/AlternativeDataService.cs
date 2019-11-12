@@ -1,7 +1,6 @@
 ﻿using IEXSharp.Helper;
 using IEXSharp.Model.AlternativeData.Response;
 using IEXSharp.Model.Shared.Response;
-using QueryString;
 using System;
 using System.Collections.Specialized;
 using System.Net.Http;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IEXSharp.Service.V2.AlternativeData
 {
-    internal class AlternativeDataService : IAlternativeDataService
+	internal class AlternativeDataService : IAlternativeDataService
     {
         private readonly string _pk;
         private readonly Executor _executor;

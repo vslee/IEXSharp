@@ -1,7 +1,6 @@
 ﻿using IEXSharp.Helper;
 using IEXSharp.Model.Account.Request;
 using IEXSharp.Model.Account.Response;
-using QueryString;
 using System;
 using System.Collections.Specialized;
 using System.Net.Http;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IEXSharp.Service.V2.Account
 {
-    internal class AccountService : IAccountService
+	internal class AccountService : IAccountService
     {
         private readonly string _sk;
         private readonly Executor _executor;

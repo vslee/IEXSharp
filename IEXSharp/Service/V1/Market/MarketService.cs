@@ -2,7 +2,6 @@
 using IEXSharp.Model.InvestorsExchangeData.Response;
 using IEXSharp.Model.Market.Response;
 using IEXSharp.Model.Stock.Response;
-using QueryString;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace IEXSharp.Service.V1.Market
 {
-    internal class MarketService : IMarketService
+	internal class MarketService : IMarketService
     {
         private Executor _executor;
 

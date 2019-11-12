@@ -1,7 +1,7 @@
 ﻿using IEXSharp;
 using IEXSharp.Model.Stock.Request;
 using NUnit.Framework;
-using QueryString;
+using IEXSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

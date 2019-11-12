@@ -2,7 +2,6 @@
 using IEXSharp.Model.Shared.Response;
 using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.Stock.Response;
-using QueryString;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace IEXSharp.Service.V2.Stock
 {
-    internal class StockService : IStockService
+	internal class StockService : IStockService
     {
         private readonly string _pk;
         private readonly Executor _executor;
