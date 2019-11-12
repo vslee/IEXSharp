@@ -1,7 +1,0 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/.vs/QSBuilder/v15
-/QueryString/bin/Debug
-/QueryString/obj
