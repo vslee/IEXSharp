@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using IEXSharp;
 using IEXSharp.Model.ReferenceData.Request;
 
-namespace IEXSharpTest.V2
+namespace IEXSharpTest.Cloud
 {
 	public class ReferenceDataTest
 	{
-		private IEXRestV2Client sandBoxClient;
+		private IEXCloudClient sandBoxClient;
 
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXRestV2Client(TestGlobal.pk, TestGlobal.sk, false, true);
+			sandBoxClient = new IEXCloudClient(TestGlobal.pk, TestGlobal.sk, false, true);
 		}
 
 		[Test]

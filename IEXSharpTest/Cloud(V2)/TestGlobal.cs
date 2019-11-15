@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace IEXSharpTest.V2
+namespace IEXSharpTest.Cloud
 {
 	public static class TestGlobal
 	{

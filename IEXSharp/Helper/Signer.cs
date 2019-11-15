@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -36,8 +36,8 @@ namespace IEXSharp.Helper
 	/// </summary>
 	internal class Signer
 	{
-		private string _host;
-		private string _sk;
+		private string host;
+		private string sk;
 
 		public Signer()
 		{
@@ -45,18 +45,18 @@ namespace IEXSharp.Helper
 
 		public Signer(string host, string sk)
 		{
-			_host = host;
-			_sk = sk;
+			this.host = host;
+			this.sk = sk;
 		}
 
 		public void SetHost(string host)
 		{
-			_host = host;
+			this.host = host;
 		}
 
 		public void SetSecretToken(string sk)
 		{
-			_sk = sk;
+			this.sk = sk;
 		}
 
 		public (string iexdate, string authorization_header) Sign(string pk, string method, string url, string queryString, string payload = "")
@@ -64,12 +64,12 @@ namespace IEXSharp.Helper
 			var now = DateTime.UtcNow;
 			var iexdate = now.ToString("yyyyMMddTHHmmssZ");
 			var datestamp = now.ToString("yyyyMMdd");
-			var canonical_headers = $"host:{_host}\nx-iex-date:{iexdate}\n";
+			var canonical_headers = $"host:{host}\nx-iex-date:{iexdate}\n";
 			var payload_hash = SHA256HexHashString(payload);
 			var canonical_request = $"{method}\n{url}\n{queryString}\n{canonical_headers}\nhost;x-iex-date\n{payload_hash}";
 			var credential_scope = $"{datestamp}/iex_request";
 			var string_to_sign = $"IEX-HMAC-SHA256\n{iexdate}\n{credential_scope}\n{SHA256HexHashString(canonical_request)}";
-			var signing_key = HMACSHA256HexHashString(HMACSHA256HexHashString(_sk, datestamp), "iex_request");
+			var signing_key = HMACSHA256HexHashString(HMACSHA256HexHashString(sk, datestamp), "iex_request");
 			var signature = HMACSHA256HexHashString(signing_key, string_to_sign);
 			var authorization_header = $"IEX-HMAC-SHA256 Credential={pk}/{credential_scope}, SignedHeaders=host;x-iex-date, Signature={signature}";
 			return (iexdate, authorization_header);

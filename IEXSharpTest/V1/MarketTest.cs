@@ -8,12 +8,12 @@ namespace IEXSharpTest.V1
 {
 	public class MarketTest
 	{
-		private IEXRestV1Client prodClient;
+		private IEXV1RestClient prodClient;
 
 		[SetUp]
 		public void Setup()
 		{
-			prodClient = new IEXRestV1Client();
+			prodClient = new IEXV1RestClient();
 		}
 
 		[Test]

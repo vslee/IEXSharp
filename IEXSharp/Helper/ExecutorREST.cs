@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -7,59 +7,55 @@ using System.Threading.Tasks;
 
 namespace IEXSharp.Helper
 {
-	internal class Executor
+	internal class ExecutorREST : ExecutorBase
 	{
-		private readonly HttpClient _client;
+		private readonly HttpClient client;
 		private readonly Signer signer;
-		private readonly bool _sign;
+		private readonly bool sign;
 		private readonly JsonSerializerSettings jsonSerializerSettings;
-		private readonly string _pk;
 
-		public Executor(HttpClient client, string sk, string pk, bool sign)
+		public ExecutorREST(HttpClient client, string sk, string pk, bool sign) : base(pk: pk)
 		{
-			_client = client;
+			this.client = client;
 			if (sign)
 			{
 				signer = new Signer(client.BaseAddress.Host, sk);
 			}
-			_sign = sign;
+			this.sign = sign;
 			jsonSerializerSettings = new JsonSerializerSettings
 			{
 				NullValueHandling = NullValueHandling.Ignore
 			};
-			_pk = pk;
 		}
 
 		public async Task<ReturnType> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb) where ReturnType : class
 		{
 			ValidateParams(ref urlPattern, ref pathNVC, ref qsb);
 
-			ReturnType response;
 			var content = string.Empty;
 
-			if (_sign)
+			if (sign)
 			{
-				_client.DefaultRequestHeaders.Remove("x-iex-date");
-				_client.DefaultRequestHeaders.Remove("Authorization");
+				client.DefaultRequestHeaders.Remove("x-iex-date");
+				client.DefaultRequestHeaders.Remove("Authorization");
 
-				(string iexdate, string authorization_header) headers = signer.Sign(_pk, "GET", urlPattern, qsb.Build());
-				_client.DefaultRequestHeaders.TryAddWithoutValidation("x-iex-date", headers.iexdate);
-				_client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", headers.authorization_header);
+				(string iexdate, string authorization_header) headers = signer.Sign(pk, "GET", urlPattern, qsb.Build());
+				client.DefaultRequestHeaders.TryAddWithoutValidation("x-iex-date", headers.iexdate);
+				client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", headers.authorization_header);
 			}
 
-			using (var responseContent = await _client.GetAsync($"{urlPattern}{qsb.Build()}"))
+			using (var responseContent = await client.GetAsync($"{urlPattern}{qsb.Build()}"))
 			{
 				try
 				{
 					content = await responseContent.Content.ReadAsStringAsync();
-					response = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings);
+					return JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings);
 				}
 				catch (JsonException ex)
 				{
 					throw new JsonException(content, ex);
 				}
 			}
-			return response;
 		}
 
 		public async Task<ReturnType> NoParamExecute<ReturnType>(string url, string token) where ReturnType : class
@@ -129,45 +125,6 @@ namespace IEXSharp.Helper
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
 			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb);
-		}
-
-		private static void ValidateParams(ref string urlPattern, ref NameValueCollection pathNVC, ref QueryStringBuilder qsb)
-		{
-			if (string.IsNullOrWhiteSpace(urlPattern))
-			{
-				throw new ArgumentException("urlPattern cannot be null");
-			}
-			else if (pathNVC == null)
-			{
-				throw new ArgumentException("pathNVC cannot be null");
-			}
-			else if (qsb == null)
-			{
-				throw new ArgumentException("qsb cannot be null");
-			}
-
-			if (pathNVC.Count > 0)
-			{
-				foreach (string key in pathNVC.Keys)
-				{
-					if (string.IsNullOrWhiteSpace(key))
-					{
-						throw new ArgumentException("pathNVC cannot be null");
-					}
-					else if (string.IsNullOrWhiteSpace(pathNVC[key]))
-					{
-						throw new ArgumentException($"pathNVC {key} value cannot be null");
-					}
-					else if (urlPattern.IndexOf($"[{key}]") < 0)
-					{
-						throw new ArgumentException($"urlPattern doesn't contain key [{key}]");
-					}
-					else
-					{
-						urlPattern = urlPattern.Replace($"[{key}]", pathNVC[key]);
-					}
-				}
-			}
 		}
 	}
 }

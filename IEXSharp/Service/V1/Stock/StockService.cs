@@ -14,11 +14,11 @@ namespace IEXSharp.Service.V1.Stock
 {
 	internal class StockService : IStockService
 	{
-		private readonly Executor _executor;
+		private readonly ExecutorREST _executor;
 
 		public StockService(HttpClient client)
 		{
-			_executor = new Executor(client, string.Empty, string.Empty, false);
+			_executor = new ExecutorREST(client, string.Empty, string.Empty, false);
 		}
 
 		public async Task<BatchBySymbolV1Response> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,

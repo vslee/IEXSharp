@@ -13,11 +13,11 @@ namespace IEXSharp.Service.V1.Market
 {
 	internal class MarketService : IMarketService
 	{
-		private Executor _executor;
+		private ExecutorREST _executor;
 
 		public MarketService(HttpClient client)
 		{
-			_executor = new Executor(client, "", "", false);
+			_executor = new ExecutorREST(client, "", "", false);
 		}
 
 		public async Task<IEnumerable<TOPSResponse>> TOPSAsync(IEnumerable<string> symbols)

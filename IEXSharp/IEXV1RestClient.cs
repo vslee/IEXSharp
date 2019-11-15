@@ -7,7 +7,7 @@ using System.Net.Http;
 
 namespace IEXSharp
 {
-	public class IEXRestV1Client : IDisposable
+	public class IEXV1RestClient : IDisposable
 	{
 		private readonly HttpClient _client;
 
@@ -36,7 +36,7 @@ namespace IEXSharp
 			get => statsService ?? (statsService = new StatsService(_client));
 		}
 
-		public IEXRestV1Client()
+		public IEXV1RestClient()
 		{
 			_client = new HttpClient
 			{

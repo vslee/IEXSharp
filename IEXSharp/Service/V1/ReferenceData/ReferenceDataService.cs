@@ -8,11 +8,11 @@ namespace IEXSharp.Service.V1.ReferenceData
 {
 	internal class ReferenceDataService : IReferenceDataService
 	{
-		private readonly Executor _executor;
+		private readonly ExecutorREST _executor;
 
 		public ReferenceDataService(HttpClient client)
 		{
-			_executor = new Executor(client, "", "", false);
+			_executor = new ExecutorREST(client, "", "", false);
 		}
 
 		public async Task<IEnumerable<SymbolResponse>> SymbolsAsync() => await _executor.NoParamExecute<IEnumerable<SymbolResponse>>("ref-data/symbols", "");

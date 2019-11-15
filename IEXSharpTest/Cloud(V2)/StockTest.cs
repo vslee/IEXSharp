@@ -1,4 +1,4 @@
-﻿using IEXSharp;
+using IEXSharp;
 using IEXSharp.Model.Stock.Request;
 using NUnit.Framework;
 using IEXSharp.Helper;
@@ -7,16 +7,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IEXSharpTest.V2
+namespace IEXSharpTest.Cloud
 {
 	public class StockTest
 	{
-		private IEXRestV2Client sandBoxClient;
+		private IEXCloudClient sandBoxClient;
 
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXRestV2Client(TestGlobal.pk, TestGlobal.sk, false, true);
+			sandBoxClient = new IEXCloudClient(pk: TestGlobal.pk, sk: TestGlobal.sk, signRequest: false, sandBox: true);
 		}
 
 		[Test]
@@ -26,7 +26,6 @@ namespace IEXSharpTest.V2
 			int last = 1)
 		{
 			var response = await sandBoxClient.Stock.BalanceSheetAsync(symbol, period, last);
-
 			Assert.IsNotNull(response);
 			Assert.IsNotNull(response.balancesheet);
 			Assert.GreaterOrEqual(response.balancesheet.Count, 1);

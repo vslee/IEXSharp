@@ -11,12 +11,12 @@ namespace IEXSharp.Service.V2.Account
 	internal class AccountService : IAccountService
 	{
 		private readonly string _sk;
-		private readonly Executor _executor;
+		private readonly ExecutorREST _executor;
 
 		public AccountService(HttpClient client, string sk, string pk, bool sign)
 		{
 			_sk = sk;
-			_executor = new Executor(client, sk, pk, sign);
+			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
 		public async Task<MetadataResponse> MetadataAsync()

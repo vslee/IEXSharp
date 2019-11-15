@@ -10,11 +10,11 @@ namespace IEXSharp.Service.V1.Stats
 {
 	internal class StatsService : IStatsService
 	{
-		private Executor _executor;
+		private ExecutorREST _executor;
 
 		public StatsService(HttpClient client)
 		{
-			_executor = new Executor(client, "", "", false);
+			_executor = new ExecutorREST(client, "", "", false);
 		}
 
 		public async Task<StatsIntradayResponse> StatsIntradayAsync()

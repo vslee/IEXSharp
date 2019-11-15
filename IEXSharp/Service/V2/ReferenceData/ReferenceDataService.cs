@@ -12,12 +12,12 @@ namespace IEXSharp.Service.V2.ReferenceData
 	internal class ReferenceDataService : IReferenceDataService
 	{
 		private readonly string _pk;
-		private readonly Executor _executor;
+		private readonly ExecutorREST _executor;
 
 		public ReferenceDataService(HttpClient client, string sk, string pk, bool sign)
 		{
 			_pk = pk;
-			_executor = new Executor(client, sk, pk, sign);
+			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
 		public async Task<IEnumerable<SymbolResponse>> SymbolsAsync() => await _executor.NoParamExecute<IEnumerable<SymbolResponse>>("ref-data/symbols", _pk);
