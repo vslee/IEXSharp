@@ -1,12 +1,12 @@
 using IEXSharp.Helper;
 using IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.Stock.Request;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace IEXSharp.Service.V2.Stock
 {
-	internal class SSEService : ISSEService
+	internal partial class SSEService : ISSEService
 	{
 		readonly ExecutorSSE executorSSE;
 		readonly string pk;
@@ -17,8 +17,26 @@ namespace IEXSharp.Service.V2.Stock
 			executorSSE = new ExecutorSSE(baseSSEURL: baseSSEURL, sk: sk, pk: pk);
 		}
 
-		public SSEClient<QuoteSSE> SubscribeQuoteSSE(IEnumerable<string> symbols, bool UTP) => UTP ?
-			executorSSE.SymbolsSubscribeSSE<QuoteSSE>("stocksUS", symbols, pk) :
-			executorSSE.SymbolsSubscribeSSE<QuoteSSE>("stocksUSNoUTP", symbols, pk);
+		public SSEClient<QuoteSSE> SubscribeQuoteSSE(
+			IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval) => UTP ?
+			executorSSE.SymbolsSubscribeSSE<QuoteSSE>($"stocksUS{intervalString(interval)}", symbols, pk) :
+			executorSSE.SymbolsSubscribeSSE<QuoteSSE>($"stocksUSNoUTP{intervalString(interval)}", symbols, pk);
+
+		static string intervalString(StockQuoteSSEInterval interval)
+		{
+			switch (interval)
+			{
+				case StockQuoteSSEInterval.Firehose:
+					return "";
+				case StockQuoteSSEInterval.OneSecond:
+					return "1Second";
+				case StockQuoteSSEInterval.FiveSeconds:
+					return "5Second";
+				case StockQuoteSSEInterval.OneMinute:
+					return "1Minute";
+				default:
+					throw new NotImplementedException();
+			}
+		}
 	}
 }

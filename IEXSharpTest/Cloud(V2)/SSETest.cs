@@ -1,4 +1,5 @@
 using IEXSharp;
+using IEXSharp.Model.Stock.Request;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,11 +17,16 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase(new object[] { "spy" })]
-		[TestCase(new object[] { "spy", "aapl" })]
-		public async Task QuoteSSETest(object[] symbols)
+		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.Firehose)]
+		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.FiveSeconds)]
+		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.OneMinute)]
+		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.OneSecond)]
+		[TestCase(new object[] { "spy" }, true, StockQuoteSSEInterval.OneSecond)]
+		[TestCase(new object[] { "spy", "aapl" }, false, StockQuoteSSEInterval.OneSecond)]
+		public async Task QuoteSSETest(object[] symbols, bool UTP, StockQuoteSSEInterval interval)
 		{
-			using (var sseClient = sandBoxClient.SSE.SubscribeQuoteSSE(symbols.Cast<string>(), UTP: false))
+			using (var sseClient = sandBoxClient.SSE.SubscribeQuoteSSE(
+										symbols.Cast<string>(), UTP: UTP, interval: interval))
 			{
 				sseClient.Error += (s, e) =>
 				{
