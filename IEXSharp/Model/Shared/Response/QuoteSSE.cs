@@ -59,5 +59,8 @@ namespace IEXSharp.Model.Shared.Response
 		public decimal week52Low { get; set; }
 		public decimal ytdChange { get; set; }
 		public long lastTradeTime { get; set; }
+
+		public override string ToString() =>
+			$"{symbol},{latestTime},{latestPrice},{latestVolume}";
 	}
 }

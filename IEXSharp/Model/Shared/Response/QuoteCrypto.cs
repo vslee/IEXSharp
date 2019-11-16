@@ -20,5 +20,8 @@ namespace IEXSharp.Model.Shared.Response
 		public decimal? high { get; set; }
 		public decimal? low { get; set; }
 		public decimal? previousClose { get; set; }
+
+		public override string ToString() =>
+			$"{symbol},{latestUpdate},{latestPrice},{latestVolume}";
 	}
 }
