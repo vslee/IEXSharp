@@ -9,6 +9,7 @@ namespace IEXSharp.Service.V2.Stock
 {
 	public interface ISSEService
 	{
-		SSEClient<QuoteSSE> SubscribeQuoteSSE(IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval);
+		SSEClient<QuoteSSE> SubscribeStockQuoteUSSSE(IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval);
+		SSEClient<QuoteCrypto> SubscribeCryptoQuoteSSE(IEnumerable<string> symbols);
 	}
 }

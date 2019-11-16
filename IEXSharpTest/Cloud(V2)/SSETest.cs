@@ -23,10 +23,32 @@ namespace IEXSharpTest.Cloud
 		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.OneSecond)]
 		[TestCase(new object[] { "spy" }, true, StockQuoteSSEInterval.OneSecond)]
 		[TestCase(new object[] { "spy", "aapl" }, false, StockQuoteSSEInterval.OneSecond)]
-		public async Task QuoteSSETest(object[] symbols, bool UTP, StockQuoteSSEInterval interval)
+		public async Task StockQuoteUSSSETest(object[] symbols, bool UTP, StockQuoteSSEInterval interval)
 		{
-			using (var sseClient = sandBoxClient.SSE.SubscribeQuoteSSE(
+			using (var sseClient = sandBoxClient.SSE.SubscribeStockQuoteUSSSE(
 										symbols.Cast<string>(), UTP: UTP, interval: interval))
+			{
+				sseClient.Error += (s, e) =>
+				{
+					sseClient.Close();
+					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+				};
+				sseClient.MessageReceived += m =>
+				{
+					sseClient.Close();
+					Assert.Pass(m.ToString());
+				};
+				await sseClient.StartAsync();
+			}
+		}
+
+		[Test]
+		[TestCase(new object[] { "btcusdt" })]
+		[TestCase(new object[] { "btcusdt", "ethusdt" })]
+		public async Task CryptoQuoteSSETest(object[] symbols)
+		{
+			using (var sseClient = sandBoxClient.SSE.SubscribeCryptoQuoteSSE(
+										symbols.Cast<string>()))
 			{
 				sseClient.Error += (s, e) =>
 				{

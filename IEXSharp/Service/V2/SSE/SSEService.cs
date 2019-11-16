@@ -17,10 +17,13 @@ namespace IEXSharp.Service.V2.Stock
 			executorSSE = new ExecutorSSE(baseSSEURL: baseSSEURL, sk: sk, pk: pk);
 		}
 
-		public SSEClient<QuoteSSE> SubscribeQuoteSSE(
+		public SSEClient<QuoteSSE> SubscribeStockQuoteUSSSE(
 			IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval) => UTP ?
 			executorSSE.SymbolsSubscribeSSE<QuoteSSE>($"stocksUS{intervalString(interval)}", symbols, pk) :
 			executorSSE.SymbolsSubscribeSSE<QuoteSSE>($"stocksUSNoUTP{intervalString(interval)}", symbols, pk);
+
+		public SSEClient<QuoteCrypto> SubscribeCryptoQuoteSSE(IEnumerable<string> symbols) =>
+			executorSSE.SymbolsSubscribeSSE<QuoteCrypto>("cryptoQuotes", symbols, pk);
 
 		static string intervalString(StockQuoteSSEInterval interval)
 		{
