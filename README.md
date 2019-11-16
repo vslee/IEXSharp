@@ -8,24 +8,43 @@ IEX Cloud API for C# and other .net languages
 
 ## Usage
 
-Package is available at [Nuget](https://www.nuget.org/packages/IEXSharp/)
+Package is available at [NuGet](https://www.nuget.org/packages/IEXSharp/)
 
-### V1
-
-```c#
-IEXRestV1Client iexClient = new IEXRestV1Client();
-```
-
-### V2
+### IEX Cloud
 ```c#
 //For FREE and LAUNCH users
-IEXRestV2Client iexClient = new IEXRestV2Client("publishToken", "secretToken", false, false); 
+IEXCloudClient iexClient = new IEXCloudClient("publishToken", "secretToken", false, false); 
 
 //For SCALE and GROW users
-IEXRestV2Client iexClient = new IEXRestV2Client("publishToken", "secretToken", true, false); 
+IEXCloudClient iexClient = new IEXCloudClient("publishToken", "secretToken", true, false); 
 
 //Sandbox
-IEXRestV2Client iexClient = new IEXRestV2Client("publishToken", "secretToken", false, true); 
+IEXCloudClient iexClient = new IEXCloudClient("publishToken", "secretToken", false, true); 
+```
+To use SSE streaming (only included with paid subscription plans)
+```c#
+using (var sseClient = iexClient.SSE.SubscribeStockQuoteUSSSE(
+							symbols.Cast<string>(), UTP: false, interval: StockQuoteSSEInterval.OneSecond))
+{
+	sseClient.Error += (s, e) =>
+	{
+		Console.WriteLine("Error Occurred. Details: {0}", e.Exception.Message);
+	};
+	sseClient.MessageReceived += m =>
+	{
+		Console.WriteLine(m.ToString());
+	};
+	await sseClient.StartAsync(); // this will block unless cancelled
+}
+
+```
+Additional usage examples are illustrated in the test project: `IEXSharpTest`
+
+### Legacy (V1)
+
+IEX has deprecated most of their legacy API. However, some functions are still active and you can access them via:
+```c#
+IEXV1RestClient iexClient = new IEXV1RestClient();
 ```
 
 ## Contributing
