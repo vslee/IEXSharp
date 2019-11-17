@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.0</Version>
+		<VersionPrefix>1.1.0</VersionPrefix>
     <Authors>Victor Lee</Authors>
     <Company />
     <Description>IEX Cloud API</Description>
@@ -13,8 +13,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>IEX Cloud Stock API Rest</PackageTags>
     <PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
+    <!--<AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>-->
   </PropertyGroup>
 
   <ItemGroup>

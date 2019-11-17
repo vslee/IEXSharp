@@ -14,8 +14,8 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release --version-suffix prerelease-{{date +%Y%m%d%H%M%S}}
     - name: Setup nuget config
-      run: sed 's/GITHUB_TOKEN/${{ secrets.GHPackagesToken }}/g' .nuget.config > nuget.config
+      run: sed 's/GHPackagesToken/${{ secrets.GHPackagesToken }}/g' NuGet.config > NuGet.config
     - name: Publish nuget
-      run: dotnet nuget push src/bin/Release/*.nupkg -s "github"
+      run: dotnet nuget push IEXSharp/bin/Release/*.nupkg -s "github"
