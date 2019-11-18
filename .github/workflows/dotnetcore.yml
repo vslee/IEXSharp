@@ -16,7 +16,7 @@ jobs:
     - name: Build with dotnet
       run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
     - name: Setup nuget config # use .NuGet.config for now 2/2 GH bug https://github.com/NuGet/Home/issues/8580
-      run: sed 's/GHPackagesToken/${{ secrets.GHPackagesToken }}/g' .NuGet.config > NuGet.config
+      run: sed 's/GHPackagesToken/${{ secrets.GHPackagesToken }}/g' .nuget.config > nuget.config
     #- name: Add GitHub Packages to NuGet
     # run: nuget sources add -name "GitHubPackages" -Source https://nuget.pkg.github.com/vslee/index.json -Username vslee -Password ${{ secrets.GHPackagesToken }}
     - name: Publish nuget
