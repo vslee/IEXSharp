@@ -9,9 +9,9 @@
     <Description>IEX Cloud API</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/vslee/IEXSharp</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/vslee/IEXSharp/IEXSharp.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>IEX Cloud Stock API Rest</PackageTags>
+		<RepositoryUrl>https://github.com/vslee/IEXSharp</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>IEX Cloud Stock API Rest</PackageTags>
     <PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
     <!--<AssemblyVersion>1.1.0</AssemblyVersion>
     <FileVersion>1.1.0</FileVersion>-->
