@@ -24,16 +24,16 @@ jobs:
       uses: warrenbuckley/Setup-Nuget@v1
     #- name: Setup nuget config # use .NuGet.config for now 2/2 GH bug https://github.com/NuGet/Home/issues/8580
     #  run: sed 's/GHPackagesToken/${{ secrets.GHPackagesToken }}/g' .nuget.config > nuget.config
-    - name: Add GitHub Packages to NuGet
+    - name: Add GitHub Packages source to NuGet
       run: nuget sources add -name "GitHubPackages" -Source https://nuget.pkg.github.com/vslee/index.json -Username vslee -Password ${{ secrets.GHPackagesToken }}
-    - name: list dir
-      run: |
-           dir
-           cd IEXSharp
-           dir
-           cd bin
-           dir
-           cd Release
-           dir
+    #- name: list dir
+    #  run: |
+    #       dir
+    #       cd IEXSharp
+    #       dir
+    #       cd bin
+    #       dir
+    #       cd Release
+    #       dir
     - name: Publish nuget
-      run: dotnet nuget push IEXSharp/bin/Release/*.nupkg -s "GitHubPackages"
+      run: nuget push .\IEXSharp\bin\Release\*.nupkg -Source "GitHubPackages"
