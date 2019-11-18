@@ -18,7 +18,8 @@ jobs:
     #  with:
     #    dotnet-version: 2.2.108
     - name: Build with dotnet
-      run:  dotnet build --configuration Release --version-suffix prerelease-$(Get-Date -Format "yyyyMMddHHmmss")
+      run:  dotnet build --configuration Release 
+    #--version-suffix prerelease-$(Get-Date -Format "yyyyMMddHHmmss")
     #  run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
     - name: Install NuGet client
       uses: warrenbuckley/Setup-Nuget@v1
