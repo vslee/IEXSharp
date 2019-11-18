@@ -36,4 +36,5 @@ jobs:
     #       cd Release
     #       dir
     - name: Publish nuget
-      run: nuget push .\IEXSharp\bin\Release\*.nupkg -Source "GitHubPackages"
+      run: dotnet nuget push .\IEXSharp\bin\Release\*.nupkg -s "GitHubPackages"
+     # run: curl -vX PUT -u "vslee:${{ secrets.GHPackagesToken }}" -F package=@OpenMedicus.Data.2.6.109.nupkg https://nuget.pkg.github.com/vslee/
