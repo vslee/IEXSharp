@@ -15,5 +15,7 @@ jobs:
         dotnet-version: 2.2.108
     - name: Build with dotnet
       run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
+    - name: Add GitHub Packages to NuGet
+      run: nuget sources add -name "GitHubPackages" -Source https://nuget.pkg.github.com/vslee/index.json -Username vslee -Password ${{ secrets.GHPackagesToken }}
     - name: Publish nuget
-      run: dotnet nuget push IEXSharp/bin/Release/*.nupkg -s https://nuget.pkg.github.com/vslee/index.json -k ${{ secrets.GHPackagesToken }}
+      run: dotnet nuget push IEXSharp/bin/Release/*.nupkg -s "GitHubPackages"
