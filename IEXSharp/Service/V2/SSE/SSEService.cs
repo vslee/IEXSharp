@@ -41,5 +41,8 @@ namespace IEXSharp.Service.V2.Stock
 					throw new NotImplementedException();
 			}
 		}
+
+		public SSEClient<EventCrypto> SubscribeCryptoEventSSE(IEnumerable<string> symbols) =>
+			executorSSE.SymbolsSubscribeSSE<EventCrypto>("cryptoEvents", symbols, pk);
 	}
 }

@@ -11,5 +11,6 @@ namespace IEXSharp.Service.V2.Stock
 	{
 		SSEClient<QuoteSSE> SubscribeStockQuoteUSSSE(IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval);
 		SSEClient<QuoteCrypto> SubscribeCryptoQuoteSSE(IEnumerable<string> symbols);
+		SSEClient<EventCrypto> SubscribeCryptoEventSSE(IEnumerable<string> symbols);
 	}
 }

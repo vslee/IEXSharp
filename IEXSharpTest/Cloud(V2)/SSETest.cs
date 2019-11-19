@@ -63,5 +63,27 @@ namespace IEXSharpTest.Cloud
 				await sseClient.StartAsync();
 			}
 		}
+
+		[Test]
+		[TestCase(new object[] { "btcusdt" })]
+		[TestCase(new object[] { "btcusdt", "ethusdt" })]
+		public async Task CryptoEventSSETest(object[] symbols)
+		{
+			using (var sseClient = sandBoxClient.SSE.SubscribeCryptoEventSSE(
+										symbols.Cast<string>()))
+			{
+				sseClient.Error += (s, e) =>
+				{
+					sseClient.Close();
+					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+				};
+				sseClient.MessageReceived += m =>
+				{
+					sseClient.Close();
+					Assert.Pass(m.ToString());
+				};
+				await sseClient.StartAsync();
+			}
+		}
 	}
 }
