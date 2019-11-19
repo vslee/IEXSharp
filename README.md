@@ -7,8 +7,9 @@ IEX Cloud API for C# and other .net languages. Supports SSE streaming
  This library currently targets `netstandard20`. Thus, it can be used with .net framework 4.6.1+ and .net core 2.0+
 
 ## Usage
+![](https://github.com/vslee/iexsharp/workflows/prerelease%20NuGet/badge.svg) Prerelease packages are on [GH Packages](https://github.com/vslee/IEXSharp/packages). 
 
-Package is available at [NuGet](https://www.nuget.org/packages/IEXSharp/)
+Releases are on [NuGet](https://www.nuget.org/packages/IEXSharp/)
 
 ### IEX Cloud
 ```c#

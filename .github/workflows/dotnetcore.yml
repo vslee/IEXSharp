@@ -16,7 +16,7 @@ jobs:
     #  uses: actions/setup-dotnet@v1
     #  with:
     #    dotnet-version: 2.2.108
-    - name: Build with dotnet
+    - name: Build with dotnet and create prerelease nupkg
       run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
       shell: bash
     #  run:  dotnet build --configuration Release --version-suffix prerelease-$(Get-Date -Format "yyyyMMddHHmmss")
@@ -35,7 +35,7 @@ jobs:
     #       dir
     #       cd Release
     #       dir
-    - name: Publish nuget
+    - name: Publish nuget to GitHub Packages
       run: |
            for f in ./IEXSharp/bin/Release/*.nupkg
            do

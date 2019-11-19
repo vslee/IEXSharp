@@ -11,7 +11,7 @@
     <PackageProjectUrl>https://github.com/vslee/IEXSharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vslee/IEXSharp</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageTags>IEX Cloud Stock API Rest</PackageTags>
+		<PackageTags>IEX Cloud Stock API Rest SSE dotnet finance-api market-data</PackageTags>
     <PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
     <!--<AssemblyVersion>1.1.0</AssemblyVersion>
     <FileVersion>1.1.0</FileVersion>-->
