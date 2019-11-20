@@ -11,13 +11,28 @@
     <PackageProjectUrl>https://github.com/vslee/IEXSharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vslee/IEXSharp</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl><!--for SourceLink-->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<!--for SourceLink-->
 		<PackageTags>IEX Cloud Stock API Rest SSE dotnet finance-api market-data</PackageTags>
     <PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
+    <Configurations>Debug;Release;PreRelease</Configurations>
     <!--<AssemblyVersion>1.1.0</AssemblyVersion>
     <FileVersion>1.1.0</FileVersion>-->
   </PropertyGroup>
 
-  <ItemGroup>
+	<!--when prereleasing, embed symbols PDB in main nupkg bc GH Pakages doesn't have its own symbol server-->
+	<PropertyGroup Condition="'$(Configuration)'=='PreRelease'">
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+
+	<!--when releasing to NuGet, create a separate snupkg-->
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<ItemGroup>
     <Folder Include="Model\AlternativeData\Request\" />
     <Folder Include="Model\ForexCurrencies\Request\" />
     <Folder Include="Model\InvestorsExchangeData\Request\" />
@@ -27,6 +42,7 @@
   <ItemGroup>
     <PackageReference Include="LaunchDarkly.EventSource" Version="3.3.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19554-01" PrivateAssets="All" /><!--development dependency, which means it is only used during build.-->
+	</ItemGroup>
 
 </Project>

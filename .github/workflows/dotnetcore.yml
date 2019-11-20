@@ -17,7 +17,7 @@ jobs:
     #  with:
     #    dotnet-version: 2.2.108
     - name: Build with dotnet and create prerelease nupkg
-      run: dotnet build --configuration Release --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
+      run: dotnet build --configuration PreRelease --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
       shell: bash
     #  run:  dotnet build --configuration Release --version-suffix prerelease-$(Get-Date -Format "yyyyMMddHHmmss")
     #- name: Install NuGet client
@@ -37,9 +37,9 @@ jobs:
     #       dir
     - name: Publish nuget to GitHub Packages
       run: |
-           for f in ./IEXSharp/bin/Release/*.nupkg
+           for f in ./IEXSharp/bin/PreRelease/*.nupkg
            do
              curl -vX PUT -u "vslee:${{ secrets.GHPackagesToken }}" -F package=@$f https://nuget.pkg.github.com/vslee/
            done
       shell: bash
-    #  run: dotnet nuget push .\IEXSharp\bin\Release\*.nupkg -s "GitHubPackages"
+    #  run: dotnet nuget push .\IEXSharp\bin\PreRelease\*.nupkg -s "GitHubPackages"
