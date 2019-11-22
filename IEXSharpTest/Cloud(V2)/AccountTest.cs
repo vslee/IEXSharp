@@ -1,10 +1,10 @@
 using NUnit.Framework;
 using System.Threading.Tasks;
-using IEXSharp;
-using IEXSharp.Model.Account.Request;
-using IEXSharp.Model.Account.Response;
+using VSLee.IEXSharp;
+using VSLee.IEXSharp.Model.Account.Request;
+using VSLee.IEXSharp.Model.Account.Response;
 
-namespace IEXSharpTest.Cloud
+namespace VSLee.IEXSharpTest.Cloud
 {
 	public class AccountTest
 	{

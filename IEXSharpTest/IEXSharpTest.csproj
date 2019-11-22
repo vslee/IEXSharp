@@ -8,6 +8,10 @@
     <Authors>Victor Lee</Authors>
 
     <Company />
+
+    <PackageId>VSLee.IEXSharpTest</PackageId>
+
+    <Product>VSLee.IEXSharpTest</Product>
   </PropertyGroup>
 
   <ItemGroup>

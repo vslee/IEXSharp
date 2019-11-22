@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using IEXSharp.Model.Account.Request;
-using IEXSharp.Model.Account.Response;
+using VSLee.IEXSharp.Model.Account.Request;
+using VSLee.IEXSharp.Model.Account.Response;
 
-namespace IEXSharp.Service.V2.Account
+namespace VSLee.IEXSharp.Service.V2.Account
 {
 	public interface IAccountService
 	{

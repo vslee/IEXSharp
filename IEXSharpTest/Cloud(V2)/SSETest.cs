@@ -1,10 +1,10 @@
-using IEXSharp;
-using IEXSharp.Model.Stock.Request;
+using VSLee.IEXSharp;
+using VSLee.IEXSharp.Model.Stock.Request;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IEXSharpTest.Cloud
+namespace VSLee.IEXSharpTest.Cloud
 {
 	public class SSETest
 	{

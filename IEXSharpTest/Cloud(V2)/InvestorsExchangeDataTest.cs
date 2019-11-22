@@ -2,9 +2,9 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using IEXSharp;
+using VSLee.IEXSharp;
 
-namespace IEXSharpTest.Cloud
+namespace VSLee.IEXSharpTest.Cloud
 {
 	public class InvestorsExchangeDataTest
 	{

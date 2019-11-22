@@ -2,10 +2,10 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using IEXSharp;
-using IEXSharp.Model.ReferenceData.Request;
+using VSLee.IEXSharp;
+using VSLee.IEXSharp.Model.ReferenceData.Request;
 
-namespace IEXSharpTest.Cloud
+namespace VSLee.IEXSharpTest.Cloud
 {
 	public class ReferenceDataTest
 	{

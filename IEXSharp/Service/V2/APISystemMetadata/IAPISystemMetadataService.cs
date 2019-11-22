@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using IEXSharp.Model.APISystemMetadata.Response;
+using VSLee.IEXSharp.Model.APISystemMetadata.Response;
 
-namespace IEXSharp.Service.V2.APISystemMetadata
+namespace VSLee.IEXSharp.Service.V2.APISystemMetadata
 {
 	public interface IAPISystemMetadataService
 	{

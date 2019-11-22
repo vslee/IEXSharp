@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace IEXSharp.Helper
+namespace VSLee.IEXSharp.Helper
 {
 	/// <summary>
 	/// Sign request for IEX API V2

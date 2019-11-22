@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Helper
+namespace VSLee.IEXSharp.Helper
 {
 	public class SSEClient<T> : IDisposable //,IEventSource
 	{

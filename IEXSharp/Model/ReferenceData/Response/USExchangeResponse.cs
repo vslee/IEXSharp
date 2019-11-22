@@ -1,4 +1,4 @@
-﻿namespace IEXSharp.Model.ReferenceData.Response
+﻿namespace VSLee.IEXSharp.Model.ReferenceData.Response
 {
 	public class USExchangeResponse
 	{

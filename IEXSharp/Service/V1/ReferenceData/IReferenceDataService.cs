@@ -1,8 +1,8 @@
-﻿using IEXSharp.Model.ReferenceData.Response;
+﻿using VSLee.IEXSharp.Model.ReferenceData.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Service.V1.ReferenceData
+namespace VSLee.IEXSharp.Service.V1.ReferenceData
 {
 	public interface IReferenceDataService
 	{

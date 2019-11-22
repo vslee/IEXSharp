@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using IEXSharp.Model.ForexCurrencies.Response;
+using VSLee.IEXSharp.Model.ForexCurrencies.Response;
 
-namespace IEXSharp.Service.V2.ForexCurrencies
+namespace VSLee.IEXSharp.Service.V2.ForexCurrencies
 {
 	public interface IForexCurrenciesService
 	{

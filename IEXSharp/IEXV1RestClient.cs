@@ -1,11 +1,11 @@
-﻿using IEXSharp.Service.V1.Market;
-using IEXSharp.Service.V1.ReferenceData;
-using IEXSharp.Service.V1.Stats;
-using IEXSharp.Service.V1.Stock;
+﻿using VSLee.IEXSharp.Service.V1.Market;
+using VSLee.IEXSharp.Service.V1.ReferenceData;
+using VSLee.IEXSharp.Service.V1.Stats;
+using VSLee.IEXSharp.Service.V1.Stock;
 using System;
 using System.Net.Http;
 
-namespace IEXSharp
+namespace VSLee.IEXSharp
 {
 	public class IEXV1RestClient : IDisposable
 	{

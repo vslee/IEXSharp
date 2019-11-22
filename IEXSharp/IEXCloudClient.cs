@@ -1,14 +1,14 @@
 using System;
 using System.Net.Http;
-using IEXSharp.Service.V2.Account;
-using IEXSharp.Service.V2.AlternativeData;
-using IEXSharp.Service.V2.APISystemMetadata;
-using IEXSharp.Service.V2.ForexCurrencies;
-using IEXSharp.Service.V2.InvestorsExchangeData;
-using IEXSharp.Service.V2.ReferenceData;
-using IEXSharp.Service.V2.Stock;
+using VSLee.IEXSharp.Service.V2.Account;
+using VSLee.IEXSharp.Service.V2.AlternativeData;
+using VSLee.IEXSharp.Service.V2.APISystemMetadata;
+using VSLee.IEXSharp.Service.V2.ForexCurrencies;
+using VSLee.IEXSharp.Service.V2.InvestorsExchangeData;
+using VSLee.IEXSharp.Service.V2.ReferenceData;
+using VSLee.IEXSharp.Service.V2.Stock;
 
-namespace IEXSharp
+namespace VSLee.IEXSharp
 {
 	public class IEXCloudClient : IDisposable
 	{

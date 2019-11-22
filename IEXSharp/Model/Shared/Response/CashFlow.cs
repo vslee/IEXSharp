@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IEXSharp.Model.Shared.Response
+namespace VSLee.IEXSharp.Model.Shared.Response
 {
 	public class Cashflow
 	{

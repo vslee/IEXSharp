@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace IEXSharp.Model.Account.Response
+namespace VSLee.IEXSharp.Model.Account.Response
 {
 	public class UsageResponse
 	{

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace IEXSharp.Model.Stock.Request
+namespace VSLee.IEXSharp.Model.Stock.Request
 {
 	public enum StockQuoteSSEInterval
 	{

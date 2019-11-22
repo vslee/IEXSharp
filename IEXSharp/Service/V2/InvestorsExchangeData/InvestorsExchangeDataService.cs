@@ -1,5 +1,5 @@
-﻿using IEXSharp.Helper;
-using IEXSharp.Model.InvestorsExchangeData.Response;
+﻿using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Service.V2.InvestorsExchangeData
+namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 {
 	internal class InvestorsExchangeDataService : IInvestorsExchangeDataService
 	{

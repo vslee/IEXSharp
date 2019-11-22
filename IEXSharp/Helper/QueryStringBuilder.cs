@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Web;
 
-namespace IEXSharp.Helper
+namespace VSLee.IEXSharp.Helper
 {
 	/// <summary>
 	/// Simple query string builder

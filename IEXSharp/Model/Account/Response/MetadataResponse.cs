@@ -1,4 +1,4 @@
-﻿namespace IEXSharp.Model.Account.Response
+﻿namespace VSLee.IEXSharp.Model.Account.Response
 {
 	public class MetadataResponse
 	{

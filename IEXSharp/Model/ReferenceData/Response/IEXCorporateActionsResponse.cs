@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IEXSharp.Model.ReferenceData.Response
+namespace VSLee.IEXSharp.Model.ReferenceData.Response
 {
 	public class IEXCorporateActionsResponse
 	{

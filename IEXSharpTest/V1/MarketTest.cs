@@ -1,10 +1,10 @@
-﻿using IEXSharp;
+﻿using VSLee.IEXSharp;
 using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IEXSharpTest.V1
+namespace VSLee.IEXSharpTest.V1
 {
 	public class MarketTest
 	{

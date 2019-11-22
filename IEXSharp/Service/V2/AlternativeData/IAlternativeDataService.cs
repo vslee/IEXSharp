@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using IEXSharp.Model.AlternativeData.Response;
-using IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.AlternativeData.Response;
+using VSLee.IEXSharp.Model.Shared.Response;
 
-namespace IEXSharp.Service.V2.AlternativeData
+namespace VSLee.IEXSharp.Service.V2.AlternativeData
 {
 	public interface IAlternativeDataService
 	{

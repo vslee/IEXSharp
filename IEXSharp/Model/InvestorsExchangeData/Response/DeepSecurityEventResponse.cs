@@ -1,6 +1,6 @@
-﻿using IEXSharp.Model.Shared.Response;
+﻿using VSLee.IEXSharp.Model.Shared.Response;
 
-namespace IEXSharp.Model.InvestorsExchangeData.Response
+namespace VSLee.IEXSharp.Model.InvestorsExchangeData.Response
 {
 	public class DeepSecurityEventResponse : SecurityEvent
 	{

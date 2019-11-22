@@ -1,12 +1,12 @@
-﻿using IEXSharp.Helper;
-using IEXSharp.Model.AlternativeData.Response;
-using IEXSharp.Model.Shared.Response;
+﻿using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Model.AlternativeData.Response;
+using VSLee.IEXSharp.Model.Shared.Response;
 using System;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Service.V2.AlternativeData
+namespace VSLee.IEXSharp.Service.V2.AlternativeData
 {
 	internal class AlternativeDataService : IAlternativeDataService
 	{

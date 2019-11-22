@@ -1,11 +1,11 @@
-using IEXSharp.Helper;
-using IEXSharp.Model.Shared.Response;
-using IEXSharp.Model.Stock.Request;
+using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.Stock.Request;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace IEXSharp.Service.V2.Stock
+namespace VSLee.IEXSharp.Service.V2.Stock
 {
 	public interface ISSEService
 	{

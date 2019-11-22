@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
-using IEXSharp;
+using VSLee.IEXSharp;
 
-namespace IEXSharpTest.Cloud
+namespace VSLee.IEXSharpTest.Cloud
 {
 	public class AlternativeDataTest
 	{

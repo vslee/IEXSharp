@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
 
-namespace IEXSharp.Helper
+namespace VSLee.IEXSharp.Helper
 {
 	internal class ExecutorBase
 	{

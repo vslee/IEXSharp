@@ -1,12 +1,12 @@
-﻿using IEXSharp.Model.Shared.Response;
-using IEXSharp.Model.Stock.Request;
-using IEXSharp.Model.Stock.Response;
-using IEXSharp.Helper;
+﻿using VSLee.IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.Stock.Request;
+using VSLee.IEXSharp.Model.Stock.Response;
+using VSLee.IEXSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Service.V2.Stock
+namespace VSLee.IEXSharp.Service.V2.Stock
 {
 	public interface IStockService
 	{

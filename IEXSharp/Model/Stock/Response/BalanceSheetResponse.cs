@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IEXSharp.Model.Stock.Response
+namespace VSLee.IEXSharp.Model.Stock.Response
 {
 	public class BalanceSheetResponse
 	{

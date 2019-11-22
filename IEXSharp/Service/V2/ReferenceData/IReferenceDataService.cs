@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IEXSharp.Model.ReferenceData.Request;
-using IEXSharp.Model.ReferenceData.Response;
+using VSLee.IEXSharp.Model.ReferenceData.Request;
+using VSLee.IEXSharp.Model.ReferenceData.Response;
 
-namespace IEXSharp.Service.V2.ReferenceData
+namespace VSLee.IEXSharp.Service.V2.ReferenceData
 {
 	public interface IReferenceDataService
 	{

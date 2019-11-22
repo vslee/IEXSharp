@@ -6,7 +6,7 @@
 		<VersionPrefix>1.1.0</VersionPrefix>
     <Authors>Victor Lee</Authors>
     <Company />
-    <Description>IEX Cloud API</Description>
+    <Description>IEX Cloud API for C# and other .net languages. Supports SSE streaming</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/vslee/IEXSharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vslee/IEXSharp</RepositoryUrl>
@@ -17,6 +17,8 @@
 		<PackageTags>IEX Cloud Stock API Rest SSE dotnet finance-api market-data</PackageTags>
     <PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
     <Configurations>Debug;Release;PreRelease</Configurations>
+    <PackageId>VSLee.IEXSharp</PackageId>
+    <Product>VSLee.IEXSharp</Product>
     <!--<AssemblyVersion>1.1.0</AssemblyVersion>
     <FileVersion>1.1.0</FileVersion>-->
   </PropertyGroup>

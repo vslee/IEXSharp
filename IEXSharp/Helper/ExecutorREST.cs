@@ -5,7 +5,7 @@ using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Helper
+namespace VSLee.IEXSharp.Helper
 {
 	internal class ExecutorREST : ExecutorBase
 	{

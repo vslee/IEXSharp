@@ -1,4 +1,4 @@
-﻿namespace IEXSharp.Model.Stock.Response
+﻿namespace VSLee.IEXSharp.Model.Stock.Response
 {
 	public class LogoResponse
 	{

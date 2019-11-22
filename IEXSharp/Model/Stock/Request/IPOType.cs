@@ -1,4 +1,4 @@
-﻿namespace IEXSharp.Model.Stock.Request
+﻿namespace VSLee.IEXSharp.Model.Stock.Request
 {
 	public enum IPOType
 	{

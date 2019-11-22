@@ -1,4 +1,4 @@
-﻿namespace IEXSharp.Model.ReferenceData.Request
+﻿namespace VSLee.IEXSharp.Model.ReferenceData.Request
 {
 	public enum DirectionType
 	{

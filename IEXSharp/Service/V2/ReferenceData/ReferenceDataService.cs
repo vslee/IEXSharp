@@ -1,13 +1,13 @@
-﻿using IEXSharp.Helper;
-using IEXSharp.Model.ReferenceData.Request;
-using IEXSharp.Model.ReferenceData.Response;
+﻿using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Model.ReferenceData.Request;
+using VSLee.IEXSharp.Model.ReferenceData.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Service.V2.ReferenceData
+namespace VSLee.IEXSharp.Service.V2.ReferenceData
 {
 	internal class ReferenceDataService : IReferenceDataService
 	{

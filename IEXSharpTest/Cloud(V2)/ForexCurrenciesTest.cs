@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using IEXSharp;
+using VSLee.IEXSharp;
 
-namespace IEXSharpTest.Cloud
+namespace VSLee.IEXSharpTest.Cloud
 {
 	public class ForexCurrenciesTest
 	{

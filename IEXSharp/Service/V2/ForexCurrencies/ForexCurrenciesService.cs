@@ -1,10 +1,10 @@
-﻿using IEXSharp.Helper;
-using IEXSharp.Model.ForexCurrencies.Response;
+﻿using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Model.ForexCurrencies.Response;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Service.V2.ForexCurrencies
+namespace VSLee.IEXSharp.Service.V2.ForexCurrencies
 {
 	internal class ForexCurrenciesService : IForexCurrenciesService
 	{

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace IEXSharp.Model.InvestorsExchangeData.Response
+namespace VSLee.IEXSharp.Model.InvestorsExchangeData.Response
 {
 	public class ListedRegulationSHOThresholdSecuritiesListResponse
 	{

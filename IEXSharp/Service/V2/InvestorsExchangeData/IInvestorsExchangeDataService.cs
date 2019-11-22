@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IEXSharp.Model.InvestorsExchangeData.Response;
+using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
 
-namespace IEXSharp.Service.V2.InvestorsExchangeData
+namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 {
 	public interface IInvestorsExchangeDataService
 	{

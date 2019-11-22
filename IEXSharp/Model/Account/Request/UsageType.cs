@@ -1,4 +1,4 @@
-﻿namespace IEXSharp.Model.Account.Request
+﻿namespace VSLee.IEXSharp.Model.Account.Request
 {
 	public enum UsageType
 	{

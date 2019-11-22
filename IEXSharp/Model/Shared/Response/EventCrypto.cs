@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace IEXSharp.Model.Shared.Response
+namespace VSLee.IEXSharp.Model.Shared.Response
 {
 	public class EventCrypto
 	{

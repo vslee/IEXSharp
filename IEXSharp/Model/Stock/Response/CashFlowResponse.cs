@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.Shared.Response;
 
-namespace IEXSharp.Model.Stock.Response
+namespace VSLee.IEXSharp.Model.Stock.Response
 {
 	public class CashFlowResponse
 	{

@@ -1,4 +1,4 @@
-﻿namespace IEXSharp.Model.ForexCurrencies.Response
+﻿namespace VSLee.IEXSharp.Model.ForexCurrencies.Response
 {
 	public class ExchangeRateResponse
 	{
