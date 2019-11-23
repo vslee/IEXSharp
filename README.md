@@ -4,7 +4,7 @@ IEX Cloud API for C# and other .net languages. Supports SSE streaming
 
 ## Prerequisites
 
- This library currently targets `netstandard20`. Thus, it can be used with .net framework 4.6.1+ and .net core 2.0+
+ This library currently targets `netstandard20`. Thus, it can be used with `.net framework 4.6.1`+ and `.net core 2.0`+
 
 ## Usage
 ![](https://github.com/vslee/iexsharp/workflows/prerelease%20NuGet/badge.svg) Prerelease packages are on [GH Packages](https://github.com/vslee/IEXSharp/packages). 
@@ -24,8 +24,8 @@ IEXCloudClient iexClient = new IEXCloudClient("publishToken", "secretToken", fal
 ```
 To use SSE streaming (only included with paid IEX subscription plans)
 ```c#
-using (var sseClient = iexClient.SSE.SubscribeStockQuoteUSSSE(
-							symbols.Cast<string>(), UTP: false, interval: StockQuoteSSEInterval.OneSecond))
+using (var sseClient = iexClient.SSE.SubscribeStockQuoteUSSSE(symbols: new string[] { "spy", "aapl" }, 
+	UTP: false, interval: StockQuoteSSEInterval.OneSecond))
 {
 	sseClient.Error += (s, e) =>
 	{
@@ -35,11 +35,11 @@ using (var sseClient = iexClient.SSE.SubscribeStockQuoteUSSSE(
 	{
 		Console.WriteLine(m.ToString());
 	};
-	await sseClient.StartAsync(); // this will block unless cancelled
+	await sseClient.StartAsync(); // this will block until cancelled
 }
 
 ```
-Additional usage examples are illustrated in the test project: `IEXSharpTest`
+Additional usage examples are illustrated in the test project: [`IEXSharpTest`](https://github.com/vslee/IEXSharp/tree/master/IEXSharpTest/Cloud(V2))
 
 ### Legacy (V1)
 
@@ -60,8 +60,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 Data provided for free by [IEX](https://iextrading.com/developer/) via their [IEX Cloud API](https://iexcloud.io/docs/api/)
 Per their [guidelines](https://iexcloud.io/docs/api/#disclaimers):
-- Required: If you display any delayed price data, you must display ì15 minute delayed priceî as a disclaimer.
-- Required: If you display latestVolume you must display ìConsolidated Volume in Real-timeî as a disclaimer.
+- Required: If you display any delayed price data, you must display ‚Äú15 minute delayed price‚Äù as a disclaimer.
+- Required: If you display latestVolume you must display ‚ÄúConsolidated Volume in Real-time‚Äù as a disclaimer.
 - Note on pricing data: All CTA and UTP pricing data is delayed at least 15 minutes.
 - This project is not related to the similarly named [IEX-Sharp](https://iexsharp.pythonanywhere.com/)
 
