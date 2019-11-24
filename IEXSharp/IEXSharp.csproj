@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<VersionPrefix>1.1.0</VersionPrefix>
+		<VersionPrefix>1.2.0</VersionPrefix>
     <Authors>Victor Lee</Authors>
     <Company />
     <Description>IEX Cloud API for C# and other .net languages. Supports SSE streaming</Description>
@@ -12,8 +12,7 @@
 		<RepositoryUrl>https://github.com/vslee/IEXSharp</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl><!--for SourceLink-->
-		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<!--for SourceLink-->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources><!--for SourceLink-->
 		<PackageTags>IEX Cloud Stock API Rest SSE dotnet finance-api market-data</PackageTags>
     <PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
     <Configurations>Debug;Release;PreRelease</Configurations>
@@ -21,8 +20,6 @@
     <Product>VSLee.IEXSharp</Product>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>2019 Victor Lee</Copyright>
-    <!--<AssemblyVersion>1.1.0</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>-->
   </PropertyGroup>
 
 	<!--when prereleasing, embed symbols PDB in main nupkg bc GH Pakages doesn't have its own symbol server-->
