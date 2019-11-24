@@ -19,6 +19,8 @@
     <Configurations>Debug;Release;PreRelease</Configurations>
     <PackageId>VSLee.IEXSharp</PackageId>
     <Product>VSLee.IEXSharp</Product>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Copyright>2019 Victor Lee</Copyright>
     <!--<AssemblyVersion>1.1.0</AssemblyVersion>
     <FileVersion>1.1.0</FileVersion>-->
   </PropertyGroup>
