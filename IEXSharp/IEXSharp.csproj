@@ -1,26 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<VersionPrefix>1.2.0</VersionPrefix>
-    <Authors>Victor Lee</Authors>
-    <Company />
-    <Description>IEX Cloud API for C# and other .net languages. Supports SSE streaming</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/vslee/IEXSharp</PackageProjectUrl>
+		<Authors>Victor Lee</Authors>
+		<Company />
+		<Description>IEX Cloud API for C# and other .net languages. Supports SSE streaming</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/vslee/IEXSharp</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/vslee/IEXSharp</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PublishRepositoryUrl>true</PublishRepositoryUrl><!--for SourceLink-->
-		<EmbedUntrackedSources>true</EmbedUntrackedSources><!--for SourceLink-->
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<!--for SourceLink-->
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<!--for SourceLink-->
 		<PackageTags>IEX Cloud Stock API Rest SSE dotnet finance-api market-data</PackageTags>
-    <PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
-    <Configurations>Debug;Release;PreRelease</Configurations>
-    <PackageId>VSLee.IEXSharp</PackageId>
-    <Product>VSLee.IEXSharp</Product>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>2019 Victor Lee</Copyright>
-  </PropertyGroup>
+		<PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
+		<Configurations>Debug;Release;PreRelease</Configurations>
+		<PackageId>VSLee.IEXSharp</PackageId>
+		<Product>VSLee.IEXSharp</Product>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<Copyright>2019 Victor Lee</Copyright>
+	</PropertyGroup>
 
 	<!--when prereleasing, embed symbols PDB in main nupkg bc GH Pakages doesn't have its own symbol server-->
 	<PropertyGroup Condition="'$(Configuration)'=='PreRelease'">
@@ -34,16 +36,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-    <Folder Include="Model\AlternativeData\Request\" />
-    <Folder Include="Model\ForexCurrencies\Request\" />
-    <Folder Include="Model\InvestorsExchangeData\Request\" />
-    <Folder Include="Model\Shared\Request\" />
-  </ItemGroup>
+		<Folder Include="Model\AlternativeData\Request\" />
+		<Folder Include="Model\ForexCurrencies\Request\" />
+		<Folder Include="Model\InvestorsExchangeData\Request\" />
+		<Folder Include="Model\Shared\Request\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="LaunchDarkly.EventSource" Version="3.3.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19554-01" PrivateAssets="All" /><!--development dependency, which means it is only used during build.-->
+	<ItemGroup>
+		<PackageReference Include="LaunchDarkly.EventSource" Version="3.3.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19554-01" PrivateAssets="All" />
+		<!--development dependency, which means it is only used during build.-->
 	</ItemGroup>
 
 </Project>
