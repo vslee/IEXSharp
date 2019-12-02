@@ -76,13 +76,13 @@ namespace VSLee.IEXSharp
 			client = new HttpClient
 			{
 				BaseAddress = sandBox
-					? new Uri("https://sandbox.iexapis.com/beta/")
-					: new Uri("https://cloud.iexapis.com/beta/")
+					? new Uri("https://sandbox.iexapis.com/stable/")
+					: new Uri("https://cloud.iexapis.com/stable/")
 			};
 			baseSSEURL = sandBox
 				? "https://sandbox-sse.iexapis.com/stable/"
 				: "https://cloud-sse.iexapis.com/stable/";
-			client.DefaultRequestHeaders.Add("User-Agent", "zh-code.com IEX API V2 .Net Wrapper");
+			client.DefaultRequestHeaders.Add("User-Agent", "VSLee.IEXSharp IEX Cloud .Net");
 			sign = signRequest;
 		}
 

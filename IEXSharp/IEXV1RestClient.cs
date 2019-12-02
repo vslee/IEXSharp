@@ -1,4 +1,4 @@
-﻿using VSLee.IEXSharp.Service.V1.Market;
+using VSLee.IEXSharp.Service.V1.Market;
 using VSLee.IEXSharp.Service.V1.ReferenceData;
 using VSLee.IEXSharp.Service.V1.Stats;
 using VSLee.IEXSharp.Service.V1.Stock;
@@ -42,7 +42,7 @@ namespace VSLee.IEXSharp
 			{
 				BaseAddress = new Uri("https://api.iextrading.com/1.0/")
 			};
-			_client.DefaultRequestHeaders.Add("User-Agent", "zh-code.com IEX API V1 .Net Wrapper");
+			_client.DefaultRequestHeaders.Add("User-Agent", "VSLee.IEXSharp IEX V1 .Net");
 		}
 
 		private bool disposed;
