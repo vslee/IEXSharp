@@ -240,32 +240,53 @@ namespace VSLee.IEXSharpTest.Cloud
 		[TestCase("AAPL", ChartRange._ytd)]
 		[TestCase("AAPL", ChartRange._1m)]
 		public async Task HistoricalPriceAsync(string symbol,
-			ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
+			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
 		{
-			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range, date, qsb);
+			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range, qsb);
 
 			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.GreaterOrEqual(response.Count(), 1);
+		}
+
+		[Test]
+		[TestCase("ORCL", ChartRange._max)]
+		public async Task HistoricalPriceNonZeroAsync(string symbol,
+			ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
+		{
+			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range, qsb);
+			foreach (var ohlc in response)
+			{
+				Assert.NotZero(ohlc.open);
+				Assert.NotZero(ohlc.high);
+				Assert.NotZero(ohlc.low);
+				Assert.NotZero(ohlc.close);
+				Assert.NotZero(ohlc.volume);
+				Assert.NotZero(ohlc.uOpen);
+				Assert.NotZero(ohlc.uHigh);
+				Assert.NotZero(ohlc.uLow);
+				Assert.NotZero(ohlc.uClose);
+				Assert.NotZero(ohlc.uVolume);
+			}
 		}
 
 		[Test]
 		public async Task HistoricalPriceAsyncDateTest()
 		{
-			var response = await sandBoxClient.Stock.HistoricalPriceAsync("AAPL", ChartRange._1m, new DateTime(2019, 3, 25));
+			var response = await sandBoxClient.Stock.HistoricalPriceByDateAsync("AAPL", new DateTime(2019, 3, 25));
 
 			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.GreaterOrEqual(response.Count(), 1);
 		}
 
-		public async Task HistoricalPriceAsyncQsbTest()
-		{
-			var qsb = new QueryStringBuilder();
-			qsb.Add("chartByDay", "true");
-			var response = await sandBoxClient.Stock.HistoricalPriceAsync("AAPL", ChartRange._1m, null, qsb);
+		//public async Task HistoricalPriceAsyncQsbTest()
+		//{
+		//	var qsb = new QueryStringBuilder();
+		//	qsb.Add("chartByDay", "true");
+		//	var response = await sandBoxClient.Stock.HistoricalPriceByDateAsync("AAPL", ChartRange._1m, null, qsb);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
-		}
+		//	Assert.IsNotNull(response);
+		//	Assert.GreaterOrEqual(response.Count(), 0);
+		//}
 
 		[Test]
 		[TestCase("AAPL")]
