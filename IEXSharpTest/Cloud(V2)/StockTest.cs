@@ -242,7 +242,7 @@ namespace VSLee.IEXSharpTest.Cloud
 		public async Task HistoricalPriceAsync(string symbol,
 			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
 		{
-			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range, qsb);
+			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range);
 
 			Assert.IsNotNull(response);
 			Assert.GreaterOrEqual(response.Count(), 1);
@@ -253,7 +253,7 @@ namespace VSLee.IEXSharpTest.Cloud
 		public async Task HistoricalPriceNonZeroAsync(string symbol,
 			ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
 		{
-			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range, qsb);
+			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range);
 			foreach (var ohlc in response)
 			{
 				Assert.NotZero(ohlc.open);
@@ -270,12 +270,22 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		public async Task HistoricalPriceAsyncDateTest()
+		[TestCase("AAPL", true)]
+		[TestCase("AAPL", false)]
+		public async Task HistoricalPriceAsyncDateTest(string symbol, bool chartByDay)
 		{
-			var response = await sandBoxClient.Stock.HistoricalPriceByDateAsync("AAPL", new DateTime(2019, 3, 25));
+			var response = await sandBoxClient.Stock.HistoricalPriceByDateAsync(symbol, getLatestWeekday(), chartByDay);
 
 			Assert.IsNotNull(response);
 			Assert.GreaterOrEqual(response.Count(), 1);
+		}
+
+		private static DateTime getLatestWeekday()
+		{
+			var latestWeekday = DateTime.Now.Subtract(TimeSpan.FromDays(1));
+			while (latestWeekday.DayOfWeek == DayOfWeek.Saturday || latestWeekday.DayOfWeek == DayOfWeek.Sunday)
+				latestWeekday -= TimeSpan.FromDays(1);
+			return latestWeekday;
 		}
 
 		//public async Task HistoricalPriceAsyncQsbTest()

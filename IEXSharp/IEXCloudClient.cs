@@ -71,6 +71,10 @@ namespace VSLee.IEXSharp
 
 		public IEXCloudClient(string pk, string sk, bool signRequest, bool sandBox)
 		{
+			if (string.IsNullOrWhiteSpace(pk))
+			{
+				throw new ArgumentException("pk cannot be null");
+			}
 			this.pk = pk;
 			this.sk = sk;
 			client = new HttpClient

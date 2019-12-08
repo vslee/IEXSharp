@@ -252,15 +252,9 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			await executor.SymbolExecuteAsync<FundOwnershipResponse>("stock/[symbol]/fund-ownership", symbol, pk);
 
 		public async Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceAsync(string symbol,
-			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
+			ChartRange range = ChartRange._1m)
 		{
-			const string urlPattern = "stock/[symbol]/chart/[range]";// /[date]";
-
-			qsb = qsb ?? new QueryStringBuilder();
-			if (qsb.Exist("token"))
-			{
-				qsb.Add("token", pk);
-			}
+			const string urlPattern = "stock/[symbol]/chart/[range]";
 
 			var pathNvc = new NameValueCollection
 			{
@@ -268,14 +262,26 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 				{"range", range.ToString().Replace("_", string.Empty)},
 			};
 
-			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, token: pk);
 		}
 
 		public async Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceByDateAsync(string symbol,
-			DateTime? date = null, QueryStringBuilder qsb = null)
+			DateTime date, bool chartByDay)
 		{
-			//{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
-			throw new NotImplementedException();
+			const string urlPattern = "stock/[symbol]/chart/date/[date]";
+
+			var pathNvc = new NameValueCollection
+			{
+				{"symbol", symbol},
+				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : date.ToString("yyyyMMdd")}
+			};
+
+			var qsb = new QueryStringBuilder();
+			if (chartByDay)
+				qsb.Add("chartByDay", "true");
+			qsb.Add("token", pk);
+
+			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, token: pk);
 		}
 
 		public async Task<HistoricalPriceDynamicResponse> HistoricalPriceDynamicAsync(string symbol,

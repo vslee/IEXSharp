@@ -18,7 +18,7 @@ namespace VSLee.IEXSharp.Helper
 
 		public SSEClient<T> SubscribeToSSE<T>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb)
 		{
-			ValidateParams(ref urlPattern, ref pathNVC, ref qsb);
+			ValidateAndProcessParams(ref urlPattern, ref pathNVC, ref qsb);
 			var url = $"{baseSSEURL}{urlPattern}{qsb.Build()}";
 			return new SSEClient<T>(Configuration.Builder(new Uri(url)).Build());
 		}

@@ -6,6 +6,7 @@ namespace VSLee.IEXSharp.Model.Stock.Response
 	public class HistoricalPriceResponse
 	{
 		public string date { get; set; }
+		public string minute { get; set; }
 		public decimal open { get; set; }
 		public decimal close { get; set; }
 		public decimal high { get; set; }

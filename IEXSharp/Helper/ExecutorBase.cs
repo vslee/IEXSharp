@@ -14,7 +14,7 @@ namespace VSLee.IEXSharp.Helper
 			this.pk = pk;
 		}
 
-		protected static void ValidateParams(ref string urlPattern, ref NameValueCollection pathNVC, ref QueryStringBuilder qsb)
+		protected static void ValidateAndProcessParams(ref string urlPattern, ref NameValueCollection pathNVC, ref QueryStringBuilder qsb)
 		{
 			if (string.IsNullOrWhiteSpace(urlPattern))
 			{

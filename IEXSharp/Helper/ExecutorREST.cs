@@ -28,9 +28,10 @@ namespace VSLee.IEXSharp.Helper
 			};
 		}
 
-		public async Task<ReturnType> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb) where ReturnType : class
+		public async Task<ReturnType> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb)
+			where ReturnType : class
 		{
-			ValidateParams(ref urlPattern, ref pathNVC, ref qsb);
+			ValidateAndProcessParams(ref urlPattern, ref pathNVC, ref qsb);
 
 			var content = string.Empty;
 
@@ -58,6 +59,17 @@ namespace VSLee.IEXSharp.Helper
 			}
 		}
 
+		public async Task<ReturnType> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, string token)
+			where ReturnType : class
+		{
+			var qsb = new QueryStringBuilder();
+			if (!string.IsNullOrEmpty(token))
+			{
+				qsb.Add("token", token);
+			}
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNVC, qsb);
+		}
+
 		public async Task<ReturnType> NoParamExecute<ReturnType>(string url, string token) where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
@@ -66,9 +78,9 @@ namespace VSLee.IEXSharp.Helper
 				qsb.Add("token", token);
 			}
 
-			var pathNvc = new NameValueCollection();
+			var pathNVC = new NameValueCollection();
 
-			return await ExecuteAsync<ReturnType>(url, pathNvc, qsb);
+			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb);
 		}
 
 		public async Task<ReturnType> SymbolExecuteAsync<ReturnType>(string urlPattern, string symbol, string token)
