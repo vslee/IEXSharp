@@ -1,5 +1,8 @@
-﻿namespace VSLee.IEXSharp.Model.Stock.Response
+using System.Diagnostics;
+
+namespace VSLee.IEXSharp.Model.Stock.Response
 {
+	[DebuggerDisplay("date={date}, open={open}, close={close}, high={high}, low={low}, vol={volume}")]
 	public class HistoricalPriceResponse
 	{
 		public string date { get; set; }
