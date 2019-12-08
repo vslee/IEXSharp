@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IEXSharp.Helper;
 
 namespace VSLee.IEXSharpTest.Cloud
 {
@@ -246,6 +247,8 @@ namespace VSLee.IEXSharpTest.Cloud
 
 			Assert.IsNotNull(response);
 			Assert.GreaterOrEqual(response.Count(), 1);
+			Assert.IsNotEmpty(response.First().date);
+			Assert.Greater(response.First().GetDateTimeInUTC(), DateTime.MinValue);
 		}
 
 		[Test]
@@ -278,6 +281,8 @@ namespace VSLee.IEXSharpTest.Cloud
 
 			Assert.IsNotNull(response);
 			Assert.GreaterOrEqual(response.Count(), 1);
+			Assert.IsNotEmpty(response.First().minute);
+			Assert.Greater(response.First().GetDateTimeInUTC(), DateTime.MinValue);
 		}
 
 		private static DateTime getLatestWeekday()
