@@ -187,15 +187,15 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="date"></param>
-		/// <param name="qsb">Additional optional querystring</param>
+		/// <param name="qsb">Additional optional parameters</param>
 		/// <returns></returns>
-		Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceByDateAsync(string symbol, DateTime date, bool chartByDay);
+		Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceByDateAsync(string symbol, DateTime date, bool chartByDay, QueryStringBuilder qsb = null);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#historical-prices"/>
 		/// </summary>
 		/// <param name="symbol"></param>
-		/// <param name="qsb">Additional optional querystring</param>
+		/// <param name="qsb">Additional optional parameters</param>
 		/// <returns></returns>
 		Task<HistoricalPriceDynamicResponse> HistoricalPriceDynamicAsync(string symbol, QueryStringBuilder qsb = null);
 

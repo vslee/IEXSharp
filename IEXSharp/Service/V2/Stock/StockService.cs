@@ -266,7 +266,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		}
 
 		public async Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceByDateAsync(string symbol,
-			DateTime date, bool chartByDay)
+			DateTime date, bool chartByDay, QueryStringBuilder qsb = null)
 		{
 			const string urlPattern = "stock/[symbol]/chart/date/[date]";
 
@@ -276,7 +276,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : date.ToString("yyyyMMdd")}
 			};
 
-			var qsb = new QueryStringBuilder();
+			qsb = qsb ?? new QueryStringBuilder();
 			if (chartByDay)
 				qsb.Add("chartByDay", "true");
 			qsb.Add("token", pk);
