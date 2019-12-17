@@ -252,7 +252,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			await executor.SymbolExecuteAsync<FundOwnershipResponse>("stock/[symbol]/fund-ownership", symbol, pk);
 
 		public async Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceAsync(string symbol,
-			ChartRange range = ChartRange._1m)
+			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
 		{
 			const string urlPattern = "stock/[symbol]/chart/[range]";
 
@@ -262,7 +262,13 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 				{"range", range.ToString().Replace("_", string.Empty)},
 			};
 
-			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, token: pk);
+			qsb = qsb ?? new QueryStringBuilder();
+			if (qsb.Exist("token"))
+			{
+				qsb.Add("token", pk);
+			}
+
+			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceByDateAsync(string symbol,

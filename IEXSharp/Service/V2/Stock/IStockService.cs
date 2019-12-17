@@ -178,9 +178,9 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
-		/// <param name="qsb">Additional optional querystring</param>
+		/// <param name="qsb">Additional optional parameters</param>
 		/// <returns></returns>
-		Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceAsync(string symbol, ChartRange range = ChartRange._1m);
+		Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceAsync(string symbol, ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#historical-prices"/>
