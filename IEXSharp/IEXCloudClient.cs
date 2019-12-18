@@ -10,6 +10,14 @@ using VSLee.IEXSharp.Service.V2.Stock;
 
 namespace VSLee.IEXSharp
 {
+	/// <summary>
+	/// https://iexcloud.io/docs/api/#api-versioning
+	/// </summary>
+	public enum APIVersion
+	{
+		stable, latest, beta, V1
+	}
+
 	public class IEXCloudClient : IDisposable
 	{
 		private readonly HttpClient client;
@@ -69,7 +77,15 @@ namespace VSLee.IEXSharp
 			get => apiSystemMetadataService ?? (apiSystemMetadataService = new APISystemMetadata(client, sk, pk, sign));
 		}
 
-		public IEXCloudClient(string pk, string sk, bool signRequest, bool sandBox)
+		/// <summary>
+		/// create a new IEXCloudClient
+		/// </summary>
+		/// <param name="pk">publishable token</param>
+		/// <param name="sk">secret tokey (only used for SCALE and GROW users)</param>
+		/// <param name="signRequest">only SCALE and GROW users should set this to true</param>
+		/// <param name="useSandBox">whether or not to use the sandbox endpoint</param>
+		/// <param name="version">whether to use stable or beta endpoint</param>
+		public IEXCloudClient(string pk, string sk, bool signRequest, bool useSandBox, APIVersion version = APIVersion.stable)
 		{
 			if (string.IsNullOrWhiteSpace(pk))
 			{
@@ -77,15 +93,18 @@ namespace VSLee.IEXSharp
 			}
 			this.pk = pk;
 			this.sk = sk;
+			var baseAddress = useSandBox
+				? "https://sandbox.iexapis.com/"
+				: "https://cloud.iexapis.com/";
+			baseAddress += version.ToString() + "/";
+			baseSSEURL = useSandBox
+				? "https://sandbox-sse.iexapis.com/"
+				: "https://cloud-sse.iexapis.com/";
+			baseSSEURL += version.ToString() + "/";
 			client = new HttpClient
 			{
-				BaseAddress = sandBox
-					? new Uri("https://sandbox.iexapis.com/stable/")
-					: new Uri("https://cloud.iexapis.com/stable/")
+				BaseAddress = new Uri(baseAddress)
 			};
-			baseSSEURL = sandBox
-				? "https://sandbox-sse.iexapis.com/stable/"
-				: "https://cloud-sse.iexapis.com/stable/";
 			client.DefaultRequestHeaders.Add("User-Agent", "VSLee.IEXSharp IEX Cloud .Net");
 			sign = signRequest;
 		}
