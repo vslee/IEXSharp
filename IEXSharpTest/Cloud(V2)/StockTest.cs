@@ -17,7 +17,7 @@ namespace VSLee.IEXSharpTest.Cloud
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXCloudClient(pk: TestGlobal.pk, sk: TestGlobal.sk, signRequest: false, useSandBox: true);
+			sandBoxClient = new IEXCloudClient(publishableToken: TestGlobal.pk, secretToken: TestGlobal.sk, signRequest: false, useSandBox: true);
 		}
 
 		[Test]

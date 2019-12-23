@@ -22,8 +22,8 @@ namespace VSLee.IEXSharp
 	{
 		private readonly HttpClient client;
 		private readonly string baseSSEURL;
-		private readonly string pk;
-		private readonly string sk;
+		private readonly string publishableToken;
+		private readonly string secretToken;
 		private readonly bool sign;
 
 		private IAccountService accountService;
@@ -39,60 +39,60 @@ namespace VSLee.IEXSharp
 		{
 			get =>
 				accountService ??
-				(accountService = new AccountService(client, sk, pk, sign));
+				(accountService = new AccountService(client, secretToken, publishableToken, sign));
 		}
 
 		public IStockService Stock
 		{
-			get => stockService ?? (stockService = new StockService(client, sk, pk, sign));
+			get => stockService ?? (stockService = new StockService(client, secretToken, publishableToken, sign));
 		}
 
 		public ISSEService SSE
 		{
-			get => sseService ?? (sseService = new SSEService(baseSSEURL: baseSSEURL, sk: sk, pk: pk));
+			get => sseService ?? (sseService = new SSEService(baseSSEURL: baseSSEURL, sk: secretToken, pk: publishableToken));
 		}
 
 		public IAlternativeDataService AlternativeData
 		{
-			get => alternativeDataService ?? (alternativeDataService = new AlternativeDataService(client, sk, pk, sign));
+			get => alternativeDataService ?? (alternativeDataService = new AlternativeDataService(client, secretToken, publishableToken, sign));
 		}
 
 		public IReferenceDataService ReferenceData
 		{
-			get => referenceDataService ?? (referenceDataService = new ReferenceDataService(client, sk, pk, sign));
+			get => referenceDataService ?? (referenceDataService = new ReferenceDataService(client, secretToken, publishableToken, sign));
 		}
 
 		public IForexCurrenciesService ForexCurrencies
 		{
-			get => forexCurrenciesService ?? (forexCurrenciesService = new ForexCurrenciesService(client, sk, pk, sign));
+			get => forexCurrenciesService ?? (forexCurrenciesService = new ForexCurrenciesService(client, secretToken, publishableToken, sign));
 		}
 
 		public IInvestorsExchangeDataService InvestorsExchangeData
 		{
-			get => investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, sk, pk, sign));
+			get => investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, secretToken, publishableToken, sign));
 		}
 
 		public IAPISystemMetadataService ApiSystemMetadata
 		{
-			get => apiSystemMetadataService ?? (apiSystemMetadataService = new APISystemMetadata(client, sk, pk, sign));
+			get => apiSystemMetadataService ?? (apiSystemMetadataService = new APISystemMetadata(client, secretToken, publishableToken, sign));
 		}
 
 		/// <summary>
 		/// create a new IEXCloudClient
 		/// </summary>
-		/// <param name="pk">publishable token</param>
-		/// <param name="sk">secret tokey (only used for SCALE and GROW users)</param>
+		/// <param name="publishableToken">publishable token</param>
+		/// <param name="secretToken">secret token (only used for SCALE and GROW users)</param>
 		/// <param name="signRequest">only SCALE and GROW users should set this to true</param>
 		/// <param name="useSandBox">whether or not to use the sandbox endpoint</param>
 		/// <param name="version">whether to use stable or beta endpoint</param>
-		public IEXCloudClient(string pk, string sk, bool signRequest, bool useSandBox, APIVersion version = APIVersion.stable)
+		public IEXCloudClient(string publishableToken, string secretToken, bool signRequest, bool useSandBox, APIVersion version = APIVersion.stable)
 		{
-			if (string.IsNullOrWhiteSpace(pk))
+			if (string.IsNullOrWhiteSpace(publishableToken))
 			{
 				throw new ArgumentException("pk cannot be null");
 			}
-			this.pk = pk;
-			this.sk = sk;
+			this.publishableToken = publishableToken;
+			this.secretToken = secretToken;
 			var baseAddress = useSandBox
 				? "https://sandbox.iexapis.com/"
 				: "https://cloud.iexapis.com/";
