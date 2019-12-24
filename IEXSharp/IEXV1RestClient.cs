@@ -16,25 +16,17 @@ namespace VSLee.IEXSharp
 		private IMarketService marketService;
 		private IStatsService statsService;
 
-		public IStockService Stock
-		{
-			get => stockService ?? (stockService = new StockService(_client));
-		}
+		public IStockService Stock =>
+			stockService ?? (stockService = new StockService(_client));
 
-		public IReferenceDataService ReferenceData
-		{
-			get => referenceDataService ?? (referenceDataService = new ReferenceDataService(_client));
-		}
+		public IReferenceDataService ReferenceData =>
+			referenceDataService ?? (referenceDataService = new ReferenceDataService(_client));
 
-		public IMarketService Market
-		{
-			get => marketService ?? (marketService = new MarketService(_client));
-		}
+		public IMarketService Market =>
+			marketService ?? (marketService = new MarketService(_client));
 
-		public IStatsService Stats
-		{
-			get => statsService ?? (statsService = new StatsService(_client));
-		}
+		public IStatsService Stats =>
+			statsService ?? (statsService = new StatsService(_client));
 
 		public IEXV1RestClient()
 		{

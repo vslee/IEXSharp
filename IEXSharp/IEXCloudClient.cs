@@ -24,7 +24,7 @@ namespace VSLee.IEXSharp
 		private readonly string baseSSEURL;
 		private readonly string publishableToken;
 		private readonly string secretToken;
-		private readonly bool sign;
+		private readonly bool signRequest;
 
 		private IAccountService accountService;
 		private IStockService stockService;
@@ -35,47 +35,29 @@ namespace VSLee.IEXSharp
 		private IInvestorsExchangeDataService investorsExchangeDataService;
 		private IAPISystemMetadataService apiSystemMetadataService;
 
-		public IAccountService Account
-		{
-			get =>
-				accountService ??
-				(accountService = new AccountService(client, secretToken, publishableToken, sign));
-		}
+		public IAccountService Account =>
+			accountService ??
+			(accountService = new AccountService(client, secretToken, publishableToken, signRequest));
 
-		public IStockService Stock
-		{
-			get => stockService ?? (stockService = new StockService(client, secretToken, publishableToken, sign));
-		}
+		public IStockService Stock => stockService ?? (stockService = new StockService(client, secretToken, publishableToken, signRequest));
 
-		public ISSEService SSE
-		{
-			get => sseService ?? (sseService = new SSEService(baseSSEURL: baseSSEURL, sk: secretToken, pk: publishableToken));
-		}
+		public ISSEService SSE =>
+			sseService ?? (sseService = new SSEService(baseSSEURL: baseSSEURL, sk: secretToken, pk: publishableToken));
 
-		public IAlternativeDataService AlternativeData
-		{
-			get => alternativeDataService ?? (alternativeDataService = new AlternativeDataService(client, secretToken, publishableToken, sign));
-		}
+		public IAlternativeDataService AlternativeData =>
+			alternativeDataService ?? (alternativeDataService = new AlternativeDataService(client, secretToken, publishableToken, signRequest));
 
-		public IReferenceDataService ReferenceData
-		{
-			get => referenceDataService ?? (referenceDataService = new ReferenceDataService(client, secretToken, publishableToken, sign));
-		}
+		public IReferenceDataService ReferenceData =>
+			referenceDataService ?? (referenceDataService = new ReferenceDataService(client, secretToken, publishableToken, signRequest));
 
-		public IForexCurrenciesService ForexCurrencies
-		{
-			get => forexCurrenciesService ?? (forexCurrenciesService = new ForexCurrenciesService(client, secretToken, publishableToken, sign));
-		}
+		public IForexCurrenciesService ForexCurrencies =>
+			forexCurrenciesService ?? (forexCurrenciesService = new ForexCurrenciesService(client, secretToken, publishableToken, signRequest));
 
-		public IInvestorsExchangeDataService InvestorsExchangeData
-		{
-			get => investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, secretToken, publishableToken, sign));
-		}
+		public IInvestorsExchangeDataService InvestorsExchangeData =>
+			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, secretToken, publishableToken, signRequest));
 
-		public IAPISystemMetadataService ApiSystemMetadata
-		{
-			get => apiSystemMetadataService ?? (apiSystemMetadataService = new APISystemMetadata(client, secretToken, publishableToken, sign));
-		}
+		public IAPISystemMetadataService ApiSystemMetadata =>
+			apiSystemMetadataService ?? (apiSystemMetadataService = new APISystemMetadata(client, secretToken, publishableToken, signRequest));
 
 		/// <summary>
 		/// create a new IEXCloudClient
@@ -89,10 +71,11 @@ namespace VSLee.IEXSharp
 		{
 			if (string.IsNullOrWhiteSpace(publishableToken))
 			{
-				throw new ArgumentException("pk cannot be null");
+				throw new ArgumentException("publishableToken cannot be null");
 			}
 			this.publishableToken = publishableToken;
 			this.secretToken = secretToken;
+			this.signRequest = signRequest;
 			var baseAddress = useSandBox
 				? "https://sandbox.iexapis.com/"
 				: "https://cloud.iexapis.com/";
@@ -106,7 +89,6 @@ namespace VSLee.IEXSharp
 				BaseAddress = new Uri(baseAddress)
 			};
 			client.DefaultRequestHeaders.Add("User-Agent", "VSLee.IEXSharp IEX Cloud .Net");
-			sign = signRequest;
 		}
 
 		private bool disposed;
