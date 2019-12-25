@@ -5,7 +5,8 @@
 We welcome pull requests!
 
 * Please follow the .editorconfig (namely tabs instead of spaces)
-* If you don't know what a pull request is read this article: https://help.github.com/articles/using-pull-requests. 
+* If you don't know what a pull request is, read this article: https://help.github.com/articles/using-pull-requests
+* If you would like to contribute but can't send a pull request, you can open an issue and paste the code fixes there
 * Providing tests is preferred, but if you don't know how, don't sweat it
 
 ## Code of conduct

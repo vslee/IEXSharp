@@ -13,14 +13,18 @@ IEX Cloud API for C# and other .net languages. Supports SSE streaming
 
 ### IEX Cloud
 ```c#
+public IEXCloudClient(string publishableToken, string secretToken, bool signRequest, bool useSandBox, APIVersion version = APIVersion.stable)
+```
+First, create an instance of IEXCloudClient
+```c#
 //For FREE and LAUNCH users
-IEXCloudClient iexClient = new IEXCloudClient("publishToken", "secretToken", false, false); 
+IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: false); 
 
 //For SCALE and GROW users
-IEXCloudClient iexClient = new IEXCloudClient("publishToken", "secretToken", true, false); 
+IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: true, useSandBox: false); 
 
 //Sandbox
-IEXCloudClient iexClient = new IEXCloudClient("publishToken", "secretToken", false, true); 
+IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: true); 
 ```
 To use SSE streaming (only included with paid IEX subscription plans)
 ```c#
@@ -63,7 +67,7 @@ Per their [guidelines](https://iexcloud.io/docs/api/#disclaimers):
 - Required: If you display any delayed price data, you must display “15 minute delayed price” as a disclaimer.
 - Required: If you display latestVolume you must display “Consolidated Volume in Real-time” as a disclaimer.
 - Note on pricing data: All CTA and UTP pricing data is delayed at least 15 minutes.
-- This project is not related to the similarly named [IEX-Sharp](https://iexsharp.pythonanywhere.com/)
+This project is not related to the similarly named [IEX-Sharp](https://iexsharp.pythonanywhere.com/)
 
 ## Acknowledgments
 
