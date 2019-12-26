@@ -14,7 +14,7 @@ namespace VSLee.IEXSharp.Helper
 		private readonly bool sign;
 		private readonly JsonSerializerSettings jsonSerializerSettings;
 
-		public ExecutorREST(HttpClient client, string sk, string pk, bool sign) : base(pk: pk)
+		public ExecutorREST(HttpClient client, string sk, string publishableToken, bool sign) : base(publishableToken: publishableToken)
 		{
 			this.client = client;
 			if (sign)
@@ -40,7 +40,7 @@ namespace VSLee.IEXSharp.Helper
 				client.DefaultRequestHeaders.Remove("x-iex-date");
 				client.DefaultRequestHeaders.Remove("Authorization");
 
-				(string iexdate, string authorization_header) headers = signer.Sign(pk, "GET", urlPattern, qsb.Build());
+				(string iexdate, string authorization_header) headers = signer.Sign(publishableToken, "GET", urlPattern, qsb.Build());
 				client.DefaultRequestHeaders.TryAddWithoutValidation("x-iex-date", headers.iexdate);
 				client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", headers.authorization_header);
 			}

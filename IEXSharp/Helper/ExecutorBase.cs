@@ -7,11 +7,11 @@ namespace VSLee.IEXSharp.Helper
 {
 	internal class ExecutorBase
 	{
-		protected readonly string pk;
+		protected readonly string publishableToken;
 
-		protected ExecutorBase(string pk)
+		protected ExecutorBase(string publishableToken)
 		{
-			this.pk = pk;
+			this.publishableToken = publishableToken;
 		}
 
 		protected static void ValidateAndProcessParams(ref string urlPattern, ref NameValueCollection pathNVC, ref QueryStringBuilder qsb)

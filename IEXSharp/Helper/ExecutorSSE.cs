@@ -10,7 +10,7 @@ namespace VSLee.IEXSharp.Helper
 	{
 		readonly string baseSSEURL;
 		private readonly string sk;
-		public ExecutorSSE(string baseSSEURL, string sk, string pk) : base(pk: pk)
+		public ExecutorSSE(string baseSSEURL, string sk, string pk) : base(publishableToken: pk)
 		{
 			this.baseSSEURL = baseSSEURL;
 			this.sk = sk;
