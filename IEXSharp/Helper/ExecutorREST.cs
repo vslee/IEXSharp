@@ -14,12 +14,12 @@ namespace VSLee.IEXSharp.Helper
 		private readonly bool sign;
 		private readonly JsonSerializerSettings jsonSerializerSettings;
 
-		public ExecutorREST(HttpClient client, string sk, string publishableToken, bool sign) : base(publishableToken: publishableToken)
+		public ExecutorREST(HttpClient client, string secretToken, string publishableToken, bool sign) : base(publishableToken: publishableToken)
 		{
 			this.client = client;
 			if (sign)
 			{
-				signer = new Signer(client.BaseAddress.Host, sk);
+				signer = new Signer(client.BaseAddress.Host, secretToken);
 			}
 			this.sign = sign;
 			jsonSerializerSettings = new JsonSerializerSettings

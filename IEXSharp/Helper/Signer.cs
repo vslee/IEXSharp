@@ -36,17 +36,15 @@ namespace VSLee.IEXSharp.Helper
 	/// </summary>
 	internal class Signer
 	{
-		private string host;
-		private string sk;
+		string host;
+		string secretToken;
 
-		public Signer()
-		{
-		}
+		public Signer() { }
 
-		public Signer(string host, string sk)
+		public Signer(string host, string secretToken) : this()
 		{
 			this.host = host;
-			this.sk = sk;
+			this.secretToken = secretToken;
 		}
 
 		public void SetHost(string host)
@@ -54,12 +52,12 @@ namespace VSLee.IEXSharp.Helper
 			this.host = host;
 		}
 
-		public void SetSecretToken(string sk)
+		public void SetSecretToken(string secretToken)
 		{
-			this.sk = sk;
+			this.secretToken = secretToken;
 		}
 
-		public (string iexdate, string authorization_header) Sign(string pk, string method, string url, string queryString, string payload = "")
+		public (string iexdate, string authorization_header) Sign(string publishableToken, string method, string url, string queryString, string payload = "")
 		{
 			var now = DateTime.UtcNow;
 			var iexdate = now.ToString("yyyyMMddTHHmmssZ");
@@ -69,13 +67,13 @@ namespace VSLee.IEXSharp.Helper
 			var canonical_request = $"{method}\n{url}\n{queryString}\n{canonical_headers}\nhost;x-iex-date\n{payload_hash}";
 			var credential_scope = $"{datestamp}/iex_request";
 			var string_to_sign = $"IEX-HMAC-SHA256\n{iexdate}\n{credential_scope}\n{SHA256HexHashString(canonical_request)}";
-			var signing_key = HMACSHA256HexHashString(HMACSHA256HexHashString(sk, datestamp), "iex_request");
+			var signing_key = HMACSHA256HexHashString(HMACSHA256HexHashString(secretToken, datestamp), "iex_request");
 			var signature = HMACSHA256HexHashString(signing_key, string_to_sign);
-			var authorization_header = $"IEX-HMAC-SHA256 Credential={pk}/{credential_scope}, SignedHeaders=host;x-iex-date, Signature={signature}";
+			var authorization_header = $"IEX-HMAC-SHA256 Credential={publishableToken}/{credential_scope}, SignedHeaders=host;x-iex-date, Signature={signature}";
 			return (iexdate, authorization_header);
 		}
 
-		private string HMACSHA256HexHashString(string key, string StringIn)
+		static string HMACSHA256HexHashString(string key, string StringIn)
 		{
 			string hashString;
 			using (var hmacsha256 = new HMACSHA256(Encoding.Default.GetBytes(key)))
@@ -86,7 +84,7 @@ namespace VSLee.IEXSharp.Helper
 			return hashString;
 		}
 
-		private string SHA256HexHashString(string StringIn)
+		static string SHA256HexHashString(string StringIn)
 		{
 			string hashString;
 			using (var sha256 = SHA256Managed.Create())
@@ -97,7 +95,7 @@ namespace VSLee.IEXSharp.Helper
 			return hashString;
 		}
 
-		private string ToHex(byte[] bytes, bool upperCase)
+		static string ToHex(byte[] bytes, bool upperCase)
 		{
 			var result = new StringBuilder(bytes.Length * 2);
 			for (int i = 0; i < bytes.Length; i++)
