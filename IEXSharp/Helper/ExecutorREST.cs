@@ -33,6 +33,11 @@ namespace VSLee.IEXSharp.Helper
 		{
 			ValidateAndProcessParams(ref urlPattern, ref pathNVC, ref qsb);
 
+			if (!string.IsNullOrEmpty(publishableToken))
+			{
+				qsb.Add("token", publishableToken);
+			}
+
 			var content = string.Empty;
 
 			if (sign)
@@ -57,17 +62,6 @@ namespace VSLee.IEXSharp.Helper
 					throw new JsonException(content, ex);
 				}
 			}
-		}
-
-		public async Task<ReturnType> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, string token)
-			where ReturnType : class
-		{
-			var qsb = new QueryStringBuilder();
-			if (!string.IsNullOrEmpty(token))
-			{
-				qsb.Add("token", token);
-			}
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNVC, qsb);
 		}
 
 		public async Task<ReturnType> NoParamExecute<ReturnType>(string url, string token) where ReturnType : class

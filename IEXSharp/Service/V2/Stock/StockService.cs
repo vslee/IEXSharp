@@ -287,7 +287,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 				qsb.Add("chartByDay", "true");
 			qsb.Add("token", pk);
 
-			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, token: pk);
+			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb: qsb);
 		}
 
 		public async Task<HistoricalPriceDynamicResponse> HistoricalPriceDynamicAsync(string symbol,
