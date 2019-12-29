@@ -28,7 +28,7 @@ namespace VSLee.IEXSharp.Service.V2.Account
 
 			var pathNVC = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<MetadataResponse>(urlPattern, pathNVC, qsb);
+			return await _executor.ExecuteAsyncLegacy<MetadataResponse>(urlPattern, pathNVC, qsb);
 		}
 
 		public async Task<UsageResponse> UsageAsync(UsageType type)
@@ -40,7 +40,7 @@ namespace VSLee.IEXSharp.Service.V2.Account
 
 			var pathNVC = new NameValueCollection { { "type", type.ToString().ToLower() } };
 
-			return await _executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb);
+			return await _executor.ExecuteAsyncLegacy<UsageResponse>(urlPattern, pathNVC, qsb);
 		}
 
 		public Task PayAsYouGoAsync(bool allow)

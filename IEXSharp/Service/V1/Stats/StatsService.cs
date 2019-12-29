@@ -35,7 +35,7 @@ namespace VSLee.IEXSharp.Service.V1.Stats
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<IEnumerable<StatsHistoricalSummaryResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<StatsHistoricalSummaryResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEnumerable<StatsHisoricalDailyResponse>> StatsHistoricalDailyByDateAsync(string date)
@@ -47,7 +47,7 @@ namespace VSLee.IEXSharp.Service.V1.Stats
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEnumerable<StatsHisoricalDailyResponse>> StatsHistoricalDailyByLastAsync(int last)
@@ -59,7 +59,7 @@ namespace VSLee.IEXSharp.Service.V1.Stats
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
 		}
 	}
 }

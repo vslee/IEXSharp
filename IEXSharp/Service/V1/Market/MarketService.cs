@@ -1,4 +1,4 @@
-﻿using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
 using VSLee.IEXSharp.Model.Market.Response;
 using VSLee.IEXSharp.Model.Stock.Response;
@@ -40,7 +40,7 @@ namespace VSLee.IEXSharp.Service.V1.Market
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<Dictionary<string, IEnumerable<HISTResponse>>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<Dictionary<string, IEnumerable<HISTResponse>>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEnumerable<HISTResponse>> HISTByDateAsync(DateTime date)
@@ -52,7 +52,7 @@ namespace VSLee.IEXSharp.Service.V1.Market
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<IEnumerable<HISTResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<HISTResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<DeepResponse> DeepAsync(IEnumerable<string> symbols)

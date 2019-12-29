@@ -40,7 +40,7 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 				{"exchange", exchange}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<InternationalSymbolResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<InternationalSymbolResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEnumerable<InternationalSymbolResponse>> InternationalRegionSymbolsAsync(string region)
@@ -55,7 +55,7 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 				{"region", region}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<InternationalSymbolResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<InternationalSymbolResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEnumerable<MutualFundSymbolResponse>> MutualFundSymbolsAsync() => await _executor.NoParamExecute<IEnumerable<MutualFundSymbolResponse>>("ref-data/mutual-funds/symbols", _pk);
@@ -79,7 +79,7 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 				{"startDate", startDate == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) startDate).ToString("yyyyMMdd")}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<USHolidaysAndTradingDatesResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<USHolidaysAndTradingDatesResponse>>(urlPattern, pathNvc, qsb);
 		}
 	}
 }

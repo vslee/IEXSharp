@@ -65,7 +65,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
-			return await _executor.ExecuteAsync<BatchBySymbolV1Response>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<BatchBySymbolV1Response>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<Dictionary<string, BatchBySymbolV1Response>> BatchByMarketAsync(IEnumerable<string> symbols,
@@ -117,7 +117,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<Dictionary<string, BatchBySymbolV1Response>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<Dictionary<string, BatchBySymbolV1Response>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<BookResponse> BookAsync(string symbol) =>
@@ -137,7 +137,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<ChartResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<ChartResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<ChartDynamicResponse> ChartDynamicAsync(string symbol,
@@ -152,7 +152,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 				{"symbol", symbol}
 			};
 
-			return await _executor.ExecuteAsync<ChartDynamicResponse>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<ChartDynamicResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEnumerable<Quote>> CollectionsAsync(CollectionType collection, string collectionName)
@@ -163,7 +163,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 
 			var pathNvc = new NameValueCollection { { "collectionType", collection.ToString().ToLower() } };
 
-			return await _executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<CompanyResponse> CompanyAsync(string symbol) =>
@@ -185,7 +185,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 				{"symbol", symbol}, {"range", range.ToString().ToLower().Replace("_", string.Empty)}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<DividendV1Response>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<DividendV1Response>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<EarningResponse> EarningAsync(string symbol) =>
@@ -211,7 +211,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 				{"symbol", symbol}
 			};
 
-			return await _executor.ExecuteAsync<FinancialResponse>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<FinancialResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IPOCalendar> IPOCalendarAsync(IPOType ipoType)
@@ -222,7 +222,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 
 			var pathNvc = new NameValueCollection { { "ipoType", $"{ipoType.ToString().ToLower()}-ipos" } };
 
-			return await _executor.ExecuteAsync<IPOCalendar>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IPOCalendar>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol)
@@ -244,7 +244,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 
 			var pathNvc = new NameValueCollection { { "list-type", listType } };
 
-			return await _executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<LogoResponse> LogoAsync(string symbol) => await _executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol, "");
@@ -278,7 +278,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.ToString().Replace("_", string.Empty) } };
 
-			return await _executor.ExecuteAsync<IEnumerable<SplitV1Response>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<IEnumerable<SplitV1Response>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<VolumeByVenueResponse> VolumeByVenueAsync(string symbol) => await _executor.SymbolExecuteAsync<VolumeByVenueResponse>("stock/[symbol]/delayed-quote", symbol, "");

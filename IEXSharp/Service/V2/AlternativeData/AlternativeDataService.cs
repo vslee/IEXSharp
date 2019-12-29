@@ -34,7 +34,7 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
 			};
 
-			return await _executor.ExecuteAsync<SocialSentimentDailyResponse>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<SocialSentimentDailyResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<SocialSentimentMinuteResponse> SocialSentimentMinuteAsync(string symbol, DateTime? date = null)
@@ -50,7 +50,7 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
 			};
 
-			return await _executor.ExecuteAsync<SocialSentimentMinuteResponse>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<SocialSentimentMinuteResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<CEOCompensationResponse> CEOCompensationAsync(string symbol) => await _executor.SymbolExecuteAsync<CEOCompensationResponse>("stock/[symbol]/ceo-compensation", symbol, _pk);

@@ -26,7 +26,7 @@ namespace VSLee.IEXSharp.Service.V2.ForexCurrencies
 
 			var pathNvc = new NameValueCollection { { "from", from }, { "to", to } };
 
-			return await _executor.ExecuteAsync<ExchangeRateResponse>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsyncLegacy<ExchangeRateResponse>(urlPattern, pathNvc, qsb);
 		}
 	}
 }
