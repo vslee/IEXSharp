@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V2.Stock
 {
@@ -251,7 +252,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		public async Task<FundOwnershipResponse> FundOwnershipAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<FundOwnershipResponse>("stock/[symbol]/fund-ownership", symbol, pk);
 
-		public async Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceAsync(string symbol,
+		public async Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceAsync(string symbol,
 			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
 		{
 			const string urlPattern = "stock/[symbol]/chart/[range]";
@@ -262,13 +263,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 				{"range", range.ToString().Replace("_", string.Empty)},
 			};
 
-			qsb = qsb ?? new QueryStringBuilder();
-			if (qsb.Exist("token"))
-			{
-				qsb.Add("token", pk);
-			}
-
-			return await executor.ExecuteAsyncLegacy<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceByDateAsync(string symbol,

@@ -5,6 +5,7 @@ using VSLee.IEXSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V2.Stock
 {
@@ -180,7 +181,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="range"></param>
 		/// <param name="qsb">Additional optional parameters</param>
 		/// <returns></returns>
-		Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceAsync(string symbol, ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null);
+		Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceAsync(string symbol, ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#historical-prices"/>

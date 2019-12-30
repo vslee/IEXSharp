@@ -245,10 +245,11 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 1);
-			Assert.IsNotEmpty(response.First().date);
-			Assert.Greater(response.First().GetDateTimeInUTC(), DateTime.MinValue);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+			Assert.IsNotEmpty(response.Data.First().date);
+			Assert.Greater(response.Data.First().GetDateTimeInUTC(), DateTime.MinValue);
 		}
 
 		[Test]
@@ -257,7 +258,7 @@ namespace VSLee.IEXSharpTest.Cloud
 			ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
 		{
 			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range);
-			foreach (var ohlc in response)
+			foreach (var ohlc in response.Data)
 			{
 				Assert.NotZero(ohlc.open);
 				Assert.NotZero(ohlc.high);
