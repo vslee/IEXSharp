@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Web;
 
 namespace VSLee.IEXSharp.Helper
@@ -11,6 +12,7 @@ namespace VSLee.IEXSharp.Helper
 	/// qsb.Add("name1", "value1");
 	/// qsb.Build(); // returns "?name=value&name1=value1"
 	/// </summary>
+	[DebuggerDisplay("{Build()}")]
 	public class QueryStringBuilder
 	{
 		private readonly NameValueCollection nvc;
