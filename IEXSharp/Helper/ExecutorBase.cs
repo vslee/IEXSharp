@@ -24,10 +24,7 @@ namespace VSLee.IEXSharp.Helper
 			{
 				throw new ArgumentException("pathNVC cannot be null");
 			}
-			else if (qsb == null)
-			{
-				throw new ArgumentException("qsb cannot be null");
-			}
+			qsb = qsb ?? new QueryStringBuilder();
 
 			if (pathNVC.Count > 0)
 			{
