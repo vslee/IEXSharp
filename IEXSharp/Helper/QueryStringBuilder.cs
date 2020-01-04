@@ -66,9 +66,6 @@ namespace VSLee.IEXSharp.Helper
 			return nvc.Count;
 		}
 
-		public string Build()
-		{
-			return "?" + nvc;
-		}
+		public string Build() =>  "?" + nvc;
 	}
 }
