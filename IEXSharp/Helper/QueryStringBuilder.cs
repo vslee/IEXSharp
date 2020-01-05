@@ -46,10 +46,7 @@ namespace VSLee.IEXSharp.Helper
 			return false;
 		}
 
-		public string Get(string key)
-		{
-			return nvc[key];
-		}
+		public string this[string key] => nvc[key];
 
 		public bool Exist(string key)
 		{
