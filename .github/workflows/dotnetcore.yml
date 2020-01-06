@@ -11,11 +11,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v1
-    #  latest image has .NET already installed!
-    #- name: Setup .NET Core
-    #  uses: actions/setup-dotnet@v1
-    #  with:
-    #    dotnet-version: 2.2.108
+    #  latest image has .NET 3.0 already installed, but not 3.1 yet
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.100
     - name: Build with dotnet and create prerelease nupkg
       run: dotnet build --configuration PreRelease --version-suffix prerelease-$(date +%Y%m%d%H%M%S)
       shell: bash
