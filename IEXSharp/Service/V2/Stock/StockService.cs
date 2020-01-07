@@ -266,7 +266,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEnumerable<HistoricalPriceResponse>> HistoricalPriceByDateAsync(string symbol,
+		public async Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceByDateAsync(string symbol,
 			DateTime date, bool chartByDay, QueryStringBuilder qsb = null)
 		{
 			const string urlPattern = "stock/[symbol]/chart/date/[date]";
@@ -280,9 +280,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			qsb = qsb ?? new QueryStringBuilder();
 			if (chartByDay)
 				qsb.Add("chartByDay", "true");
-			qsb.Add("token", pk);
 
-			return await executor.ExecuteAsyncLegacy<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb: qsb);
+			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb: qsb);
 		}
 
 		public async Task<HistoricalPriceDynamicResponse> HistoricalPriceDynamicAsync(string symbol,

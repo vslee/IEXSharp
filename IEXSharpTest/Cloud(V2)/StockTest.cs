@@ -280,10 +280,11 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.HistoricalPriceByDateAsync(symbol, getLatestWeekday(), chartByDay);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 1);
-			Assert.IsNotEmpty(response.First().minute);
-			Assert.Greater(response.First().GetDateTimeInUTC(), DateTime.MinValue);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+			Assert.IsNotEmpty(response.Data.First().minute);
+			Assert.Greater(response.Data.First().GetDateTimeInUTC(), DateTime.MinValue);
 		}
 
 		private static DateTime getLatestWeekday()
