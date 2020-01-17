@@ -1,4 +1,4 @@
-﻿using VSLee.IEXSharp;
+using VSLee.IEXSharp;
 using VSLee.IEXSharp.Model.Stock.Request;
 using NUnit.Framework;
 using VSLee.IEXSharp.Helper;
@@ -30,15 +30,17 @@ namespace VSLee.IEXSharpTest.V1
 		}
 
 		[Test]
+		[Ignore("IEX V1 has now deprecated this method")]
 		[TestCase(new string[] { "AAPL" }, new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote })]
 		[TestCase(new string[] { "AAPL", "FB" }, new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote }, "1m", 2)]
 		public async Task BatchByMarketAsyncTest(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
 			var response = await prodClient.Stock.BatchByMarketAsync(symbols, types, range, last);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count, 1);
-			Assert.IsNotNull(response[symbols.ToList()[0]]);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
+			Assert.IsNotNull(response.Data[symbols.ToList()[0]]);
 		}
 
 		[Test]
@@ -53,6 +55,7 @@ namespace VSLee.IEXSharpTest.V1
 		}
 
 		[Test]
+		[Ignore("IEX V1 has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("AAPL", ChartRange._1y)]
 		[TestCase("AAPL", ChartRange._max)]
@@ -63,30 +66,36 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.ChartAsync(symbol, range, date, qsb);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
+		[Ignore("IEX V1 has now deprecated this method")]
 		public async Task ChartAsyncDateTest()
 		{
 			var response = await prodClient.Stock.ChartAsync("AAPL", ChartRange._1m, new DateTime(2019, 3, 25));
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 
 		[Test]
+		[Ignore("IEX V1 has now deprecated this method")]
 		public async Task ChartDynamicAsyncDateTest()
 		{
 			var response = await prodClient.Stock.ChartDynamicAsync("AAPL", null);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.data.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.data.Count(), 1);
 		}
 
 		[Test]
+		[Ignore("IEX V1 has now deprecated this method")]
 		[TestCase(CollectionType.List, "iexvolume")]
 		[TestCase(CollectionType.Sector, "Health Care")]
 		[TestCase(CollectionType.Tag, "Computer Hardware")]
@@ -94,8 +103,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.CollectionsAsync(collection, collectionName);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -172,14 +182,16 @@ namespace VSLee.IEXSharpTest.V1
 		}
 
 		[Test]
+		[Ignore("IEX V1 has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task FinancialAsyncTest(string symbol)
 		{
 			var response = await prodClient.Stock.FinancialAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.financials.Count, 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.financials.Count, 1);
 		}
 
 		[Test]
@@ -236,6 +248,7 @@ namespace VSLee.IEXSharpTest.V1
 		}
 
 		[Test]
+		[Ignore("IEX V1 has now deprecated this method")]
 		[TestCase("mostactive")]
 		[TestCase("gainers")]
 		[TestCase("losers")]
@@ -246,8 +259,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.ListAsync(listType);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -342,6 +356,7 @@ namespace VSLee.IEXSharpTest.V1
 		}
 
 		[Test]
+		[Ignore("IEX V1 has now deprecated this method")]
 		[TestCase("AAPL", SplitRange._1m)]
 		[TestCase("AAPL", SplitRange._1y)]
 		[TestCase("AAPL", SplitRange._2y)]
@@ -354,8 +369,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.SplitAsync(symbol, range);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]

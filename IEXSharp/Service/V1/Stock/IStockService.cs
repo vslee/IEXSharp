@@ -1,4 +1,4 @@
-﻿using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
+using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
 using VSLee.IEXSharp.Model.Shared.Response;
 using VSLee.IEXSharp.Model.Stock.Request;
 using VSLee.IEXSharp.Model.Stock.Response;
@@ -6,6 +6,7 @@ using VSLee.IEXSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V1.Stock
 {
@@ -19,7 +20,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="range"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<BatchBySymbolV1Response> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1);
+		Task<IEXResponse<BatchBySymbolV1Response>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#batch-requests"/>
@@ -29,7 +30,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="range"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, BatchBySymbolV1Response>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
+		Task<IEXResponse<Dictionary<string, BatchBySymbolV1Response>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#book"/>
@@ -45,7 +46,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="range"></param>
 		/// <param name="qsb">Additional optional querystring</param>
 		/// <returns></returns>
-		Task<IEnumerable<ChartResponse>> ChartAsync(string symbol, ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null);
+		Task<IEXResponse<IEnumerable<ChartResponse>>> ChartAsync(string symbol, ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#chart"/>
@@ -53,14 +54,14 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="symbol"></param>
 		/// <param name="qsb">Additional optional querystring</param>
 		/// <returns></returns>
-		Task<ChartDynamicResponse> ChartDynamicAsync(string symbol, QueryStringBuilder qsb = null);
+		Task<IEXResponse<ChartDynamicResponse>> ChartDynamicAsync(string symbol, QueryStringBuilder qsb = null);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#collections"/>
 		/// </summary>
 		/// <param name="collection"></param>
 		/// <param name="collectionName"></param>
-		Task<IEnumerable<Quote>> CollectionsAsync(CollectionType collection, string collectionName);
+		Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection, string collectionName);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#company"/>
@@ -88,7 +89,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEnumerable<DividendV1Response>> DividendAsync(string symbol, DividendRange range);
+		Task<IEXResponse<IEnumerable<DividendV1Response>>> DividendAsync(string symbol, DividendRange range);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#earnings"/>
@@ -116,14 +117,14 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="symbol"></param>
 		/// <param name="period"></param>
 		/// <returns></returns>
-		Task<FinancialResponse> FinancialAsync(string symbol, Period period = Period.Quarter);
+		Task<IEXResponse<FinancialResponse>> FinancialAsync(string symbol, Period period = Period.Quarter);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#intraday-prices"/>
 		/// </summary>
 		/// <param name="ipoType"></param>
 		/// <returns></returns>
-		Task<IPOCalendar> IPOCalendarAsync(IPOType ipoType);
+		Task<IEXResponse<IPOCalendar>> IPOCalendarAsync(IPOType ipoType);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#iex-regulation-sho-threshold-securities-list"/>
@@ -158,7 +159,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="listType"></param>
 		/// <returns></returns>
-		Task<IEnumerable<Quote>> ListAsync(string listType);
+		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#logo"/>
@@ -229,7 +230,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEnumerable<SplitV1Response>> SplitAsync(string symbol, SplitRange range = SplitRange._1m);
+		Task<IEXResponse<IEnumerable<SplitV1Response>>> SplitAsync(string symbol, SplitRange range = SplitRange._1m);
 
 
 		/// <summary>
