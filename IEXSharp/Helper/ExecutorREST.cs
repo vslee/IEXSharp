@@ -129,10 +129,6 @@ namespace VSLee.IEXSharp.Helper
 			where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
-			if (!string.IsNullOrEmpty(token))
-			{
-				qsb.Add("token", token);
-			}
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
@@ -143,10 +139,6 @@ namespace VSLee.IEXSharp.Helper
 			where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
-			if (!string.IsNullOrEmpty(token))
-			{
-				qsb.Add("token", token);
-			}
 			qsb.Add("symbols", string.Join(",", symbols));
 
 			var pathNvc = new NameValueCollection();
