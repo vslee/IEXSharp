@@ -1,4 +1,4 @@
-﻿using VSLee.IEXSharp;
+using VSLee.IEXSharp;
 using NUnit.Framework;
 using System;
 using System.Linq;
@@ -42,9 +42,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.HISTAsync();
 
-			Assert.IsNotNull(response);
-
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -52,8 +52,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.HISTByDateAsync(new DateTime(2019, 02, 25));
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]

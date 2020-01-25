@@ -1,9 +1,10 @@
-﻿using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
+using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
 using VSLee.IEXSharp.Model.Market.Response;
 using VSLee.IEXSharp.Model.Stock.Response;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V1.Market
 {
@@ -27,14 +28,14 @@ namespace VSLee.IEXSharp.Service.V1.Market
 		/// <see cref="https://iextrading.com/developer/docs/#hist"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<Dictionary<string, IEnumerable<HISTResponse>>> HISTAsync();
+		Task<IEXResponse<Dictionary<string, IEnumerable<HISTResponse>>>> HISTAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#hist"/>
 		/// </summary>
 		/// <param name="date"></param>
 		/// <returns></returns>
-		Task<IEnumerable<HISTResponse>> HISTByDateAsync(DateTime date);
+		Task<IEXResponse<IEnumerable<HISTResponse>>> HISTByDateAsync(DateTime date);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#deep"/>

@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V1.Market
 {
@@ -32,7 +33,7 @@ namespace VSLee.IEXSharp.Service.V1.Market
 		public async Task<IEnumerable<LastResponse>> LastAsync(IEnumerable<string> symbols)
 			=> await _executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols, "");
 
-		public async Task<Dictionary<string, IEnumerable<HISTResponse>>> HISTAsync()
+		public async Task<IEXResponse<Dictionary<string, IEnumerable<HISTResponse>>>> HISTAsync()
 		{
 			const string urlPattern = "hist";
 
@@ -40,10 +41,10 @@ namespace VSLee.IEXSharp.Service.V1.Market
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsyncLegacy<Dictionary<string, IEnumerable<HISTResponse>>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<Dictionary<string, IEnumerable<HISTResponse>>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEnumerable<HISTResponse>> HISTByDateAsync(DateTime date)
+		public async Task<IEXResponse<IEnumerable<HISTResponse>>> HISTByDateAsync(DateTime date)
 		{
 			const string urlPattern = "hist";
 
@@ -52,7 +53,7 @@ namespace VSLee.IEXSharp.Service.V1.Market
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsyncLegacy<IEnumerable<HISTResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IEnumerable<HISTResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<DeepResponse> DeepAsync(IEnumerable<string> symbols)
