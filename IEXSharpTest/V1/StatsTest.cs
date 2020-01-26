@@ -1,4 +1,4 @@
-﻿using VSLee.IEXSharp;
+using VSLee.IEXSharp;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -45,12 +45,14 @@ namespace VSLee.IEXSharpTest.V1
 		[Test]
 		[TestCase("201902")]
 		[TestCase("201900225")]
+		[Ignore("IEX V1 appears to have deprecated this method?")]
 		public async Task StatsHistoricalDailyByDateAsyncTest(string date)
 		{
 			var response = await prodClient.Stats.StatsHistoricalDailyByDateAsync(date);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -60,8 +62,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stats.StatsHistoricalDailyByLastAsync(last);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -70,10 +73,12 @@ namespace VSLee.IEXSharpTest.V1
 			var response1 = await prodClient.Stats.StatsHistoricalSummaryAsync();
 			var response2 = await prodClient.Stats.StatsHistoricalSummaryAsync(new DateTime(2019, 02, 01));
 
-			Assert.IsNotNull(response1);
-			Assert.GreaterOrEqual(response1.Count(), 1);
-			Assert.IsNotNull(response2);
-			Assert.GreaterOrEqual(response2.Count(), 1);
+			Assert.IsNull(response1.ErrorMessage);
+			Assert.IsNotNull(response1.Data);
+			Assert.GreaterOrEqual(response1.Data.Count(), 1);
+			Assert.IsNull(response2.ErrorMessage);
+			Assert.IsNotNull(response2.Data);
+			Assert.GreaterOrEqual(response2.Data.Count(), 1);
 		}
 	}
 }

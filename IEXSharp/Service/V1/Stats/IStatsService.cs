@@ -1,7 +1,8 @@
-﻿using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
+using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V1.Stats
 {
@@ -30,20 +31,20 @@ namespace VSLee.IEXSharp.Service.V1.Stats
 		/// </summary>
 		/// <param name="date"></param>
 		/// <returns></returns>
-		Task<IEnumerable<StatsHistoricalSummaryResponse>> StatsHistoricalSummaryAsync(DateTime? date = null);
+		Task<IEXResponse<IEnumerable<StatsHistoricalSummaryResponse>>> StatsHistoricalSummaryAsync(DateTime? date = null);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#historical-daily"/>
 		/// </summary>
 		/// <param name="last">Up to 90</param>
 		/// <returns></returns>
-		Task<IEnumerable<StatsHisoricalDailyResponse>> StatsHistoricalDailyByLastAsync(int last);
+		Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByLastAsync(int last);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#historical-daily"/>
 		/// </summary>
 		/// <param name="date">yyyyMM or yyyyMMdd</param>
 		/// <returns></returns>
-		Task<IEnumerable<StatsHisoricalDailyResponse>> StatsHistoricalDailyByDateAsync(string date);
+		Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByDateAsync(string date);
 	}
 }
