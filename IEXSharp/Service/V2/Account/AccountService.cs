@@ -1,10 +1,11 @@
-﻿using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.Account.Request;
 using VSLee.IEXSharp.Model.Account.Response;
 using System;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V2.Account
 {
@@ -19,7 +20,7 @@ namespace VSLee.IEXSharp.Service.V2.Account
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<MetadataResponse> MetadataAsync()
+		public async Task<IEXResponse<MetadataResponse>> MetadataAsync()
 		{
 			const string urlPattern = "account/metadata";
 
@@ -28,10 +29,10 @@ namespace VSLee.IEXSharp.Service.V2.Account
 
 			var pathNVC = new NameValueCollection();
 
-			return await _executor.ExecuteAsyncLegacy<MetadataResponse>(urlPattern, pathNVC, qsb);
+			return await _executor.ExecuteAsync<MetadataResponse>(urlPattern, pathNVC, qsb);
 		}
 
-		public async Task<UsageResponse> UsageAsync(UsageType type)
+		public async Task<IEXResponse<UsageResponse>> UsageAsync(UsageType type)
 		{
 			const string urlPattern = "account/usage/[type]";
 
@@ -40,7 +41,7 @@ namespace VSLee.IEXSharp.Service.V2.Account
 
 			var pathNVC = new NameValueCollection { { "type", type.ToString().ToLower() } };
 
-			return await _executor.ExecuteAsyncLegacy<UsageResponse>(urlPattern, pathNVC, qsb);
+			return await _executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb);
 		}
 
 		public Task PayAsYouGoAsync(bool allow)

@@ -19,18 +19,20 @@ namespace VSLee.IEXSharpTest.Cloud
 		[Test]
 		public async Task MetadataAsyncTest()
 		{
-			MetadataResponse response = await sandBoxClient.Account.MetadataAsync();
+			var response = await sandBoxClient.Account.MetadataAsync();
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
 		[TestCase(UsageType.All)]
 		public async Task UsageAsyncTest(UsageType type)
 		{
-			UsageResponse response = await sandBoxClient.Account.UsageAsync(type);
+			var response = await sandBoxClient.Account.UsageAsync(type);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 	}
 }
