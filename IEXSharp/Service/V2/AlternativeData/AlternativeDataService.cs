@@ -1,10 +1,11 @@
-﻿using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.AlternativeData.Response;
 using VSLee.IEXSharp.Model.Shared.Response;
 using System;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V2.AlternativeData
 {
@@ -21,7 +22,7 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 
 		public async Task<Quote> CryptoAsync(string symbol) => await _executor.SymbolExecuteAsync<Quote>("crypto/[symbol]/quote", symbol, _pk);
 
-		public async Task<SocialSentimentDailyResponse> SocialSentimentDailyAsync(string symbol, DateTime? date = null)
+		public async Task<IEXResponse<SocialSentimentDailyResponse>> SocialSentimentDailyAsync(string symbol, DateTime? date = null)
 		{
 			const string urlPattern = "stock/[symbol]/sentiment/daily/[date]";
 
@@ -34,10 +35,10 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
 			};
 
-			return await _executor.ExecuteAsyncLegacy<SocialSentimentDailyResponse>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<SocialSentimentDailyResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<SocialSentimentMinuteResponse> SocialSentimentMinuteAsync(string symbol, DateTime? date = null)
+		public async Task<IEXResponse<SocialSentimentMinuteResponse>> SocialSentimentMinuteAsync(string symbol, DateTime? date = null)
 		{
 			const string urlPattern = "stock/[symbol]/sentiment/minute/[date]";
 
@@ -50,7 +51,7 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
 			};
 
-			return await _executor.ExecuteAsyncLegacy<SocialSentimentMinuteResponse>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<SocialSentimentMinuteResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<CEOCompensationResponse> CEOCompensationAsync(string symbol) => await _executor.SymbolExecuteAsync<CEOCompensationResponse>("stock/[symbol]/ceo-compensation", symbol, _pk);

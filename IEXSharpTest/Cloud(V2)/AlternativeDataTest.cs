@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
 using VSLee.IEXSharp;
@@ -32,7 +32,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.AlternativeData.SocialSentimentDailyAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		// Not supported for free account
@@ -44,7 +45,8 @@ namespace VSLee.IEXSharpTest.Cloud
 			DateTime date = new DateTime(2019, 03, 30);
 			var response = await sandBoxClient.AlternativeData.SocialSentimentDailyAsync(symbol, date);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		// Not supported for free account
