@@ -1,8 +1,9 @@
-﻿using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.ForexCurrencies.Response;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V2.ForexCurrencies
 {
@@ -17,7 +18,7 @@ namespace VSLee.IEXSharp.Service.V2.ForexCurrencies
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<ExchangeRateResponse> ExchangeRateAsync(string from, string to)
+		public async Task<IEXResponse<ExchangeRateResponse>> ExchangeRateAsync(string from, string to)
 		{
 			const string urlPattern = "fx/rate/[from]/[to]";
 
@@ -26,7 +27,7 @@ namespace VSLee.IEXSharp.Service.V2.ForexCurrencies
 
 			var pathNvc = new NameValueCollection { { "from", from }, { "to", to } };
 
-			return await _executor.ExecuteAsyncLegacy<ExchangeRateResponse>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<ExchangeRateResponse>(urlPattern, pathNvc, qsb);
 		}
 	}
 }
