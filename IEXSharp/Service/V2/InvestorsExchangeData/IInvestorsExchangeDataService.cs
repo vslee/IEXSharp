@@ -1,4 +1,5 @@
-﻿using System;
+using IEXSharp.Model;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
@@ -117,21 +118,21 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		/// </summary>
 		/// <param name="date">yyyyMM or yyyyMMdd</param>
 		/// <returns></returns>
-		Task<IEnumerable<StatsHisoricalDailyResponse>> StatsHistoricalDailyByDateAsync(string date);
+		Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByDateAsync(string date);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stats-historical-daily-in-dev"/>
 		/// </summary>
 		/// <param name="last">Up to 90</param>
 		/// <returns></returns>
-		Task<IEnumerable<StatsHisoricalDailyResponse>> StatsHistoricalDailyByLastAsync(int last);
+		Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByLastAsync(int last);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stats-historical-summary"/>
 		/// </summary>
 		/// <param name="date"></param>
 		/// <returns></returns>
-		Task<IEnumerable<StatsHistoricalSummaryResponse>> StatsHistoricalSummaryAsync(DateTime? date = null);
+		Task<IEXResponse<IEnumerable<StatsHistoricalSummaryResponse>>> StatsHistoricalSummaryAsync(DateTime? date = null);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stats-intraday"/>

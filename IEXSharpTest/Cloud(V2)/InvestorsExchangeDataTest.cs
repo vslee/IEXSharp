@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -164,8 +164,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.StatsHistoricalDailyByDateAsync(date);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -175,8 +176,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.StatsHistoricalDailyByLastAsync(last);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -185,10 +187,12 @@ namespace VSLee.IEXSharpTest.Cloud
 			var response1 = await sandBoxClient.InvestorsExchangeData.StatsHistoricalSummaryAsync();
 			var response2 = await sandBoxClient.InvestorsExchangeData.StatsHistoricalSummaryAsync(new DateTime(2019, 02, 01));
 
-			Assert.IsNotNull(response1);
-			Assert.GreaterOrEqual(response1.Count(), 1);
-			Assert.IsNotNull(response2);
-			Assert.GreaterOrEqual(response2.Count(), 1);
+			Assert.IsNull(response1.ErrorMessage);
+			Assert.IsNotNull(response1.Data);
+			Assert.GreaterOrEqual(response1.Data.Count(), 1);
+			Assert.IsNull(response2.ErrorMessage);
+			Assert.IsNotNull(response2.Data);
+			Assert.GreaterOrEqual(response2.Data.Count(), 1);
 		}
 
 		[Test]

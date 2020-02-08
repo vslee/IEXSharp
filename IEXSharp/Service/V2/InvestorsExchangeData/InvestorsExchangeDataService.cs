@@ -1,4 +1,4 @@
-﻿using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
 using System;
 using System.Collections.Generic;
@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 {
@@ -62,7 +63,7 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		public async Task<IEnumerable<ListedShortInterestListResponse>> ListedShortInterestListAsync(string symbol)
 			=> await _executor.SymbolExecuteAsync<IEnumerable<ListedShortInterestListResponse>>("stock/[symbol]/short-interest", symbol, _pk);
 
-		public async Task<IEnumerable<StatsHisoricalDailyResponse>> StatsHistoricalDailyByDateAsync(string date)
+		public async Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByDateAsync(string date)
 		{
 			const string urlPattern = "stats/historical/daily";
 
@@ -72,10 +73,10 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsyncLegacy<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEnumerable<StatsHisoricalDailyResponse>> StatsHistoricalDailyByLastAsync(int last)
+		public async Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByLastAsync(int last)
 		{
 			const string urlPattern = "stats/historical/daily";
 
@@ -85,10 +86,10 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsyncLegacy<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEnumerable<StatsHistoricalSummaryResponse>> StatsHistoricalSummaryAsync(DateTime? date = null)
+		public async Task<IEXResponse<IEnumerable<StatsHistoricalSummaryResponse>>> StatsHistoricalSummaryAsync(DateTime? date = null)
 		{
 			const string urlPattern = "stats/historical";
 
@@ -98,7 +99,7 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsyncLegacy<IEnumerable<StatsHistoricalSummaryResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IEnumerable<StatsHistoricalSummaryResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<StatsIntradayResponse> StatsIntradayAsync()
