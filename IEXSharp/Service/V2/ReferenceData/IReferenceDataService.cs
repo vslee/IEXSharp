@@ -1,4 +1,5 @@
-﻿using System;
+using IEXSharp.Model;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using VSLee.IEXSharp.Model.ReferenceData.Request;
@@ -25,14 +26,14 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		/// </summary>
 		/// <param name="region"></param>
 		/// <returns></returns>
-		Task<IEnumerable<InternationalSymbolResponse>> InternationalRegionSymbolsAsync(string region);
+		Task<IEXResponse<IEnumerable<InternationalSymbolResponse>>> InternationalRegionSymbolsAsync(string region);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#international-symbols"/>
 		/// </summary>
 		/// <param name="exchange"></param>
 		/// <returns></returns>
-		Task<IEnumerable<InternationalSymbolResponse>> InternationalExchangeSymbolsAsync(string exchange);
+		Task<IEXResponse<IEnumerable<InternationalSymbolResponse>>> InternationalExchangeSymbolsAsync(string exchange);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#international-exchanges"/>
@@ -54,7 +55,7 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		/// <param name="last"></param>
 		/// <param name="startDate"></param>
 		/// <returns></returns>
-		Task<IEnumerable<USHolidaysAndTradingDatesResponse>> USHolidaysAndTradingDatesAsync(DateType type,
+		Task<IEXResponse<IEnumerable<USHolidaysAndTradingDatesResponse>>> USHolidaysAndTradingDatesAsync(DateType type,
 			DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null);
 
 		/// <summary>

@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -62,8 +62,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.ReferenceData.InternationalExchangeSymbolsAsync(exchange);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -72,8 +73,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.ReferenceData.InternationalRegionSymbolsAsync(region);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -110,10 +112,11 @@ namespace VSLee.IEXSharpTest.Cloud
 		[TestCase(DateType.Trade, DirectionType.Last, 2)]
 		public async Task USHolidaysAndTradingDatesAsyncTest(DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)
 		{
-			var resposne = await sandBoxClient.ReferenceData.USHolidaysAndTradingDatesAsync(type, direction, last, startDate);
+			var response = await sandBoxClient.ReferenceData.USHolidaysAndTradingDatesAsync(type, direction, last, startDate);
 
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -124,10 +127,11 @@ namespace VSLee.IEXSharpTest.Cloud
 		public async Task USHolidaysAndTradingDatesAsyncDateTest(DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)
 		{
 			startDate = new DateTime(2019, 03, 25);
-			var resposne = await sandBoxClient.ReferenceData.USHolidaysAndTradingDatesAsync(type, direction, last, startDate);
+			var response = await sandBoxClient.ReferenceData.USHolidaysAndTradingDatesAsync(type, direction, last, startDate);
 
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 	}
 }
