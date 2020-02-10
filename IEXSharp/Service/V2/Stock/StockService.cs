@@ -221,7 +221,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			await executor.SymbolLastExecuteAsync<EarningResponse>("stock/[symbol]/earnings/[last]", symbol, last,
 				pk);
 
-		public async Task<string> EarningFieldAsync(string symbol, string field, int last = 1) =>
+		public async Task<IEXResponse<string>> EarningFieldAsync(string symbol, string field, int last = 1) =>
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/earnings/[last]/[field]", symbol, field, last,
 				pk);
 
@@ -237,7 +237,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			await executor.SymbolLastExecuteAsync<EstimateResponse>("stock/[symbol]/estimates/[last]", symbol, last,
 				pk);
 
-		public async Task<string> EstimateFieldAsync(string symbol, string field, int last = 1) =>
+		public async Task<IEXResponse<string>> EstimateFieldAsync(string symbol, string field, int last = 1) =>
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/estimates/[last]/[field]", symbol, field, last,
 				pk);
 
@@ -245,7 +245,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			await executor.SymbolLastExecuteAsync<FinancialResponse>("stock/[symbol]/financials/[last]", symbol, last,
 				pk);
 
-		public async Task<string> FinancialFieldAsync(string symbol, string field, int last = 1) =>
+		public async Task<IEXResponse<string>> FinancialFieldAsync(string symbol, string field, int last = 1) =>
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/financials/[last]/[field]", symbol, field, last,
 				pk);
 

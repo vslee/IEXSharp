@@ -118,7 +118,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="field"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<string> EarningFieldAsync(string symbol, string field, int last = 1);
+		Task<IEXResponse<string>> EarningFieldAsync(string symbol, string field, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#earnings-today"/>
@@ -148,7 +148,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="field"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<string> EstimateFieldAsync(string symbol, string field, int last = 1);
+		Task<IEXResponse<string>> EstimateFieldAsync(string symbol, string field, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#financials"/>
@@ -165,7 +165,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="field"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<string> FinancialFieldAsync(string symbol, string field, int last = 1);
+		Task<IEXResponse<string>> FinancialFieldAsync(string symbol, string field, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#fund-ownership"/>

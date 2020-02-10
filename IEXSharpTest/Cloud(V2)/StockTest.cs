@@ -165,7 +165,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.EarningFieldAsync(symbol, field, last);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -204,7 +205,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.EstimateFieldAsync(symbol, field, last);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -225,7 +227,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.FinancialFieldAsync(symbol, field, last);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		// Not supported for free account
