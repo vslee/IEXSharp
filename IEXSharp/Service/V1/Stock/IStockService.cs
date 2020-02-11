@@ -174,7 +174,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="symbol"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<IEnumerable<NewsV1Response>> NewsAsync(string symbol, int last = 10);
+		Task<IEXResponse<IEnumerable<NewsV1Response>>> NewsAsync(string symbol, int last = 10);
 
 		/// <summary>
 		/// https://iextrading.com/developer/docs/#ohlc

@@ -194,8 +194,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.EstimateAsync(symbol, last);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.estimates.Count, 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.estimates.Count, 1);
 		}
 
 		[Test]
@@ -216,8 +217,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.FinancialAsync(symbol, last);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.financials.Count, 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.financials.Count, 1);
 		}
 
 		[Test]
@@ -491,8 +493,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.NewsAsync(symbol, last);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]

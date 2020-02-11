@@ -275,14 +275,16 @@ namespace VSLee.IEXSharpTest.V1
 		}
 
 		[Test]
+		[Ignore("IEX V1 has now deprecated this method")]
 		[TestCase("AAPL", 10)]
 		[TestCase("FB", 20)]
 		public async Task NewsAsyncTest(string symbol, int last)
 		{
 			var response = await prodClient.Stock.NewsAsync(symbol, last);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]

@@ -109,7 +109,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="symbol"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<EarningResponse> EarningAsync(string symbol, int last = 1);
+		Task<IEXResponse<EarningResponse>> EarningAsync(string symbol, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#earnings"/>
@@ -139,7 +139,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="symbol"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<EstimateResponse> EstimateAsync(string symbol, int last = 1);
+		Task<IEXResponse<EstimateResponse>> EstimateAsync(string symbol, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#estimates"/>
@@ -156,7 +156,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="symbol"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<FinancialResponse> FinancialAsync(string symbol, int last = 1);
+		Task<IEXResponse<FinancialResponse>> FinancialAsync(string symbol, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#financials"/>
@@ -309,7 +309,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="symbol"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<IEnumerable<NewsResponse>> NewsAsync(string symbol, int last = 10);
+		Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10);
 
 		/// <summary>
 		/// https://iexcloud.io/docs/api/#ohlc

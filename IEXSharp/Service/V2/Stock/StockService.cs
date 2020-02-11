@@ -217,7 +217,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<IEnumerable<DividendResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<EarningResponse> EarningAsync(string symbol, int last = 1) =>
+		public async Task<IEXResponse<EarningResponse>> EarningAsync(string symbol, int last = 1) =>
 			await executor.SymbolLastExecuteAsync<EarningResponse>("stock/[symbol]/earnings/[last]", symbol, last,
 				pk);
 
@@ -233,7 +233,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			await executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>("stock/[symbol]/effective-spread",
 				symbol, pk);
 
-		public async Task<EstimateResponse> EstimateAsync(string symbol, int last = 1) =>
+		public async Task<IEXResponse<EstimateResponse>> EstimateAsync(string symbol, int last = 1) =>
 			await executor.SymbolLastExecuteAsync<EstimateResponse>("stock/[symbol]/estimates/[last]", symbol, last,
 				pk);
 
@@ -241,7 +241,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/estimates/[last]/[field]", symbol, field, last,
 				pk);
 
-		public async Task<FinancialResponse> FinancialAsync(string symbol, int last = 1) =>
+		public async Task<IEXResponse<FinancialResponse>> FinancialAsync(string symbol, int last = 1) =>
 			await executor.SymbolLastExecuteAsync<FinancialResponse>("stock/[symbol]/financials/[last]", symbol, last,
 				pk);
 
@@ -391,7 +391,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		public async Task<IEnumerable<USMarketVolumeResponse>> USMarketVolumeAsync() =>
 			await executor.NoParamExecute<IEnumerable<USMarketVolumeResponse>>("market", pk);
 
-		public async Task<IEnumerable<NewsResponse>> NewsAsync(string symbol, int last = 10) => await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last, pk);
+		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10) => await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last, pk);
 
 		public async Task<OHLCResponse> OHLCAsync(string symbol) => await executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol, pk);
 
