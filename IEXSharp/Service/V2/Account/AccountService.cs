@@ -11,12 +11,10 @@ namespace VSLee.IEXSharp.Service.V2.Account
 {
 	internal class AccountService : IAccountService
 	{
-		private readonly string _sk;
 		private readonly ExecutorREST _executor;
 
 		public AccountService(HttpClient client, string sk, string pk, bool sign)
 		{
-			_sk = sk;
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
@@ -25,7 +23,6 @@ namespace VSLee.IEXSharp.Service.V2.Account
 			const string urlPattern = "account/metadata";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _sk);
 
 			var pathNVC = new NameValueCollection();
 
@@ -37,7 +34,6 @@ namespace VSLee.IEXSharp.Service.V2.Account
 			const string urlPattern = "account/usage/[type]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _sk);
 
 			var pathNVC = new NameValueCollection { { "type", type.ToString().ToLower() } };
 
