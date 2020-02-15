@@ -11,23 +11,21 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 {
 	internal class AlternativeDataService : IAlternativeDataService
 	{
-		private readonly string _pk;
 		private readonly ExecutorREST _executor;
 
 		public AlternativeDataService(HttpClient client, string sk, string pk, bool sign)
 		{
-			_pk = pk;
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<Quote> CryptoAsync(string symbol) => await _executor.SymbolExecuteAsync<Quote>("crypto/[symbol]/quote", symbol, _pk);
+		public async Task<Quote> CryptoAsync(string symbol) =>
+			await _executor.SymbolExecuteAsync<Quote>("crypto/[symbol]/quote", symbol, null);
 
 		public async Task<IEXResponse<SocialSentimentDailyResponse>> SocialSentimentDailyAsync(string symbol, DateTime? date = null)
 		{
 			const string urlPattern = "stock/[symbol]/sentiment/daily/[date]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
 
 			var pathNvc = new NameValueCollection
 			{
@@ -43,7 +41,6 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 			const string urlPattern = "stock/[symbol]/sentiment/minute/[date]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
 
 			var pathNvc = new NameValueCollection
 			{
