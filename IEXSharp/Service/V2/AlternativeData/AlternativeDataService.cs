@@ -51,6 +51,7 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 			return await _executor.ExecuteAsync<SocialSentimentMinuteResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<CEOCompensationResponse> CEOCompensationAsync(string symbol) => await _executor.SymbolExecuteAsync<CEOCompensationResponse>("stock/[symbol]/ceo-compensation", symbol, _pk);
+		public async Task<CEOCompensationResponse> CEOCompensationAsync(string symbol) =>
+			await _executor.SymbolExecuteAsync<CEOCompensationResponse>("stock/[symbol]/ceo-compensation", symbol, null);
 	}
 }
