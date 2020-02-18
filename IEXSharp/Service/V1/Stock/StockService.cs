@@ -250,7 +250,8 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 
 		public async Task<LogoResponse> LogoAsync(string symbol) => await _executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol, "");
 
-		public async Task<IEXResponse<IEnumerable<NewsV1Response>>> NewsAsync(string symbol, int last = 10) => await _executor.SymbolLastExecuteAsync<IEnumerable<NewsV1Response>>("stock/[symbol]/news/last/[last]", symbol, last, "");
+		public async Task<IEXResponse<IEnumerable<NewsV1Response>>> NewsAsync(string symbol, int last = 10) =>
+			await _executor.SymbolLastExecuteAsync<IEnumerable<NewsV1Response>>("stock/[symbol]/news/last/[last]", symbol, last);
 
 		public async Task<OHLCResponse> OHLCAsync(string symbol) => await _executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol, "");
 

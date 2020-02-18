@@ -146,14 +146,10 @@ namespace VSLee.IEXSharp.Helper
 			return await ExecuteAsyncLegacy<ReturnType>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<ReturnType>> SymbolLastExecuteAsync<ReturnType>(string urlPattern, string symbol, int last, string token)
+		public async Task<IEXResponse<ReturnType>> SymbolLastExecuteAsync<ReturnType>(string urlPattern, string symbol, int last)
 			where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
-			if (!string.IsNullOrEmpty(token))
-			{
-				qsb.Add("token", token);
-			}
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
