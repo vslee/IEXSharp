@@ -1,4 +1,4 @@
-﻿using System.Net.Http;
+using System.Net.Http;
 using System.Threading.Tasks;
 using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.APISystemMetadata.Response;
@@ -16,6 +16,6 @@ namespace VSLee.IEXSharp.Service.V2.APISystemMetadata
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<StatusResponse> StatusAsync() => await _executor.NoParamExecute<StatusResponse>("status", _pk);
+		public async Task<StatusResponse> StatusAsync() => await _executor.NoParamExecute<StatusResponse>("status");
 	}
 }

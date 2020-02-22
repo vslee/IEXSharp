@@ -66,7 +66,8 @@ namespace VSLee.IEXSharp.Helper
 			}
 		}
 
-		public async Task<IEXResponse<ReturnType>> ExecuteAsync<ReturnType>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb)
+		public async Task<IEXResponse<ReturnType>> ExecuteAsync<ReturnType>(
+			string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb)
 			where ReturnType : class
 		{
 			ValidateAndProcessParams(ref urlPattern, ref pathNVC, ref qsb);
@@ -112,13 +113,9 @@ namespace VSLee.IEXSharp.Helper
 			}
 		}
 
-		public async Task<ReturnType> NoParamExecute<ReturnType>(string url, string token) where ReturnType : class
+		public async Task<ReturnType> NoParamExecute<ReturnType>(string url) where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
-			if (!string.IsNullOrEmpty(token))
-			{
-				qsb.Add("token", token);
-			}
 
 			var pathNVC = new NameValueCollection();
 
