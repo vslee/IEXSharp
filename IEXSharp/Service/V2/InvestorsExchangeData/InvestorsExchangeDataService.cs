@@ -22,40 +22,40 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		}
 
 		public async Task<Dictionary<string, DeepAuctionResponse>> DeepActionAsync(IEnumerable<string> symbols)
-		  => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbols, _pk);
+		  => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbols);
 
 		public async Task<DeepResponse> DeepAsync(IEnumerable<string> symbols)
-		   => await _executor.SymbolsExecuteAsync<DeepResponse>("deep", symbols, _pk);
+		   => await _executor.SymbolsExecuteAsync<DeepResponse>("deep", symbols);
 
 		public async Task<Dictionary<string, DeepBookResponse>> DeepBookAsync(IEnumerable<string> symbols)
-		   => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepBookResponse>>("deep/book", symbols, _pk);
+		   => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepBookResponse>>("deep/book", symbols);
 
 		public async Task<Dictionary<string, DeepOfficialPriceResponse>> DeepOfficialPriceAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOfficialPriceResponse>>("deep/official-price", symbols, _pk);
+			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOfficialPriceResponse>>("deep/official-price", symbols);
 
 		public async Task<Dictionary<string, DeepOperationalHaltStatusResponse>> DeepOperationHaltStatusAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOperationalHaltStatusResponse>>("deep/op-halt-status", symbols, _pk);
+			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOperationalHaltStatusResponse>>("deep/op-halt-status", symbols);
 
 		public async Task<Dictionary<string, DeepSecurityEventResponse>> DeepSecurityEventAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepSecurityEventResponse>>("deep/security-event", symbols, _pk);
+			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepSecurityEventResponse>>("deep/security-event", symbols);
 
 		public async Task<Dictionary<string, DeepShortSalePriceTestStatusResponse>> DeepShortSalePriceTestStatusAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepShortSalePriceTestStatusResponse>>("deep/ssr-status", symbols, _pk);
+			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepShortSalePriceTestStatusResponse>>("deep/ssr-status", symbols);
 
 		public async Task<DeepSystemEventResponse> DeepSystemEventAsync()
 			=> await _executor.NoParamExecute<DeepSystemEventResponse>("deep/system-event");
 
 		public async Task<Dictionary<string, IEnumerable<DeepTradeResponse>>> DeepTradeAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades", symbols, _pk);
+			=> await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades", symbols);
 
 		public async Task<Dictionary<string, IEnumerable<DeepTradeResponse>>> DeepTradeBreaksAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades-breaks", symbols, _pk);
+			=> await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades-breaks", symbols);
 
 		public async Task<Dictionary<string, DeepTradingStatusResponse>> DeepTradingStatusAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepTradingStatusResponse>>("deep/trades-status", symbols, _pk);
+			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepTradingStatusResponse>>("deep/trades-status", symbols);
 
 		public async Task<IEnumerable<LastResponse>> LastAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols, _pk);
+			=> await _executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);
 
 		public async Task<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol)
 			=> await _executor.SymbolExecuteAsync<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>(
@@ -117,7 +117,7 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		{
 			if (symbols.Count() > 0)
 			{
-				return await _executor.SymbolsExecuteAsync<IEnumerable<TOPSResponse>>("tops", symbols, _pk);
+				return await _executor.SymbolsExecuteAsync<IEnumerable<TOPSResponse>>("tops", symbols);
 			}
 			return await _executor.NoParamExecute<IEnumerable<TOPSResponse>>("tops");
 		}
