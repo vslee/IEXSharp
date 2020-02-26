@@ -35,29 +35,32 @@ namespace VSLee.IEXSharp
 		private IInvestorsExchangeDataService investorsExchangeDataService;
 		private IAPISystemMetadataService apiSystemMetadataService;
 
-		public IAccountService Account =>
-			accountService ??
-			(accountService = new AccountService(client, secretToken, publishableToken, signRequest));
+		public IAccountService Account => accountService ??	(accountService =
+			new AccountService(client, secretToken, publishableToken, signRequest));
 
-		public IStockService Stock => stockService ?? (stockService = new StockService(client, secretToken, publishableToken, signRequest));
+		public IStockService Stock => stockService ?? (stockService =
+			new StockService(client, secretToken, publishableToken, signRequest));
 
-		public ISSEService SSE =>
-			sseService ?? (sseService = new SSEService(baseSSEURL: baseSSEURL, sk: secretToken, pk: publishableToken));
+		/// <summary>
+		/// SSE streaming service
+		/// </summary>
+		public ISSEService SSE => sseService ?? (sseService =
+			new SSEService(baseSSEURL: baseSSEURL, sk: secretToken, pk: publishableToken));
 
-		public IAlternativeDataService AlternativeData =>
-			alternativeDataService ?? (alternativeDataService = new AlternativeDataService(client, secretToken, publishableToken, signRequest));
+		public IAlternativeDataService AlternativeData => alternativeDataService ??
+			(alternativeDataService = new AlternativeDataService(client, secretToken, publishableToken, signRequest));
 
-		public IReferenceDataService ReferenceData =>
-			referenceDataService ?? (referenceDataService = new ReferenceDataService(client, secretToken, publishableToken, signRequest));
+		public IReferenceDataService ReferenceData => referenceDataService ??
+			(referenceDataService = new ReferenceDataService(client, secretToken, publishableToken, signRequest));
 
-		public IForexCurrenciesService ForexCurrencies =>
-			forexCurrenciesService ?? (forexCurrenciesService = new ForexCurrenciesService(client, secretToken, publishableToken, signRequest));
+		public IForexCurrenciesService ForexCurrencies => forexCurrenciesService ??
+			(forexCurrenciesService = new ForexCurrenciesService(client, secretToken, publishableToken, signRequest));
 
 		public IInvestorsExchangeDataService InvestorsExchangeData =>
 			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, secretToken, publishableToken, signRequest));
 
-		public IAPISystemMetadataService ApiSystemMetadata =>
-			apiSystemMetadataService ?? (apiSystemMetadataService = new APISystemMetadata(client, secretToken, publishableToken, signRequest));
+		public IAPISystemMetadataService ApiSystemMetadata => apiSystemMetadataService
+			?? (apiSystemMetadataService = new APISystemMetadata(client, secretToken, publishableToken, signRequest));
 
 		/// <summary>
 		/// create a new IEXCloudClient

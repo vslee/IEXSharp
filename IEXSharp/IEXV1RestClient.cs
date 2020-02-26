@@ -19,8 +19,8 @@ namespace VSLee.IEXSharp
 		public IStockService Stock =>
 			stockService ?? (stockService = new StockService(_client));
 
-		public IReferenceDataService ReferenceData =>
-			referenceDataService ?? (referenceDataService = new ReferenceDataService(_client));
+		public IReferenceDataService ReferenceData => referenceDataService ??
+			(referenceDataService = new ReferenceDataService(_client));
 
 		public IMarketService Market =>
 			marketService ?? (marketService = new MarketService(_client));
