@@ -55,7 +55,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<BatchBySymbolResponse>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,
+		public async Task<IEXResponse<BatchBySymbolResponse>>
+			BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,
 			string range = "", int last = 1)
 		{
 			if (types?.Count() < 1)
