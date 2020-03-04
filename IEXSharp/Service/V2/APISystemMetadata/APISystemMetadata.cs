@@ -16,6 +16,6 @@ namespace VSLee.IEXSharp.Service.V2.APISystemMetadata
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<StatusResponse> StatusAsync() => await _executor.NoParamExecute<StatusResponse>("status");
+		public async Task<StatusResponse> StatusAsync() => await _executor.NoParamExecuteLegacy<StatusResponse>("status");
 	}
 }

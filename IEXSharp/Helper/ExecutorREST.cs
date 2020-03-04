@@ -113,13 +113,22 @@ namespace VSLee.IEXSharp.Helper
 			}
 		}
 
-		public async Task<ReturnType> NoParamExecute<ReturnType>(string url) where ReturnType : class
+		public async Task<ReturnType> NoParamExecuteLegacy<ReturnType>(string url) where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
 
 			var pathNVC = new NameValueCollection();
 
 			return await ExecuteAsyncLegacy<ReturnType>(url, pathNVC, qsb);
+		}
+
+		public async Task<IEXResponse<ReturnType>> NoParamExecute<ReturnType>(string url) where ReturnType : class
+		{
+			var qsb = new QueryStringBuilder();
+
+			var pathNVC = new NameValueCollection();
+
+			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb);
 		}
 
 		public async Task<ReturnType> SymbolExecuteAsync<ReturnType>(string urlPattern, string symbol)
@@ -132,7 +141,7 @@ namespace VSLee.IEXSharp.Helper
 			return await ExecuteAsyncLegacy<ReturnType>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<ReturnType> SymbolsExecuteAsync<ReturnType>(string urlPattern, IEnumerable<string> symbols)
+		public async Task<ReturnType> SymbolsExecuteAsyncLegacy<ReturnType>(string urlPattern, IEnumerable<string> symbols)
 			where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
@@ -141,6 +150,17 @@ namespace VSLee.IEXSharp.Helper
 			var pathNvc = new NameValueCollection();
 
 			return await ExecuteAsyncLegacy<ReturnType>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<ReturnType>> SymbolsExecuteAsync<ReturnType>(string urlPattern, IEnumerable<string> symbols)
+			where ReturnType : class
+		{
+			var qsb = new QueryStringBuilder();
+			qsb.Add("symbols", string.Join(",", symbols));
+
+			var pathNvc = new NameValueCollection();
+
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolLastExecuteAsync<ReturnType>(string urlPattern, string symbol, int last)

@@ -19,13 +19,13 @@ namespace VSLee.IEXSharp.Service.V1.Stats
 		}
 
 		public async Task<StatsIntradayResponse> StatsIntradayAsync()
-			=> await _executor.NoParamExecute<StatsIntradayResponse>("stats/intraday");
+			=> await _executor.NoParamExecuteLegacy<StatsIntradayResponse>("stats/intraday");
 
 		public async Task<IEnumerable<StatsRecentResponse>> StatsRecentAsync()
-			=> await _executor.NoParamExecute<IEnumerable<StatsRecentResponse>>("stats/recent");
+			=> await _executor.NoParamExecuteLegacy<IEnumerable<StatsRecentResponse>>("stats/recent");
 
 		public async Task<StatsRecordResponse> StatsRecordAsync()
-			=> await _executor.NoParamExecute<StatsRecordResponse>("stats/records");
+			=> await _executor.NoParamExecuteLegacy<StatsRecordResponse>("stats/records");
 
 		public async Task<IEXResponse<IEnumerable<StatsHistoricalSummaryResponse>>> StatsHistoricalSummaryAsync(DateTime? date = null)
 		{

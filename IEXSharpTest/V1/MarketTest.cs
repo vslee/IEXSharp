@@ -23,7 +23,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.TOPSAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -64,7 +66,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -74,7 +77,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepBookAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 		[Test]
 		[TestCase("AAPL")]
@@ -83,7 +87,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepTradeAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -101,7 +107,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepTradingStatusAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 		[Test]
 		[TestCase("AAPL")]
@@ -110,7 +118,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepOperationHaltStatusAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -120,7 +130,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepShortSalePriceTestStatusAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -130,7 +142,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepSecurityEventAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -140,7 +154,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepTradeBreaksAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 		[Test]
 		[TestCase("AAPL")]
@@ -149,7 +165,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepActionAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 		[Test]
 		[TestCase("AAPL")]
@@ -158,7 +176,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepOfficialPriceAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
