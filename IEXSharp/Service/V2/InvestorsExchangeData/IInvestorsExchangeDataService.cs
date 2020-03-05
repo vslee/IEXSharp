@@ -9,67 +9,53 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 	public interface IInvestorsExchangeDataService
 	{
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#tops"/>
-		/// </summary>
-		/// <param name="symbols"></param>
-		/// <returns></returns>
-		Task<IEnumerable<TOPSResponse>> TOPSAsync(IEnumerable<string> symbols);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#last"/>
-		/// </summary>
-		/// <param name="symbols"></param>
-		/// <returns></returns>
-		Task<IEnumerable<LastResponse>> LastAsync(IEnumerable<string> symbols);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<DeepResponse> DeepAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<DeepResponse>> DeepAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-auction"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, DeepAuctionResponse>> DeepActionAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepActionAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-book"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, DeepBookResponse>> DeepBookAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, DeepBookResponse>>> DeepBookAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-operational-halt-status"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, DeepOperationalHaltStatusResponse>> DeepOperationHaltStatusAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, DeepOperationalHaltStatusResponse>>> DeepOperationHaltStatusAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-official-price"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, DeepOfficialPriceResponse>> DeepOfficialPriceAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, DeepOfficialPriceResponse>>> DeepOfficialPriceAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-security-event"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, DeepSecurityEventResponse>> DeepSecurityEventAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, DeepSecurityEventResponse>>> DeepSecurityEventAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-short-sale-price-test-status"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, DeepShortSalePriceTestStatusResponse>> DeepShortSalePriceTestStatusAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, DeepShortSalePriceTestStatusResponse>>> DeepShortSalePriceTestStatusAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-system-event"/>
@@ -83,21 +69,28 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, IEnumerable<DeepTradeResponse>>> DeepTradeAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-trade-break"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, IEnumerable<DeepTradeResponse>>> DeepTradeBreaksAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeBreaksAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-trading-status"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<Dictionary<string, DeepTradingStatusResponse>> DeepTradingStatusAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, DeepTradingStatusResponse>>> DeepTradingStatusAsync(IEnumerable<string> symbols);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#last"/>
+		/// </summary>
+		/// <param name="symbols"></param>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<LastResponse>>> LastAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#listed-regulation-sho-threshold-securities-list-in-dev"/>
@@ -151,5 +144,12 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		/// </summary>
 		/// <returns></returns>
 		Task<StatsRecordResponse> StatsRecordAsync();
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#tops"/>
+		/// </summary>
+		/// <param name="symbols"></param>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<TOPSResponse>>> TOPSAsync(IEnumerable<string> symbols);
 	}
 }

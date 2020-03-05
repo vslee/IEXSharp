@@ -30,8 +30,8 @@ namespace VSLee.IEXSharp.Service.V1.Market
 			return await _executor.NoParamExecute<IEnumerable<TOPSResponse>>("tops");
 		}
 
-		public async Task<IEnumerable<LastResponse>> LastAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsyncLegacy<IEnumerable<LastResponse>>("tops/last", symbols);
+		public async Task<IEXResponse<IEnumerable<LastResponse>>> LastAsync(IEnumerable<string> symbols)
+			=> await _executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);
 
 		public async Task<IEXResponse<Dictionary<string, IEnumerable<HISTResponse>>>> HISTAsync()
 		{

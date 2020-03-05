@@ -19,21 +19,24 @@ namespace VSLee.IEXSharpTest.Cloud
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task DeepActionAsyncTest(params string[] symbols)
+		public async Task DeepAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepActionAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeData.DeepAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task DeepAsyncTest(params string[] symbols)
+		public async Task DeepActionAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeData.DeepActionAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -43,17 +46,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.DeepBookAsync(symbols);
 
-			Assert.IsNotNull(response);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task DeepOfficialPriceAsyncTest(params string[] symbols)
-		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepOfficialPriceAsync(symbols);
-
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -63,7 +58,21 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.DeepOperationHaltStatusAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
+		}
+
+		[Test]
+		[TestCase("AAPL")]
+		[TestCase("FB")]
+		public async Task DeepOfficialPriceAsyncTest(params string[] symbols)
+		{
+			var response = await sandBoxClient.InvestorsExchangeData.DeepOfficialPriceAsync(symbols);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -73,7 +82,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.DeepSecurityEventAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -83,7 +94,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.DeepShortSalePriceTestStatusAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -101,7 +114,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.DeepTradeAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -111,7 +126,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.DeepTradeBreaksAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -121,7 +138,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.DeepTradingStatusAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
 		[Test]
@@ -131,8 +150,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.LastAsync(symbols);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -227,7 +247,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.TOPSAsync(symbols);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 	}
 }

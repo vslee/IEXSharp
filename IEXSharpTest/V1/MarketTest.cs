@@ -35,8 +35,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.LastAsync(symbols);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]

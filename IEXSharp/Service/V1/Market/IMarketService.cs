@@ -22,7 +22,7 @@ namespace VSLee.IEXSharp.Service.V1.Market
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<IEnumerable<LastResponse>> LastAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<IEnumerable<LastResponse>>> LastAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#hist"/>
