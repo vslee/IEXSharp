@@ -1,6 +1,7 @@
-﻿using VSLee.IEXSharp.Model.ReferenceData.Response;
+using VSLee.IEXSharp.Model.ReferenceData.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V1.ReferenceData
 {
@@ -10,30 +11,30 @@ namespace VSLee.IEXSharp.Service.V1.ReferenceData
 		/// <see cref="https://iextrading.com/developer/docs/#symbols"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<SymbolResponse>> SymbolsAsync();
+		Task<IEXResponse<IEnumerable<SymbolResponse>>> SymbolsAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#iex-corporate-actions"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<IEXCorporateActionsResponse>> IEXCorporateActionsAsync();
+		Task<IEXResponse<IEnumerable<IEXCorporateActionsResponse>>> IEXCorporateActionsAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#iex-dividends"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<IEXDividendsResponse>> IEXDividentsAsync();
+		Task<IEXResponse<IEnumerable<IEXDividendsResponse>>> IEXDividentsAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#iex-next-day-ex-date"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<IEXNextDayExDateResponse>> IEXNextDayExDateAsync();
+		Task<IEXResponse<IEnumerable<IEXNextDayExDateResponse>>> IEXNextDayExDateAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#iex-listed-symbol-directory"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<IEXListedSymbolDirectoryResponse>> IEXListedSymbolDirectoryAsync();
+		Task<IEXResponse<IEnumerable<IEXListedSymbolDirectoryResponse>>> IEXListedSymbolDirectoryAsync();
 	}
 }

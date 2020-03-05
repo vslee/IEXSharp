@@ -98,7 +98,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.DeepSystemEventAsync();
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -187,8 +188,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Market.USMarketVolumeAsync();
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 	}
 }

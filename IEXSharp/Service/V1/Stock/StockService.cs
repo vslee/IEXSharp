@@ -170,7 +170,8 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		public async Task<CompanyResponse> CompanyAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<CompanyResponse>("stock/[symbol]/company", symbol);
 
-		public async Task<IEnumerable<Quote>> CryptoAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<Quote>>("crypto/market/quote");
+		public async Task<IEXResponse<IEnumerable<Quote>>> CryptoAsync() =>
+			await _executor.NoParamExecute<IEnumerable<Quote>>("crypto/market/quote");
 
 		public async Task<DelayedQuoteResponse> DelayedQuoteAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<DelayedQuoteResponse>("stock/[symbol]/delayed-quote", symbol);
@@ -192,8 +193,8 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		public async Task<EarningResponse> EarningAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<EarningResponse>("stock/[symbol]/earnings", symbol);
 
-		public async Task<EarningTodayResponse> EarningTodayAsync() =>
-			await _executor.NoParamExecuteLegacy<EarningTodayResponse>("stock/market/today-earnings");
+		public async Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync() =>
+			await _executor.NoParamExecute<EarningTodayResponse>("stock/market/today-earnings");
 
 		public async Task<IEnumerable<EffectiveSpreadResponse>> EffectiveSpreadAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(
@@ -277,8 +278,8 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		public async Task<RelevantResponse> RelevantAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<RelevantResponse>("stock/[symbol]/relevant", symbol);
 
-		public async Task<IEnumerable<SectorPerformanceResponse>> SectorPerformanceAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");
+		public async Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync() =>
+			await _executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");
 
 		public async Task<IEXResponse<IEnumerable<SplitV1Response>>> SplitAsync(string symbol, SplitRange range = SplitRange._1m)
 		{

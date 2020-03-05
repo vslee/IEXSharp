@@ -74,7 +74,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <see cref="https://iextrading.com/developer/docs/#crypto"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<Quote>> CryptoAsync();
+		Task<IEXResponse<IEnumerable<Quote>>> CryptoAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#delayed-quote"/>
@@ -102,7 +102,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <see cref="https://iextrading.com/developer/docs/#earnings-today"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<EarningTodayResponse> EarningTodayAsync();
+		Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#effective-spread"/>
@@ -222,7 +222,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <see cref="https://iextrading.com/developer/docs/#sector-performance"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<SectorPerformanceResponse>> SectorPerformanceAsync();
+		Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#splits"/>

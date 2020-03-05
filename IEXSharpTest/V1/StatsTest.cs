@@ -23,7 +23,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stats.StatsIntradayAsync();
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -31,8 +32,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stats.StatsRecentAsync();
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -40,7 +42,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stats.StatsRecordAsync();
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 		[Test]
 		[TestCase("201902")]

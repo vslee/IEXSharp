@@ -12,19 +12,19 @@ namespace VSLee.IEXSharp.Service.V1.Stats
 		/// <see cref="https://iextrading.com/developer/docs/#intraday"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<StatsIntradayResponse> StatsIntradayAsync();
+		Task<IEXResponse<StatsIntradayResponse>> StatsIntradayAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#recent"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<StatsRecentResponse>> StatsRecentAsync();
+		Task<IEXResponse<IEnumerable<StatsRecentResponse>>> StatsRecentAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#records"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<StatsRecordResponse> StatsRecordAsync();
+		Task<IEXResponse<StatsRecordResponse>> StatsRecordAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#historical-summary"/>

@@ -1,4 +1,4 @@
-﻿using VSLee.IEXSharp;
+using VSLee.IEXSharp;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,46 +18,51 @@ namespace VSLee.IEXSharpTest.V1
 		[Test]
 		public async Task SymbolsAsyncTest()
 		{
-			var resposne = await prodClient.ReferenceData.SymbolsAsync();
+			var response = await prodClient.ReferenceData.SymbolsAsync();
 
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
 		public async Task IEXCorporateActionsAsyncTest()
 		{
-			var resposne = await prodClient.ReferenceData.IEXCorporateActionsAsync();
+			var response = await prodClient.ReferenceData.IEXCorporateActionsAsync();
 
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
 		public async Task IEXDividentsAsyncTest()
 		{
-			var resposne = await prodClient.ReferenceData.IEXDividentsAsync();
+			var response = await prodClient.ReferenceData.IEXDividentsAsync();
 
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
 		public async Task IEXNextDayExDateAsyncTest()
 		{
-			var resposne = await prodClient.ReferenceData.IEXNextDayExDateAsync();
+			var response = await prodClient.ReferenceData.IEXNextDayExDateAsync();
 
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
 		public async Task IEXListedSymbolDirectoryAsyncTest()
 		{
-			var resposne = await prodClient.ReferenceData.IEXListedSymbolDirectoryAsync();
+			var response = await prodClient.ReferenceData.IEXListedSymbolDirectoryAsync();
 
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 	}
 }

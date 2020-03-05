@@ -123,8 +123,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.CryptoAsync();
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -168,7 +169,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.EarningTodayAsync();
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -353,8 +355,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.SectorPerformanceAsync();
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]

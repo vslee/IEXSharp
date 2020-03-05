@@ -63,7 +63,7 @@ namespace VSLee.IEXSharp.Service.V1.Market
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<DeepSystemEventResponse> DeepSystemEventAsync();
+		Task<IEXResponse<DeepSystemEventResponse>> DeepSystemEventAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#trading-status"/>
@@ -118,6 +118,6 @@ namespace VSLee.IEXSharp.Service.V1.Market
 		/// <see cref="https://iextrading.com/developer/docs/#markets"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<USMarketVolumeResponse>> USMarketVolumeAsync();
+		Task<IEXResponse<IEnumerable<USMarketVolumeResponse>>> USMarketVolumeAsync();
 	}
 }

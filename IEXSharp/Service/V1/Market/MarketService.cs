@@ -65,8 +65,8 @@ namespace VSLee.IEXSharp.Service.V1.Market
 		public async Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeAsync(IEnumerable<string> symbols)
 			=> await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades", symbols);
 
-		public async Task<DeepSystemEventResponse> DeepSystemEventAsync()
-			=> await _executor.NoParamExecuteLegacy<DeepSystemEventResponse>("deep/system-event");
+		public async Task<IEXResponse<DeepSystemEventResponse>> DeepSystemEventAsync()
+			=> await _executor.NoParamExecute<DeepSystemEventResponse>("deep/system-event");
 
 		public async Task<IEXResponse<Dictionary<string, DeepTradingStatusResponse>>> DeepTradingStatusAsync(IEnumerable<string> symbols)
 			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepTradingStatusResponse>>("deep/trades-status", symbols);
@@ -88,7 +88,7 @@ namespace VSLee.IEXSharp.Service.V1.Market
 
 		public async Task<IEXResponse<Dictionary<string, DeepOfficialPriceResponse>>> DeepOfficialPriceAsync(IEnumerable<string> symbols)
 			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOfficialPriceResponse>>("deep/official-price", symbols);
-		public async Task<IEnumerable<USMarketVolumeResponse>> USMarketVolumeAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<USMarketVolumeResponse>>("market");
+		public async Task<IEXResponse<IEnumerable<USMarketVolumeResponse>>> USMarketVolumeAsync() =>
+			await _executor.NoParamExecute<IEnumerable<USMarketVolumeResponse>>("market");
 	}
 }
