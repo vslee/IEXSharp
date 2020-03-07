@@ -62,7 +62,7 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<DeepSystemEventResponse> DeepSystemEventAsync();
+		Task<IEXResponse<DeepSystemEventResponse>> DeepSystemEventAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-trades"/>
@@ -131,19 +131,19 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		/// <see cref="https://iexcloud.io/docs/api/#stats-intraday"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<StatsIntradayResponse> StatsIntradayAsync();
+		Task<IEXResponse<StatsIntradayResponse>> StatsIntradayAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stats-recent"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<StatsRecentResponse>> StatsRecentAsync();
+		Task<IEXResponse<IEnumerable<StatsRecentResponse>>> StatsRecentAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stats-records"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<StatsRecordResponse> StatsRecordAsync();
+		Task<IEXResponse<StatsRecordResponse>> StatsRecordAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#tops"/>

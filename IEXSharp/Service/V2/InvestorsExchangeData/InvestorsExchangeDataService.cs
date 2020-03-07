@@ -42,8 +42,8 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		public async Task<IEXResponse<Dictionary<string, DeepShortSalePriceTestStatusResponse>>> DeepShortSalePriceTestStatusAsync(IEnumerable<string> symbols)
 			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepShortSalePriceTestStatusResponse>>("deep/ssr-status", symbols);
 
-		public async Task<DeepSystemEventResponse> DeepSystemEventAsync()
-			=> await _executor.NoParamExecuteLegacy<DeepSystemEventResponse>("deep/system-event");
+		public async Task<IEXResponse<DeepSystemEventResponse>> DeepSystemEventAsync()
+			=> await _executor.NoParamExecute<DeepSystemEventResponse>("deep/system-event");
 
 		public async Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeAsync(IEnumerable<string> symbols)
 			=> await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades", symbols);
@@ -104,14 +104,14 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 			return await _executor.ExecuteAsync<IEnumerable<StatsHistoricalSummaryResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<StatsIntradayResponse> StatsIntradayAsync()
-			=> await _executor.NoParamExecuteLegacy<StatsIntradayResponse>("stats/intraday");
+		public async Task<IEXResponse<StatsIntradayResponse>> StatsIntradayAsync()
+			=> await _executor.NoParamExecute<StatsIntradayResponse>("stats/intraday");
 
-		public async Task<IEnumerable<StatsRecentResponse>> StatsRecentAsync()
-			=> await _executor.NoParamExecuteLegacy<IEnumerable<StatsRecentResponse>>("stats/recent");
+		public async Task<IEXResponse<IEnumerable<StatsRecentResponse>>> StatsRecentAsync()
+			=> await _executor.NoParamExecute<IEnumerable<StatsRecentResponse>>("stats/recent");
 
-		public async Task<StatsRecordResponse> StatsRecordAsync()
-			=> await _executor.NoParamExecuteLegacy<StatsRecordResponse>("stats/records");
+		public async Task<IEXResponse<StatsRecordResponse>> StatsRecordAsync()
+			=> await _executor.NoParamExecute<StatsRecordResponse>("stats/records");
 
 		public async Task<IEXResponse<IEnumerable<TOPSResponse>>> TOPSAsync(IEnumerable<string> symbols)
 		{

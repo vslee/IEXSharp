@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+using IEXSharp.Model;
+using System.Threading.Tasks;
 using VSLee.IEXSharp.Model.APISystemMetadata.Response;
 
 namespace VSLee.IEXSharp.Service.V2.APISystemMetadata
@@ -9,6 +10,6 @@ namespace VSLee.IEXSharp.Service.V2.APISystemMetadata
 		/// <see cref="https://iexcloud.io/docs/api/#stats-records"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<StatusResponse> StatusAsync();
+		Task<IEXResponse<StatusResponse>> StatusAsync();
 	}
 }
