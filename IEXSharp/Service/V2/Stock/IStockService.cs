@@ -124,7 +124,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <see cref="https://iexcloud.io/docs/api/#earnings-today"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<EarningTodayResponse> EarningTodayAsync();
+		Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#effective-spread"/>
@@ -301,7 +301,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <see cref="https://iexcloud.io/docs/api/#market-volume-u-s"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<USMarketVolumeResponse>> USMarketVolumeAsync();
+		Task<IEXResponse<IEnumerable<USMarketVolumeResponse>>> MarketVolumeUSAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#news"/>
@@ -372,7 +372,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <see cref="https://iexcloud.io/docs/api/#sector-performance"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<SectorPerformanceResponse>> SectorPerformanceAsync();
+		Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#splits"/>

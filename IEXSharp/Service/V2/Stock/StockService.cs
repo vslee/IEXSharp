@@ -224,8 +224,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		public async Task<IEXResponse<string>> EarningFieldAsync(string symbol, string field, int last = 1) =>
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/earnings/[last]/[field]", symbol, field, last);
 
-		public async Task<EarningTodayResponse> EarningTodayAsync() =>
-			await executor.NoParamExecuteLegacy<EarningTodayResponse>("stock/market/today-earnings");
+		public async Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync() =>
+			await executor.NoParamExecute<EarningTodayResponse>("stock/market/today-earnings");
 
 		public async Task<IEnumerable<EffectiveSpreadResponse>> EffectiveSpreadAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(
@@ -387,8 +387,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		public async Task<LogoResponse> LogoAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol);
 
-		public async Task<IEnumerable<USMarketVolumeResponse>> USMarketVolumeAsync() =>
-			await executor.NoParamExecuteLegacy<IEnumerable<USMarketVolumeResponse>>("market");
+		public async Task<IEXResponse<IEnumerable<USMarketVolumeResponse>>> MarketVolumeUSAsync() =>
+			await executor.NoParamExecute<IEnumerable<USMarketVolumeResponse>>("market");
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10) =>
 			await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last);
@@ -430,8 +430,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			await executor.SymbolExecuteAsync<IEnumerable<RecommendationTrendResponse>>(
 				"stock/[symbol]/recommendation-trends", symbol);
 
-		public async Task<IEnumerable<SectorPerformanceResponse>> SectorPerformanceAsync() =>
-			await executor.NoParamExecuteLegacy<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");
+		public async Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync() =>
+			await executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");
 
 		public async Task<IEXResponse<IEnumerable<SplitResponse>>> SplitAsync(string symbol, SplitRange range = SplitRange._1m)
 		{

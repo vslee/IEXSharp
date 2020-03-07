@@ -174,7 +174,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.EarningTodayAsync();
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -480,10 +481,11 @@ namespace VSLee.IEXSharpTest.Cloud
 		[Test]
 		public async Task USMarketAsync()
 		{
-			var response = await sandBoxClient.Stock.USMarketVolumeAsync();
+			var response = await sandBoxClient.Stock.MarketVolumeUSAsync();
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -585,8 +587,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.SectorPerformanceAsync();
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
