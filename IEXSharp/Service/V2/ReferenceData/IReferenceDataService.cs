@@ -81,6 +81,6 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		/// </summary>
 		/// <param name="fragment"></param>
 		/// <returns></returns>
-		Task<SearchResponse> SearchAsync(string fragment);
+		Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment);
 	}
 }

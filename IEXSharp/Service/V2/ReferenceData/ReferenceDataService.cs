@@ -82,5 +82,20 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 
 			return await _executor.ExecuteAsync<IEnumerable<USHolidaysAndTradingDatesResponse>>(urlPattern, pathNvc, qsb);
 		}
+
+		public async Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment)
+		{
+			const string urlPattern = "search/[fragment]";
+
+			var qsb = new QueryStringBuilder();
+			qsb.Add("token", _pk);
+
+			var pathNvc = new NameValueCollection
+			{
+				{ "fragment", fragment },
+			};
+
+			return await _executor.ExecuteAsync<IEnumerable<SearchResponse>>(urlPattern, pathNvc, qsb);
+		}
 	}
 }
