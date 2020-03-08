@@ -87,15 +87,12 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		{
 			const string urlPattern = "search/[fragment]";
 
-			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
-
 			var pathNvc = new NameValueCollection
 			{
 				{ "fragment", fragment },
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<SearchResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IEnumerable<SearchResponse>>(urlPattern, pathNvc, null);
 		}
 	}
 }
