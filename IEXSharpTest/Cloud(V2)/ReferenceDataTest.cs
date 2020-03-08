@@ -144,13 +144,14 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
 
-			var searchResultModel = response.Data.First();
-
-			Assert.IsNotEmpty(searchResultModel.exchange);
-			Assert.IsNotEmpty(searchResultModel.securityName);
-			Assert.IsNotEmpty(searchResultModel.securityType);
-			Assert.IsNotEmpty(searchResultModel.symbol);
-			Assert.IsNotEmpty(searchResultModel.region);
+			foreach (var searchResultModel in response.Data)
+			{
+				Assert.IsNotEmpty(searchResultModel.exchange);
+				Assert.IsNotEmpty(searchResultModel.securityName);
+				Assert.IsNotEmpty(searchResultModel.securityType);
+				Assert.IsNotEmpty(searchResultModel.symbol);
+				Assert.IsNotEmpty(searchResultModel.region);
+			}
 		}
 	}
 }
