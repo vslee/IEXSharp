@@ -75,5 +75,12 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		/// </summary>
 		/// <returns></returns>
 		Task<FXSymbolResponse> FXSymbolAsync();
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#search"/>
+		/// </summary>
+		/// <param name="fragment"></param>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment);
 	}
 }
