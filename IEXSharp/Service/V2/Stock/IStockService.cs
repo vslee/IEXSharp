@@ -301,7 +301,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <see cref="https://iexcloud.io/docs/api/#market-volume-u-s"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<USMarketVolumeResponse>>> MarketVolumeUSAsync();
+		Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#news"/>

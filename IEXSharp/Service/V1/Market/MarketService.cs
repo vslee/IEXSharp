@@ -88,7 +88,7 @@ namespace VSLee.IEXSharp.Service.V1.Market
 
 		public async Task<IEXResponse<Dictionary<string, DeepOfficialPriceResponse>>> DeepOfficialPriceAsync(IEnumerable<string> symbols)
 			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOfficialPriceResponse>>("deep/official-price", symbols);
-		public async Task<IEXResponse<IEnumerable<USMarketVolumeResponse>>> USMarketVolumeAsync() =>
-			await _executor.NoParamExecute<IEnumerable<USMarketVolumeResponse>>("market");
+		public async Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync() =>
+			await _executor.NoParamExecute<IEnumerable<MarketVolumeUSResponse>>("market");
 	}
 }

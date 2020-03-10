@@ -479,7 +479,7 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		public async Task USMarketAsync()
+		public async Task MarketVolumeUSAsyncTest()
 		{
 			var response = await sandBoxClient.Stock.MarketVolumeUSAsync();
 

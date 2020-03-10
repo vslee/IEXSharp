@@ -1,6 +1,6 @@
-﻿namespace VSLee.IEXSharp.Model.ReferenceData.Response
+namespace VSLee.IEXSharp.Model.ReferenceData.Response
 {
-	public class USExchangeResponse
+	public class ExchangeUSResponse
 	{
 		public string name { get; set; }
 		public string mic { get; set; }

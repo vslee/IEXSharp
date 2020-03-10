@@ -118,6 +118,6 @@ namespace VSLee.IEXSharp.Service.V1.Market
 		/// <see cref="https://iextrading.com/developer/docs/#markets"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<USMarketVolumeResponse>>> USMarketVolumeAsync();
+		Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync();
 	}
 }

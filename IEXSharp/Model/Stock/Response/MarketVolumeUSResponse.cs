@@ -1,6 +1,6 @@
-﻿namespace VSLee.IEXSharp.Model.Stock.Response
+namespace VSLee.IEXSharp.Model.Stock.Response
 {
-	public class USMarketVolumeResponse
+	public class MarketVolumeUSResponse
 	{
 		public string mic { get; set; }
 		public string tapeId { get; set; }

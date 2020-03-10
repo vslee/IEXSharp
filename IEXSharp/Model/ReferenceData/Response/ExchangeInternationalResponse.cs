@@ -1,6 +1,6 @@
-﻿namespace VSLee.IEXSharp.Model.ReferenceData.Response
+namespace VSLee.IEXSharp.Model.ReferenceData.Response
 {
-	public class InternationalExchangeResponse
+	public class ExchangeInternationalResponse
 	{
 		public string exchange { get; set; }
 		public string region { get; set; }

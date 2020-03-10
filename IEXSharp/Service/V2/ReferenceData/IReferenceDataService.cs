@@ -39,13 +39,13 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		/// <see cref="https://iexcloud.io/docs/api/#international-exchanges"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<InternationalExchangeResponse>> InternationalExchangeAsync();
+		Task<IEnumerable<ExchangeInternationalResponse>> InternationalExchangeAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#u-s-exchanges"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<USExchangeResponse>> USExchangeAsync();
+		Task<IEnumerable<ExchangeUSResponse>> ExchangeUSAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates"/>
@@ -55,7 +55,7 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		/// <param name="last"></param>
 		/// <param name="startDate"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<USHolidaysAndTradingDatesResponse>>> USHolidaysAndTradingDatesAsync(DateType type,
+		Task<IEXResponse<IEnumerable<HolidaysAndTradingDatesUSResponse>>> HolidaysAndTradingDatesUSAsync(DateType type,
 			DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null);
 
 		/// <summary>

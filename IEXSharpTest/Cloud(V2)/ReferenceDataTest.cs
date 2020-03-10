@@ -97,12 +97,12 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		public async Task USExchangeAsyncTest()
+		public async Task ExchangeUSAsyncTest()
 		{
-			var resposne = await sandBoxClient.ReferenceData.USExchangeAsync();
+			var response = await sandBoxClient.ReferenceData.ExchangeUSAsync();
 
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
+			Assert.IsNotNull(response);
+			Assert.GreaterOrEqual(response.Count(), 1);
 		}
 
 		[Test]
@@ -110,9 +110,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		[TestCase(DateType.Trade)]
 		[TestCase(DateType.Trade, DirectionType.Last)]
 		[TestCase(DateType.Trade, DirectionType.Last, 2)]
-		public async Task USHolidaysAndTradingDatesAsyncTest(DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)
+		public async Task HolidaysAndTradingDatesUSAsyncTest(DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)
 		{
-			var response = await sandBoxClient.ReferenceData.USHolidaysAndTradingDatesAsync(type, direction, last, startDate);
+			var response = await sandBoxClient.ReferenceData.HolidaysAndTradingDatesUSAsync(type, direction, last, startDate);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -124,10 +124,10 @@ namespace VSLee.IEXSharpTest.Cloud
 		[TestCase(DateType.Trade)]
 		[TestCase(DateType.Trade, DirectionType.Last)]
 		[TestCase(DateType.Trade, DirectionType.Last, 2)]
-		public async Task USHolidaysAndTradingDatesAsyncDateTest(DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)
+		public async Task HolidaysAndTradingDatesUSAsyncDateTest(DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)
 		{
 			startDate = new DateTime(2019, 03, 25);
-			var response = await sandBoxClient.ReferenceData.USHolidaysAndTradingDatesAsync(type, direction, last, startDate);
+			var response = await sandBoxClient.ReferenceData.HolidaysAndTradingDatesUSAsync(type, direction, last, startDate);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

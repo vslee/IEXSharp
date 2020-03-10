@@ -184,9 +184,9 @@ namespace VSLee.IEXSharpTest.V1
 		}
 
 		[Test]
-		public async Task USMarketAsync()
+		public async Task MarketUSAsync()
 		{
-			var response = await prodClient.Market.USMarketVolumeAsync();
+			var response = await prodClient.Market.MarketVolumeUSAsync();
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

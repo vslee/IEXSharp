@@ -387,8 +387,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		public async Task<LogoResponse> LogoAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol);
 
-		public async Task<IEXResponse<IEnumerable<USMarketVolumeResponse>>> MarketVolumeUSAsync() =>
-			await executor.NoParamExecute<IEnumerable<USMarketVolumeResponse>>("market");
+		public async Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync() =>
+			await executor.NoParamExecute<IEnumerable<MarketVolumeUSResponse>>("market");
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10) =>
 			await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last);

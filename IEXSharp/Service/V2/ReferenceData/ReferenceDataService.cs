@@ -27,7 +27,7 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 
 		public async Task<IEnumerable<IEXSymbolResponse>> IEXSymbolsAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<IEXSymbolResponse>>("ref-data/iex/symbols");
 
-		public async Task<IEnumerable<InternationalExchangeResponse>> InternationalExchangeAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<InternationalExchangeResponse>>("ref-data/exchanges");
+		public async Task<IEnumerable<ExchangeInternationalResponse>> InternationalExchangeAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<ExchangeInternationalResponse>>("ref-data/exchanges");
 
 		public async Task<IEXResponse<IEnumerable<InternationalSymbolResponse>>> InternationalExchangeSymbolsAsync(string exchange)
 		{
@@ -59,13 +59,17 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 			return await _executor.ExecuteAsync<IEnumerable<InternationalSymbolResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEnumerable<MutualFundSymbolResponse>> MutualFundSymbolsAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<MutualFundSymbolResponse>>("ref-data/mutual-funds/symbols");
+		public async Task<IEnumerable<MutualFundSymbolResponse>> MutualFundSymbolsAsync() =>
+			await _executor.NoParamExecuteLegacy<IEnumerable<MutualFundSymbolResponse>>("ref-data/mutual-funds/symbols");
 
-		public async Task<IEnumerable<OTCSymbolResponse>> OTCSymbolsAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<OTCSymbolResponse>>("ref-data/otc/symbols");
+		public async Task<IEnumerable<OTCSymbolResponse>> OTCSymbolsAsync() =>
+			await _executor.NoParamExecuteLegacy<IEnumerable<OTCSymbolResponse>>("ref-data/otc/symbols");
 
-		public async Task<IEnumerable<USExchangeResponse>> USExchangeAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<USExchangeResponse>>("ref-data/market/us/exchanges");
+		public async Task<IEnumerable<ExchangeUSResponse>> ExchangeUSAsync() =>
+			await _executor.NoParamExecuteLegacy<IEnumerable<ExchangeUSResponse>>("ref-data/market/us/exchanges");
 
-		public async Task<IEXResponse<IEnumerable<USHolidaysAndTradingDatesResponse>>> USHolidaysAndTradingDatesAsync(DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)
+		public async Task<IEXResponse<IEnumerable<HolidaysAndTradingDatesUSResponse>>> HolidaysAndTradingDatesUSAsync(
+			DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)
 		{
 			const string urlPattern = "ref-data/us/dates/[type]/[direction]/[last]/[startDate]";
 
@@ -80,7 +84,7 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 				{"startDate", startDate == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) startDate).ToString("yyyyMMdd")}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<USHolidaysAndTradingDatesResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IEnumerable<HolidaysAndTradingDatesUSResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment)
