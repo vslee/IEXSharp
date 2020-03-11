@@ -21,30 +21,25 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<IEnumerable<SymbolResponse>> SymbolsAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<SymbolResponse>>("ref-data/symbols");
-
-		public async Task<FXSymbolResponse> FXSymbolAsync() => await _executor.NoParamExecuteLegacy<FXSymbolResponse>("ref-data/fx/symbols");
-
-		public async Task<IEnumerable<IEXSymbolResponse>> IEXSymbolsAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<IEXSymbolResponse>>("ref-data/iex/symbols");
-
-		public async Task<IEnumerable<ExchangeInternationalResponse>> InternationalExchangeAsync() => await _executor.NoParamExecuteLegacy<IEnumerable<ExchangeInternationalResponse>>("ref-data/exchanges");
-
-		public async Task<IEXResponse<IEnumerable<InternationalSymbolResponse>>> InternationalExchangeSymbolsAsync(string exchange)
+		public async Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment)
 		{
-			const string urlPattern = "ref-data/exchange/[exchange]/symbols";
-
-			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
+			const string urlPattern = "search/[fragment]";
 
 			var pathNvc = new NameValueCollection
 			{
-				{"exchange", exchange}
+				{ "fragment", fragment },
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<InternationalSymbolResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IEnumerable<SearchResponse>>(urlPattern, pathNvc, null);
 		}
 
-		public async Task<IEXResponse<IEnumerable<InternationalSymbolResponse>>> InternationalRegionSymbolsAsync(string region)
+		public async Task<SymbolFXResponse> SymbolFXAsync() =>
+			await _executor.NoParamExecuteLegacy<SymbolFXResponse>("ref-data/fx/symbols");
+
+		public async Task<IEnumerable<SymbolIEXResponse>> SymbolsIEXAsync() =>
+			await _executor.NoParamExecuteLegacy<IEnumerable<SymbolIEXResponse>>("ref-data/iex/symbols");
+
+		public async Task<IEXResponse<IEnumerable<SymbolInternationalResponse>>> SymbolsInternationalRegionAsync(string region)
 		{
 			const string urlPattern = "ref-data/region/[region]/symbols";
 
@@ -56,14 +51,35 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 				{"region", region}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<InternationalSymbolResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IEnumerable<SymbolInternationalResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEnumerable<MutualFundSymbolResponse>> MutualFundSymbolsAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<MutualFundSymbolResponse>>("ref-data/mutual-funds/symbols");
+		public async Task<IEXResponse<IEnumerable<SymbolInternationalResponse>>> SymbolsInternationalExchangeAsync(string exchange)
+		{
+			const string urlPattern = "ref-data/exchange/[exchange]/symbols";
 
-		public async Task<IEnumerable<OTCSymbolResponse>> OTCSymbolsAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<OTCSymbolResponse>>("ref-data/otc/symbols");
+			var qsb = new QueryStringBuilder();
+			qsb.Add("token", _pk);
+
+			var pathNvc = new NameValueCollection
+			{
+				{"exchange", exchange}
+			};
+
+			return await _executor.ExecuteAsync<IEnumerable<SymbolInternationalResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEnumerable<ExchangeInternationalResponse>> ExchangeInternationalAsync() =>
+			await _executor.NoParamExecuteLegacy<IEnumerable<ExchangeInternationalResponse>>("ref-data/exchanges");
+
+		public async Task<IEnumerable<SymbolMutualFundResponse>> SymbolsMutualFundAsync() =>
+			await _executor.NoParamExecuteLegacy<IEnumerable<SymbolMutualFundResponse>>("ref-data/mutual-funds/symbols");
+
+		public async Task<IEnumerable<SymbolOTCResponse>> SymbolsOTCAsync() =>
+			await _executor.NoParamExecuteLegacy<IEnumerable<SymbolOTCResponse>>("ref-data/otc/symbols");
+
+		public async Task<IEnumerable<SymbolResponse>> SymbolsAsync() =>
+			await _executor.NoParamExecuteLegacy<IEnumerable<SymbolResponse>>("ref-data/symbols");
 
 		public async Task<IEnumerable<ExchangeUSResponse>> ExchangeUSAsync() =>
 			await _executor.NoParamExecuteLegacy<IEnumerable<ExchangeUSResponse>>("ref-data/market/us/exchanges");
@@ -85,18 +101,6 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 			};
 
 			return await _executor.ExecuteAsync<IEnumerable<HolidaysAndTradingDatesUSResponse>>(urlPattern, pathNvc, qsb);
-		}
-
-		public async Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment)
-		{
-			const string urlPattern = "search/[fragment]";
-
-			var pathNvc = new NameValueCollection
-			{
-				{ "fragment", fragment },
-			};
-
-			return await _executor.ExecuteAsync<IEnumerable<SearchResponse>>(urlPattern, pathNvc, null);
 		}
 	}
 }

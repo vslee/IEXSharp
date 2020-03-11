@@ -18,60 +18,51 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		public async Task SymbolsAsyncTest()
+		[TestCase("apple")]
+		public async Task SearchAsyncTest(string pattern)
 		{
-			var resposne = await sandBoxClient.ReferenceData.SymbolsAsync();
-
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
-		}
-
-
-		// Not supported for free account
-		[Test]
-		public async Task FXSymbolsAsyncTest()
-		{
-			var resposne = await sandBoxClient.ReferenceData.FXSymbolAsync();
-
-			Assert.IsNotNull(resposne);
-		}
-
-
-		[Test]
-		public async Task IEXSymbolsAsyncTest()
-		{
-			var resposne = await sandBoxClient.ReferenceData.IEXSymbolsAsync();
-
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
-		}
-
-
-		[Test]
-		public async Task InternationalExchangeAsyncTest()
-		{
-			var resposne = await sandBoxClient.ReferenceData.InternationalExchangeAsync();
-
-			Assert.IsNotNull(resposne);
-			Assert.GreaterOrEqual(resposne.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("tse")]
-		public async Task InternationalExchangeSymbolsAsyncTest(string exchange)
-		{
-			var response = await sandBoxClient.ReferenceData.InternationalExchangeSymbolsAsync(exchange);
+			var response = await sandBoxClient.ReferenceData.SearchAsync(pattern);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			foreach (var searchResultModel in response.Data)
+			{
+				Assert.IsNotEmpty(searchResultModel.exchange);
+				Assert.IsNotEmpty(searchResultModel.securityName);
+				Assert.IsNotEmpty(searchResultModel.securityType);
+				Assert.IsNotEmpty(searchResultModel.symbol);
+				Assert.IsNotEmpty(searchResultModel.region);
+			}
+		}
+
+		/// <summary>
+		/// Not supported for free account
+		/// </summary>
+		/// <returns></returns>
+		[Test]
+		public async Task SymbolsFXAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.SymbolFXAsync();
+
+			Assert.IsNotNull(response);
+		}
+
+		[Test]
+		public async Task SymbolsIEXAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.SymbolsIEXAsync();
+
+			Assert.IsNotNull(response);
+			Assert.GreaterOrEqual(response.Count(), 1);
 		}
 
 		[Test]
 		[TestCase("ca")]
-		public async Task InternationalRegionSymbolsAsyncTest(string region)
+		public async Task SymbolsInternationalRegionAsyncTest(string region)
 		{
-			var response = await sandBoxClient.ReferenceData.InternationalRegionSymbolsAsync(region);
+			var response = await sandBoxClient.ReferenceData.SymbolsInternationalRegionAsync(region);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -79,21 +70,50 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		public async Task MutualFundSymbolsAsyncTest()
+		[TestCase("tse")]
+		public async Task SymbolsInternationalExchangeAsyncTest(string exchange)
 		{
-			var response = await sandBoxClient.ReferenceData.MutualFundSymbolsAsync();
+			var response = await sandBoxClient.ReferenceData.SymbolsInternationalExchangeAsync(exchange);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+		}
+
+		[Test]
+		public async Task ExchangeInternationalAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.ExchangeInternationalAsync();
+
+			Assert.IsNotNull(response);
+			Assert.GreaterOrEqual(response.Count(), 1);
+		}
+
+		[Test]
+		public async Task SymbolsMutualFundAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.SymbolsMutualFundAsync();
 
 			Assert.IsNotNull(response);
 			Assert.GreaterOrEqual(response.Count(), 0);
 		}
 
 		[Test]
-		public async Task OTCSymbolsAsync()
+		public async Task SymbolsOTCAsync()
 		{
-			var response = await sandBoxClient.ReferenceData.OTCSymbolsAsync();
+			var response = await sandBoxClient.ReferenceData.SymbolsOTCAsync();
 
 			Assert.IsNotNull(response);
 			Assert.GreaterOrEqual(response.Count(), 0);
+		}
+
+		[Test]
+		public async Task SymbolsAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.SymbolsAsync();
+
+			Assert.IsNotNull(response);
+			Assert.GreaterOrEqual(response.Count(), 1);
 		}
 
 		[Test]
@@ -132,26 +152,6 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("apple")]
-		public async Task SearchAsyncTest(string pattern)
-		{
-			var response = await sandBoxClient.ReferenceData.SearchAsync(pattern);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-
-			foreach (var searchResultModel in response.Data)
-			{
-				Assert.IsNotEmpty(searchResultModel.exchange);
-				Assert.IsNotEmpty(searchResultModel.securityName);
-				Assert.IsNotEmpty(searchResultModel.securityType);
-				Assert.IsNotEmpty(searchResultModel.symbol);
-				Assert.IsNotEmpty(searchResultModel.region);
-			}
 		}
 	}
 }

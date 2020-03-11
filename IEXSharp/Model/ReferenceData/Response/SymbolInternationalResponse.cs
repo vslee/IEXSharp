@@ -1,8 +1,9 @@
-﻿namespace VSLee.IEXSharp.Model.ReferenceData.Response
+namespace VSLee.IEXSharp.Model.ReferenceData.Response
 {
-	public class MutualFundSymbolResponse
+	public class SymbolInternationalResponse
 	{
 		public string symbol { get; set; }
+		public string exchange { get; set; }
 		public string name { get; set; }
 		public string date { get; set; }
 		public string type { get; set; }

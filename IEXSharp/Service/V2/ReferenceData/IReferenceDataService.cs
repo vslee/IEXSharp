@@ -10,36 +10,61 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 	public interface IReferenceDataService
 	{
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#symbols"/>
+		/// <see cref="https://iexcloud.io/docs/api/#search"/>
+		/// </summary>
+		/// <param name="fragment"></param>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#fx-symbols"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<SymbolResponse>> SymbolsAsync();
+		Task<SymbolFXResponse> SymbolFXAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#iex-symbols"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<IEXSymbolResponse>> IEXSymbolsAsync();
+		Task<IEnumerable<SymbolIEXResponse>> SymbolsIEXAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#international-symbols"/>
 		/// </summary>
 		/// <param name="region"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<InternationalSymbolResponse>>> InternationalRegionSymbolsAsync(string region);
+		Task<IEXResponse<IEnumerable<SymbolInternationalResponse>>> SymbolsInternationalRegionAsync(string region);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#international-symbols"/>
 		/// </summary>
 		/// <param name="exchange"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<InternationalSymbolResponse>>> InternationalExchangeSymbolsAsync(string exchange);
+		Task<IEXResponse<IEnumerable<SymbolInternationalResponse>>> SymbolsInternationalExchangeAsync(string exchange);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#international-exchanges"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<ExchangeInternationalResponse>> InternationalExchangeAsync();
+		Task<IEnumerable<ExchangeInternationalResponse>> ExchangeInternationalAsync();
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#mutual-fund-symbols"/>
+		/// </summary>
+		/// <returns></returns>
+		Task<IEnumerable<SymbolMutualFundResponse>> SymbolsMutualFundAsync();
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#otc-symbols"/>
+		/// </summary>
+		/// <returns></returns>
+		Task<IEnumerable<SymbolOTCResponse>> SymbolsOTCAsync();
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#symbols"/>
+		/// </summary>
+		/// <returns></returns>
+		Task<IEnumerable<SymbolResponse>> SymbolsAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#u-s-exchanges"/>
@@ -57,30 +82,5 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<HolidaysAndTradingDatesUSResponse>>> HolidaysAndTradingDatesUSAsync(DateType type,
 			DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#mutual-fund-symbols"/>
-		/// </summary>
-		/// <returns></returns>
-		Task<IEnumerable<MutualFundSymbolResponse>> MutualFundSymbolsAsync();
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#otc-symbols"/>
-		/// </summary>
-		/// <returns></returns>
-		Task<IEnumerable<OTCSymbolResponse>> OTCSymbolsAsync();
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#fx-symbols"/>
-		/// </summary>
-		/// <returns></returns>
-		Task<FXSymbolResponse> FXSymbolAsync();
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#search"/>
-		/// </summary>
-		/// <param name="fragment"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment);
 	}
 }

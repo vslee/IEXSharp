@@ -1,6 +1,6 @@
 ﻿namespace VSLee.IEXSharp.Model.ReferenceData.Response
 {
-	public class IEXSymbolResponse
+	public class SymbolIEXResponse
 	{
 		public string symbol { get; set; }
 		public string date { get; set; }
