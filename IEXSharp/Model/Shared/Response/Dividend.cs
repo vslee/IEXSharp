@@ -7,7 +7,7 @@ namespace VSLee.IEXSharp.Model.Shared.Response
 		Cash = 2, DividendIncome = 4,
 	}
 
-	public enum Frequency : byte
+	public enum DividendFrequency : byte
 	{
 		Quarterly = 2,
 	}
@@ -38,7 +38,7 @@ namespace VSLee.IEXSharp.Model.Shared.Response
 		public string currency { get; set; }
 		public string description { get; set; }
 		public string frequency { get; set; }
-		public Frequency Frequency =>
-			(Frequency)Enum.Parse(typeof(Frequency), frequency);
+		public DividendFrequency DividendFrequency =>
+			(DividendFrequency)Enum.Parse(typeof(DividendFrequency), frequency);
 	}
 }

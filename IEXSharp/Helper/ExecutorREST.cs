@@ -113,15 +113,6 @@ namespace VSLee.IEXSharp.Helper
 			}
 		}
 
-		public async Task<ReturnType> NoParamExecuteLegacy<ReturnType>(string url) where ReturnType : class
-		{
-			var qsb = new QueryStringBuilder();
-
-			var pathNVC = new NameValueCollection();
-
-			return await ExecuteAsyncLegacy<ReturnType>(url, pathNVC, qsb);
-		}
-
 		public async Task<IEXResponse<ReturnType>> NoParamExecute<ReturnType>(string url) where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();

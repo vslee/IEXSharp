@@ -33,11 +33,11 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 			return await _executor.ExecuteAsync<IEnumerable<SearchResponse>>(urlPattern, pathNvc, null);
 		}
 
-		public async Task<SymbolFXResponse> SymbolFXAsync() =>
-			await _executor.NoParamExecuteLegacy<SymbolFXResponse>("ref-data/fx/symbols");
+		public async Task<IEXResponse<SymbolFXResponse>> SymbolFXAsync() =>
+			await _executor.NoParamExecute<SymbolFXResponse>("ref-data/fx/symbols");
 
-		public async Task<IEnumerable<SymbolIEXResponse>> SymbolsIEXAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<SymbolIEXResponse>>("ref-data/iex/symbols");
+		public async Task<IEXResponse<IEnumerable<SymbolIEXResponse>>> SymbolsIEXAsync() =>
+			await _executor.NoParamExecute<IEnumerable<SymbolIEXResponse>>("ref-data/iex/symbols");
 
 		public async Task<IEXResponse<IEnumerable<SymbolInternationalResponse>>> SymbolsInternationalRegionAsync(string region)
 		{
@@ -69,20 +69,20 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 			return await _executor.ExecuteAsync<IEnumerable<SymbolInternationalResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEnumerable<ExchangeInternationalResponse>> ExchangeInternationalAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<ExchangeInternationalResponse>>("ref-data/exchanges");
+		public async Task<IEXResponse<IEnumerable<ExchangeInternationalResponse>>> ExchangeInternationalAsync() =>
+			await _executor.NoParamExecute<IEnumerable<ExchangeInternationalResponse>>("ref-data/exchanges");
 
-		public async Task<IEnumerable<SymbolMutualFundResponse>> SymbolsMutualFundAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<SymbolMutualFundResponse>>("ref-data/mutual-funds/symbols");
+		public async Task<IEXResponse<IEnumerable<SymbolMutualFundResponse>>> SymbolsMutualFundAsync() =>
+			await _executor.NoParamExecute<IEnumerable<SymbolMutualFundResponse>>("ref-data/mutual-funds/symbols");
 
-		public async Task<IEnumerable<SymbolOTCResponse>> SymbolsOTCAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<SymbolOTCResponse>>("ref-data/otc/symbols");
+		public async Task<IEXResponse<IEnumerable<SymbolOTCResponse>>> SymbolsOTCAsync() =>
+			await _executor.NoParamExecute < IEnumerable<SymbolOTCResponse>>("ref-data/otc/symbols");
 
-		public async Task<IEnumerable<SymbolResponse>> SymbolsAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<SymbolResponse>>("ref-data/symbols");
+		public async Task<IEXResponse<IEnumerable<SymbolResponse>>> SymbolsAsync() =>
+			await _executor.NoParamExecute<IEnumerable<SymbolResponse>>("ref-data/symbols");
 
-		public async Task<IEnumerable<ExchangeUSResponse>> ExchangeUSAsync() =>
-			await _executor.NoParamExecuteLegacy<IEnumerable<ExchangeUSResponse>>("ref-data/market/us/exchanges");
+		public async Task<IEXResponse<IEnumerable<ExchangeUSResponse>>> ExchangeUSAsync() =>
+			await _executor.NoParamExecute<IEnumerable<ExchangeUSResponse>>("ref-data/market/us/exchanges");
 
 		public async Task<IEXResponse<IEnumerable<HolidaysAndTradingDatesUSResponse>>> HolidaysAndTradingDatesUSAsync(
 			DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)

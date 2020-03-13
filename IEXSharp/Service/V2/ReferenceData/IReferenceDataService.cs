@@ -20,13 +20,13 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		/// <see cref="https://iexcloud.io/docs/api/#fx-symbols"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<SymbolFXResponse> SymbolFXAsync();
+		Task<IEXResponse<SymbolFXResponse>> SymbolFXAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#iex-symbols"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<SymbolIEXResponse>> SymbolsIEXAsync();
+		Task<IEXResponse<IEnumerable<SymbolIEXResponse>>> SymbolsIEXAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#international-symbols"/>
@@ -46,31 +46,31 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		/// <see cref="https://iexcloud.io/docs/api/#international-exchanges"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<ExchangeInternationalResponse>> ExchangeInternationalAsync();
+		Task<IEXResponse<IEnumerable<ExchangeInternationalResponse>>> ExchangeInternationalAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#mutual-fund-symbols"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<SymbolMutualFundResponse>> SymbolsMutualFundAsync();
+		Task<IEXResponse<IEnumerable<SymbolMutualFundResponse>>> SymbolsMutualFundAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#otc-symbols"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<SymbolOTCResponse>> SymbolsOTCAsync();
+		Task<IEXResponse<IEnumerable<SymbolOTCResponse>>> SymbolsOTCAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#symbols"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<SymbolResponse>> SymbolsAsync();
+		Task<IEXResponse<IEnumerable<SymbolResponse>>> SymbolsAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#u-s-exchanges"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEnumerable<ExchangeUSResponse>> ExchangeUSAsync();
+		Task<IEXResponse<IEnumerable<ExchangeUSResponse>>> ExchangeUSAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#u-s-holidays-and-trading-dates"/>
