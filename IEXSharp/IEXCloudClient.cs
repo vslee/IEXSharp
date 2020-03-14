@@ -1,3 +1,4 @@
+using IEXSharp.Service.V2.CorporateActions;
 using System;
 using System.Net.Http;
 using VSLee.IEXSharp.Service.V2.Account;
@@ -34,6 +35,7 @@ namespace VSLee.IEXSharp
 		private IForexCurrenciesService forexCurrenciesService;
 		private IInvestorsExchangeDataService investorsExchangeDataService;
 		private IAPISystemMetadataService apiSystemMetadataService;
+		private ICorporateActionsService corporateActionsService;
 
 		public IAccountService Account => accountService ??	(accountService =
 			new AccountService(client, secretToken, publishableToken, signRequest));
@@ -61,6 +63,9 @@ namespace VSLee.IEXSharp
 
 		public IAPISystemMetadataService ApiSystemMetadata => apiSystemMetadataService
 			?? (apiSystemMetadataService = new APISystemMetadata(client, secretToken, publishableToken, signRequest));
+
+		public ICorporateActionsService CorporateActions => corporateActionsService
+			?? (corporateActionsService = new CorporateActionsService(client, secretToken, publishableToken, signRequest));
 
 		/// <summary>
 		/// create a new IEXCloudClient
