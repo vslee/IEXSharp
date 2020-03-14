@@ -25,14 +25,10 @@ namespace IEXSharp.Service.V2.CorporateActions
 			const string urlPattern = "time-series/advanced_dividends/[symbol]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
+			qsb.Add("range", range.ToString().ToLower().Replace("__", "-").Replace("_", string.Empty));
+			qsb.Add("calendar", calendar.ToString());
 
-			var pathNvc = new NameValueCollection
-			{
-				{ "symbol", symbol },
-				{ "range", range.ToString().ToLower().Replace("__", "-").Replace("_", string.Empty) },
-				{ "calendar", calendar.ToString() }
-			};
+			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
 			return await executor.ExecuteAsync<IEnumerable<AdvancedDividendResponse>>(urlPattern, pathNvc, qsb);
 		}
