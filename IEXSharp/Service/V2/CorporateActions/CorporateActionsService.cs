@@ -20,13 +20,12 @@ namespace IEXSharp.Service.V2.CorporateActions
 			this.executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<IEXResponse<IEnumerable<AdvancedDividendResponse>>> DividendsAsync(string symbol, TimeSeriesRange range = TimeSeriesRange._this__quarter, bool calendar = false)
+		public async Task<IEXResponse<IEnumerable<AdvancedDividendResponse>>> DividendsAsync(string symbol, TimeSeriesRange range = TimeSeriesRange._this__quarter)
 		{
 			const string urlPattern = "time-series/advanced_dividends/[symbol]";
 
 			var qsb = new QueryStringBuilder();
 			qsb.Add("range", range.ToString().ToLower().Replace("__", "-").Replace("_", string.Empty));
-			qsb.Add("calendar", calendar.ToString());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 

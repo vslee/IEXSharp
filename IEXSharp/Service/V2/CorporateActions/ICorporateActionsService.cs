@@ -12,6 +12,6 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <see cref="https://iexcloud.io/docs/api/#stats-records"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<AdvancedDividendResponse>>> DividendsAsync(string symbol, TimeSeriesRange range = TimeSeriesRange._this__quarter, bool calendar = false);
+		Task<IEXResponse<IEnumerable<AdvancedDividendResponse>>> DividendsAsync(string symbol, TimeSeriesRange range = TimeSeriesRange._this__quarter);
 	}
 }
