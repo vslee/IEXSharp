@@ -96,7 +96,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<DelayedQuoteResponse> DelayedQuoteAsync(string symbol);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#dividends"/>
+		/// <see cref="https://iexcloud.io/docs/api/#dividends-basic"/>
+		/// Basic dividends (as opposed to the advanced dividends in ICorporateActionsService)
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
