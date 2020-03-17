@@ -50,8 +50,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.BookAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.IsNotNull(response.quote);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -115,7 +115,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.CompanyAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -135,7 +136,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.DelayedQuoteAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -161,7 +163,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.EarningAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -180,7 +183,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.EffectiveSpreadAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -213,8 +218,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.ListedRegulationSHOThresholdSecuritiesListAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -224,8 +230,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.ListedShortInterestListAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -235,7 +242,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.KeyStatsAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -245,8 +253,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.LargestTradesAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]

@@ -132,6 +132,16 @@ namespace VSLee.IEXSharp.Helper
 			return await ExecuteAsyncLegacy<ReturnType>(urlPattern, pathNvc, qsb);
 		}
 
+		public async Task<IEXResponse<ReturnType>> SymbolExecuteAsync<ReturnType>(string urlPattern, string symbol)
+			where ReturnType : class
+		{
+			var qsb = new QueryStringBuilder();
+
+			var pathNvc = new NameValueCollection { { "symbol", symbol } };
+
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb);
+		}
+
 		public async Task<IEXResponse<ReturnType>> SymbolsExecuteAsync<ReturnType>(string urlPattern, IEnumerable<string> symbols)
 			where ReturnType : class
 		{

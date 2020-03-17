@@ -37,7 +37,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<BookResponse> BookAsync(string symbol);
+		Task<IEXResponse<BookResponse>> BookAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#chart"/>
@@ -68,7 +68,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<CompanyResponse> CompanyAsync(string symbol);
+		Task<IEXResponse<CompanyResponse>> CompanyAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#crypto"/>
@@ -81,7 +81,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<DelayedQuoteResponse> DelayedQuoteAsync(string symbol);
+		Task<IEXResponse<DelayedQuoteResponse>> DelayedQuoteAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#dividends"/>
@@ -96,7 +96,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<EarningResponse> EarningAsync(string symbol);
+		Task<IEXResponse<EarningResponse>> EarningAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#earnings-today"/>
@@ -109,7 +109,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<EffectiveSpreadResponse>> EffectiveSpreadAsync(string symbol);
+		Task<IEXResponse<IEnumerable<EffectiveSpreadResponse>>> EffectiveSpreadAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#financials"/>
@@ -131,28 +131,28 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol);
+		Task<IEXResponse<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#iex-short-interest-list"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<ListedShortInterestListResponse>> ListedShortInterestListAsync(string symbol);
+		Task<IEXResponse<IEnumerable<ListedShortInterestListResponse>>> ListedShortInterestListAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#key-stats"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<KeyStatsResponse> KeyStatsAsync(string symbol);
+		Task<IEXResponse<KeyStatsResponse>> KeyStatsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#largest-trades"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<LargestTradeResponse>> LargestTradesAsync(string symbol);
+		Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#list"/>
