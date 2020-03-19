@@ -166,7 +166,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<LogoResponse> LogoAsync(string symbol);
+		Task<IEXResponse<LogoResponse>> LogoAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#news"/>
@@ -181,42 +181,42 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<OHLCResponse> OHLCAsync(string symbol);
+		Task<IEXResponse<OHLCResponse>> OHLCAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#peers"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<string>> PeersAsync(string symbol);
+		Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#previous-day-price"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<HistoricalPriceResponse> PreviousDayPriceAsync(string symbol);
+		Task<IEXResponse<HistoricalPriceResponse>> PreviousDayPriceAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#price"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<decimal> PriceAsync(string symbol);
+		Task<IEXResponse<decimal>> PriceAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#quote"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<Quote> QuoteAsync(string symbol);
+		Task<IEXResponse<Quote>> QuoteAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#relevant"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<RelevantResponse> RelevantAsync(string symbol);
+		Task<IEXResponse<RelevantResponse>> RelevantAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#sector-performance"/>
@@ -238,6 +238,6 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<VolumeByVenueResponse> VolumeByVenueAsync(string symbol);
+		Task<IEXResponse<VolumeByVenueResponse>> VolumeByVenueAsync(string symbol);
 	}
 }

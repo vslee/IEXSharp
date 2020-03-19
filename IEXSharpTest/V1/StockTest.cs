@@ -305,7 +305,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.OHLCAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -315,8 +316,9 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.PeersAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -326,7 +328,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.PreviousDayPriceAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -336,7 +339,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.PriceAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -346,7 +350,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.QuoteAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -356,7 +361,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.RelevantAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -395,7 +401,8 @@ namespace VSLee.IEXSharpTest.V1
 		{
 			var response = await prodClient.Stock.VolumeByVenueAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 	}
 }
