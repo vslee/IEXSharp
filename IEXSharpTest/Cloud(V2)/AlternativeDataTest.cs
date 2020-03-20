@@ -17,11 +17,12 @@ namespace VSLee.IEXSharpTest.Cloud
 
 		[Test]
 		[TestCase("BTCUSDT")]
-		public async Task CryptoAsyncTest(string symbol)
+		public async Task CryptoQuoteAsyncTest(string symbol)
 		{
-			var response = await sandBoxClient.AlternativeData.CryptoAsync(symbol);
+			var response = await sandBoxClient.AlternativeData.CryptoQuoteAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		// Not supported for free account
@@ -57,7 +58,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.AlternativeData.SocialSentimentMinuteAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		// Not supported for free account
@@ -69,7 +71,8 @@ namespace VSLee.IEXSharpTest.Cloud
 			DateTime date = new DateTime(2019, 03, 30);
 			var response = await sandBoxClient.AlternativeData.SocialSentimentMinuteAsync(symbol, date);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		// Not supported for free account
@@ -80,7 +83,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.AlternativeData.CEOCompensationAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 	}
 }

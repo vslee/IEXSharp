@@ -57,12 +57,12 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		public async Task<IEXResponse<IEnumerable<LastResponse>>> LastAsync(IEnumerable<string> symbols)
 			=> await _executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);
 
-		public async Task<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol)
-			=> await _executor.SymbolExecuteAsyncLegacy<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>(
+		public async Task<IEXResponse<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol)
+			=> await _executor.SymbolExecuteAsync<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>(
 				"stock/[symbol]/threshold-securities", symbol);
 
-		public async Task<IEnumerable<ListedShortInterestListResponse>> ListedShortInterestListAsync(string symbol)
-			=> await _executor.SymbolExecuteAsyncLegacy<IEnumerable<ListedShortInterestListResponse>>(
+		public async Task<IEXResponse<IEnumerable<ListedShortInterestListResponse>>> ListedShortInterestListAsync(string symbol)
+			=> await _executor.SymbolExecuteAsync<IEnumerable<ListedShortInterestListResponse>>(
 				"stock/[symbol]/short-interest", symbol);
 
 		public async Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByDateAsync(string date)

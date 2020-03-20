@@ -18,8 +18,8 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<Quote> CryptoAsync(string symbol) =>
-			await _executor.SymbolExecuteAsyncLegacy<Quote>("crypto/[symbol]/quote", symbol);
+		public async Task<IEXResponse<Quote>> CryptoQuoteAsync(string symbol) =>
+			await _executor.SymbolExecuteAsync<Quote>("crypto/[symbol]/quote", symbol);
 
 		public async Task<IEXResponse<SocialSentimentDailyResponse>> SocialSentimentDailyAsync(string symbol, DateTime? date = null)
 		{
@@ -51,7 +51,7 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 			return await _executor.ExecuteAsync<SocialSentimentMinuteResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<CEOCompensationResponse> CEOCompensationAsync(string symbol) =>
-			await _executor.SymbolExecuteAsyncLegacy<CEOCompensationResponse>("stock/[symbol]/ceo-compensation", symbol);
+		public async Task<IEXResponse<CEOCompensationResponse>> CEOCompensationAsync(string symbol) =>
+			await _executor.SymbolExecuteAsync<CEOCompensationResponse>("stock/[symbol]/ceo-compensation", symbol);
 	}
 }

@@ -163,8 +163,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.ListedRegulationSHOThresholdSecuritiesListAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -174,8 +175,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.ListedShortInterestListAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]

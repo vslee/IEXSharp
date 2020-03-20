@@ -97,14 +97,14 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol);
+		Task<IEXResponse<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#listed-short-interest-list-in-dev"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<ListedShortInterestListResponse>> ListedShortInterestListAsync(string symbol);
+		Task<IEXResponse<IEnumerable<ListedShortInterestListResponse>>> ListedShortInterestListAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stats-historical-daily-in-dev"/>

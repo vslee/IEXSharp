@@ -13,7 +13,7 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<Quote> CryptoAsync(string symbol);
+		Task<IEXResponse<Quote>> CryptoQuoteAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#social-sentiment"/>
@@ -36,6 +36,6 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<CEOCompensationResponse> CEOCompensationAsync(string symbol);
+		Task<IEXResponse<CEOCompensationResponse>> CEOCompensationAsync(string symbol);
 	}
 }
