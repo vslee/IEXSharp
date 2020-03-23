@@ -445,7 +445,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.KeyStatsAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -455,7 +456,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.KeyStatsStatAsync(symbol, stat);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -465,8 +467,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.LargestTradesAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -492,7 +495,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.LogoAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -524,7 +528,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.OHLCAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -534,8 +539,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.PeersAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -545,7 +551,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.PreviousDayPriceAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -555,7 +562,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.PriceAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -565,7 +573,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.PriceTargetAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -575,7 +584,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.QuoteAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -585,7 +595,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.QuoteFieldAsync(symbol, field);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -595,8 +606,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.RecommendationTrendAsync(symbol);
 
-			Assert.IsNotNull(response);
-			Assert.GreaterOrEqual(response.Count(), 0);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -637,7 +649,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.UpcomingEventSymbolAsync(symbol, type);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		// Not supported for free account
@@ -651,7 +664,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.UpcomingEventMarketAsync(type);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -661,7 +675,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.Stock.VolumeByVenueAsync(symbol);
 
-			Assert.IsNotNull(response);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 	}
 }

@@ -267,7 +267,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<KeyStatsResponse> KeyStatsAsync(string symbol);
+		Task<IEXResponse<KeyStatsResponse>> KeyStatsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#key-stats"/>
@@ -282,7 +282,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<LargestTradeResponse>> LargestTradesAsync(string symbol);
+		Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#list"/>
@@ -296,7 +296,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<LogoResponse> LogoAsync(string symbol);
+		Task<IEXResponse<LogoResponse>> LogoAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#market-volume-u-s"/>
@@ -317,42 +317,42 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<OHLCResponse> OHLCAsync(string symbol);
+		Task<IEXResponse<OHLCResponse>> OHLCAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#peers"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<string>> PeersAsync(string symbol);
+		Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#previous-day-price"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<HistoricalPriceResponse> PreviousDayPriceAsync(string symbol);
+		Task<IEXResponse<HistoricalPriceResponse>> PreviousDayPriceAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#price"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<decimal> PriceAsync(string symbol);
+		Task<IEXResponse<decimal>> PriceAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#price-target"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<PriceTargetResponse> PriceTargetAsync(string symbol);
+		Task<IEXResponse<PriceTargetResponse>> PriceTargetAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#quote"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<Quote> QuoteAsync(string symbol);
+		Task<IEXResponse<Quote>> QuoteAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#quote"/>
@@ -367,7 +367,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEnumerable<RecommendationTrendResponse>> RecommendationTrendAsync(string symbol);
+		Task<IEXResponse<IEnumerable<RecommendationTrendResponse>>> RecommendationTrendAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#sector-performance"/>
@@ -404,6 +404,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<VolumeByVenueResponse> VolumeByVenueAsync(string symbol);
+		Task<IEXResponse<VolumeByVenueResponse>> VolumeByVenueAsync(string symbol);
 	}
 }

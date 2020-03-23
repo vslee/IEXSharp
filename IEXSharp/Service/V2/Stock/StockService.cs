@@ -354,8 +354,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<IPOCalendar>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<KeyStatsResponse> KeyStatsAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<KeyStatsResponse>("stock/[symbol]/stats", symbol);
+		public async Task<IEXResponse<KeyStatsResponse>> KeyStatsAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<KeyStatsResponse>("stock/[symbol]/stats", symbol);
 
 		public async Task<IEXResponse<KeyStatsResponse>> KeyStatsStatAsync(string symbol, string stat)
 		{
@@ -369,8 +369,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<KeyStatsResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEnumerable<LargestTradeResponse>> LargestTradesAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<IEnumerable<LargestTradeResponse>>("stock/[symbol]/largest-trades", symbol);
+		public async Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<LargestTradeResponse>>("stock/[symbol]/largest-trades", symbol);
 
 		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType)
 		{
@@ -384,8 +384,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<LogoResponse> LogoAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<LogoResponse>("stock/[symbol]/logo", symbol);
+		public async Task<IEXResponse<LogoResponse>> LogoAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol);
 
 		public async Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync() =>
 			await executor.NoParamExecute<IEnumerable<MarketVolumeUSResponse>>("market");
@@ -393,26 +393,29 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10) =>
 			await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last);
 
-		public async Task<OHLCResponse> OHLCAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<OHLCResponse>("stock/[symbol]/ohlc", symbol);
+		public async Task<IEXResponse<OHLCResponse>> OHLCAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol);
 
-		public async Task<IEnumerable<string>> PeersAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<IEnumerable<string>>("stock/[symbol]/peers", symbol);
+		public async Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<string>>("stock/[symbol]/peers", symbol);
 
-		public async Task<HistoricalPriceResponse> PreviousDayPriceAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<HistoricalPriceResponse>("stock/[symbol]/previous", symbol);
+		public async Task<IEXResponse<HistoricalPriceResponse>> PreviousDayPriceAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<HistoricalPriceResponse>("stock/[symbol]/previous", symbol);
 
-		public async Task<decimal> PriceAsync(string symbol)
+		public async Task<IEXResponse<decimal>> PriceAsync(string symbol)
 		{
-			var returnValue = await executor.SymbolExecuteAsyncLegacy<string>("stock/[symbol]/price", symbol);
-			return decimal.Parse(returnValue);
+			var returnValue = await executor.SymbolExecuteAsync<string>("stock/[symbol]/price", symbol);
+			if (returnValue.ErrorMessage != null)
+				return new IEXResponse<decimal>() { ErrorMessage = returnValue.ErrorMessage };
+			else
+				return new IEXResponse<decimal>() { Data = decimal.Parse(returnValue.Data) };
 		}
 
-		public async Task<PriceTargetResponse> PriceTargetAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<PriceTargetResponse>("stock/[symbol]/price-target", symbol);
+		public async Task<IEXResponse<PriceTargetResponse>> PriceTargetAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<PriceTargetResponse>("stock/[symbol]/price-target", symbol);
 
-		public async Task<Quote> QuoteAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<Quote>("stock/[symbol]/quote", symbol);
+		public async Task<IEXResponse<Quote>> QuoteAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<Quote>("stock/[symbol]/quote", symbol);
 
 		public async Task<IEXResponse<string>> QuoteFieldAsync(string symbol, string field)
 		{
@@ -426,8 +429,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEnumerable<RecommendationTrendResponse>> RecommendationTrendAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<IEnumerable<RecommendationTrendResponse>>(
+		public async Task<IEXResponse<IEnumerable<RecommendationTrendResponse>>> RecommendationTrendAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<RecommendationTrendResponse>>(
 				"stock/[symbol]/recommendation-trends", symbol);
 
 		public async Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync() =>
@@ -469,7 +472,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<UpcomingEventMarketResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<VolumeByVenueResponse> VolumeByVenueAsync(string symbol) =>
-			await executor.SymbolExecuteAsyncLegacy<VolumeByVenueResponse>("stock/[symbol]/delayed-quote", symbol);
+		public async Task<IEXResponse<VolumeByVenueResponse>> VolumeByVenueAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<VolumeByVenueResponse>("stock/[symbol]/delayed-quote", symbol);
 	}
 }
