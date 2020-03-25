@@ -30,42 +30,6 @@ namespace VSLee.IEXSharp.Helper
 			};
 		}
 
-		public async Task<ReturnType> ExecuteAsyncLegacy<ReturnType>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb)
-			where ReturnType : class
-		{
-			ValidateAndProcessParams(ref urlPattern, ref pathNVC, ref qsb);
-
-			if (!string.IsNullOrEmpty(publishableToken))
-			{
-				qsb.Add("token", publishableToken);
-			}
-
-			var content = string.Empty;
-
-			if (sign)
-			{
-				client.DefaultRequestHeaders.Remove("x-iex-date");
-				client.DefaultRequestHeaders.Remove("Authorization");
-
-				(string iexdate, string authorization_header) headers = signer.Sign(publishableToken, "GET", urlPattern, qsb.Build());
-				client.DefaultRequestHeaders.TryAddWithoutValidation("x-iex-date", headers.iexdate);
-				client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", headers.authorization_header);
-			}
-
-			using (var responseContent = await client.GetAsync($"{urlPattern}{qsb.Build()}"))
-			{
-				try
-				{
-					content = await responseContent.Content.ReadAsStringAsync();
-					return JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings);
-				}
-				catch (JsonException ex)
-				{
-					throw new JsonException(content, ex);
-				}
-			}
-		}
-
 		public async Task<IEXResponse<ReturnType>> ExecuteAsync<ReturnType>(
 			string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb)
 			where ReturnType : class
@@ -120,16 +84,6 @@ namespace VSLee.IEXSharp.Helper
 			var pathNVC = new NameValueCollection();
 
 			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb);
-		}
-
-		public async Task<ReturnType> SymbolExecuteAsyncLegacy<ReturnType>(string urlPattern, string symbol)
-			where ReturnType : class
-		{
-			var qsb = new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection { { "symbol", symbol } };
-
-			return await ExecuteAsyncLegacy<ReturnType>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolExecuteAsync<ReturnType>(string urlPattern, string symbol)
