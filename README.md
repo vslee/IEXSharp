@@ -7,7 +7,7 @@ IEX Cloud API for C# and other .net languages. Supports SSE streaming
  This library currently targets `netstandard20`. Thus, it can be used with `.net framework 4.6.1`+ and `.net core 2.0`+
 
 ## Usage
-![](https://github.com/vslee/iexsharp/workflows/prerelease%20NuGet/badge.svg) Prerelease packages are on [GH Packages](https://github.com/vslee/IEXSharp/packages). 
+![](https://github.com/vslee/iexsharp/workflows/prerelease%20NuGet/badge.svg) Prereleases are on [GH Packages](https://github.com/vslee/IEXSharp/packages). A new prerelease is built automatically after every commit. 
 
 [![NuGet Badge](https://buildstats.info/nuget/VSLee.IEXSharp)](https://www.nuget.org/packages/VSLee.IEXSharp/) Releases are on [NuGet](https://www.nuget.org/packages/VSLee.IEXSharp/)
 
@@ -17,13 +17,13 @@ public IEXCloudClient(string publishableToken, string secretToken, bool signRequ
 ```
 First, create an instance of IEXCloudClient
 ```c#
-//For FREE and LAUNCH users
+// For FREE and LAUNCH users
 IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: false); 
 
-//For SCALE and GROW users
+// For SCALE and GROW users
 IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: true, useSandBox: false); 
 
-//Sandbox
+// Sandbox
 IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: true); 
 ```
 To use SSE streaming (only included with paid IEX subscription plans)
@@ -58,7 +58,7 @@ We welcome pull requests! See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-MIT License - [LICENSE.md](LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
 ## Disclaimers
 
