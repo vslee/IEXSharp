@@ -49,7 +49,7 @@ namespace VSLee.IEXSharp.Helper
 		///// Occurs when a Server Sent Event from the EventSource API has been received.
 		///// </summary>
 		//public event EventHandler<MessageReceivedEventArgs> MessageReceived;
-		public event Action<List<T>> MessageReceived;
+		public event EventHandler<List<T>> MessageReceived;
 		/// <summary>
 		/// Occurs when a comment has been received from the EventSource API.
 		/// </summary>
@@ -90,7 +90,7 @@ namespace VSLee.IEXSharp.Helper
 			var content = e.Message.Data;
 			try
 			{
-				MessageReceived?.Invoke(JsonConvert.DeserializeObject<List<T>>(content, jsonSerializerSettings));
+				MessageReceived?.Invoke(this, JsonConvert.DeserializeObject<List<T>>(content, jsonSerializerSettings));
 			}
 			catch (JsonException ex)
 			{

@@ -33,7 +33,7 @@ namespace VSLee.IEXSharpTest.Cloud
 					sseClient.Close();
 					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
 				};
-				sseClient.MessageReceived += m =>
+				sseClient.MessageReceived += (s,m) =>
 				{
 					sseClient.Close();
 					Assert.Pass(m.ToString());
@@ -55,7 +55,7 @@ namespace VSLee.IEXSharpTest.Cloud
 					sseClient.Close();
 					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
 				};
-				sseClient.MessageReceived += m =>
+				sseClient.MessageReceived += (s, m) =>
 				{
 					sseClient.Close();
 					Assert.Pass(m.ToString());
@@ -77,7 +77,7 @@ namespace VSLee.IEXSharpTest.Cloud
 					sseClient.Close();
 					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
 				};
-				sseClient.MessageReceived += m =>
+				sseClient.MessageReceived += (s, m) =>
 				{
 					sseClient.Close();
 					Assert.Pass(m.ToString());
