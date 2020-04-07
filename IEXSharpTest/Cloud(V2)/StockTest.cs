@@ -279,6 +279,8 @@ namespace VSLee.IEXSharpTest.Cloud
 			ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
 		{
 			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range);
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 			foreach (var ohlc in response.Data)
 			{
 				Assert.NotZero(ohlc.open);

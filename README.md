@@ -26,6 +26,25 @@ IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken",
 // Sandbox
 IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: true); 
 ```
+To display historical prices
+```c#
+using (var iexCloudClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: false))
+{
+	var response = await iexCloudClient.Stock.HistoricalPriceAsync("AAPL", ChartRange._1m);
+	if (response.ErrorMessage != null)
+	{
+		Console.WriteLine(response.ErrorMessage);
+	}
+	else
+	{
+		foreach (var ohlc in response.Data)
+		{
+			Console.WriteLine($"{ohlc.date} Open: {ohlc.open}, High: {ohlc.high}, Low: {ohlc.low}, Close: {ohlc.close}, Volume: {ohlc.volume}");
+		}
+	}
+}
+
+```
 To use SSE streaming (only included with paid IEX subscription plans)
 ```c#
 using (var sseClient = iexClient.SSE.SubscribeStockQuoteUSSSE(symbols: new string[] { "spy", "aapl" }, 
