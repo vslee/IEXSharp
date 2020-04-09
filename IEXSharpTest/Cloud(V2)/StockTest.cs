@@ -593,6 +593,7 @@ namespace VSLee.IEXSharpTest.Cloud
 
 		[Test]
 		[TestCase("AAPL", "companyName")]
+		[TestCase("AAPL", "marketCap")]
 		[TestCase("FB", "companyName")]
 		public async Task QuoteFieldAsyncTest(string symbol, string field)
 		{

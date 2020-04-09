@@ -421,7 +421,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/quote/[field]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "field", field } };
 
