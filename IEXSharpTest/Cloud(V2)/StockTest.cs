@@ -452,8 +452,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL", "nextDividendDate")]
-		[TestCase("FB", "nextDividendDate")]
+		[TestCase("AAPL", "nextEarningsDate")]
+		[TestCase("AAPL", "marketcap")]
+		[TestCase("FB", "nextEarningsDate")]
 		public async Task KeyStatsStatAsync(string symbol, string stat)
 		{
 			var response = await sandBoxClient.Stock.KeyStatsStatAsync(symbol, stat);

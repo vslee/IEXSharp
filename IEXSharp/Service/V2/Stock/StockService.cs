@@ -357,16 +357,15 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		public async Task<IEXResponse<KeyStatsResponse>> KeyStatsAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<KeyStatsResponse>("stock/[symbol]/stats", symbol);
 
-		public async Task<IEXResponse<KeyStatsResponse>> KeyStatsStatAsync(string symbol, string stat)
+		public async Task<IEXResponse<string>> KeyStatsStatAsync(string symbol, string stat)
 		{
 			const string urlPattern = "stock/[symbol]/stats/[stat]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "stat", stat } };
 
-			return await executor.ExecuteAsync<KeyStatsResponse>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol) =>

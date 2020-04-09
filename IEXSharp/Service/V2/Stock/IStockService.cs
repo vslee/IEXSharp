@@ -275,7 +275,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="symbol"></param>
 		/// <param name="stat"></param>
 		/// <returns></returns>
-		Task<IEXResponse<KeyStatsResponse>> KeyStatsStatAsync(string symbol, string stat);
+		Task<IEXResponse<string>> KeyStatsStatAsync(string symbol, string stat);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#largest-trades"/>
