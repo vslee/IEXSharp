@@ -8,10 +8,12 @@ namespace VSLee.IEXSharp.Helper
 	internal class ExecutorBase
 	{
 		protected readonly string publishableToken;
+		protected readonly string secretToken;
 
-		protected ExecutorBase(string publishableToken)
+		protected ExecutorBase(string publishableToken, string secretToken)
 		{
 			this.publishableToken = publishableToken;
+			this.secretToken = secretToken;
 		}
 
 		protected static void ValidateAndProcessParams(ref string urlPattern, ref NameValueCollection pathNVC, ref QueryStringBuilder qsb)

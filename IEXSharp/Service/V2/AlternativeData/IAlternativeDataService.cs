@@ -1,5 +1,6 @@
 using IEXSharp.Model;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using VSLee.IEXSharp.Model.AlternativeData.Response;
 using VSLee.IEXSharp.Model.Shared.Response;
@@ -29,7 +30,7 @@ namespace VSLee.IEXSharp.Service.V2.AlternativeData
 		/// <param name="symbol"></param>
 		/// <param name="date"></param>
 		/// <returns></returns>
-		Task<IEXResponse<SocialSentimentMinuteResponse>> SocialSentimentMinuteAsync(string symbol, DateTime? date = null);
+		Task<IEXResponse<IEnumerable<SocialSentimentMinuteResponse>>> SocialSentimentMinuteAsync(string symbol, DateTime? date = null);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#ceo-compensation"/>

@@ -173,7 +173,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEXResponse<FundOwnershipResponse>> FundOwnershipAsync(string symbol);
+		Task<IEXResponse<IEnumerable<FundOwnershipResponse>>> FundOwnershipAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#historical-prices"/>

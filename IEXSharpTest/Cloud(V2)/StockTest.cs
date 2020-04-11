@@ -105,8 +105,8 @@ namespace VSLee.IEXSharpTest.Cloud
 
 		[Test]
 		[TestCase(CollectionType.List, "iexvolume")]
-		[TestCase(CollectionType.Sector, "Health Care")]
-		[TestCase(CollectionType.Tag, "Computer Hardware")]
+		[TestCase(CollectionType.Sector, "Health Services")]
+		[TestCase(CollectionType.Tag, "Computer Communications")]
 		public async Task CollectionAsyncTest(CollectionType collection, string collectionName)
 		{
 			var response = await sandBoxClient.Stock.CollectionsAsync(collection, collectionName);
@@ -274,7 +274,7 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("ORCL", ChartRange._max)]
+		[TestCase("AAPL", ChartRange._max)]
 		public async Task HistoricalPriceNonZeroAsync(string symbol,
 			ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
 		{
@@ -481,7 +481,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		[TestCase("losers")]
 		[TestCase("iexvolume")]
 		[TestCase("iexpercent")]
-		[TestCase("infocus")]
 		public async Task ListAsyncTest(string listType)
 		{
 			var response = await sandBoxClient.Stock.ListAsync(listType);

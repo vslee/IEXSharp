@@ -23,7 +23,6 @@ namespace VSLee.IEXSharp.Service.V2.ForexCurrencies
 			const string urlPattern = "fx/rate/[from]/[to]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
 
 			var pathNvc = new NameValueCollection { { "from", from }, { "to", to } };
 
