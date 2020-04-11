@@ -9,11 +9,9 @@ namespace VSLee.IEXSharp.Helper
 	internal class ExecutorSSE : ExecutorBase
 	{
 		readonly string baseSSEURL;
-		private readonly string sk;
-		public ExecutorSSE(string baseSSEURL, string sk, string pk) : base(publishableToken: pk)
+		public ExecutorSSE(string baseSSEURL, string sk, string pk) : base(publishableToken: pk, sk)
 		{
 			this.baseSSEURL = baseSSEURL;
-			this.sk = sk;
 		}
 
 		public SSEClient<T> SubscribeToSSE<T>(string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb)

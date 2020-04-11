@@ -29,7 +29,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/balance-sheet/[last]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 			qsb.Add("period", period.ToString().ToLower());
 
 			var pathNvc = new NameValueCollection
@@ -47,7 +46,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/balance-sheet/[last]/[field]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 			qsb.Add("period", period.ToString().ToLower());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
@@ -89,7 +87,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			}
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 			qsb.Add("types", string.Join(",", qsType));
 			if (!string.IsNullOrWhiteSpace(range))
 			{
@@ -140,7 +137,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			}
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 			qsb.Add("symbols", string.Join(",", symbols));
 			qsb.Add("types", string.Join(",", qsType));
 			if (!string.IsNullOrWhiteSpace(range))
@@ -163,7 +159,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/cash-flow/[last]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 			qsb.Add("period", period.ToString().ToLower());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
@@ -177,7 +172,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/cash-flow/[last]/[field]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 			qsb.Add("period", period.ToString().ToLower());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
@@ -190,7 +184,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/market/collection/[collectionType]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
+			qsb.Add("collectionName", collectionName);
 
 			var pathNvc = new NameValueCollection { { "collectionType", collection.ToString().ToLower() } };
 
@@ -208,7 +202,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/dividends/[range]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection
 			{
@@ -243,8 +236,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		public async Task<IEXResponse<string>> FinancialFieldAsync(string symbol, string field, int last = 1) =>
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/financials/[last]/[field]", symbol, field, last);
 
-		public async Task<IEXResponse<FundOwnershipResponse>> FundOwnershipAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<FundOwnershipResponse>("stock/[symbol]/fund-ownership", symbol);
+		public async Task<IEXResponse<IEnumerable<FundOwnershipResponse>>> FundOwnershipAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<FundOwnershipResponse>>("stock/[symbol]/fund-ownership", symbol);
 
 		public async Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceAsync(string symbol,
 			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
@@ -284,10 +277,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/chart/dynamic";
 
 			qsb = qsb ?? new QueryStringBuilder();
-			if (qsb.Exist("token"))
-			{
-				qsb.Add("token", pk);
-			}
 
 			var pathNvc = new NameValueCollection
 			{
@@ -303,7 +292,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/income/[last]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
@@ -316,7 +304,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/income/[last]/[field]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
@@ -347,7 +334,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/market/[ipoType]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection { { "ipoType", $"{ipoType.ToString().ToLower()}-ipos" } };
 
@@ -376,7 +362,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/market/list/[list-type]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection { { "list-type", listType } };
 
@@ -439,7 +424,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/splits/[range]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.ToString().Replace("_", string.Empty) } };
 
@@ -451,7 +435,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/upcoming-[type]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "type", type.ToString().ToLower() } };
 
@@ -463,7 +446,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/market/upcoming-[type]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", pk);
 
 			var pathNvc = new NameValueCollection { { "type", type.ToString().ToLower() } };
 

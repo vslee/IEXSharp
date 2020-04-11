@@ -27,6 +27,7 @@ namespace VSLee.IEXSharpTest.Cloud
 
 		[Test]
 		[TestCase(UsageType.All)]
+		[TestCase(UsageType.Messages)]
 		public async Task UsageAsyncTest(UsageType type)
 		{
 			var response = await sandBoxClient.Account.UsageAsync(type);

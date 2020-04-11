@@ -26,18 +26,23 @@ namespace VSLee.IEXSharp.Service.V2.Account
 
 			var pathNVC = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<MetadataResponse>(urlPattern, pathNVC, qsb);
+			return await _executor.ExecuteAsync<MetadataResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);
 		}
 
 		public async Task<IEXResponse<UsageResponse>> UsageAsync(UsageType type)
 		{
-			const string urlPattern = "account/usage/[type]";
+			var urlPattern = $"account/usage/{(type != UsageType.All ? "[type]" : "")}";
 
 			var qsb = new QueryStringBuilder();
 
-			var pathNVC = new NameValueCollection { { "type", type.ToString().ToLower() } };
+			var pathNVC = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb);
+			if (type != UsageType.All)
+			{
+				pathNVC["type"] = type.ToString().ToLower();
+			}
+
+			return await _executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);
 		}
 
 		public Task PayAsYouGoAsync(bool allow)

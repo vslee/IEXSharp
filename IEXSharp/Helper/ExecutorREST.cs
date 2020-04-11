@@ -16,7 +16,7 @@ namespace VSLee.IEXSharp.Helper
 		private readonly bool sign;
 		private readonly JsonSerializerSettings jsonSerializerSettings;
 
-		public ExecutorREST(HttpClient client, string secretToken, string publishableToken, bool sign) : base(publishableToken: publishableToken)
+		public ExecutorREST(HttpClient client, string secretToken, string publishableToken, bool sign) : base(publishableToken: publishableToken, secretToken: secretToken)
 		{
 			this.client = client;
 			if (sign)
@@ -31,14 +31,19 @@ namespace VSLee.IEXSharp.Helper
 		}
 
 		public async Task<IEXResponse<ReturnType>> ExecuteAsync<ReturnType>(
-			string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb)
+			string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb, bool forceUseSecretToken = false)
 			where ReturnType : class
 		{
 			ValidateAndProcessParams(ref urlPattern, ref pathNVC, ref qsb);
 
-			if (!string.IsNullOrEmpty(publishableToken))
+			if (!string.IsNullOrEmpty(publishableToken) && !forceUseSecretToken)
 			{
 				qsb.Add("token", publishableToken);
+			}
+
+			if (!string.IsNullOrEmpty(secretToken) && forceUseSecretToken)
+			{
+				qsb.Add("token", secretToken);
 			}
 
 			var content = string.Empty;
