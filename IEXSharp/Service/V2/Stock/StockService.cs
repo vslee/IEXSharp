@@ -292,6 +292,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			const string urlPattern = "stock/[symbol]/income/[last]";
 
 			var qsb = new QueryStringBuilder();
+			qsb.Add("period", period.ToString().ToLower());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
