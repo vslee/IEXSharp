@@ -351,7 +351,23 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.IsNotNull(response.Data.income);
-			Assert.GreaterOrEqual(response.Data.income.Count, 1);
+			Assert.AreEqual(last, response.Data.income.Count);
+		}
+
+		[Test]
+		[TestCase("AAPL")]
+		[TestCase("FB")]
+		public async Task GivenAnnualPeriod_IncomeStatementAsync_ShouldReturnOneStatementPerYear(string symbol)
+		{
+			const Period period = Period.Annual;
+			const int upToXStatements = 2;
+
+			var response = await sandBoxClient.Stock.IncomeStatementAsync(symbol, period, upToXStatements);
+
+			var firstStatementReportYear = response.Data.income.ElementAt(0).reportDate.Substring(0, 4);
+			var secondStatementReportYear = response.Data.income.ElementAt(1).reportDate.Substring(0, 4);
+
+			Assert.That(firstStatementReportYear != secondStatementReportYear);
 		}
 
 		[Test]
