@@ -14,12 +14,10 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 {
 	internal class StockService : IStockService
 	{
-		private readonly string pk;
 		private readonly ExecutorREST executor;
 
 		public StockService(HttpClient client, string sk, string pk, bool sign)
 		{
-			this.pk = pk;
 			executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
