@@ -9,12 +9,10 @@ namespace VSLee.IEXSharp.Service.V2.ForexCurrencies
 {
 	internal class ForexCurrenciesService : IForexCurrenciesService
 	{
-		private readonly string _pk;
 		private readonly ExecutorREST _executor;
 
 		public ForexCurrenciesService(HttpClient client, string sk, string pk, bool sign)
 		{
-			_pk = pk;
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
