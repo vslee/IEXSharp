@@ -12,13 +12,11 @@ namespace IEXSharp.Service.V2.CorporateActions
 {
 	public class CorporateActionsService : ICorporateActionsService
 	{
-		private readonly string pk;
 		private ExecutorREST executor;
 
 		public CorporateActionsService(HttpClient client, string sk, string pk, bool sign)
 		{
-			this.pk = pk;
-			this.executor = new ExecutorREST(client, sk, pk, sign);
+			executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
 		public async Task<IEXResponse<IEnumerable<AdvancedDividendResponse>>> DividendsAsync(string symbol,
