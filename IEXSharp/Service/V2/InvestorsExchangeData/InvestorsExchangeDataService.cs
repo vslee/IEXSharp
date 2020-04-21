@@ -12,12 +12,10 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 {
 	internal class InvestorsExchangeDataService : IInvestorsExchangeDataService
 	{
-		private readonly string _pk;
 		private readonly ExecutorREST _executor;
 
 		public InvestorsExchangeDataService(HttpClient client, string sk, string pk, bool sign)
 		{
-			_pk = pk;
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
@@ -70,7 +68,6 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 			const string urlPattern = "stats/historical/daily";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
 			qsb.Add("date", date);
 
 			var pathNvc = new NameValueCollection();
@@ -83,7 +80,6 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 			const string urlPattern = "stats/historical/daily";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
 			qsb.Add("last", last);
 
 			var pathNvc = new NameValueCollection();
@@ -96,7 +92,6 @@ namespace VSLee.IEXSharp.Service.V2.InvestorsExchangeData
 			const string urlPattern = "stats/historical";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
 			qsb.Add("date", date == null ? DateTime.Now.ToString("yyyyMM") : ((DateTime)date).ToString("yyyyMM"));
 
 			var pathNvc = new NameValueCollection();
