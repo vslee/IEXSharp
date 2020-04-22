@@ -12,12 +12,10 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 {
 	internal class ReferenceDataService : IReferenceDataService
 	{
-		private readonly string _pk;
 		private readonly ExecutorREST _executor;
 
 		public ReferenceDataService(HttpClient client, string sk, string pk, bool sign)
 		{
-			_pk = pk;
 			_executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
@@ -27,7 +25,7 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 
 			var pathNvc = new NameValueCollection
 			{
-				{ "fragment", fragment },
+				{"fragment", fragment},
 			};
 
 			return await _executor.ExecuteAsync<IEnumerable<SearchResponse>>(urlPattern, pathNvc, null);
@@ -44,7 +42,6 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 			const string urlPattern = "ref-data/region/[region]/symbols";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
 
 			var pathNvc = new NameValueCollection
 			{
@@ -59,7 +56,6 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 			const string urlPattern = "ref-data/exchange/[exchange]/symbols";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
 
 			var pathNvc = new NameValueCollection
 			{
@@ -90,7 +86,6 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 			const string urlPattern = "ref-data/us/dates/[type]/[direction]/[last]/[startDate]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("token", _pk);
 
 			var pathNvc = new NameValueCollection
 			{
