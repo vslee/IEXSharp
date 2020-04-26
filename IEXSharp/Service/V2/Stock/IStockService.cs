@@ -38,7 +38,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="range"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<IEXResponse<BatchBySymbolResponse>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1);
+		Task<IEXResponse<BatchResponse>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
@@ -48,7 +48,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="range"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<IEXResponse<Dictionary<string, BatchBySymbolResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
+		Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#book"/>
