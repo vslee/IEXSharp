@@ -404,6 +404,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEXResponse<VolumeByVenueResponse>> VolumeByVenueAsync(string symbol);
+		Task<IEXResponse<IEnumerable<VolumeByVenueResponse>>> VolumeByVenueAsync(string symbol);
 	}
 }

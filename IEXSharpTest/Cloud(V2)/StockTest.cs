@@ -696,6 +696,11 @@ namespace VSLee.IEXSharpTest.Cloud
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			Assert.IsNotNull(response.Data.First().venue);
+			Assert.IsNotNull(response.Data.First().volume);
 		}
 	}
 }
