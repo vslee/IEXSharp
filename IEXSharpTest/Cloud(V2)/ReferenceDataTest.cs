@@ -51,6 +51,20 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
+		public async Task SymbolCryptoAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.SymbolCryptoAsync();
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			Assert.IsNotNull(response.Data.First().symbol);
+			Assert.IsNotNull(response.Data.First().name);
+			Assert.IsNotNull(response.Data.First().isEnabled);
+		}
+
+		[Test]
 		public async Task SymbolsIEXAsyncTest()
 		{
 			var response = await sandBoxClient.ReferenceData.SymbolsIEXAsync();

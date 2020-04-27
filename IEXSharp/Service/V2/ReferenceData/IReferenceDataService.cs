@@ -23,6 +23,12 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		Task<IEXResponse<SymbolFXResponse>> SymbolFXAsync();
 
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#cryptocurrency-symbols"/>
+		/// </summary>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<SymbolCryptoResponse>>> SymbolCryptoAsync();
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#iex-symbols"/>
 		/// </summary>
 		/// <returns></returns>
