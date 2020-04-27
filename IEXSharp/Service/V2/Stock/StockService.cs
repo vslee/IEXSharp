@@ -397,6 +397,9 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		public async Task<IEXResponse<PriceTargetResponse>> PriceTargetAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<PriceTargetResponse>("stock/[symbol]/price-target", symbol);
 
+		public async Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator) =>
+			await executor.SymbolExecuteAsync<TechnicalIndicatorsResponse>($"stock/[symbol]/indicator/{indicator}", symbol);
+
 		public async Task<IEXResponse<Quote>> QuoteAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<Quote>("stock/[symbol]/quote", symbol);
 

@@ -645,6 +645,17 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
+		[TestCase("AAPL", "adxr")]
+		[TestCase("FB", "abs")]
+		public async Task TechnicalIndicatorsAsyncTest(string symbol, string indicator)
+		{
+			var response = await sandBoxClient.Stock.TechnicalIndicatorsAsync(symbol, indicator);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+		}
+
+		[Test]
 		public async Task SectorPerformanceAsync()
 		{
 			var response = await sandBoxClient.Stock.SectorPerformanceAsync();

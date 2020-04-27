@@ -348,6 +348,14 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<PriceTargetResponse>> PriceTargetAsync(string symbol);
 
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#technical-indicators"/>
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <param name="indicator"></param>
+		/// <returns></returns>
+		Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator);
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#quote"/>
 		/// </summary>
 		/// <param name="symbol"></param>
