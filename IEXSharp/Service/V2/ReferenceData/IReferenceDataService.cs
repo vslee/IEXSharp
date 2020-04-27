@@ -61,10 +61,22 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		Task<IEXResponse<IEnumerable<SymbolOTCResponse>>> SymbolsOTCAsync();
 
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#sectors"/>
+		/// </summary>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<SectorResponse>>> SectorsAsync();
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#symbols"/>
 		/// </summary>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<SymbolResponse>>> SymbolsAsync();
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#tags"/>
+		/// </summary>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<TagResponse>>> TagsAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#u-s-exchanges"/>

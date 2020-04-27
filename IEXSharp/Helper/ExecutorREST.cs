@@ -72,8 +72,11 @@ namespace VSLee.IEXSharp.Helper
 					{ // "Forbidden" or "Not found"
 						return new IEXResponse<ReturnType>() { ErrorMessage = content };
 					}
-					else return new IEXResponse<ReturnType>() { Data =
-						JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings) };
+					else {
+						return new IEXResponse<ReturnType>() {
+							Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
+						};
+					}
 				}
 				catch (JsonException ex)
 				{
