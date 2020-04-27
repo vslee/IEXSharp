@@ -621,6 +621,20 @@ namespace VSLee.IEXSharpTest.Cloud
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
+		public async Task AdvancedStatsAsyncTest(string symbol)
+		{
+			var response = await sandBoxClient.Stock.AdvancedStatsAsync(symbol);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			Assert.NotNull(response.Data.marketcap);
+			Assert.NotNull(response.Data.beta);
+		}
+
+		[Test]
+		[TestCase("AAPL")]
+		[TestCase("FB")]
 		public async Task RecommandationTrendAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.Stock.RecommendationTrendAsync(symbol);

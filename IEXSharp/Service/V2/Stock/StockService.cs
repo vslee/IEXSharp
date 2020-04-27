@@ -411,6 +411,9 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
+		public async Task<IEXResponse<AdvancedStatsResponse>> AdvancedStatsAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<AdvancedStatsResponse>("stock/[symbol]/advanced-stats", symbol);
+
 		public async Task<IEXResponse<IEnumerable<RecommendationTrendResponse>>> RecommendationTrendAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<RecommendationTrendResponse>>(
 				"stock/[symbol]/recommendation-trends", symbol);

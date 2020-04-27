@@ -363,6 +363,13 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<string>> QuoteFieldAsync(string symbol, string field);
 
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#advanced-stats"/>
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <returns></returns>
+		Task<IEXResponse<AdvancedStatsResponse>> AdvancedStatsAsync(string symbol);
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#recommendation-trends"/>
 		/// </summary>
 		/// <param name="symbol"></param>
