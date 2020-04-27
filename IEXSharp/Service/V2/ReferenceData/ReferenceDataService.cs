@@ -34,6 +34,9 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		public async Task<IEXResponse<SymbolFXResponse>> SymbolFXAsync() =>
 			await _executor.NoParamExecute<SymbolFXResponse>("ref-data/fx/symbols");
 
+		public async Task<IEXResponse<IEnumerable<SymbolCryptoResponse>>> SymbolCryptoAsync() =>
+			await _executor.NoParamExecute<IEnumerable<SymbolCryptoResponse>>("ref-data/crypto/symbols");
+
 		public async Task<IEXResponse<IEnumerable<SymbolIEXResponse>>> SymbolsIEXAsync() =>
 			await _executor.NoParamExecute<IEnumerable<SymbolIEXResponse>>("ref-data/iex/symbols");
 
