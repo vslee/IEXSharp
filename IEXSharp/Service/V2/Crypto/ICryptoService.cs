@@ -26,6 +26,6 @@ namespace VSLee.IEXSharp.Service.V2.Crypto
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEXResponse<CryptoQuote>> QuoteAsync(string symbol);
+		Task<IEXResponse<QuoteCryptoResponse>> QuoteAsync(string symbol);
 	}
 }

@@ -22,7 +22,7 @@ namespace VSLee.IEXSharp.Service.V2.Crypto
 		public async Task<IEXResponse<CryptoPriceResponse>> PriceAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<CryptoPriceResponse>("crypto/[symbol]/price", symbol);
 
-		public async Task<IEXResponse<CryptoQuote>> QuoteAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<CryptoQuote>("crypto/[symbol]/quote", symbol);
+		public async Task<IEXResponse<QuoteCryptoResponse>> QuoteAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<QuoteCryptoResponse>("crypto/[symbol]/quote", symbol);
 	}
 }

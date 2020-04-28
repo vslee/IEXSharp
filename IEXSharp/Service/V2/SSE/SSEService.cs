@@ -3,6 +3,7 @@ using VSLee.IEXSharp.Model.Shared.Response;
 using VSLee.IEXSharp.Model.Stock.Request;
 using System;
 using System.Collections.Generic;
+using IEXSharp.Model.Crypto;
 
 namespace VSLee.IEXSharp.Service.V2.Stock
 {
@@ -22,8 +23,8 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			executorSSE.SymbolsSubscribeSSE<QuoteSSE>($"stocksUS{intervalString(interval)}", symbols, pk) :
 			executorSSE.SymbolsSubscribeSSE<QuoteSSE>($"stocksUSNoUTP{intervalString(interval)}", symbols, pk);
 
-		public SSEClient<QuoteCrypto> SubscribeCryptoQuoteSSE(IEnumerable<string> symbols) =>
-			executorSSE.SymbolsSubscribeSSE<QuoteCrypto>("cryptoQuotes", symbols, pk);
+		public SSEClient<QuoteCryptoResponse> SubscribeCryptoQuoteSSE(IEnumerable<string> symbols) =>
+			executorSSE.SymbolsSubscribeSSE<QuoteCryptoResponse>("cryptoQuotes", symbols, pk);
 
 		static string intervalString(StockQuoteSSEInterval interval)
 		{
