@@ -451,7 +451,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			return await executor.ExecuteAsync<UpcomingEventMarketResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<VolumeByVenueResponse>> VolumeByVenueAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<VolumeByVenueResponse>("stock/[symbol]/delayed-quote", symbol);
+		public async Task<IEXResponse<IEnumerable<VolumeByVenueResponse>>> VolumeByVenueAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<VolumeByVenueResponse>>("stock/[symbol]/volume-by-venue", symbol);
 	}
 }

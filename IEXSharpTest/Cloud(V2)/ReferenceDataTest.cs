@@ -51,6 +51,20 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
+		public async Task SymbolCryptoAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.SymbolCryptoAsync();
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			Assert.IsNotNull(response.Data.First().symbol);
+			Assert.IsNotNull(response.Data.First().name);
+			Assert.IsNotNull(response.Data.First().isEnabled);
+		}
+
+		[Test]
 		public async Task SymbolsIEXAsyncTest()
 		{
 			var response = await sandBoxClient.ReferenceData.SymbolsIEXAsync();
@@ -103,9 +117,19 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		public async Task SymbolsOTCAsync()
+		public async Task SymbolsOTCAsyncTest()
 		{
 			var response = await sandBoxClient.ReferenceData.SymbolsOTCAsync();
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+		}
+
+		[Test]
+		public async Task SectorsAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.SectorsAsync();
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -116,6 +140,16 @@ namespace VSLee.IEXSharpTest.Cloud
 		public async Task SymbolsAsyncTest()
 		{
 			var response = await sandBoxClient.ReferenceData.SymbolsAsync();
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+		}
+
+		[Test]
+		public async Task TagsAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.TagsAsync();
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

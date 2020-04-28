@@ -34,6 +34,9 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 		public async Task<IEXResponse<SymbolFXResponse>> SymbolFXAsync() =>
 			await _executor.NoParamExecute<SymbolFXResponse>("ref-data/fx/symbols");
 
+		public async Task<IEXResponse<IEnumerable<SymbolCryptoResponse>>> SymbolCryptoAsync() =>
+			await _executor.NoParamExecute<IEnumerable<SymbolCryptoResponse>>("ref-data/crypto/symbols");
+
 		public async Task<IEXResponse<IEnumerable<SymbolIEXResponse>>> SymbolsIEXAsync() =>
 			await _executor.NoParamExecute<IEnumerable<SymbolIEXResponse>>("ref-data/iex/symbols");
 
@@ -72,10 +75,16 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 			await _executor.NoParamExecute<IEnumerable<SymbolMutualFundResponse>>("ref-data/mutual-funds/symbols");
 
 		public async Task<IEXResponse<IEnumerable<SymbolOTCResponse>>> SymbolsOTCAsync() =>
-			await _executor.NoParamExecute < IEnumerable<SymbolOTCResponse>>("ref-data/otc/symbols");
+			await _executor.NoParamExecute<IEnumerable<SymbolOTCResponse>>("ref-data/otc/symbols");
+
+		public async Task<IEXResponse<IEnumerable<SectorResponse>>> SectorsAsync() =>
+			await _executor.NoParamExecute<IEnumerable<SectorResponse>>("ref-data/sectors");
 
 		public async Task<IEXResponse<IEnumerable<SymbolResponse>>> SymbolsAsync() =>
 			await _executor.NoParamExecute<IEnumerable<SymbolResponse>>("ref-data/symbols");
+
+		public async Task<IEXResponse<IEnumerable<TagResponse>>> TagsAsync() =>
+			await _executor.NoParamExecute<IEnumerable<TagResponse>>("ref-data/tags");
 
 		public async Task<IEXResponse<IEnumerable<ExchangeUSResponse>>> ExchangeUSAsync() =>
 			await _executor.NoParamExecute<IEnumerable<ExchangeUSResponse>>("ref-data/market/us/exchanges");
