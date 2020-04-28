@@ -70,18 +70,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task BookAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.BookAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.quote);
-		}
-
-		[Test]
 		[TestCase("AAPL", Period.Quarter, 1)]
 		[TestCase("AAPL", Period.Annual, 2)]
 		public async Task CashFlowAsyncTest(string symbol, Period period = Period.Quarter, int last = 1)
@@ -122,17 +110,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		public async Task CompanyAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.Stock.CompanyAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task DelayedQuoteAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.DelayedQuoteAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -256,92 +233,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("AAPL", ChartRange._1y)]
-		[TestCase("AAPL", ChartRange._max)]
-		[TestCase("AAPL", ChartRange._ytd)]
-		[TestCase("AAPL", ChartRange._1m)]
-		public async Task HistoricalPriceAsync(string symbol,
-			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
-		{
-			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-			Assert.IsNotEmpty(response.Data.First().date);
-			Assert.Greater(response.Data.First().GetDateTimeInUTC(), DateTime.MinValue);
-		}
-
-		[Test]
-		[TestCase("AAPL", ChartRange._max)]
-		public async Task HistoricalPriceNonZeroAsync(string symbol,
-			ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
-		{
-			var response = await sandBoxClient.Stock.HistoricalPriceAsync(symbol, range);
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			foreach (var ohlc in response.Data)
-			{
-				Assert.NotZero(ohlc.open);
-				Assert.NotZero(ohlc.high);
-				Assert.NotZero(ohlc.low);
-				Assert.NotZero(ohlc.close);
-				Assert.NotZero(ohlc.volume);
-				Assert.NotZero(ohlc.uOpen);
-				Assert.NotZero(ohlc.uHigh);
-				Assert.NotZero(ohlc.uLow);
-				Assert.NotZero(ohlc.uClose);
-				Assert.NotZero(ohlc.uVolume);
-			}
-		}
-
-		[Test]
-		[TestCase("AAPL", true)]
-		[TestCase("AAPL", false)]
-		public async Task HistoricalPriceAsyncDateTest(string symbol, bool chartByDay)
-		{
-			var response = await sandBoxClient.Stock.HistoricalPriceByDateAsync(symbol, getLatestWeekday(), chartByDay);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-			Assert.IsNotEmpty(response.Data.First().minute);
-			Assert.Greater(response.Data.First().GetDateTimeInUTC(), DateTime.MinValue);
-		}
-
-		private static DateTime getLatestWeekday()
-		{
-			var latestWeekday = DateTime.Now.Subtract(TimeSpan.FromDays(1));
-			while (latestWeekday.DayOfWeek == DayOfWeek.Saturday || latestWeekday.DayOfWeek == DayOfWeek.Sunday)
-				latestWeekday -= TimeSpan.FromDays(1);
-			return latestWeekday;
-		}
-
-		//public async Task HistoricalPriceAsyncQsbTest()
-		//{
-		//	var qsb = new QueryStringBuilder();
-		//	qsb.Add("chartByDay", "true");
-		//	var response = await sandBoxClient.Stock.HistoricalPriceByDateAsync("AAPL", ChartRange._1m, null, qsb);
-
-		//	Assert.IsNotNull(response);
-		//	Assert.GreaterOrEqual(response.Count(), 0);
-		//}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task HistoricalPriceDynamicAsync(string symbol, QueryStringBuilder qsb = null)
-		{
-			var response = await sandBoxClient.Stock.HistoricalPriceDynamicAsync(symbol, qsb);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.data);
-			Assert.GreaterOrEqual(response.Data.data.Count, 1);
-		}
-
-		[Test]
 		[TestCase("AAPL", Period.Annual, 1)]
 		[TestCase("FB", Period.Quarter, 2)]
 		public async Task IncomeStatementAsyncTest(string symbol, Period period, int last)
@@ -434,18 +325,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task IntradayPriceAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.IntradayPriceAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
 		[TestCase(IPOType.Today)]
 		[TestCase(IPOType.Upcoming)]
 		public async Task IPOCalendarAsyncTest(IPOType ipoType)
@@ -477,18 +356,6 @@ namespace VSLee.IEXSharpTest.Cloud
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task LargestTradesAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.LargestTradesAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -542,17 +409,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task OHLCAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.OHLCAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
 		public async Task PeersAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.Stock.PeersAsync(symbol);
@@ -565,54 +421,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task PreviousDayPriceAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.PreviousDayPriceAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task PriceAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.PriceAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
 		public async Task PriceTargetAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.Stock.PriceTargetAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task QuoteAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.QuoteAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL", "companyName")]
-		[TestCase("AAPL", "marketCap")]
-		[TestCase("FB", "companyName")]
-		public async Task QuoteFieldAsyncTest(string symbol, string field)
-		{
-			var response = await sandBoxClient.Stock.QuoteFieldAsync(symbol, field);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -710,22 +521,6 @@ namespace VSLee.IEXSharpTest.Cloud
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task VolumeByVenueAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.VolumeByVenueAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-
-			Assert.IsNotNull(response.Data.First().venue);
-			Assert.IsNotNull(response.Data.First().volume);
 		}
 	}
 }

@@ -51,13 +51,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#book"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<BookResponse>> BookAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#cash-flow"/>
 		/// </summary>
 		/// <param name="symbol"></param>
@@ -87,13 +80,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="symbol"></param>
 		/// <returns></returns>
 		Task<IEXResponse<CompanyResponse>> CompanyAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#delayed-quote"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<DelayedQuoteResponse>> DelayedQuoteAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#dividends-basic"/>
@@ -176,32 +162,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<IEnumerable<FundOwnershipResponse>>> FundOwnershipAsync(string symbol);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#historical-prices"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="range"></param>
-		/// <param name="qsb">Additional optional parameters</param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceAsync(string symbol, ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#historical-prices"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="date"></param>
-		/// <param name="qsb">Additional optional parameters</param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceByDateAsync(string symbol, DateTime date, bool chartByDay, QueryStringBuilder qsb = null);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#historical-prices"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="qsb">Additional optional parameters</param>
-		/// <returns></returns>
-		Task<IEXResponse<HistoricalPriceDynamicResponse>> HistoricalPriceDynamicAsync(string symbol, QueryStringBuilder qsb = null);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#income-statement"/>
 		/// </summary>
 		/// <param name="symbol"></param>
@@ -249,13 +209,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<IEnumerable<InstitutionalOwnershipResponse>>> InstitutionalOwnerShipAsync(string symbol);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#institutional-ownership"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<IntradayPriceResponse>>> IntradayPriceAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#intraday-prices"/>
 		/// </summary>
 		/// <param name="ipoType"></param>
@@ -276,13 +229,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="stat"></param>
 		/// <returns></returns>
 		Task<IEXResponse<string>> KeyStatsStatAsync(string symbol, string stat);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#largest-trades"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#list"/>
@@ -313,32 +259,11 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10);
 
 		/// <summary>
-		/// https://iexcloud.io/docs/api/#ohlc
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<OHLCResponse>> OHLCAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#peers"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#previous-day-price"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<HistoricalPriceResponse>> PreviousDayPriceAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#price"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<decimal>> PriceAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#price-target"/>
@@ -354,21 +279,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="indicator"></param>
 		/// <returns></returns>
 		Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#quote"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<Quote>> QuoteAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#quote"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="field"></param>
-		/// <returns></returns>
-		Task<IEXResponse<string>> QuoteFieldAsync(string symbol, string field);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#advanced-stats"/>
@@ -413,12 +323,5 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="type"></param>
 		/// <returns></returns>
 		Task<IEXResponse<UpcomingEventMarketResponse>> UpcomingEventMarketAsync(UpcomingEventType type);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#volume-by-venue"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<VolumeByVenueResponse>>> VolumeByVenueAsync(string symbol);
 	}
 }
