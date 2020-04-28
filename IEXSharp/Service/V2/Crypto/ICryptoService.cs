@@ -9,7 +9,6 @@ namespace VSLee.IEXSharp.Service.V2.Crypto
 	{
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#cryptocurrency-book"/>
-		/// <cost MessageCost="700" />
 		/// </summary>
 		/// <value>700</value>
 		/// <returns></returns>
