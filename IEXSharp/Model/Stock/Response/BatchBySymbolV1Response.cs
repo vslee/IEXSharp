@@ -5,6 +5,6 @@ namespace VSLee.IEXSharp.Model.Stock.Response
 {
 	public class BatchBySymbolV1Response : BatchResponse
 	{
-		public new List<NewsV1> news { get; set; }
+		public List<NewsV1> news { get; set; }
 	}
 }
