@@ -1,7 +1,6 @@
 using IEXSharp.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
@@ -132,6 +131,20 @@ namespace VSLee.IEXSharp.Helper
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
 			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<ReturnType>> QueryStringExecuteAsync<ReturnType>(string url, Dictionary<string, string> queryParameters)
+			where ReturnType : class
+		{
+			var qsb = new QueryStringBuilder();
+			var pathNVC = new NameValueCollection();
+
+			foreach (KeyValuePair<string, string> entry in queryParameters)
+			{
+				qsb.Add(entry.Key, entry.Value);
+			}
+
+			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb);
 		}
 	}
 }
