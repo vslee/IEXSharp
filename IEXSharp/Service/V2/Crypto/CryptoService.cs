@@ -1,9 +1,9 @@
 using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.Shared.Response;
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
+using IEXSharp.Model.Crypto;
 
 namespace VSLee.IEXSharp.Service.V2.Crypto
 {
@@ -16,17 +16,13 @@ namespace VSLee.IEXSharp.Service.V2.Crypto
 			executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public Task<IEXResponse<Quote>> BookAsync(string symbol)
-		{
-			throw new NotImplementedException();
-		}
+		public async Task<IEXResponse<CryptoBookResponse>> BookAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<CryptoBookResponse>("crypto/[symbol]/book", symbol);
 
-		public Task<IEXResponse<Quote>> PriceAsync(string symbol)
-		{
-			throw new NotImplementedException();
-		}
+		public async Task<IEXResponse<CryptoPriceResponse>> PriceAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<CryptoPriceResponse>("crypto/[symbol]/price", symbol);
 
-		public async Task<IEXResponse<Quote>> QuoteAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<Quote>("crypto/[symbol]/quote", symbol);
+		public async Task<IEXResponse<CryptoQuote>> QuoteAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<CryptoQuote>("crypto/[symbol]/quote", symbol);
 	}
 }
