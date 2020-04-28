@@ -1,9 +1,11 @@
 using IEXSharp.Service.V2.CorporateActions;
+using IEXSharp.Service.V2.StockPrices;
 using System;
 using System.Net.Http;
 using VSLee.IEXSharp.Service.V2.Account;
 using VSLee.IEXSharp.Service.V2.AlternativeData;
 using VSLee.IEXSharp.Service.V2.APISystemMetadata;
+using VSLee.IEXSharp.Service.V2.Crypto;
 using VSLee.IEXSharp.Service.V2.ForexCurrencies;
 using VSLee.IEXSharp.Service.V2.InvestorsExchangeData;
 using VSLee.IEXSharp.Service.V2.ReferenceData;
@@ -28,9 +30,11 @@ namespace VSLee.IEXSharp
 		private readonly bool signRequest;
 
 		private IAccountService accountService;
+		private IStockPricesService stockPricesService;
 		private IStockService stockService;
 		private ISSEService sseService;
 		private IAlternativeDataService alternativeDataService;
+		private ICryptoService cryptoService;
 		private IReferenceDataService referenceDataService;
 		private IForexCurrenciesService forexCurrenciesService;
 		private IInvestorsExchangeDataService investorsExchangeDataService;
@@ -39,6 +43,9 @@ namespace VSLee.IEXSharp
 
 		public IAccountService Account => accountService ??	(accountService =
 			new AccountService(client, secretToken, publishableToken, signRequest));
+
+		public IStockPricesService StockPrices => stockPricesService ?? (stockPricesService =
+			new StockPricesService(client, secretToken, publishableToken, signRequest));
 
 		public IStockService Stock => stockService ?? (stockService =
 			new StockService(client, secretToken, publishableToken, signRequest));
@@ -51,6 +58,9 @@ namespace VSLee.IEXSharp
 
 		public IAlternativeDataService AlternativeData => alternativeDataService ??
 			(alternativeDataService = new AlternativeDataService(client, secretToken, publishableToken, signRequest));
+
+		public ICryptoService Crypto => cryptoService ??
+		    (cryptoService = new CryptoService(client, secretToken, publishableToken, signRequest));
 
 		public IReferenceDataService ReferenceData => referenceDataService ??
 			(referenceDataService = new ReferenceDataService(client, secretToken, publishableToken, signRequest));

@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
 using VSLee.IEXSharp.Model.Shared.Response;
 
-namespace VSLee.IEXSharp.Model.Stock.Response
+namespace VSLee.IEXSharp.Model.StockPrices.Response
 {
 	public class BookResponse : DeepBookResponse
 	{

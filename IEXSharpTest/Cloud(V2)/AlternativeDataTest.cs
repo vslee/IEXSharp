@@ -15,16 +15,6 @@ namespace VSLee.IEXSharpTest.Cloud
 			sandBoxClient = new IEXCloudClient(TestGlobal.pk, TestGlobal.sk, false, true);
 		}
 
-		[Test]
-		[TestCase("BTCUSDT")]
-		public async Task CryptoQuoteAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.AlternativeData.CryptoQuoteAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
 		// Not supported for free account
 		[Test]
 		[TestCase("AAPL")]

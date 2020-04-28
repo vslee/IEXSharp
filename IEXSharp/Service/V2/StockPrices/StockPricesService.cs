@@ -1,0 +1,114 @@
+using IEXSharp.Model;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using VSLee.IEXSharp.Helper;
+using VSLee.IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.StockPrices.Request;
+using VSLee.IEXSharp.Model.StockPrices.Response;
+
+namespace IEXSharp.Service.V2.StockPrices
+{
+	public class StockPricesService : IStockPricesService
+	{
+		private readonly ExecutorREST executor;
+
+		public StockPricesService(HttpClient client, string sk, string pk, bool sign)
+		{
+			executor = new ExecutorREST(client, sk, pk, sign);
+		}
+		public async Task<IEXResponse<BookResponse>> BookAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol);
+
+		public async Task<IEXResponse<DelayedQuoteResponse>> DelayedQuoteAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<DelayedQuoteResponse>("stock/[symbol]/delayed-quote", symbol);
+
+		public async Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceAsync(string symbol,
+			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
+		{
+			const string urlPattern = "stock/[symbol]/chart/[range]";
+
+			var pathNvc = new NameValueCollection
+			{
+				{"symbol", symbol},
+				{"range", range.ToString().Replace("_", string.Empty)},
+			};
+
+			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceByDateAsync(string symbol,
+			DateTime date, bool chartByDay, QueryStringBuilder qsb = null)
+		{
+			const string urlPattern = "stock/[symbol]/chart/date/[date]";
+
+			var pathNvc = new NameValueCollection
+			{
+				{"symbol", symbol},
+				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : date.ToString("yyyyMMdd")}
+			};
+
+			qsb = qsb ?? new QueryStringBuilder();
+			if (chartByDay)
+				qsb.Add("chartByDay", "true");
+
+			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb: qsb);
+		}
+
+		public async Task<IEXResponse<HistoricalPriceDynamicResponse>> HistoricalPriceDynamicAsync(string symbol,
+			QueryStringBuilder qsb = null)
+		{
+			const string urlPattern = "stock/[symbol]/chart/dynamic";
+
+			qsb = qsb ?? new QueryStringBuilder();
+
+			var pathNvc = new NameValueCollection
+			{
+				{"symbol", symbol}
+			};
+
+			return await executor.ExecuteAsync<HistoricalPriceDynamicResponse>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<IntradayPriceResponse>>> IntradayPriceAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<IntradayPriceResponse>>("stock/[symbol]/intraday-prices", symbol);
+
+		public async Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<LargestTradeResponse>>("stock/[symbol]/largest-trades", symbol);
+
+		public async Task<IEXResponse<OHLCResponse>> OHLCAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol);
+
+		public async Task<IEXResponse<HistoricalPriceResponse>> PreviousDayPriceAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<HistoricalPriceResponse>("stock/[symbol]/previous", symbol);
+
+		public async Task<IEXResponse<decimal>> PriceAsync(string symbol)
+		{
+			var returnValue = await executor.SymbolExecuteAsync<string>("stock/[symbol]/price", symbol);
+			if (returnValue.ErrorMessage != null)
+				return new IEXResponse<decimal>() { ErrorMessage = returnValue.ErrorMessage };
+			else
+				return new IEXResponse<decimal>() { Data = decimal.Parse(returnValue.Data) };
+		}
+
+		public async Task<IEXResponse<Quote>> QuoteAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<Quote>("stock/[symbol]/quote", symbol);
+
+		public async Task<IEXResponse<string>> QuoteFieldAsync(string symbol, string field)
+		{
+			const string urlPattern = "stock/[symbol]/quote/[field]";
+
+			var qsb = new QueryStringBuilder();
+
+			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "field", field } };
+
+			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<VolumeByVenueResponse>>> VolumeByVenueAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<VolumeByVenueResponse>>("stock/[symbol]/volume-by-venue", symbol);
+	}
+}

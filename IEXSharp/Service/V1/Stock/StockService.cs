@@ -10,6 +10,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
+using VSLee.IEXSharp.Model.StockPrices.Response;
+using VSLee.IEXSharp.Model.StockPrices.Request;
 
 namespace VSLee.IEXSharp.Service.V1.Stock
 {

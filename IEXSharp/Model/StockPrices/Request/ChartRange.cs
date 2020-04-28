@@ -1,4 +1,4 @@
-﻿namespace VSLee.IEXSharp.Model.Stock.Request
+namespace VSLee.IEXSharp.Model.StockPrices.Request
 {
 	public enum ChartRange
 	{

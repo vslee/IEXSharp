@@ -1,4 +1,4 @@
-﻿namespace VSLee.IEXSharp.Model.Stock.Response
+namespace VSLee.IEXSharp.Model.StockPrices.Response
 {
 	public class LargestTradeResponse
 	{
