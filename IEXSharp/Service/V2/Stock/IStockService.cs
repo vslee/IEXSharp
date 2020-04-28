@@ -348,6 +348,14 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<PriceTargetResponse>> PriceTargetAsync(string symbol);
 
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#technical-indicators"/>
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <param name="indicator"></param>
+		/// <returns></returns>
+		Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator);
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#quote"/>
 		/// </summary>
 		/// <param name="symbol"></param>
@@ -361,6 +369,13 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="field"></param>
 		/// <returns></returns>
 		Task<IEXResponse<string>> QuoteFieldAsync(string symbol, string field);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#advanced-stats"/>
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <returns></returns>
+		Task<IEXResponse<AdvancedStatsResponse>> AdvancedStatsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#recommendation-trends"/>

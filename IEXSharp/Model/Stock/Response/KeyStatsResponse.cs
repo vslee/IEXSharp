@@ -1,4 +1,6 @@
-﻿namespace VSLee.IEXSharp.Model.Stock.Response
+﻿using System;
+
+namespace VSLee.IEXSharp.Model.Stock.Response
 {
 	public class KeyStatsResponse
 	{
@@ -18,9 +20,9 @@
 		public decimal ttmEPS { get; set; }
 		public decimal ttmDividendRate { get; set; }
 		public decimal dividendYield { get; set; }
-		public string nextDividendDate { get; set; }
-		public string exDividendDate { get; set; }
-		public string nextEarningsDate { get; set; }
+		public DateTime? nextDividendDate { get; set; }
+		public DateTime? exDividendDate { get; set; }
+		public DateTime? nextEarningsDate { get; set; }
 		public long peRatio { get; set; }
 		public decimal maxChangePercent { get; set; }
 		public decimal year5ChangePercent { get; set; }

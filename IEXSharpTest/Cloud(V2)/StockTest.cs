@@ -621,6 +621,20 @@ namespace VSLee.IEXSharpTest.Cloud
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
+		public async Task AdvancedStatsAsyncTest(string symbol)
+		{
+			var response = await sandBoxClient.Stock.AdvancedStatsAsync(symbol);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			Assert.NotNull(response.Data.marketcap);
+			Assert.NotNull(response.Data.beta);
+		}
+
+		[Test]
+		[TestCase("AAPL")]
+		[TestCase("FB")]
 		public async Task RecommandationTrendAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.Stock.RecommendationTrendAsync(symbol);
@@ -628,6 +642,17 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
+		}
+
+		[Test]
+		[TestCase("AAPL", "adxr")]
+		[TestCase("FB", "abs")]
+		public async Task TechnicalIndicatorsAsyncTest(string symbol, string indicator)
+		{
+			var response = await sandBoxClient.Stock.TechnicalIndicatorsAsync(symbol, indicator);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
