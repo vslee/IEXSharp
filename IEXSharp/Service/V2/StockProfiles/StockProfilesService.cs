@@ -36,7 +36,7 @@ namespace IEXSharp.Service.V2.StockProfiles
 		public async Task<IEXResponse<LogoResponse>> LogoAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol);
 
-		public async Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<string>>> PeerGroupsAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<string>>("stock/[symbol]/peers", symbol);
 
 	}

@@ -18,6 +18,7 @@ namespace IEXSharp.Service.V2.StockProfiles
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#insider-roster"/>
+		/// Only included with paid subscription plans
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
@@ -25,6 +26,7 @@ namespace IEXSharp.Service.V2.StockProfiles
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#insider-summary"/>
+		/// Only included with paid subscription plans
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
@@ -32,6 +34,8 @@ namespace IEXSharp.Service.V2.StockProfiles
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#insider-transactions"/>
+		/// Only included with paid subscription plans
+		/// Insider transactions for the last 12 months on a rolling basis
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
@@ -46,9 +50,10 @@ namespace IEXSharp.Service.V2.StockProfiles
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#peers"/>
+		/// Only included with paid subscription plans
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol);
+		Task<IEXResponse<IEnumerable<string>>> PeerGroupsAsync(string symbol);
 	}
 }

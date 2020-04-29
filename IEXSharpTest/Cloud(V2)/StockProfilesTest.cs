@@ -83,9 +83,9 @@ namespace IEXSharpTest.Cloud
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task PeersAsyncTest(string symbol)
+		public async Task PeerGroupsAsyncTest(string symbol)
 		{
-			var response = await sandBoxClient.StockProfiles.PeersAsync(symbol);
+			var response = await sandBoxClient.StockProfiles.PeerGroupsAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
