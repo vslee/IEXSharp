@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using IEXSharp.Helper;
-using IEXSharp.Model.CoprorateActions.Request;
+using IEXSharp.Model.CorporateActions.Request;
 using NUnit.Framework;
 
 namespace IEXSharpTest.Helper

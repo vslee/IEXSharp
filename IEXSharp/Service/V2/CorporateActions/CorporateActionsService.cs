@@ -1,12 +1,11 @@
 using IEXSharp.Model;
-using IEXSharp.Model.CoprorateActions.Request;
-using IEXSharp.Model.CoprorateActions.Response;
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Helper;
+using IEXSharp.Model.CorporateActions.Request;
+using IEXSharp.Model.CorporateActions.Response;
 using VSLee.IEXSharp.Helper;
 
 namespace IEXSharp.Service.V2.CorporateActions
@@ -21,47 +20,130 @@ namespace IEXSharp.Service.V2.CorporateActions
 		}
 
 		public async Task<IEXResponse<IEnumerable<AdvancedDividendResponse>>> DividendsAsync(
-			string symbol, TimeSeriesRange range = TimeSeriesRange.ThisQuarter, bool calendar = false, int? last = null, string refId = null)
+			string symbol, TimeSeriesRange range, bool calendar, int? last, string refId)
 		{
 			string urlPattern = "time-series/advanced_dividends/[symbol]";
-
+			urlPattern = GetBaseUrl(urlPattern, symbol);
 			var qsb = GetQueryString(range, calendar, last, refId);
-			var pathNvcTople = GetPathNvc(urlPattern, symbol);
-
-			urlPattern = pathNvcTople.Item1;
-			var pathNvc = pathNvcTople.Item2;
+			var pathNvc = GetPathNvc(symbol);
 
 			return await executor.ExecuteAsync<IEnumerable<AdvancedDividendResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IEnumerable<PlaceholderResponse>>> BonusIssueAsync(
-			string symbol, TimeSeriesRange range = TimeSeriesRange.ThisQuarter, bool calendar = false, int? last = null, string refId = null)
+		public async Task<IEXResponse<IEnumerable<BonusIssueResponse>>> BonusIssueAsync(
+			string symbol, TimeSeriesRange? range, bool calendar = false, int? last = null, string refId = null)
 		{
-			throw new NotImplementedException();
-			// string urlPattern = "/time-series/advanced_bonus/[symbol]";
-			//
-			// var qsb = GetQueryString(range, calendar, last, refId);
-			//
-			// var pathNvcTople = GetPathNvc(urlPattern, symbol);
-			// urlPattern = pathNvcTople.Item1;
-			// var pathNvc = pathNvcTople.Item2;
-			//
-			//
-			// return await executor.ExecuteAsync<IEnumerable<AdvancedDividendResponse>>(urlPattern, pathNvc, qsb);
+			string urlPattern = "time-series/advanced_bonus/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<BonusIssueResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public QueryStringBuilder GetQueryString(TimeSeriesRange range, bool calendar, int? last, string refId)
+		public async Task<IEXResponse<IEnumerable<DistributionResponse>>> DistributionAsync(
+			string symbol, TimeSeriesRange? range, bool calendar = false, int? last = null, string refId = null)
+		{
+			string urlPattern = "time-series/advanced_distribution/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<DistributionResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<ReturnOfCapitalResponse>>> ReturnOfCapitalAsync(
+			string symbol, TimeSeriesRange? range, bool calendar = false, int? last = null, string refId = null)
+		{
+			string urlPattern = "time-series/advanced_return_of_capital/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<ReturnOfCapitalResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<RightsIssueResponse>>> RightsIssueAsync(
+			string symbol, TimeSeriesRange? range, bool calendar = false, int? last = null, string refId = null)
+		{
+			string urlPattern = "time-series/advanced_rights/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<RightsIssueResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<RightToPurchaseResponse>>> RightToPurchaseAsync(
+			string symbol, TimeSeriesRange? range, bool calendar = false, int? last = null, string refId = null)
+		{
+			string urlPattern = "time-series/advanced_right_to_purchase/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<RightToPurchaseResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<SecurityUpdateResponse>>> SecurityReclassificationAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId)
+		{
+			string urlPattern = "time-series/advanced_security_reclassification/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<SecurityUpdateResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<SecurityUpdateResponse>>> SecuritySwapAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId)
+		{
+			string urlPattern = "time-series/advanced_security_swap/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<SecurityUpdateResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<SpinOffResponse>>> SpinOffAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId)
+		{
+			string urlPattern = "time-series/advanced_spinoff/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<SpinOffResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<SplitsResponse>>> SplitsAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId)
+		{
+			string urlPattern = "time-series/advanced_splits/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<SplitsResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		private QueryStringBuilder GetQueryString(TimeSeriesRange? range, bool calendar, int? last, string refId)
 		{
 			var queryStringBuilder = new QueryStringBuilder();
 
-			queryStringBuilder.Add("range", range.GetDescription());
+			if (range != null)
+			{
+				queryStringBuilder.Add("range", range.GetDescription());
+			}
 
 			if (calendar)
 			{
 				queryStringBuilder.Add("calendar", "true");
 			}
 
-			if (last != null)
+			if (last != null && last != 0)
 			{
 				queryStringBuilder.Add("last", last.ToString());
 			}
@@ -74,59 +156,25 @@ namespace IEXSharp.Service.V2.CorporateActions
 			return queryStringBuilder;
 		}
 
-		public Tuple<string, NameValueCollection> GetPathNvc(string baseUrl, string symbol)
+		private NameValueCollection GetPathNvc(string symbol)
 		{
 			var pathNvc = new NameValueCollection();
 			if (!string.IsNullOrEmpty(symbol))
 			{
 				pathNvc.Add("symbol", symbol);
 			}
-			else
+
+			return pathNvc;
+		}
+
+		private string GetBaseUrl(string baseUrl, string symbol)
+		{
+			if (string.IsNullOrEmpty(symbol))
 			{
 				baseUrl = baseUrl.Replace("[symbol]", "");
 			}
 
-			return new Tuple<string, NameValueCollection>(baseUrl, pathNvc);
-		}
-
-		public async Task<IEXResponse<PlaceholderResponse>> DistributionAsync(string symbol, string refId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public async Task<IEXResponse<PlaceholderResponse>> ReturnOfCapitalAsync(string symbol, string refId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public async Task<IEXResponse<PlaceholderResponse>> RightsIssueAsync(string symbol, string refId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public async Task<IEXResponse<PlaceholderResponse>> RightToPurchaseAsync(string symbol, string refId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public async Task<IEXResponse<PlaceholderResponse>> SecurityReclassificationAsync(string symbol, string refId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public async Task<IEXResponse<PlaceholderResponse>> SecuritySwapAsync(string symbol, string refId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public async Task<IEXResponse<PlaceholderResponse>> SpinOffAsync(string symbol, string refId)
-		{
-			throw new NotImplementedException();
-		}
-
-		public async Task<IEXResponse<PlaceholderResponse>> SplitsAsync(string symbol, string refId)
-		{
-			throw new NotImplementedException();
+			return baseUrl;
 		}
 	}
 }

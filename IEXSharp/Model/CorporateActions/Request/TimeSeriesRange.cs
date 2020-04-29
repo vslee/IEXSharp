@@ -1,7 +1,7 @@
 
 using System.ComponentModel;
 
-namespace IEXSharp.Model.CoprorateActions.Request
+namespace IEXSharp.Model.CorporateActions.Request
 {
 	public enum TimeSeriesRange
 	{

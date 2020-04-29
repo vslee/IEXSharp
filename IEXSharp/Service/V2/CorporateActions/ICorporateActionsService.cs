@@ -1,8 +1,8 @@
 using IEXSharp.Model;
-using IEXSharp.Model.CoprorateActions.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IEXSharp.Model.CoprorateActions.Request;
+using IEXSharp.Model.CorporateActions.Request;
+using IEXSharp.Model.CorporateActions.Response;
 
 namespace IEXSharp.Service.V2.CorporateActions
 {
@@ -16,10 +16,10 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="range">range enum</param>
 		/// <param name="calendar">true or false (defaults to false)</param>
 		/// <param name="last">last number of dividends, default is null</param>
-		/// <param name="refid">Optional. Id that matches the refid field returned in the response object. This allows you to pull a specific dividend for a symbol.</param>
+		/// <param name="refId">Optional. Id that matches the refId field returned in the response object. This allows you to pull a specific dividend for a symbol.</param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<AdvancedDividendResponse>>> DividendsAsync(
-			string symbol, TimeSeriesRange range, bool calendar = false, int? last = null, string refid = null);
+			string symbol, TimeSeriesRange range = TimeSeriesRange.ThisQuarter, bool calendar = false, int? last = null, string refId = null);
 
 		/// <summary>
         /// <see cref="https://iexcloud.io/docs/api/#bonus-issue"/>
@@ -27,9 +27,8 @@ namespace IEXSharp.Service.V2.CorporateActions
         /// <param name="symbol"></param>
         /// <param name="refId"></param>
         /// <returns></returns>
-        Task<IEXResponse<IEnumerable<PlaceholderResponse>>> BonusIssueAsync(
-			string symbol, TimeSeriesRange range = TimeSeriesRange.ThisQuarter, bool calendar = false, int? last = null, string refId = null
-        );
+        Task<IEXResponse<IEnumerable<BonusIssueResponse>>> BonusIssueAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#distribution"/>
@@ -37,7 +36,8 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="symbol"></param>
 		/// <param name="refId"></param>
 		/// <returns></returns>
-		Task<IEXResponse<PlaceholderResponse>> DistributionAsync(string symbol, string refId);
+		Task<IEXResponse<IEnumerable<DistributionResponse>>> DistributionAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#return-of-capital"/>
@@ -45,7 +45,8 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="symbol"></param>
 		/// <param name="refId"></param>
 		/// <returns></returns>
-		Task<IEXResponse<PlaceholderResponse>> ReturnOfCapitalAsync(string symbol, string refId);
+		Task<IEXResponse<IEnumerable<ReturnOfCapitalResponse>>> ReturnOfCapitalAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#rights-issue"/>
@@ -53,7 +54,8 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="symbol"></param>
 		/// <param name="refId"></param>
 		/// <returns></returns>
-		Task<IEXResponse<PlaceholderResponse>> RightsIssueAsync(string symbol, string refId);
+		Task<IEXResponse<IEnumerable<RightsIssueResponse>>> RightsIssueAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#right-to-purchase"/>
@@ -61,7 +63,8 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="symbol"></param>
 		/// <param name="refId"></param>
 		/// <returns></returns>
-		Task<IEXResponse<PlaceholderResponse>> RightToPurchaseAsync(string symbol, string refId);
+		Task<IEXResponse<IEnumerable<RightToPurchaseResponse>>> RightToPurchaseAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#security-reclassification"/>
@@ -69,7 +72,8 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="symbol"></param>
 		/// <param name="refId"></param>
 		/// <returns></returns>
-		Task<IEXResponse<PlaceholderResponse>> SecurityReclassificationAsync(string symbol, string refId);
+		Task<IEXResponse<IEnumerable<SecurityUpdateResponse>>> SecurityReclassificationAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#security-swap"/>
@@ -77,7 +81,8 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="symbol"></param>
 		/// <param name="refId"></param>
 		/// <returns></returns>
-		Task<IEXResponse<PlaceholderResponse>> SecuritySwapAsync(string symbol, string refId);
+		Task<IEXResponse<IEnumerable<SecurityUpdateResponse>>> SecuritySwapAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#spinoff"/>
@@ -85,7 +90,8 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="symbol"></param>
 		/// <param name="refId"></param>
 		/// <returns></returns>
-		Task<IEXResponse<PlaceholderResponse>> SpinOffAsync(string symbol, string refId);
+		Task<IEXResponse<IEnumerable<SpinOffResponse>>> SpinOffAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#splits"/>
@@ -93,6 +99,7 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="symbol"></param>
 		/// <param name="refId"></param>
 		/// <returns></returns>
-		Task<IEXResponse<PlaceholderResponse>> SplitsAsync(string symbol, string refId);
+		Task<IEXResponse<IEnumerable<SplitsResponse>>> SplitsAsync(
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 	}
 }
