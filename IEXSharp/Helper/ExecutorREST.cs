@@ -132,19 +132,5 @@ namespace VSLee.IEXSharp.Helper
 
 			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
-
-		public async Task<IEXResponse<ReturnType>> QueryStringExecuteAsync<ReturnType>(string url, Dictionary<string, string> queryParameters)
-			where ReturnType : class
-		{
-			var qsb = new QueryStringBuilder();
-			var pathNVC = new NameValueCollection();
-
-			foreach (KeyValuePair<string, string> entry in queryParameters)
-			{
-				qsb.Add(entry.Key, entry.Value);
-			}
-
-			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb);
-		}
 	}
 }

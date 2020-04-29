@@ -19,34 +19,39 @@ namespace VSLee.IEXSharp.Service.V2.ForexCurrencies
 
 		public async Task<IEXResponse<IEnumerable<CurrencyRateResponse>>> LatestRatesAsync(string symbols)
 		{
-			var queryParameterDictionary = new Dictionary<string, string> {{"symbols", symbols}};
+			var nvc = new NameValueCollection();
+			var qsb = new QueryStringBuilder();
+			qsb.Add("symbols", symbols);
 
-			return await executor.QueryStringExecuteAsync<IEnumerable<CurrencyRateResponse>>($"fx/latest", queryParameterDictionary);
+			return await executor.ExecuteAsync<IEnumerable<CurrencyRateResponse>>("fx/latest", nvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<CurrencyConvertResponse>>> ConvertAsync(string symbols, string amount)
 		{
-			var queryParameterDictionary = new Dictionary<string, string> {{"symbols", symbols}, {"amount", amount}};
+			var nvc = new NameValueCollection();
+			var qsb = new QueryStringBuilder();
+			qsb.Add("symbols", symbols);
+			qsb.Add("amount", amount);
 
-			return await executor.QueryStringExecuteAsync<IEnumerable<CurrencyConvertResponse>>($"fx/convert", queryParameterDictionary);
+			return await executor.ExecuteAsync<IEnumerable<CurrencyConvertResponse>>("fx/convert", nvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<IEnumerable<CurrencyHistoricalRateResponse>>>> HistoricalDailyAsync(string symbols, string query, string queryValue)
 		{
-			var queryParameterDictionary = new Dictionary<string, string> {{"symbols", symbols}, {query, queryValue}};
+			var nvc = new NameValueCollection();
+			var qsb = new QueryStringBuilder();
+			qsb.Add("symbols", symbols);
+			qsb.Add(query, queryValue);
 
-			return await executor.QueryStringExecuteAsync<IEnumerable<IEnumerable<CurrencyHistoricalRateResponse>>>($"fx/historical", queryParameterDictionary);
+			return await executor.ExecuteAsync<IEnumerable<IEnumerable<CurrencyHistoricalRateResponse>>>("fx/historical", nvc, qsb);
 		}
 
 		public async Task<IEXResponse<ExchangeRateResponse>> ExchangeRateAsync(string from, string to)
 		{
-			const string urlPattern = "fx/rate/[from]/[to]";
-
 			var qsb = new QueryStringBuilder();
-
 			var pathNvc = new NameValueCollection { { "from", from }, { "to", to } };
 
-			return await executor.ExecuteAsync<ExchangeRateResponse>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<ExchangeRateResponse>("fx/rate/[from]/[to]", pathNvc, qsb);
 		}
 	}
 }
