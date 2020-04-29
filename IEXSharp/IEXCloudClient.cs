@@ -1,5 +1,6 @@
 using IEXSharp.Service.V2.CorporateActions;
 using IEXSharp.Service.V2.StockPrices;
+using IEXSharp.Service.V2.StockProfiles;
 using System;
 using System.Net.Http;
 using VSLee.IEXSharp.Service.V2.Account;
@@ -31,6 +32,7 @@ namespace VSLee.IEXSharp
 
 		private IAccountService accountService;
 		private IStockPricesService stockPricesService;
+		private IStockProfilesService stockProfilesService;
 		private IStockService stockService;
 		private ISSEService sseService;
 		private IAlternativeDataService alternativeDataService;
@@ -46,6 +48,9 @@ namespace VSLee.IEXSharp
 
 		public IStockPricesService StockPrices => stockPricesService ?? (stockPricesService =
 			new StockPricesService(client, secretToken, publishableToken, signRequest));
+
+		public IStockProfilesService StockProfiles => stockProfilesService ?? (stockProfilesService =
+			new StockProfilesService(client, secretToken, publishableToken, signRequest));
 
 		public IStockService Stock => stockService ?? (stockService =
 			new StockService(client, secretToken, publishableToken, signRequest));

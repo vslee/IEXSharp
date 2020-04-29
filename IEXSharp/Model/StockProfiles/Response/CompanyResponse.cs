@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
-namespace VSLee.IEXSharp.Model.Stock.Response
+namespace VSLee.IEXSharp.Model.StockProfiles.Response
 {
 	public class CompanyResponse
 	{

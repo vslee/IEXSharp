@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using IEXSharp.Model;
 using VSLee.IEXSharp.Model.StockPrices.Response;
 using VSLee.IEXSharp.Model.StockPrices.Request;
+using VSLee.IEXSharp.Model.StockProfiles.Response;
 
 namespace VSLee.IEXSharp.Service.V1.Stock
 {
