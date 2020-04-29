@@ -1,25 +1,50 @@
+
+using System.ComponentModel;
+
 namespace IEXSharp.Model.CoprorateActions.Request
 {
 	public enum TimeSeriesRange
 	{
-		_today,
-		_yesterday,
-		_ytd,
-		_last__week,
-		_last__month,
-		_last__quarter,
-		_6m,
-		_3m,
-		_1m,
-		_5y,
-		_2y,
-		_1y,
-		_tomorrow, 
-		_this__week, 
-		_this__month,
-		_this__quarter,
-		_next__week,
-		_next__month,
-		_next__quarter
+		[Description("today")]
+		Today,
+		[Description("yesterday")]
+		Yesterday,
+		[Description("tomorrow")]
+		Tomorrow,
+		[Description("ytd")]
+		Ytd,
+		[Description("1m")]
+		OneMonth,
+		[Description("3m")]
+		ThreeMonths,
+		[Description("6m")]
+		SixMonths,
+		[Description("1y")]
+		OneYear,
+		[Description("2y")]
+		TwoYears,
+		[Description("5y")]
+		FiveYears,
+		// This
+		[Description("this-week")]
+		ThisWeek,
+		[Description("this-month")]
+		ThisMonth,
+		[Description("this-quarter")]
+		ThisQuarter,
+		// Last
+		[Description("last-week")]
+		LastWeek,
+		[Description("last-month")]
+		LastMonth,
+		[Description("last-quarter")]
+		LastQuarter,
+		// Next
+		[Description("next-week")]
+		NextWeek,
+		[Description("next-month")]
+		NextMonth,
+		[Description("next-quarter")]
+		NextQuarter,
 	}
 }

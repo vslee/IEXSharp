@@ -30,7 +30,7 @@ namespace IEXSharp.Model.CoprorateActions.Response
 		public int adrFee { get; set; }
 		public int coupon { get; set; }
 		public string declaredCurrencyCD { get; set; }
-		public int declaredGrossAmount { get; set; }
+		public double declaredGrossAmount { get; set; }
 		public int isCapitalGains { get; set; }
 		public int isNetInvestmentIncome { get; set; }
 		public int isDAP { get; set; }
