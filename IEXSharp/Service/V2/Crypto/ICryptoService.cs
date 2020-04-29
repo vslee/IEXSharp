@@ -10,7 +10,6 @@ namespace VSLee.IEXSharp.Service.V2.Crypto
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#cryptocurrency-book"/>
 		/// </summary>
-		/// <value>700</value>
 		/// <returns></returns>
 		Task<IEXResponse<CryptoBookResponse>> BookAsync(string symbol);
 
