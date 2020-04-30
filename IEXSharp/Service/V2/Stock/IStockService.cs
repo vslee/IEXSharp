@@ -75,13 +75,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection, string collectionName);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#company"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<CompanyResponse>> CompanyAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#dividends-basic"/>
 		/// Basic dividends (as opposed to the advanced dividends in ICorporateActionsService)
 		/// </summary>
@@ -181,27 +174,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<string>> IncomeStatementFieldAsync(string symbol, string field, Period period = Period.Quarter, int last = 1);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#insider-roster"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<InsiderRosterResponse>>> InsiderRosterAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#insider-summary"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<InsiderSummaryResponse>>> InsiderSummaryAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#insider-transactions"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<InsiderTransactionResponse>>> InsiderTransactionAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#institutional-ownership"/>
 		/// </summary>
 		/// <param name="symbol"></param>
@@ -238,13 +210,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#logo"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<LogoResponse>> LogoAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#market-volume-u-s"/>
 		/// </summary>
 		/// <returns></returns>
@@ -257,13 +222,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// <param name="last"></param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#peers"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#price-target"/>

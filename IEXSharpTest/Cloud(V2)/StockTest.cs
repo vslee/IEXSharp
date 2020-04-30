@@ -105,17 +105,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task CompanyAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.CompanyAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
 		[TestCase("AAPL", DividendRange._1m)]
 		[TestCase("AAPL", DividendRange._1y)]
 		[TestCase("AAPL", DividendRange._2y)]
@@ -272,46 +261,7 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNotNull(response.Data);
 		}
 
-		// Not supported for free account
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task InsiderRosterAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.InsiderRosterAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		// Not supported for free account
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task InsiderSummaryAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.InsiderSummaryAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		// Not supported for free account
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task InsiderTransactionAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.InsiderTransactionAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		// Not supported for free account
+		/// <summary> Not supported for free account </summary>
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
@@ -374,17 +324,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task LogoAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.LogoAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
 		public async Task MarketVolumeUSAsyncTest()
 		{
 			var response = await sandBoxClient.Stock.MarketVolumeUSAsync();
@@ -400,18 +339,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		public async Task NewsAsyncTest(string symbol, int last)
 		{
 			var response = await sandBoxClient.Stock.NewsAsync(symbol, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task PeersAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.PeersAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
