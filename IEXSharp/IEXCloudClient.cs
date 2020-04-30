@@ -1,4 +1,5 @@
 using IEXSharp.Service.V2.CorporateActions;
+using IEXSharp.Service.V2.StockFundamentals;
 using IEXSharp.Service.V2.StockPrices;
 using IEXSharp.Service.V2.StockProfiles;
 using System;
@@ -14,9 +15,7 @@ using VSLee.IEXSharp.Service.V2.Stock;
 
 namespace VSLee.IEXSharp
 {
-	/// <summary>
-	/// https://iexcloud.io/docs/api/#api-versioning
-	/// </summary>
+	/// <summary> https://iexcloud.io/docs/api/#api-versioning </summary>
 	public enum APIVersion
 	{
 		stable, latest, beta, V1
@@ -33,6 +32,7 @@ namespace VSLee.IEXSharp
 		private IAccountService accountService;
 		private IStockPricesService stockPricesService;
 		private IStockProfilesService stockProfilesService;
+		private IStockFundamentalsService stockFundamentalsService;
 		private IStockService stockService;
 		private ISSEService sseService;
 		private IAlternativeDataService alternativeDataService;
@@ -52,12 +52,13 @@ namespace VSLee.IEXSharp
 		public IStockProfilesService StockProfiles => stockProfilesService ?? (stockProfilesService =
 			new StockProfilesService(client, secretToken, publishableToken, signRequest));
 
+		public IStockFundamentalsService StockFundamentals => stockFundamentalsService ?? (stockFundamentalsService =
+			new StockFundamentalsService(client, secretToken, publishableToken, signRequest));
+
 		public IStockService Stock => stockService ?? (stockService =
 			new StockService(client, secretToken, publishableToken, signRequest));
 
-		/// <summary>
-		/// SSE streaming service
-		/// </summary>
+		/// <summary> SSE streaming service </summary>
 		public ISSEService SSE => sseService ?? (sseService =
 			new SSEService(baseSSEURL: baseSSEURL, sk: secretToken, pk: publishableToken));
 

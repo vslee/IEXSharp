@@ -11,24 +11,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 {
 	public interface IStockService
 	{
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#balance-sheet"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="period"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<BalanceSheetResponse>> BalanceSheetAsync(string symbol, Period period = Period.Quarter, int last = 1);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#balance-sheet"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="period"></param>
-		/// <param name="field"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<string>> BalanceSheetFieldAsync(string symbol, string field, Period period = Period.Quarter, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
@@ -51,60 +33,11 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#cash-flow"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="period"></param>
-		/// <param name="last"></param>
-		Task<IEXResponse<CashFlowResponse>> CashFlowAsync(string symbol, Period period = Period.Quarter, int last = 1);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#cash-flow"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="field"></param>
-		/// <param name="period"></param>
-		/// <param name="last"></param>
-		Task<IEXResponse<string>> CashFlowFieldAsync(string symbol, string field, Period period = Period.Quarter, int last = 1);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#collections"/>
 		/// </summary>
 		/// <param name="collection"></param>
 		/// <param name="collectionName"></param>
 		Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection, string collectionName);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#dividends-basic"/>
-		/// Basic dividends (as opposed to the advanced dividends in ICorporateActionsService)
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="range"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<DividendResponse>>> DividendAsync(string symbol, DividendRange range);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#earnings"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<EarningResponse>> EarningAsync(string symbol, int last = 1);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#earnings"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="field"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<string>> EarningFieldAsync(string symbol, string field, int last = 1);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#earnings-today"/>
-		/// </summary>
-		/// <returns></returns>
-		Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#effective-spread"/>
@@ -131,47 +64,11 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		Task<IEXResponse<string>> EstimateFieldAsync(string symbol, string field, int last = 1);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#financials"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<FinancialResponse>> FinancialAsync(string symbol, int last = 1);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#financials"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="field"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<string>> FinancialFieldAsync(string symbol, string field, int last = 1);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#fund-ownership"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<FundOwnershipResponse>>> FundOwnershipAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#income-statement"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="period"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IncomeStatementResponse>> IncomeStatementAsync(string symbol, Period period = Period.Quarter, int last = 1);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#income-statement"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="field"></param>
-		/// <param name="period"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<string>> IncomeStatementFieldAsync(string symbol, string field, Period period = Period.Quarter, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#institutional-ownership"/>
@@ -257,14 +154,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 		/// </summary>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync();
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#splits"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="range"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<SplitResponse>>> SplitAsync(string symbol, SplitRange range = SplitRange._1m);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#upcoming-events"/>

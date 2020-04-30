@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using VSLee.IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.StockFundamentals.Response;
 using VSLee.IEXSharp.Model.StockPrices.Response;
 using VSLee.IEXSharp.Model.StockProfiles.Response;
 
