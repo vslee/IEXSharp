@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace VSLee.IEXSharp.Model.Stock.Response
+namespace VSLee.IEXSharp.Model.StockFundamentals.Response
 {
 	public class SplitV1
 	{

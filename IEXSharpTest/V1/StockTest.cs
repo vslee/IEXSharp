@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VSLee.IEXSharp.Model.StockPrices.Request;
+using VSLee.IEXSharp.Model.StockFundamentals.Request;
 
 namespace VSLee.IEXSharpTest.V1
 {

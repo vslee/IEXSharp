@@ -21,30 +21,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL", Period.Quarter, 1)]
-		[TestCase("FB", Period.Quarter, 2)]
-		public async Task BalanceSheetAsyncTest(string symbol, Period period = Period.Quarter,
-			int last = 1)
-		{
-			var response = await sandBoxClient.Stock.BalanceSheetAsync(symbol, period, last);
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.balancesheet);
-			Assert.GreaterOrEqual(response.Data.balancesheet.Count, 1);
-		}
-
-		[Test]
-		[TestCase("AAPL", "currentCash", Period.Quarter, 1)]
-		[TestCase("FB", "currentCash", Period.Quarter, 2)]
-		public async Task BalanceSheetFieldAsyncTest(string symbol, string field, Period period = Period.Quarter, int last = 1)
-		{
-			var response = await sandBoxClient.Stock.BalanceSheetFieldAsync(symbol, field, period, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
 		[TestCase("AAPL", new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote })]
 		[TestCase("FB", new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote }, "1m", 5)]
 		public async Task BatchBySymbolAsyncTest(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
@@ -70,28 +46,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL", Period.Quarter, 1)]
-		[TestCase("AAPL", Period.Annual, 2)]
-		public async Task CashFlowAsyncTest(string symbol, Period period = Period.Quarter, int last = 1)
-		{
-			var response = await sandBoxClient.Stock.CashFlowAsync(symbol, period, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL", "reportDate", Period.Annual, 1)]
-		[TestCase("AAPL", "reportDate", Period.Quarter, 2)]
-		public async Task CashFlowFieldAsyncTest(string symbol, string field, Period period = Period.Quarter, int last = 1)
-		{
-			var response = await sandBoxClient.Stock.CashFlowFieldAsync(symbol, field, period, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
 		[TestCase(CollectionType.List, "iexvolume")]
 		[TestCase(CollectionType.Sector, "Health Services")]
 		[TestCase(CollectionType.Tag, "Computer Communications")]
@@ -102,54 +56,6 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("AAPL", DividendRange._1m)]
-		[TestCase("AAPL", DividendRange._1y)]
-		[TestCase("AAPL", DividendRange._2y)]
-		[TestCase("AAPL", DividendRange._3m)]
-		[TestCase("AAPL", DividendRange._5y)]
-		[TestCase("AAPL", DividendRange._6m)]
-		[TestCase("AAPL", DividendRange._next)]
-		[TestCase("AAPL", DividendRange._ytd)]
-		public async Task DividendAsyncTest(string symbol, DividendRange range)
-		{
-			var response = await sandBoxClient.Stock.DividendAsync(symbol, range);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL", 1)]
-		[TestCase("FB", 2)]
-		public async Task EarningAsyncTest(string symbol, int last)
-		{
-			var response = await sandBoxClient.Stock.EarningAsync(symbol, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL", "consensusEPS", 1)]
-		[TestCase("AAPL", "announceTime", 2)]
-		public async Task EarningFieldAsyncTest(string symbol, string field, int last)
-		{
-			var response = await sandBoxClient.Stock.EarningFieldAsync(symbol, field, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		public async Task EarningTodayAsyncTest()
-		{
-			var response = await sandBoxClient.Stock.EarningTodayAsync();
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -186,76 +92,13 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNotNull(response.Data);
 		}
 
-		[Test]
-		[TestCase("AAPL", 1)]
-		[TestCase("FB", 2)]
-		public async Task FinancialAsyncTest(string symbol, int last)
-		{
-			var response = await sandBoxClient.Stock.FinancialAsync(symbol, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.financials.Count, 1);
-		}
-
-		[Test]
-		[TestCase("AAPL", "grossProfit", 1)]
-		[TestCase("FB", "grossProfit", 2)]
-		public async Task FinancialFieldAsyncTest(string symbol, string field, int last)
-		{
-			var response = await sandBoxClient.Stock.FinancialFieldAsync(symbol, field, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		// Not supported for free account
+		/// <summary> Not supported for free account </summary>
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task FundOwnershipAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.Stock.FundOwnershipAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL", Period.Annual, 1)]
-		[TestCase("FB", Period.Quarter, 2)]
-		public async Task IncomeStatementAsyncTest(string symbol, Period period, int last)
-		{
-			var response = await sandBoxClient.Stock.IncomeStatementAsync(symbol, period, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.income);
-			Assert.AreEqual(last, response.Data.income.Count);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task GivenAnnualPeriod_IncomeStatementAsync_ShouldReturnOneStatementPerYear(string symbol)
-		{
-			const Period period = Period.Annual;
-			const int upToXStatements = 2;
-
-			var response = await sandBoxClient.Stock.IncomeStatementAsync(symbol, period, upToXStatements);
-
-			var firstStatementReportYear = response.Data.income.ElementAt(0).reportDate.Substring(0, 4);
-			var secondStatementReportYear = response.Data.income.ElementAt(1).reportDate.Substring(0, 4);
-
-			Assert.That(firstStatementReportYear != secondStatementReportYear);
-		}
-
-		[Test]
-		[TestCase("AAPL", "costOfRevenue", Period.Quarter, 1)]
-		[TestCase("AAPL", "costOfRevenue", Period.Annual, 2)]
-		public async Task InComeStatementFieldAsyncTest(string symbol, string field, Period period = Period.Quarter, int last = 1)
-		{
-			var response = await sandBoxClient.Stock.IncomeStatementFieldAsync(symbol, field, period, last);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -397,24 +240,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		public async Task SectorPerformanceAsync()
 		{
 			var response = await sandBoxClient.Stock.SectorPerformanceAsync();
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("AAPL", SplitRange._1m)]
-		[TestCase("AAPL", SplitRange._1y)]
-		[TestCase("AAPL", SplitRange._2y)]
-		[TestCase("AAPL", SplitRange._3m)]
-		[TestCase("AAPL", SplitRange._5y)]
-		[TestCase("AAPL", SplitRange._6m)]
-		[TestCase("AAPL", SplitRange._next)]
-		[TestCase("AAPL", SplitRange._ytd)]
-		public async Task SplitAsyncTest(string symbol, SplitRange range)
-		{
-			var response = await sandBoxClient.Stock.SplitAsync(symbol, range);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

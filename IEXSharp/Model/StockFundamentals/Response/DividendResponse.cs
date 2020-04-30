@@ -1,6 +1,6 @@
-﻿using VSLee.IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.Shared.Response;
 
-namespace VSLee.IEXSharp.Model.Stock.Response
+namespace VSLee.IEXSharp.Model.StockFundamentals.Response
 {
 	public class DividendV1Response : DividendV1 { }
 
