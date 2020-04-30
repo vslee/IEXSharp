@@ -5,6 +5,7 @@ using System;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Helper;
 using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V2.Account
@@ -39,7 +40,7 @@ namespace VSLee.IEXSharp.Service.V2.Account
 
 			if (type != UsageType.All)
 			{
-				pathNVC["type"] = type.ToString().ToLower();
+				pathNVC["type"] = type.GetDescription();
 			}
 
 			return await _executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);

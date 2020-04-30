@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using IEXSharp.Helper;
 using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.StockFundamentals.Request;
 using VSLee.IEXSharp.Model.StockFundamentals.Response;
@@ -26,7 +27,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 			const string urlPattern = "stock/[symbol]/balance-sheet/[last]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.ToString().ToLower());
+			qsb.Add("period", period.GetDescription());
 
 			var pathNvc = new NameValueCollection
 			{
@@ -43,7 +44,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 			const string urlPattern = "stock/[symbol]/balance-sheet/[last]/[field]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.ToString().ToLower());
+			qsb.Add("period", period.GetDescription());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
@@ -54,7 +55,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 			const string urlPattern = "stock/[symbol]/cash-flow/[last]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.ToString().ToLower());
+			qsb.Add("period", period.GetDescription());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
@@ -67,7 +68,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 			const string urlPattern = "stock/[symbol]/cash-flow/[last]/[field]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.ToString().ToLower());
+			qsb.Add("period", period.GetDescription());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
@@ -82,7 +83,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 
 			var pathNvc = new NameValueCollection
 			{
-				{"symbol", symbol}, {"range", range.ToString().ToLower().Replace("_", string.Empty)}
+				{"symbol", symbol}, {"range", range.GetDescription()}
 			};
 
 			return await executor.ExecuteAsync<IEnumerable<DividendResponse>>(urlPattern, pathNvc, qsb);
@@ -109,7 +110,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 			const string urlPattern = "stock/[symbol]/income/[last]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.ToString().ToLower());
+			qsb.Add("period", period.GetDescription());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
@@ -128,13 +129,13 @@ namespace IEXSharp.Service.V2.StockFundamentals
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IEnumerable<SplitResponse>>> SplitAsync(string symbol, SplitRange range = SplitRange._1m)
+		public async Task<IEXResponse<IEnumerable<SplitResponse>>> SplitAsync(string symbol, SplitRange range = SplitRange.OneMonth)
 		{
 			const string urlPattern = "stock/[symbol]/splits/[range]";
 
 			var qsb = new QueryStringBuilder();
 
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.ToString().Replace("_", string.Empty) } };
+			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescription() } };
 
 			return await executor.ExecuteAsync<IEnumerable<SplitResponse>>(urlPattern, pathNvc, qsb);
 		}

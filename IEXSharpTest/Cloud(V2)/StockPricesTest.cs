@@ -1,9 +1,7 @@
 using IEXSharp.Helper;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using VSLee.IEXSharp;
 using VSLee.IEXSharp.Helper;
@@ -46,12 +44,12 @@ namespace VSLee.IEXSharpTest.Cloud
 
 		[Test]
 		[TestCase("AAPL")]
-		[TestCase("AAPL", ChartRange._1y)]
-		[TestCase("AAPL", ChartRange._max)]
-		[TestCase("AAPL", ChartRange._ytd)]
-		[TestCase("AAPL", ChartRange._1m)]
+		[TestCase("AAPL", ChartRange.OneYear)]
+		[TestCase("AAPL", ChartRange.Max)]
+		[TestCase("AAPL", ChartRange.Ytd)]
+		[TestCase("AAPL", ChartRange.OneMonth)]
 		public async Task HistoricalPriceAsync(string symbol,
-			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
+			ChartRange range = ChartRange.OneMonth, QueryStringBuilder qsb = null)
 		{
 			var response = await sandBoxClient.StockPrices.HistoricalPriceAsync(symbol, range);
 
@@ -63,9 +61,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL", ChartRange._max)]
+		[TestCase("AAPL", ChartRange.Max)]
 		public async Task HistoricalPriceNonZeroAsync(string symbol,
-			ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null)
+			ChartRange range = ChartRange.OneMonth, DateTime? date = null, QueryStringBuilder qsb = null)
 		{
 			var response = await sandBoxClient.StockPrices.HistoricalPriceAsync(symbol, range);
 			Assert.IsNull(response.ErrorMessage);

@@ -51,7 +51,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="range"></param>
 		/// <param name="qsb">Additional optional querystring</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<ChartResponse>>> ChartAsync(string symbol, ChartRange range = ChartRange._1m, DateTime? date = null, QueryStringBuilder qsb = null);
+		Task<IEXResponse<IEnumerable<ChartResponse>>> ChartAsync(string symbol, ChartRange range = ChartRange.OneMonth, DateTime? date = null, QueryStringBuilder qsb = null);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#chart"/>
@@ -235,7 +235,7 @@ namespace VSLee.IEXSharp.Service.V1.Stock
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<SplitV1Response>>> SplitAsync(string symbol, SplitRange range = SplitRange._1m);
+		Task<IEXResponse<IEnumerable<SplitV1Response>>> SplitAsync(string symbol, SplitRange range = SplitRange.OneMonth);
 
 
 		/// <summary>

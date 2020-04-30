@@ -33,7 +33,7 @@ namespace IEXSharp.Service.V2.StockPrices
 		/// <param name="range"></param>
 		/// <param name="qsb">Additional optional parameters</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceAsync(string symbol, ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null);
+		Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceAsync(string symbol, ChartRange range = ChartRange.OneMonth, QueryStringBuilder qsb = null);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#historical-prices"/>
