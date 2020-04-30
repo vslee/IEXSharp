@@ -87,7 +87,6 @@ namespace VSLee.IEXSharp.Helper
 		public async Task<IEXResponse<ReturnType>> NoParamExecute<ReturnType>(string url) where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
-
 			var pathNVC = new NameValueCollection();
 
 			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb);
@@ -97,7 +96,6 @@ namespace VSLee.IEXSharp.Helper
 			where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
-
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
 			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb);
@@ -118,7 +116,6 @@ namespace VSLee.IEXSharp.Helper
 			where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
-
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
 			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb);
@@ -127,7 +124,6 @@ namespace VSLee.IEXSharp.Helper
 		public async Task<IEXResponse<string>> SymbolLastFieldExecuteAsync(string urlPattern, string symbol, string field, int last)
 		{
 			var qsb = new QueryStringBuilder();
-
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
 			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb);

@@ -36,8 +36,9 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 
-			Assert.IsNotNull(response.Data.First().symbol);
-			Assert.IsNotNull(response.Data.First().timestamp);
+			var data = response.Data.First();
+			Assert.IsNotNull(data.symbol);
+			Assert.IsNotNull(data.timestamp);
 		}
 
 		[Test]
@@ -50,8 +51,9 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 
-			Assert.IsNotNull(response.Data.First().symbol);
-			Assert.IsNotNull(response.Data.First().amount);
+			var data = response.Data.First();
+			Assert.IsNotNull(data.symbol);
+			Assert.IsNotNull(data.amount);
 		}
 
 		[Test]
@@ -64,8 +66,9 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 
-			Assert.IsNotNull(response.Data.First().First().rate);
-			Assert.IsNotNull(response.Data.First().First().date);
+			var data = response.Data.First();
+			Assert.IsNotNull(data.First().rate);
+			Assert.IsNotNull(data.First().date);
 		}
 	}
 }
