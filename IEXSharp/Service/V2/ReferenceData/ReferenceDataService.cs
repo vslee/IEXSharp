@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Helper;
 using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V2.ReferenceData
@@ -98,8 +99,8 @@ namespace VSLee.IEXSharp.Service.V2.ReferenceData
 
 			var pathNvc = new NameValueCollection
 			{
-				{"type", type.ToString().ToLower()},
-				{"direction", direction.ToString().ToLower()},
+				{"type", type.GetDescription()},
+				{"direction", direction.GetDescription()},
 				{"last", last.ToString()},
 				{"startDate", startDate == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) startDate).ToString("yyyyMMdd")}
 			};

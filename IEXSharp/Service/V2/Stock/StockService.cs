@@ -8,6 +8,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Helper;
 using IEXSharp.Model;
 
 namespace VSLee.IEXSharp.Service.V2.Stock
@@ -126,7 +127,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			var qsb = new QueryStringBuilder();
 			qsb.Add("collectionName", collectionName);
 
-			var pathNvc = new NameValueCollection { { "collectionType", collection.ToString().ToLower() } };
+			var pathNvc = new NameValueCollection { { "collectionType", collection.GetDescription() } };
 
 			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
 		}
@@ -154,7 +155,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 
 			var qsb = new QueryStringBuilder();
 
-			var pathNvc = new NameValueCollection { { "ipoType", $"{ipoType.ToString().ToLower()}-ipos" } };
+			var pathNvc = new NameValueCollection { { "ipoType", ipoType.GetDescription() } };
 
 			return await executor.ExecuteAsync<IPOCalendar>(urlPattern, pathNvc, qsb);
 		}
@@ -212,7 +213,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 
 			var qsb = new QueryStringBuilder();
 
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "type", type.ToString().ToLower() } };
+			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "type", type.GetDescription() } };
 
 			return await executor.ExecuteAsync<UpcomingEventSymbolResponse>(urlPattern, pathNvc, qsb);
 		}
@@ -223,7 +224,7 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 
 			var qsb = new QueryStringBuilder();
 
-			var pathNvc = new NameValueCollection { { "type", type.ToString().ToLower() } };
+			var pathNvc = new NameValueCollection { { "type", type.GetDescription() } };
 
 			return await executor.ExecuteAsync<UpcomingEventMarketResponse>(urlPattern, pathNvc, qsb);
 		}

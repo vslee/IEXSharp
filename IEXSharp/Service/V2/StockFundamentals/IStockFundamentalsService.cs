@@ -137,6 +137,6 @@ namespace IEXSharp.Service.V2.StockFundamentals
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<SplitResponse>>> SplitAsync(string symbol, SplitRange range = SplitRange._1m);
+		Task<IEXResponse<IEnumerable<SplitResponse>>> SplitAsync(string symbol, SplitRange range = SplitRange.OneMonth);
 	}
 }

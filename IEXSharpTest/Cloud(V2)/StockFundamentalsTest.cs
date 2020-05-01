@@ -1,8 +1,5 @@
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using VSLee.IEXSharp;
 using VSLee.IEXSharp.Model.StockFundamentals.Request;
@@ -17,7 +14,7 @@ namespace IEXSharpTest.Cloud_V2_
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXCloudClient(publishableToken: TestGlobal.pk, secretToken: TestGlobal.sk, signRequest: false, useSandBox: true);
+			sandBoxClient = new IEXCloudClient(TestGlobal.pk, TestGlobal.sk, false, true);
 		}
 
 		[Test]
@@ -67,14 +64,14 @@ namespace IEXSharpTest.Cloud_V2_
 		}
 
 		[Test]
-		[TestCase("AAPL", DividendRange._1m)]
-		[TestCase("AAPL", DividendRange._1y)]
-		[TestCase("AAPL", DividendRange._2y)]
-		[TestCase("AAPL", DividendRange._3m)]
-		[TestCase("AAPL", DividendRange._5y)]
-		[TestCase("AAPL", DividendRange._6m)]
-		[TestCase("AAPL", DividendRange._next)]
-		[TestCase("AAPL", DividendRange._ytd)]
+		[TestCase("AAPL", DividendRange.OneMonth)]
+		[TestCase("AAPL", DividendRange.OneYear)]
+		[TestCase("AAPL", DividendRange.TwoYears)]
+		[TestCase("AAPL", DividendRange.ThreeMonths)]
+		[TestCase("AAPL", DividendRange.FiveYears)]
+		[TestCase("AAPL", DividendRange.SixMonths)]
+		[TestCase("AAPL", DividendRange.Next)]
+		[TestCase("AAPL", DividendRange.Ytd)]
 		public async Task DividendAsyncTest(string symbol, DividendRange range)
 		{
 			var response = await sandBoxClient.StockFundamentals.DividendAsync(symbol, range);
@@ -178,14 +175,14 @@ namespace IEXSharpTest.Cloud_V2_
 
 
 		[Test]
-		[TestCase("AAPL", SplitRange._1m)]
-		[TestCase("AAPL", SplitRange._1y)]
-		[TestCase("AAPL", SplitRange._2y)]
-		[TestCase("AAPL", SplitRange._3m)]
-		[TestCase("AAPL", SplitRange._5y)]
-		[TestCase("AAPL", SplitRange._6m)]
-		[TestCase("AAPL", SplitRange._next)]
-		[TestCase("AAPL", SplitRange._ytd)]
+		[TestCase("AAPL", SplitRange.OneMonth)]
+		[TestCase("AAPL", SplitRange.OneYear)]
+		[TestCase("AAPL", SplitRange.TwoYears)]
+		[TestCase("AAPL", SplitRange.ThreeMonths)]
+		[TestCase("AAPL", SplitRange.FiveYears)]
+		[TestCase("AAPL", SplitRange.SixMonths)]
+		[TestCase("AAPL", SplitRange.Next)]
+		[TestCase("AAPL", SplitRange.Ytd)]
 		public async Task SplitAsyncTest(string symbol, SplitRange range)
 		{
 			var response = await sandBoxClient.StockFundamentals.SplitAsync(symbol, range);

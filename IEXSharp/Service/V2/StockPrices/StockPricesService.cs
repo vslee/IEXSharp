@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using IEXSharp.Helper;
 using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.Shared.Response;
 using VSLee.IEXSharp.Model.StockPrices.Request;
@@ -27,14 +28,14 @@ namespace IEXSharp.Service.V2.StockPrices
 			await executor.SymbolExecuteAsync<DelayedQuoteResponse>("stock/[symbol]/delayed-quote", symbol);
 
 		public async Task<IEXResponse<IEnumerable<HistoricalPriceResponse>>> HistoricalPriceAsync(string symbol,
-			ChartRange range = ChartRange._1m, QueryStringBuilder qsb = null)
+			ChartRange range = ChartRange.OneMonth, QueryStringBuilder qsb = null)
 		{
 			const string urlPattern = "stock/[symbol]/chart/[range]";
 
 			var pathNvc = new NameValueCollection
 			{
 				{"symbol", symbol},
-				{"range", range.ToString().Replace("_", string.Empty)},
+				{"range", range.GetDescription()},
 			};
 
 			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);

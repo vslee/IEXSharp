@@ -13,7 +13,7 @@ namespace IEXSharp.Helper
 			Type type = enumValue.GetType();
 			MemberInfo[] memInfo = type.GetMember(enumValue.ToString());
 
-			if (memInfo[0]
+			if (memInfo.First()
 				.GetCustomAttributes(typeof(DescriptionAttribute), false)
 				.FirstOrDefault() is DescriptionAttribute descriptionAttribute)
 			{
