@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VSLee.IEXSharp;
-using VSLee.IEXSharpTest.Cloud;
 
-namespace IEXSharpTest.Cloud
+namespace VSLee.IEXSharpTest.Cloud
 {
 	public class StockProfilesTest
 	{

@@ -1,12 +1,11 @@
-﻿namespace VSLee.IEXSharp.Model.Stock.Response
+namespace VSLee.IEXSharp.Model.StockResearch.Response
 {
-	public class FundOwnershipResponse
+	public class InstitutionalOwnershipResponse
 	{
 		public long adjHolding { get; set; }
 		public long adjMv { get; set; }
 		public string entityProperName { get; set; }
 		public long reportDate { get; set; }
 		public long reportedHolding { get; set; }
-		public long reportedMv { get; set; }
 	}
 }

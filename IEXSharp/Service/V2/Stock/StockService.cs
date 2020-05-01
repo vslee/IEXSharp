@@ -136,19 +136,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			await executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(
 				"stock/[symbol]/effective-spread", symbol);
 
-		public async Task<IEXResponse<EstimateResponse>> EstimateAsync(string symbol, int last = 1) =>
-			await executor.SymbolLastExecuteAsync<EstimateResponse>("stock/[symbol]/estimates/[last]", symbol, last);
-
-		public async Task<IEXResponse<string>> EstimateFieldAsync(string symbol, string field, int last = 1) =>
-			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/estimates/[last]/[field]", symbol, field, last);
-
-		public async Task<IEXResponse<IEnumerable<FundOwnershipResponse>>> FundOwnershipAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<IEnumerable<FundOwnershipResponse>>("stock/[symbol]/fund-ownership", symbol);
-
-		public async Task<IEXResponse<IEnumerable<InstitutionalOwnershipResponse>>> InstitutionalOwnerShipAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<IEnumerable<InstitutionalOwnershipResponse>>(
-				"stock/[symbol]/institutional-ownership", symbol);
-
 		public async Task<IEXResponse<IPOCalendar>> IPOCalendarAsync(IPOType ipoType)
 		{
 			const string urlPattern = "stock/market/[ipoType]";
@@ -158,20 +145,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 			var pathNvc = new NameValueCollection { { "ipoType", ipoType.GetDescription() } };
 
 			return await executor.ExecuteAsync<IPOCalendar>(urlPattern, pathNvc, qsb);
-		}
-
-		public async Task<IEXResponse<KeyStatsResponse>> KeyStatsAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<KeyStatsResponse>("stock/[symbol]/stats", symbol);
-
-		public async Task<IEXResponse<string>> KeyStatsStatAsync(string symbol, string stat)
-		{
-			const string urlPattern = "stock/[symbol]/stats/[stat]";
-
-			var qsb = new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "stat", stat } };
-
-			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType)
@@ -190,15 +163,6 @@ namespace VSLee.IEXSharp.Service.V2.Stock
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10) =>
 			await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last);
-
-		public async Task<IEXResponse<PriceTargetResponse>> PriceTargetAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<PriceTargetResponse>("stock/[symbol]/price-target", symbol);
-
-		public async Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator) =>
-			await executor.SymbolExecuteAsync<TechnicalIndicatorsResponse>($"stock/[symbol]/indicator/{indicator}", symbol);
-
-		public async Task<IEXResponse<AdvancedStatsResponse>> AdvancedStatsAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<AdvancedStatsResponse>("stock/[symbol]/advanced-stats", symbol);
 
 		public async Task<IEXResponse<IEnumerable<RecommendationTrendResponse>>> RecommendationTrendAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<RecommendationTrendResponse>>(

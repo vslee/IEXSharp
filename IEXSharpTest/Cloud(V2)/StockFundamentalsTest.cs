@@ -3,9 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using VSLee.IEXSharp;
 using VSLee.IEXSharp.Model.StockFundamentals.Request;
-using VSLee.IEXSharpTest.Cloud;
 
-namespace IEXSharpTest.Cloud_V2_
+namespace VSLee.IEXSharpTest.Cloud
 {
 	public class StockFundamentalsTest
 	{

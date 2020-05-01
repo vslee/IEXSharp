@@ -41,6 +41,7 @@
 		<Folder Include="Model\InvestorsExchangeData\Request\" />
 		<Folder Include="Model\Shared\Request\" />
 		<Folder Include="Model\StockProfiles\Request\" />
+		<Folder Include="Model\StockResearch\Request\" />
 	</ItemGroup>
 
 	<ItemGroup>
