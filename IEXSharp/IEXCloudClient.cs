@@ -5,14 +5,14 @@ using IEXSharp.Service.V2.StockProfiles;
 using IEXSharp.Service.V2.StockResearch;
 using System;
 using System.Net.Http;
-using VSLee.IEXSharp.Service.V2.Account;
-using VSLee.IEXSharp.Service.V2.AlternativeData;
-using VSLee.IEXSharp.Service.V2.APISystemMetadata;
-using VSLee.IEXSharp.Service.V2.Crypto;
-using VSLee.IEXSharp.Service.V2.ForexCurrencies;
-using VSLee.IEXSharp.Service.V2.InvestorsExchangeData;
-using VSLee.IEXSharp.Service.V2.ReferenceData;
-using VSLee.IEXSharp.Service.V2.Stock;
+using VSLee.IEXSharp.Service.Cloud.Account;
+using VSLee.IEXSharp.Service.Cloud.AlternativeData;
+using VSLee.IEXSharp.Service.Cloud.APISystemMetadata;
+using VSLee.IEXSharp.Service.Cloud.Crypto;
+using VSLee.IEXSharp.Service.Cloud.ForexCurrencies;
+using VSLee.IEXSharp.Service.Cloud.InvestorsExchangeData;
+using VSLee.IEXSharp.Service.Cloud.ReferenceData;
+using VSLee.IEXSharp.Service.Cloud.Stock;
 
 namespace VSLee.IEXSharp
 {
