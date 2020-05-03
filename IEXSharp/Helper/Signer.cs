@@ -5,7 +5,7 @@ using System.Text;
 namespace VSLee.IEXSharp.Helper
 {
 	/// <summary>
-	/// Sign request for IEX API V2
+	/// Sign request for IEX API Cloud
 	/// Only available to Grow and Scale users
 	/// usage:
 	/// string host = "sandbox.iexapis.com"; //Sandbox host

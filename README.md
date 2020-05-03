@@ -18,19 +18,23 @@ public IEXCloudClient(string publishableToken, string secretToken, bool signRequ
 First, create an instance of IEXCloudClient
 ```c#
 // For FREE and LAUNCH users
-IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: false); 
+IEXCloudClient iexCloudClient = 
+	new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: false); 
 
 // For SCALE and GROW users
-IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: true, useSandBox: false); 
+IEXCloudClient iexCloudClient = 
+	new IEXCloudClient("publishableToken", "secretToken", signRequest: true, useSandBox: false); 
 
 // Sandbox
-IEXCloudClient iexClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: true); 
+IEXCloudClient iexCloudClient = 
+	new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: true); 
 ```
 To display historical prices
 ```c#
-using (var iexCloudClient = new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: false))
+using (var iexCloudClient = 
+	new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: false))
 {
-	var response = await iexCloudClient.Stock.HistoricalPriceAsync("AAPL", ChartRange._1m);
+	var response = await iexCloudClient.Stock.HistoricalPriceAsync("AAPL", ChartRange.OneMonth);
 	if (response.ErrorMessage != null)
 	{
 		Console.WriteLine(response.ErrorMessage);
@@ -39,7 +43,8 @@ using (var iexCloudClient = new IEXCloudClient("publishableToken", "secretToken"
 	{
 		foreach (var ohlc in response.Data)
 		{
-			Console.WriteLine($"{ohlc.date} Open: {ohlc.open}, High: {ohlc.high}, Low: {ohlc.low}, Close: {ohlc.close}, Volume: {ohlc.volume}");
+			Console.WriteLine(
+				$"{ohlc.date} Open: {ohlc.open}, High: {ohlc.high}, Low: {ohlc.low}, Close: {ohlc.close}, Volume: {ohlc.volume}");
 		}
 	}
 }
@@ -47,7 +52,7 @@ using (var iexCloudClient = new IEXCloudClient("publishableToken", "secretToken"
 ```
 To use SSE streaming (only included with paid IEX subscription plans)
 ```c#
-using (var sseClient = iexClient.SSE.SubscribeStockQuoteUSSSE(symbols: new string[] { "spy", "aapl" }, 
+using (var sseClient = iexCloudClient.SSE.SubscribeStockQuoteUSSSE(symbols: new string[] { "spy", "aapl" }, 
 	UTP: false, interval: StockQuoteSSEInterval.OneSecond))
 {
 	sseClient.Error += (s, e) =>
@@ -62,13 +67,13 @@ using (var sseClient = iexClient.SSE.SubscribeStockQuoteUSSSE(symbols: new strin
 }
 
 ```
-Additional usage examples are illustrated in the test project: [`IEXSharpTest`](https://github.com/vslee/IEXSharp/tree/master/IEXSharpTest/Cloud(V2))
+Additional usage examples are illustrated in the test project: [`IEXSharpTest`](https://github.com/vslee/IEXSharp/tree/master/IEXSharpTest/Cloud)
 
-### Legacy (V1)
+### Legacy
 
-IEX has deprecated most of their legacy API. However, some functions are still active and you can access them via:
+IEX has deprecated most of their [legacy API](https://iextrading.com/developers/docs/). However, some functions are still active and you can access them via:
 ```c#
-IEXV1RestClient iexClient = new IEXV1RestClient();
+IEXLegacyClient iexLegacyClient = new IEXLegacyClient();
 ```
 
 ## Contributing
@@ -81,7 +86,7 @@ We welcome pull requests! See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Disclaimers
 
-Data provided for free by [IEX](https://iextrading.com/developer/) via their [IEX Cloud API](https://iexcloud.io/docs/api/)
+Data provided for free by [IEX](https://iextrading.com/) via their [IEX Cloud API](https://iexcloud.io/docs/api/)
 Per their [guidelines](https://iexcloud.io/docs/api/#disclaimers):
 - Required: If you display any delayed price data, you must display “15 minute delayed price” as a disclaimer.
 - Required: If you display latestVolume you must display “Consolidated Volume in Real-time” as a disclaimer.

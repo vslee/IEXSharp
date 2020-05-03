@@ -2,16 +2,17 @@ using IEXSharp.Service.V2.CorporateActions;
 using IEXSharp.Service.V2.StockFundamentals;
 using IEXSharp.Service.V2.StockPrices;
 using IEXSharp.Service.V2.StockProfiles;
+using IEXSharp.Service.V2.StockResearch;
 using System;
 using System.Net.Http;
-using VSLee.IEXSharp.Service.V2.Account;
-using VSLee.IEXSharp.Service.V2.AlternativeData;
-using VSLee.IEXSharp.Service.V2.APISystemMetadata;
-using VSLee.IEXSharp.Service.V2.Crypto;
-using VSLee.IEXSharp.Service.V2.ForexCurrencies;
-using VSLee.IEXSharp.Service.V2.InvestorsExchangeData;
-using VSLee.IEXSharp.Service.V2.ReferenceData;
-using VSLee.IEXSharp.Service.V2.Stock;
+using VSLee.IEXSharp.Service.Cloud.Account;
+using VSLee.IEXSharp.Service.Cloud.AlternativeData;
+using VSLee.IEXSharp.Service.Cloud.APISystemMetadata;
+using VSLee.IEXSharp.Service.Cloud.Crypto;
+using VSLee.IEXSharp.Service.Cloud.ForexCurrencies;
+using VSLee.IEXSharp.Service.Cloud.InvestorsExchangeData;
+using VSLee.IEXSharp.Service.Cloud.ReferenceData;
+using VSLee.IEXSharp.Service.Cloud.Stock;
 
 namespace VSLee.IEXSharp
 {
@@ -33,6 +34,7 @@ namespace VSLee.IEXSharp
 		private IStockPricesService stockPricesService;
 		private IStockProfilesService stockProfilesService;
 		private IStockFundamentalsService stockFundamentalsService;
+		private IStockResearchService stockResearchService;
 		private IStockService stockService;
 		private ISSEService sseService;
 		private IAlternativeDataService alternativeDataService;
@@ -54,6 +56,9 @@ namespace VSLee.IEXSharp
 
 		public IStockFundamentalsService StockFundamentals => stockFundamentalsService ?? (stockFundamentalsService =
 			new StockFundamentalsService(client, secretToken, publishableToken, signRequest));
+
+		public IStockResearchService StockResearch => stockResearchService ?? (stockResearchService =
+			new StockResearchService(client, secretToken, publishableToken, signRequest));
 
 		public IStockService Stock => stockService ?? (stockService =
 			new StockService(client, secretToken, publishableToken, signRequest));
