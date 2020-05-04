@@ -120,46 +120,9 @@ namespace VSLee.IEXSharp.Service.Cloud.Stock
 			return await executor.ExecuteAsync<Dictionary<string, BatchResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection, string collectionName)
-		{
-			const string urlPattern = "stock/market/collection/[collectionType]";
-
-			var qsb = new QueryStringBuilder();
-			qsb.Add("collectionName", collectionName);
-
-			var pathNvc = new NameValueCollection { { "collectionType", collection.GetDescription() } };
-
-			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
-		}
-
 		public async Task<IEXResponse<IEnumerable<EffectiveSpreadResponse>>> EffectiveSpreadAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(
 				"stock/[symbol]/effective-spread", symbol);
-
-		public async Task<IEXResponse<IPOCalendar>> IPOCalendarAsync(IPOType ipoType)
-		{
-			const string urlPattern = "stock/market/[ipoType]";
-
-			var qsb = new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection { { "ipoType", ipoType.GetDescription() } };
-
-			return await executor.ExecuteAsync<IPOCalendar>(urlPattern, pathNvc, qsb);
-		}
-
-		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType)
-		{
-			const string urlPattern = "stock/market/list/[list-type]";
-
-			var qsb = new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection { { "list-type", listType } };
-
-			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
-		}
-
-		public async Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync() =>
-			await executor.NoParamExecute<IEnumerable<MarketVolumeUSResponse>>("market");
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10) =>
 			await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last);
@@ -168,29 +131,5 @@ namespace VSLee.IEXSharp.Service.Cloud.Stock
 			await executor.SymbolExecuteAsync<IEnumerable<RecommendationTrendResponse>>(
 				"stock/[symbol]/recommendation-trends", symbol);
 
-		public async Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync() =>
-			await executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");
-
-		public async Task<IEXResponse<UpcomingEventSymbolResponse>> UpcomingEventSymbolAsync(string symbol, UpcomingEventType type)
-		{
-			const string urlPattern = "stock/[symbol]/upcoming-[type]";
-
-			var qsb = new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "type", type.GetDescription() } };
-
-			return await executor.ExecuteAsync<UpcomingEventSymbolResponse>(urlPattern, pathNvc, qsb);
-		}
-
-		public async Task<IEXResponse<UpcomingEventMarketResponse>> UpcomingEventMarketAsync(UpcomingEventType type)
-		{
-			const string urlPattern = "stock/market/upcoming-[type]";
-
-			var qsb = new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection { { "type", type.GetDescription() } };
-
-			return await executor.ExecuteAsync<UpcomingEventMarketResponse>(urlPattern, pathNvc, qsb);
-		}
 	}
 }

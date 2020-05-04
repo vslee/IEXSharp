@@ -1,3 +1,4 @@
+using IEXSharp.Service.Cloud.MarketInfo;
 using IEXSharp.Service.V2.CorporateActions;
 using IEXSharp.Service.V2.Options;
 using IEXSharp.Service.V2.StockFundamentals;
@@ -45,6 +46,7 @@ namespace VSLee.IEXSharp
 		private IInvestorsExchangeDataService investorsExchangeDataService;
 		private IAPISystemMetadataService apiSystemMetadataService;
 		private ICorporateActionsService corporateActionsService;
+		private IMarketInfoService marketInfoService;
 		private IOptionsService optionsService;
 
 		public IAccountService Account => accountService ??	(accountService =
@@ -90,7 +92,10 @@ namespace VSLee.IEXSharp
 		public ICorporateActionsService CorporateActions => corporateActionsService
 			?? (corporateActionsService = new CorporateActionsService(client, secretToken, publishableToken, signRequest));
 
-		public IOptionsService Options => optionsService
+		public IMarketInfoService MarketInfoService => marketInfoService
+			?? (marketInfoService = new MarketInfoService(client, secretToken, publishableToken, signRequest));
+
+    public IOptionsService Options => optionsService
 			?? (optionsService = new OptionsService(client, secretToken, publishableToken, signRequest));
 
 		/// <summary>

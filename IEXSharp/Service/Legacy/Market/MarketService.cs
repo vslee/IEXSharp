@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
+using VSLee.IEXSharp.Model.MarketInfo.Response;
 
 namespace VSLee.IEXSharp.Service.Legacy.Market
 {

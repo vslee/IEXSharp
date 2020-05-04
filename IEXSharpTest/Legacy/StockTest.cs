@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VSLee.IEXSharp.Model.StockPrices.Request;
 using VSLee.IEXSharp.Model.StockFundamentals.Request;
+using VSLee.IEXSharp.Model.MarketInfo.Request;
 
 namespace VSLee.IEXSharpTest.Legacy
 {

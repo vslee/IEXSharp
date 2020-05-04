@@ -46,19 +46,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase(CollectionType.List, "iexvolume")]
-		[TestCase(CollectionType.Sector, "Health Services")]
-		[TestCase(CollectionType.Tag, "Computer Communications")]
-		public async Task CollectionAsyncTest(CollectionType collection, string collectionName)
-		{
-			var response = await sandBoxClient.Stock.CollectionsAsync(collection, collectionName);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task EffectiveSpreadAsyncTest(string symbol)
@@ -67,42 +54,6 @@ namespace VSLee.IEXSharpTest.Cloud
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase(IPOType.Today)]
-		[TestCase(IPOType.Upcoming)]
-		public async Task IPOCalendarAsyncTest(IPOType ipoType)
-		{
-			var response = await sandBoxClient.Stock.IPOCalendarAsync(ipoType);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("mostactive")]
-		[TestCase("gainers")]
-		[TestCase("losers")]
-		[TestCase("iexvolume")]
-		[TestCase("iexpercent")]
-		public async Task ListAsyncTest(string listType)
-		{
-			var response = await sandBoxClient.Stock.ListAsync(listType);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		public async Task MarketVolumeUSAsyncTest()
-		{
-			var response = await sandBoxClient.Stock.MarketVolumeUSAsync();
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 
 		[Test]
@@ -127,45 +78,6 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		public async Task SectorPerformanceAsync()
-		{
-			var response = await sandBoxClient.Stock.SectorPerformanceAsync();
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("AAPL", UpcomingEventType.Dividends)]
-		[TestCase("AAPL", UpcomingEventType.Earnings)]
-		[TestCase("AAPL", UpcomingEventType.Events)]
-		[TestCase("AAPL", UpcomingEventType.IPOs)]
-		[TestCase("AAPL", UpcomingEventType.Splits)]
-		public async Task UpcomingEventSymbolAsyncTest(string symbol, UpcomingEventType type)
-		{
-			var response = await sandBoxClient.Stock.UpcomingEventSymbolAsync(symbol, type);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		// Not supported for free account
-		[Test]
-		[TestCase(UpcomingEventType.Dividends)]
-		[TestCase(UpcomingEventType.Earnings)]
-		[TestCase(UpcomingEventType.Events)]
-		[TestCase(UpcomingEventType.IPOs)]
-		[TestCase(UpcomingEventType.Splits)]
-		public async Task UpcomingEventMarketAsyncTest(UpcomingEventType type)
-		{
-			var response = await sandBoxClient.Stock.UpcomingEventMarketAsync(type);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
 		}
 	}
 }
