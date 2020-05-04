@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
-namespace VSLee.IEXSharp.Model.Stock.Request
+namespace VSLee.IEXSharp.Model.MarketInfo.Request
 {
 	public enum IPOType
 	{
