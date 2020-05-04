@@ -1,9 +1,7 @@
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharpTest.Cloud;
@@ -45,12 +43,12 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("mostactive")]
-		[TestCase("gainers")]
-		[TestCase("losers")]
-		[TestCase("iexvolume")]
-		[TestCase("iexpercent")]
-		public async Task ListAsyncTest(string listType)
+		[TestCase(ListType.MostActive)]
+		[TestCase(ListType.Gainers)]
+		[TestCase(ListType.Losers)]
+		[TestCase(ListType.IexVolume)]
+		[TestCase(ListType.IexPercent)]
+		public async Task ListAsyncTest(ListType listType)
 		{
 			var response = await sandBoxClient.MarketInfoService.ListAsync(listType);
 

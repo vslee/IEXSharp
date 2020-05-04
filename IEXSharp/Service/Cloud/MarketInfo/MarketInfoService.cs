@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Response;
@@ -33,14 +34,8 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType) =>
 			await executor.NoParamExecute<IPOCalendarResponse>($"stock/market/{ipoType.GetDescription()}");
 
-		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType)
-		{
-			const string urlPattern = "stock/market/list/[list-type]";
-			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection { { "list-type", listType } };
-
-			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
-		}
+		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType) =>
+			await executor.NoParamExecute<IEnumerable<Quote>>($"stock/market/list/{listType.GetDescription()}");
 
 		public async Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync() =>
 			await executor.NoParamExecute<IEnumerable<MarketVolumeUSResponse>>("market");

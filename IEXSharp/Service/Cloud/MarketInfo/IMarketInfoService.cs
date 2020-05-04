@@ -1,6 +1,7 @@
 using IEXSharp.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Response;
 using VSLee.IEXSharp.Model.Shared.Response;
@@ -28,7 +29,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		/// </summary>
 		/// <param name="listType"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType);
+		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#market-volume-u-s"/>
