@@ -126,7 +126,7 @@ namespace VSLee.IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
-			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false); ;
+			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false);;
 		}
 	}
 }
