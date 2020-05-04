@@ -9,6 +9,7 @@ using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Response;
 using VSLee.IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.StockFundamentals.Response;
 
 namespace IEXSharp.Service.Cloud.MarketInfo
 {
@@ -31,6 +32,9 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
 		}
 
+		public async Task<IEXResponse<EarningTodayResponse>> EarningsTodayAsync() =>
+			await executor.NoParamExecute<EarningTodayResponse>("stock/market/today-earnings");
+
 		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType) =>
 			await executor.NoParamExecute<IPOCalendarResponse>($"stock/market/{ipoType.GetDescription()}");
 
@@ -38,7 +42,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 			await executor.NoParamExecute<IEnumerable<Quote>>($"stock/market/list/{listType.GetDescription()}");
 
 		public async Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync() =>
-			await executor.NoParamExecute<IEnumerable<MarketVolumeUSResponse>>("market");
+			await executor.NoParamExecute<IEnumerable<MarketVolumeUSResponse>>("stock/market/volume");
 
 		public async Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync() =>
 			await executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");

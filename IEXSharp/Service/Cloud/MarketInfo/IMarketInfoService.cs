@@ -5,6 +5,7 @@ using IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Response;
 using VSLee.IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.StockFundamentals.Response;
 
 namespace IEXSharp.Service.Cloud.MarketInfo
 {
@@ -16,6 +17,11 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		/// <param name="collection"></param>
 		/// <param name="collectionName"></param>
 		Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection, string collectionName);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#earnings-today"/>
+		/// </summary>
+		Task<IEXResponse<EarningTodayResponse>> EarningsTodayAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#intraday-prices"/>

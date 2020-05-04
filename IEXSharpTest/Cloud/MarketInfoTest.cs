@@ -32,6 +32,15 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
+		public async Task EarningsTodayAsyncTest()
+		{
+			var response = await sandBoxClient.MarketInfoService.EarningsTodayAsync();
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+		}
+
+		[Test]
 		[TestCase(IPOType.Today)]
 		[TestCase(IPOType.Upcoming)]
 		public async Task IPOCalendarAsyncTest(IPOType ipoType)
@@ -65,6 +74,12 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			var data = response.Data.First();
+			Assert.NotNull(data.venueName);
+			Assert.NotNull(data.tapeA);
+			Assert.NotNull(data.volume);
+			Assert.NotNull(data.lastUpdated);
 		}
 
 		[Test]
@@ -75,6 +90,12 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			var data = response.Data.First();
+			Assert.NotNull(data.type);
+			Assert.NotNull(data.name);
+			Assert.NotNull(data.performance);
+			Assert.NotNull(data.lastUpdated);
 		}
 
 		[Test]
