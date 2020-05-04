@@ -13,6 +13,8 @@ using VSLee.IEXSharp.Model.StockProfiles.Response;
 using VSLee.IEXSharp.Model.StockFundamentals.Response;
 using VSLee.IEXSharp.Model.StockFundamentals.Request;
 using VSLee.IEXSharp.Model.StockResearch.Response;
+using VSLee.IEXSharp.Model.MarketInfo.Request;
+using VSLee.IEXSharp.Model.MarketInfo.Response;
 
 namespace VSLee.IEXSharp.Service.Legacy.Stock
 {

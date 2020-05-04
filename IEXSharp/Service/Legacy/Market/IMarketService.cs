@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
+using VSLee.IEXSharp.Model.MarketInfo.Response;
 
 namespace VSLee.IEXSharp.Service.Legacy.Market
 {
