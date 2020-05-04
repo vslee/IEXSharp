@@ -70,11 +70,8 @@ namespace VSLee.IEXSharp.Helper
 					else if (content == "Forbidden" || content == "Not found")
 					{ // "Forbidden" or "Not found"
 						return new IEXResponse<ReturnType>() { ErrorMessage = content };
-					}
-					else
-					{
-						return new IEXResponse<ReturnType>()
-						{
+					} else {
+						return new IEXResponse<ReturnType>() {
 							Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
 						};
 					}
@@ -91,7 +88,7 @@ namespace VSLee.IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNVC = new NameValueCollection();
 
-			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb).ConfigureAwait(false);
+			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb).ConfigureAwait(false); ;
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolExecuteAsync<ReturnType>(string urlPattern, string symbol)
@@ -100,7 +97,7 @@ namespace VSLee.IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false); ;
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolsExecuteAsync<ReturnType>(string urlPattern, IEnumerable<string> symbols)
@@ -111,7 +108,7 @@ namespace VSLee.IEXSharp.Helper
 
 			var pathNvc = new NameValueCollection();
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false); ;
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolLastExecuteAsync<ReturnType>(string urlPattern, string symbol, int last)
@@ -120,7 +117,7 @@ namespace VSLee.IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false); ;
 		}
 
 		public async Task<IEXResponse<string>> SymbolLastFieldExecuteAsync(string urlPattern, string symbol, string field, int last)
@@ -128,7 +125,7 @@ namespace VSLee.IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
-			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
+			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false); ;
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolExpirationExecuteAsync<ReturnType>(string urlPattern, string symbol, string expiration)
@@ -137,7 +134,7 @@ namespace VSLee.IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "expiration", expiration } };
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false); ;
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolExpirationOptionSideExecuteAsync<ReturnType>(string urlPattern, string symbol, string expiration, string optionSide)
@@ -146,7 +143,7 @@ namespace VSLee.IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "expiration", expiration }, { "optionSide", optionSide } };
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false); ;
 		}
 	}
 }
