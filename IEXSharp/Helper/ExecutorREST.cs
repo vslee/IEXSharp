@@ -128,23 +128,5 @@ namespace VSLee.IEXSharp.Helper
 
 			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false); ;
 		}
-
-		public async Task<IEXResponse<ReturnType>> SymbolExpirationExecuteAsync<ReturnType>(string urlPattern, string symbol, string expiration)
-			where ReturnType : class
-		{
-			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "expiration", expiration } };
-
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
-		}
-
-		public async Task<IEXResponse<ReturnType>> SymbolExpirationOptionSideExecuteAsync<ReturnType>(string urlPattern, string symbol, string expiration, string optionSide)
-			where ReturnType : class
-		{
-			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "expiration", expiration }, { "optionSide", optionSide } };
-
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
-		}
 	}
 }
