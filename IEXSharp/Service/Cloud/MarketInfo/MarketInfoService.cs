@@ -30,14 +30,8 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType)
-		{
-			const string urlPattern = "stock/market/[ipoType]";
-			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection { { "ipoType", ipoType.GetDescription() } };
-
-			return await executor.ExecuteAsync<IPOCalendarResponse>(urlPattern, pathNvc, qsb);
-		}
+		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType) =>
+			await executor.NoParamExecute<IPOCalendarResponse>($"stock/market/{ipoType.GetDescription()}");
 
 		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType)
 		{
