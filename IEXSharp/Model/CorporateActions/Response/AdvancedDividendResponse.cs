@@ -2,7 +2,7 @@ using System;
 
 namespace IEXSharp.Model.CorporateActions.Response
 {
-	public class AdvancedDividendResponse : CorporateActionResponse
+	public class DividendAdvancedResponse : CorporateActionResponse
 	{
 		public DateTime? announceDate { get; set; }
 		public string currency { get; set; }

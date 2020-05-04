@@ -75,7 +75,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IEnumerable<DividendResponse>>> DividendAsync(string symbol, DividendRange range)
+		public async Task<IEXResponse<IEnumerable<DividendBasicResponse>>> DividendsBasicAsync(string symbol, DividendRange range)
 		{
 			const string urlPattern = "stock/[symbol]/dividends/[range]";
 
@@ -86,7 +86,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 				{"symbol", symbol}, {"range", range.GetDescription()}
 			};
 
-			return await executor.ExecuteAsync<IEnumerable<DividendResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<DividendBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<EarningResponse>> EarningAsync(string symbol, int last = 1) =>
@@ -129,7 +129,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IEnumerable<SplitResponse>>> SplitAsync(string symbol, SplitRange range = SplitRange.OneMonth)
+		public async Task<IEXResponse<IEnumerable<SplitBasicResponse>>> SplitsBasicAsync(string symbol, SplitRange range = SplitRange.OneMonth)
 		{
 			const string urlPattern = "stock/[symbol]/splits/[range]";
 
@@ -137,7 +137,7 @@ namespace IEXSharp.Service.V2.StockFundamentals
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescription() } };
 
-			return await executor.ExecuteAsync<IEnumerable<SplitResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<SplitBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
 	}
 }

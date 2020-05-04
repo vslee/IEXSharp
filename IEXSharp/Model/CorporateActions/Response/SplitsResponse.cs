@@ -1,6 +1,6 @@
 namespace IEXSharp.Model.CorporateActions.Response
 {
-	public class SplitsResponse : CorporateActionResponse
+	public class SplitAdvancedResponse : CorporateActionResponse
 	{
 		public string splitType { get; set; }
 		public double oldParValue { get; set; }

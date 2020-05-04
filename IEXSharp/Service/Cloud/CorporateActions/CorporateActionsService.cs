@@ -19,17 +19,6 @@ namespace IEXSharp.Service.V2.CorporateActions
 			executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<IEXResponse<IEnumerable<AdvancedDividendResponse>>> DividendsAsync(
-			string symbol, TimeSeriesRange range, bool calendar, int? last, string refId)
-		{
-			string urlPattern = "time-series/advanced_dividends/[symbol]";
-			urlPattern = GetBaseUrl(urlPattern, symbol);
-			var qsb = GetQueryString(range, calendar, last, refId);
-			var pathNvc = GetPathNvc(symbol);
-
-			return await executor.ExecuteAsync<IEnumerable<AdvancedDividendResponse>>(urlPattern, pathNvc, qsb);
-		}
-
 		public async Task<IEXResponse<IEnumerable<BonusIssueResponse>>> BonusIssueAsync(
 			string symbol, TimeSeriesRange? range, bool calendar = false, int? last = null, string refId = null)
 		{
@@ -50,6 +39,17 @@ namespace IEXSharp.Service.V2.CorporateActions
 			var pathNvc = GetPathNvc(symbol);
 
 			return await executor.ExecuteAsync<IEnumerable<DistributionResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<DividendAdvancedResponse>>> DividendsAdvancedAsync(
+			string symbol, TimeSeriesRange range, bool calendar, int? last, string refId)
+		{
+			string urlPattern = "time-series/advanced_dividends/[symbol]";
+			urlPattern = GetBaseUrl(urlPattern, symbol);
+			var qsb = GetQueryString(range, calendar, last, refId);
+			var pathNvc = GetPathNvc(symbol);
+
+			return await executor.ExecuteAsync<IEnumerable<DividendAdvancedResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<ReturnOfCapitalResponse>>> ReturnOfCapitalAsync(
@@ -118,7 +118,7 @@ namespace IEXSharp.Service.V2.CorporateActions
 			return await executor.ExecuteAsync<IEnumerable<SpinOffResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IEnumerable<SplitsResponse>>> SplitsAsync(
+		public async Task<IEXResponse<IEnumerable<SplitAdvancedResponse>>> SplitsAdvancedAsync(
 			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId)
 		{
 			string urlPattern = "time-series/advanced_splits/[symbol]";
@@ -126,7 +126,7 @@ namespace IEXSharp.Service.V2.CorporateActions
 			var qsb = GetQueryString(range, calendar, last, refId);
 			var pathNvc = GetPathNvc(symbol);
 
-			return await executor.ExecuteAsync<IEnumerable<SplitsResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<SplitAdvancedResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		private QueryStringBuilder GetQueryString(TimeSeriesRange? range, bool calendar, int? last, string refId)

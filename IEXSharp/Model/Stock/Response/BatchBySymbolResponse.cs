@@ -16,7 +16,7 @@ namespace VSLee.IEXSharp.Model.Stock.Response
 		public List<Chart> Chart { get; set; }
 		public CompanyResponse Company { get; set; }
 		public DelayedQuoteResponse DelayedQuote { get; set; }
-		public List<DividendResponse> Dividends { get; set; }
+		public List<DividendBasicResponse> Dividends { get; set; }
 		public EarningResponse Earnings { get; set; }
 		public EarningTodayResponse EarningsToday { get; set; }
 		public EstimateResponse Estimates { get; set; }

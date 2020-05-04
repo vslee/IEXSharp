@@ -4,7 +4,7 @@ namespace VSLee.IEXSharp.Model.StockFundamentals.Response
 	{
 	}
 
-	public class SplitResponse : Split
+	public class SplitBasicResponse : Split
 	{
 	}
 }
