@@ -54,13 +54,13 @@ namespace IEXSharp.Service.V2.StockFundamentals
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#dividends-basic"/>
-		/// Basic dividends (as opposed to the advanced dividends in ICorporateActionsService)
+		/// Dividends (Basic), as opposed to the Dividends (Advanced) found in CorporateActionsService
 		/// Dividends prior to last reported are only included with paid subscription plans
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<DividendResponse>>> DividendAsync(string symbol, DividendRange range);
+		Task<IEXResponse<IEnumerable<DividendBasicResponse>>> DividendsBasicAsync(string symbol, DividendRange range);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#earnings"/>
@@ -132,11 +132,12 @@ namespace IEXSharp.Service.V2.StockFundamentals
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#splits"/>
+		/// Splits (Basic), as opposed to the Splits (Advanced) found in CorporateActionsService
 		/// Splits prior to last reported are only included with paid subscription plans
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<SplitResponse>>> SplitAsync(string symbol, SplitRange range = SplitRange.OneMonth);
+		Task<IEXResponse<IEnumerable<SplitBasicResponse>>> SplitsBasicAsync(string symbol, SplitRange range = SplitRange.OneMonth);
 	}
 }
