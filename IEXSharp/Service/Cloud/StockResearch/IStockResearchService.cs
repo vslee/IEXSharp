@@ -17,6 +17,13 @@ namespace IEXSharp.Service.V2.StockResearch
 		Task<IEXResponse<AdvancedStatsResponse>> AdvancedStatsAsync(string symbol);
 
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#analyst-recommendations"/>
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<AnalystRecommendationsResponse>>> AnalystRecommendationsAsync(string symbol);
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#estimates"/>
 		/// </summary>
 		/// <param name="symbol"></param>
