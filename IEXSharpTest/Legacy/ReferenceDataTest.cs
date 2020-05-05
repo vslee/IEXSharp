@@ -1,9 +1,9 @@
-using VSLee.IEXSharp;
-using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
+using NUnit.Framework;
+using VSLee.IEXSharp;
 
-namespace VSLee.IEXSharpTest.Legacy
+namespace IEXSharpTest.Legacy
 {
 	public class ReferenceDataTest
 	{

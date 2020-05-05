@@ -1,10 +1,10 @@
-using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using VSLee.IEXSharp;
 
-namespace VSLee.IEXSharpTest.Cloud
+namespace IEXSharpTest.Cloud
 {
 	public class InvestorsExchangeDataTest
 	{
@@ -28,11 +28,10 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task DeepActionAsyncTest(params string[] symbols)
+		[TestCase("ziext")]
+		public async Task DeepAuctionAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepActionAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeData.DeepAuctionAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

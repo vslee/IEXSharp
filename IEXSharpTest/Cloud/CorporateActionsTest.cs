@@ -1,12 +1,12 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IEXSharp.Model.CorporateActions.Request;
+using NUnit.Framework;
 using VSLee.IEXSharp;
 
-namespace VSLee.IEXSharpTest.Cloud
+namespace IEXSharpTest.Cloud
 {
 	public class CorporateActionsTest
 	{

@@ -1,9 +1,9 @@
-using VSLee.IEXSharp;
-using NUnit.Framework;
 using System.Threading.Tasks;
+using NUnit.Framework;
+using VSLee.IEXSharp;
 using VSLee.IEXSharp.Model.Options.Request;
 
-namespace VSLee.IEXSharpTest.Cloud
+namespace IEXSharpTest.Cloud
 {
 	public class OptionsTest
 	{
