@@ -165,7 +165,7 @@ namespace VSLee.IEXSharpTest.Legacy
 		[TestCase("FB")]
 		public async Task DeepActionAsyncTest(params string[] symbols)
 		{
-			var response = await prodClient.Market.DeepActionAsync(symbols);
+			var response = await prodClient.Market.DeepAuctionAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

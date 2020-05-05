@@ -106,7 +106,7 @@ namespace VSLee.IEXSharp.Service.Legacy.Market
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepActionAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepAuctionAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#official-price"/>
