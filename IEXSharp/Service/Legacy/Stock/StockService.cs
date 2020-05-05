@@ -224,7 +224,7 @@ namespace VSLee.IEXSharp.Service.Legacy.Stock
 			return await _executor.ExecuteAsync<FinancialResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IPOCalendar>> IPOCalendarAsync(IPOType ipoType)
+		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType)
 		{
 			const string urlPattern = "stock/market/[ipoType]";
 
@@ -232,7 +232,7 @@ namespace VSLee.IEXSharp.Service.Legacy.Stock
 
 			var pathNvc = new NameValueCollection { { "ipoType", ipoType.GetDescription() } };
 
-			return await _executor.ExecuteAsync<IPOCalendar>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IPOCalendarResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol)

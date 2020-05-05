@@ -14,7 +14,7 @@ namespace VSLee.IEXSharp.Model.MarketInfo.Response
 
 	public class UpcomingEventMarketResponse
 	{
-		public IPOCalendar ips { get; set; }
+		public IPOCalendarResponse ipos { get; set; }
 		public List<Estimate> earnings { get; set; }
 		public List<Dividend> dividends { get; set; }
 		public List<Split> splits { get; set; }
