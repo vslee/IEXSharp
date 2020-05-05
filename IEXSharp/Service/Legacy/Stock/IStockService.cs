@@ -132,7 +132,7 @@ namespace VSLee.IEXSharp.Service.Legacy.Stock
 		/// </summary>
 		/// <param name="ipoType"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IPOCalendar>> IPOCalendarAsync(IPOType ipoType);
+		Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#iex-regulation-sho-threshold-securities-list"/>

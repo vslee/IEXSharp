@@ -89,9 +89,42 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 
 		public async Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingEarningsAsync(string symbol)
 		{
+			return await UpcomingEventTypeAsync(symbol, UpcomingEventType.Earnings);
+		}
+
+		public async Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingDividendsAsync(string symbol)
+		{
+			return await UpcomingEventTypeAsync(symbol, UpcomingEventType.Dividends);
+		}
+
+		public async Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingSplitsAsync(string symbol)
+		{
+			return await UpcomingEventTypeAsync(symbol, UpcomingEventType.Splits);
+		}
+
+		public async Task<IEXResponse<IPOCalendarResponse>> UpcomingIposAsync(string symbol)
+		{
 			string urlPattern = "stock/[symbol]/upcoming-[type]";
 			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection {{"type", UpcomingEventType.Earnings.GetDescription()}};
+			var pathNvc = new NameValueCollection {{"type", UpcomingEventType.IPOs.GetDescription()}};
+
+			if (string.IsNullOrEmpty(symbol))
+			{
+				urlPattern = urlPattern.Replace("[symbol]", "market");
+			}
+			else
+			{
+				pathNvc.Add("symbol", symbol);
+			}
+
+			return await executor.ExecuteAsync<IPOCalendarResponse>(urlPattern, pathNvc, qsb);
+		}
+
+		private async Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingEventTypeAsync(string symbol, UpcomingEventType eventType)
+		{
+			string urlPattern = "stock/[symbol]/upcoming-[type]";
+			var qsb = new QueryStringBuilder();
+			var pathNvc = new NameValueCollection {{"type", eventType.GetDescription()}};
 
 			if (string.IsNullOrEmpty(symbol))
 			{

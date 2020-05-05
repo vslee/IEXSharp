@@ -54,22 +54,35 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		/// <see cref="https://iexcloud.io/docs/api/#upcoming-events"/>
 		/// </summary>
 		/// <param name="symbol"></param>
-		/// <param name="type"></param>
 		/// <returns></returns>
-		Task<IEXResponse<UpcomingEventSymbolResponse>> UpcomingEventSymbolAsync(string symbol, UpcomingEventType type);
+		Task<IEXResponse<UpcomingEventMarketResponse>> UpcomingEventsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#upcoming-events"/>
 		/// </summary>
 		/// <param name="symbol"></param>
-		/// <param name="type"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<UpcomingEventMarketResponse>>> UpcomingEventMarketAsync(UpcomingEventType type);
-
-
-		// TODO - Sha
-		Task<IEXResponse<UpcomingEventMarketResponse>> UpcomingEventsAsync(string symbol);
-
 		Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingEarningsAsync(string symbol);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#upcoming-events"/>
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingDividendsAsync(string symbol);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#upcoming-events"/>
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <returns></returns>
+		Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingSplitsAsync(string symbol);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#upcoming-events"/>
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <returns></returns>
+		Task<IEXResponse<IPOCalendarResponse>> UpcomingIposAsync(string symbol);
 	}
 }

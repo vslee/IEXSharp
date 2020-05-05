@@ -38,6 +38,10 @@ namespace IEXSharpTest.Cloud
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			Assert.IsNotNull(response.Data.amc);
+			Assert.IsNotNull(response.Data.bto);
+			Assert.IsNotNull(response.Data.other);
 		}
 
 		[Test]
@@ -99,35 +103,6 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL", UpcomingEventType.Dividends)]
-		[TestCase("AAPL", UpcomingEventType.Earnings)]
-		[TestCase("AAPL", UpcomingEventType.Events)]
-		[TestCase("AAPL", UpcomingEventType.IPOs)]
-		[TestCase("AAPL", UpcomingEventType.Splits)]
-		public async Task UpcomingEventSymbolAsyncTest(string symbol, UpcomingEventType type)
-		{
-			var response = await sandBoxClient.MarketInfoService.UpcomingEventSymbolAsync(symbol, type);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		// Not supported for free account
-		[Test]
-		[TestCase(UpcomingEventType.Dividends)]
-		[TestCase(UpcomingEventType.Earnings)]
-		[TestCase(UpcomingEventType.Events)]
-		[TestCase(UpcomingEventType.IPOs)]
-		[TestCase(UpcomingEventType.Splits)]
-		public async Task UpcomingEventMarketAsyncTest(UpcomingEventType type)
-		{
-			var response = await sandBoxClient.MarketInfoService.UpcomingEventMarketAsync(type);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
 		[TestCase("")]
 		[TestCase("AAPL")]
 		public async Task UpcomingEventAsyncTest(string symbol)
@@ -155,6 +130,53 @@ namespace IEXSharpTest.Cloud
 			var data = response.Data.First();
 			Assert.NotNull(data.symbol);
 			Assert.NotNull(data.reportDate);
+		}
+
+		[Test]
+		[TestCase("")]
+		[TestCase("AAPL")]
+		public async Task UpcomingDividendsAsyncTest(string symbol)
+		{
+			var response = await sandBoxClient.MarketInfoService.UpcomingDividendsAsync(symbol);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			var data = response.Data.First();
+			Assert.NotNull(data.symbol);
+			Assert.NotNull(data.reportDate);
+		}
+
+		[Test]
+		[TestCase("")]
+		[TestCase("AAPL")]
+		public async Task UpcomingSplitsAsyncTest(string symbol)
+		{
+			var response = await sandBoxClient.MarketInfoService.UpcomingSplitsAsync(symbol);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			// Some stocks won't have upcoming splits.
+			if(response.Data.FirstOrDefault() == null) return;
+
+			var data = response.Data.First();
+			Assert.NotNull(data.symbol);
+			Assert.NotNull(data.reportDate);
+		}
+
+		[Test]
+		[TestCase("")]
+		[TestCase("AAPL")]
+		public async Task UpcomingIposAsyncTest(string symbol)
+		{
+			var response = await sandBoxClient.MarketInfoService.UpcomingIposAsync(symbol);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			Assert.NotNull(response.Data.rawData);
+			Assert.NotNull(response.Data.viewData);
 		}
 	}
 }
