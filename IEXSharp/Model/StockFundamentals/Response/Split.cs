@@ -2,7 +2,7 @@ using System;
 
 namespace VSLee.IEXSharp.Model.StockFundamentals.Response
 {
-	public class SplitV1
+	public class SplitLegacy
 	{
 		public DateTime exDate { get; set; }
 		public DateTime declaredDate { get; set; }

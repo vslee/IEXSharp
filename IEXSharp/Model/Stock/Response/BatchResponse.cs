@@ -1,3 +1,4 @@
+using IEXSharp.Model.CorporateActions.Response;
 using System.Collections.Generic;
 using VSLee.IEXSharp.Model.Shared.Response;
 using VSLee.IEXSharp.Model.StockFundamentals.Response;
@@ -16,7 +17,8 @@ namespace VSLee.IEXSharp.Model.Stock.Response
 		public List<Chart> Chart { get; set; }
 		public CompanyResponse Company { get; set; }
 		public DelayedQuoteResponse DelayedQuote { get; set; }
-		public List<DividendBasicResponse> Dividends { get; set; }
+		public List<DividendBasicResponse> DividendsBasic { get; set; }
+		//public List<DividendAdvancedResponse> DividendsAdvanced { get; set; } - only DividendsBasic is available in batches
 		public EarningResponse Earnings { get; set; }
 		public EarningTodayResponse EarningsToday { get; set; }
 		public EstimateResponse Estimates { get; set; }
@@ -40,7 +42,8 @@ namespace VSLee.IEXSharp.Model.Stock.Response
 		public PriceTargetResponse PriceTarget { get; set; }
 		public Quote Quote { get; set; }
 		public List<RecommendationTrendResponse> RecommendationTrends { get; set; }
-		public List<Split> Splits { get; set; }
+		public List<SplitBasicResponse> SplitsBasic { get; set; }
+		//public List<SplitAdvancedResponse> SplitsAdvanced { get; set; } - only SplitsBasic is available in batches
 		public List<VolumeByVenueResponse> VolumeByVenue { get; set; }
 	}
 }

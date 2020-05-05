@@ -1,11 +1,11 @@
 using IEXSharp.Model;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Response;
 using VSLee.IEXSharp.Model.Shared.Response;
+using VSLee.IEXSharp.Model.StockFundamentals.Response;
 
 namespace IEXSharp.Service.Cloud.MarketInfo
 {
@@ -19,6 +19,11 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection, string collectionName);
 
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#earnings-today"/>
+		/// </summary>
+		Task<IEXResponse<EarningTodayResponse>> EarningsTodayAsync();
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#intraday-prices"/>
 		/// </summary>
 		/// <param name="ipoType"></param>
@@ -30,7 +35,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		/// </summary>
 		/// <param name="listType"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType);
+		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#market-volume-u-s"/>
@@ -58,6 +63,6 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		/// <param name="symbol"></param>
 		/// <param name="type"></param>
 		/// <returns></returns>
-		Task<IEXResponse<UpcomingEventMarketResponse>> UpcomingEventMarketAsync(UpcomingEventType type);
+		Task<IEXResponse<IEnumerable<UpcomingEventMarketResponse>>> UpcomingEventMarketAsync(UpcomingEventType type);
 	}
 }
