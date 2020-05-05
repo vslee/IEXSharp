@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
-using VSLee.IEXSharpTest.Cloud;
 
 namespace IEXSharpTest.Cloud
 {
