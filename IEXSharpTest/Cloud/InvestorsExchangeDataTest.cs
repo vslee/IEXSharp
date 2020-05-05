@@ -31,7 +31,7 @@ namespace VSLee.IEXSharpTest.Cloud
 		[TestCase("ziext")]
 		public async Task DeepActionAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepActionAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeData.DeepAuctionAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
