@@ -141,8 +141,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
+		[TestCase("F")]
+		[TestCase("GE")]
 		public async Task LargestTradesAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.StockPrices.LargestTradesAsync(symbol);

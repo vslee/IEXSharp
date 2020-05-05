@@ -33,13 +33,6 @@ namespace VSLee.IEXSharp.Service.Cloud.Stock
 		Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#effective-spread"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<EffectiveSpreadResponse>>> EffectiveSpreadAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#news"/>
 		/// </summary>
 		/// <param name="symbol"></param>

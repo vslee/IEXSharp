@@ -44,18 +44,7 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.IsNotNull(response);
 			Assert.IsNotNull(response.Data[symbols.ToList()[0]]);
 		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task EffectiveSpreadAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.EffectiveSpreadAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
+		
 		[Test]
 		[TestCase("AAPL", 10)]
 		[TestCase("FB", 20)]
