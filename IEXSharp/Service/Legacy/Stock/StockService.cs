@@ -31,7 +31,7 @@ namespace VSLee.IEXSharp.Service.Legacy.Stock
 			_executor = new ExecutorREST(client, string.Empty, string.Empty, false);
 		}
 
-		public async Task<IEXResponse<BatchBySymbolV1Response>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,
+		public async Task<IEXResponse<BatchBySymbolLegacyResponse>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,
 			string range = "", int last = 1)
 		{
 			if (types?.Count() < 1)
@@ -75,10 +75,10 @@ namespace VSLee.IEXSharp.Service.Legacy.Stock
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
-			return await _executor.ExecuteAsync<BatchBySymbolV1Response>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<BatchBySymbolLegacyResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<Dictionary<string, BatchBySymbolV1Response>>> BatchByMarketAsync(IEnumerable<string> symbols,
+		public async Task<IEXResponse<Dictionary<string, BatchBySymbolLegacyResponse>>> BatchByMarketAsync(IEnumerable<string> symbols,
 			IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
 			if (types?.Count() < 1)
@@ -127,7 +127,7 @@ namespace VSLee.IEXSharp.Service.Legacy.Stock
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<Dictionary<string, BatchBySymbolV1Response>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<Dictionary<string, BatchBySymbolLegacyResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<BookResponse>> BookAsync(string symbol) =>

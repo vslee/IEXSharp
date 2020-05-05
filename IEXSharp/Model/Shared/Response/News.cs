@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 namespace VSLee.IEXSharp.Model.Shared.Response
 {
-	public class NewsV1
+	public class NewsLegacy
 	{
 		public DateTime datetime { get; set; }
 		public string headline { get; set; }
