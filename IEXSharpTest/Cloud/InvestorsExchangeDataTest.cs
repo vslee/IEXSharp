@@ -29,7 +29,7 @@ namespace IEXSharpTest.Cloud
 
 		[Test]
 		[TestCase("ziext")]
-		public async Task DeepActionAsyncTest(params string[] symbols)
+		public async Task DeepAuctionAsyncTest(params string[] symbols)
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.DeepAuctionAsync(symbols);
 

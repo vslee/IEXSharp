@@ -163,7 +163,7 @@ namespace IEXSharpTest.Legacy
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task DeepActionAsyncTest(params string[] symbols)
+		public async Task DeepAuctionAsyncTest(params string[] symbols)
 		{
 			var response = await prodClient.Market.DeepAuctionAsync(symbols);
 
