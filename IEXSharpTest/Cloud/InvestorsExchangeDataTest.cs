@@ -28,8 +28,7 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
+		[TestCase("ziext")]
 		public async Task DeepActionAsyncTest(params string[] symbols)
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.DeepActionAsync(symbols);
