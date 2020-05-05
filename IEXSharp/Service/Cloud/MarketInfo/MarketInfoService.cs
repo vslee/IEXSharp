@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model.MarketInfo.Request;
+using IEXSharp.Model.MarketInfo.Response;
 using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Response;
@@ -22,12 +23,13 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 			executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
-		public async Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection, string collectionName)
+		public async Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection,
+			string collectionName)
 		{
 			const string urlPattern = "stock/market/collection/[collectionType]";
 			var qsb = new QueryStringBuilder();
 			qsb.Add("collectionName", collectionName);
-			var pathNvc = new NameValueCollection { { "collectionType", collection.GetDescription() } };
+			var pathNvc = new NameValueCollection {{"collectionType", collection.GetDescription()}};
 
 			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
 		}
@@ -47,22 +49,60 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		public async Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync() =>
 			await executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");
 
-		public async Task<IEXResponse<UpcomingEventSymbolResponse>> UpcomingEventSymbolAsync(string symbol, UpcomingEventType type)
+		public async Task<IEXResponse<UpcomingEventSymbolResponse>> UpcomingEventSymbolAsync(string symbol,
+			UpcomingEventType type)
 		{
 			const string urlPattern = "stock/[symbol]/upcoming-[type]";
 			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "type", type.GetDescription() } };
+			var pathNvc = new NameValueCollection {{"symbol", symbol}, {"type", type.GetDescription()}};
 
 			return await executor.ExecuteAsync<UpcomingEventSymbolResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IEnumerable<UpcomingEventMarketResponse>>> UpcomingEventMarketAsync(UpcomingEventType type)
+		public async Task<IEXResponse<IEnumerable<UpcomingEventMarketResponse>>> UpcomingEventMarketAsync(
+			UpcomingEventType type)
 		{
 			const string urlPattern = "stock/market/upcoming-[type]";
 			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection { { "type", type.GetDescription() } };
+			var pathNvc = new NameValueCollection {{"type", type.GetDescription()}};
 
 			return await executor.ExecuteAsync<IEnumerable<UpcomingEventMarketResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<UpcomingEventMarketResponse>> UpcomingEventsAsync(string symbol)
+		{
+			string urlPattern = "stock/[symbol]/upcoming-[type]";
+			var qsb = new QueryStringBuilder();
+			var pathNvc = new NameValueCollection {{"type", UpcomingEventType.Events.GetDescription()}};
+
+			if (string.IsNullOrEmpty(symbol))
+			{
+				urlPattern = urlPattern.Replace("[symbol]", "market");
+			}
+			else
+			{
+				pathNvc.Add("symbol", symbol);
+			}
+
+			return await executor.ExecuteAsync<UpcomingEventMarketResponse>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingEarningsAsync(string symbol)
+		{
+			string urlPattern = "stock/[symbol]/upcoming-[type]";
+			var qsb = new QueryStringBuilder();
+			var pathNvc = new NameValueCollection {{"type", UpcomingEventType.Earnings.GetDescription()}};
+
+			if (string.IsNullOrEmpty(symbol))
+			{
+				urlPattern = urlPattern.Replace("[symbol]", "market");
+			}
+			else
+			{
+				pathNvc.Add("symbol", symbol);
+			}
+
+			return await executor.ExecuteAsync<IEnumerable<UpcomingEarningsResponse>>(urlPattern, pathNvc, qsb);
 		}
 	}
 }

@@ -126,5 +126,35 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 		}
+
+		[Test]
+		[TestCase("")]
+		[TestCase("AAPL")]
+		public async Task UpcomingEventAsyncTest(string symbol)
+		{
+			var response = await sandBoxClient.MarketInfoService.UpcomingEventsAsync(symbol);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			Assert.NotNull(response.Data.earnings);
+			Assert.NotNull(response.Data.dividends);
+			Assert.NotNull(response.Data.splits);
+		}
+
+		[Test]
+		[TestCase("")]
+		[TestCase("AAPL")]
+		public async Task UpcomingEarningsAsyncTest(string symbol)
+		{
+			var response = await sandBoxClient.MarketInfoService.UpcomingEarningsAsync(symbol);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			var data = response.Data.First();
+			Assert.NotNull(data.symbol);
+			Assert.NotNull(data.reportDate);
+		}
 	}
 }

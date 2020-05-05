@@ -2,6 +2,7 @@ using IEXSharp.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model.MarketInfo.Request;
+using IEXSharp.Model.MarketInfo.Response;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp.Model.MarketInfo.Response;
 using VSLee.IEXSharp.Model.Shared.Response;
@@ -64,5 +65,11 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		/// <param name="type"></param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<UpcomingEventMarketResponse>>> UpcomingEventMarketAsync(UpcomingEventType type);
+
+
+		// TODO - Sha
+		Task<IEXResponse<UpcomingEventMarketResponse>> UpcomingEventsAsync(string symbol);
+
+		Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingEarningsAsync(string symbol);
 	}
 }
