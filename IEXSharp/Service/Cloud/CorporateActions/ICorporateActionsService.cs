@@ -29,6 +29,8 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#dividends"/>
 		/// Dividends (Advanced), as opposed to the Dividends (Basic) found in StockFundamentalsService
+		/// Obtain up-to-date and detailed information on all new dividend announcements, as well as 12+ years of historical dividend records.
+		/// Only available to paid plans.
 		/// </summary>
 		/// <param name="symbol">Optional. Symbol name.</param>
 		/// <param name="range">range enum</param>
@@ -36,7 +38,7 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <param name="last">last number of dividends, default is null</param>
 		/// <param name="refId">Optional. Id that matches the refId field returned in the response object. This allows you to pull a specific dividend for a symbol.</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<AdvancedDividendResponse>>> DividendsAsync(
+		Task<IEXResponse<IEnumerable<DividendAdvancedResponse>>> DividendsAdvancedAsync(
 			string symbol, TimeSeriesRange range = TimeSeriesRange.ThisQuarter, bool calendar = false, int? last = null, string refId = null);
 
 		/// <summary>
@@ -96,11 +98,13 @@ namespace IEXSharp.Service.V2.CorporateActions
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#splits"/>
 		/// Splits (Advanced), as opposed to the Splits (Basic) found in StockFundamentalsService
+		/// Obtain up-to-date and detailed information on all new announcements, as well as 12+ years of historical records.
+		/// Only available to paid plans.
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="refId"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<SplitsResponse>>> SplitsAsync(
+		Task<IEXResponse<IEnumerable<SplitAdvancedResponse>>> SplitsAdvancedAsync(
 			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId);
 	}
 }

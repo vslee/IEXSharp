@@ -1,10 +1,10 @@
 namespace VSLee.IEXSharp.Model.StockFundamentals.Response
 {
-	public class SplitV1Response : SplitV1
+	public class SplitV1Response : SplitLegacy
 	{
 	}
 
-	public class SplitResponse : Split
+	public class SplitBasicResponse : Split
 	{
 	}
 }

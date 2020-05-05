@@ -33,6 +33,20 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
+		[TestCase("AAPL")]
+		[TestCase("FB")]
+		public async Task AnalystRecommendationsAsyncTest(string symbol)
+		{
+			var response = await sandBoxClient.StockResearch.AnalystRecommendationsAsync(symbol);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			Assert.NotNull(response.Data.FirstOrDefault()?.consensusEndDate);
+			Assert.NotNull(response.Data.FirstOrDefault()?.consensusStartDate);
+		}
+
+		[Test]
 		[TestCase("AAPL", 1)]
 		[TestCase("FB", 2)]
 		public async Task EstimateAsyncTest(string symbol, int last)

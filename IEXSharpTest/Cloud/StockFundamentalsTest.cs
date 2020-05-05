@@ -71,9 +71,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		[TestCase("AAPL", DividendRange.SixMonths)]
 		[TestCase("AAPL", DividendRange.Next)]
 		[TestCase("AAPL", DividendRange.Ytd)]
-		public async Task DividendAsyncTest(string symbol, DividendRange range)
+		public async Task DividendsBasicAsyncTest(string symbol, DividendRange range)
 		{
-			var response = await sandBoxClient.StockFundamentals.DividendAsync(symbol, range);
+			var response = await sandBoxClient.StockFundamentals.DividendsBasicAsync(symbol, range);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -182,9 +182,9 @@ namespace VSLee.IEXSharpTest.Cloud
 		[TestCase("AAPL", SplitRange.SixMonths)]
 		[TestCase("AAPL", SplitRange.Next)]
 		[TestCase("AAPL", SplitRange.Ytd)]
-		public async Task SplitAsyncTest(string symbol, SplitRange range)
+		public async Task SplitsBasicAsyncTest(string symbol, SplitRange range)
 		{
-			var response = await sandBoxClient.StockFundamentals.SplitAsync(symbol, range);
+			var response = await sandBoxClient.StockFundamentals.SplitsBasicAsync(symbol, range);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

@@ -22,6 +22,9 @@ namespace IEXSharp.Service.V2.StockResearch
 		public async Task<IEXResponse<AdvancedStatsResponse>> AdvancedStatsAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<AdvancedStatsResponse>("stock/[symbol]/advanced-stats", symbol);
 
+		public async Task<IEXResponse<IEnumerable<AnalystRecommendationsResponse>>> AnalystRecommendationsAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<AnalystRecommendationsResponse>>("stock/[symbol]/recommendation-trends", symbol);
+
 		public async Task<IEXResponse<EstimateResponse>> EstimateAsync(string symbol, int last = 1) =>
 			await executor.SymbolLastExecuteAsync<EstimateResponse>("stock/[symbol]/estimates/[last]", symbol, last);
 
@@ -53,6 +56,6 @@ namespace IEXSharp.Service.V2.StockResearch
 			await executor.SymbolExecuteAsync<PriceTargetResponse>("stock/[symbol]/price-target", symbol);
 
 		public async Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator) =>
-			await executor.SymbolExecuteAsync<TechnicalIndicatorsResponse>($"stock/[sy : Imbol]/indicator/{indicator}", symbol);
+			await executor.SymbolExecuteAsync<TechnicalIndicatorsResponse>($"stock/[symbol]/indicator/{indicator}", symbol);
 	}
 }

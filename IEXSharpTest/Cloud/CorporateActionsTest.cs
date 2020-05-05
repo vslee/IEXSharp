@@ -19,59 +19,6 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCaseSource(nameof(DividendsAsyncTestData))]
-		public async Task DividendsAsyncTest(TimeSeriesRange range)
-		{
-			var response = await sandBoxClient.CorporateActions.DividendsAsync("AAPL", range);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-
-			// can sometimes be empty in case no dividend got declared in the selected time range
-			if (!response.Data.Any()) return;
-
-			var data = response.Data.First();
-
-			Assert.Greater(data.exDate, DateTime.MinValue);
-			Assert.Greater(data.declaredDate, DateTime.MinValue);
-			Assert.Greater(data.paymentDate, DateTime.MinValue);
-			Assert.Greater(data.amount, 0);
-			Assert.Greater(data.grossAmount, 0);
-
-			Assert.IsFalse(string.IsNullOrEmpty(data.currency));
-			Assert.IsFalse(string.IsNullOrEmpty(data.figi));
-			Assert.IsFalse(string.IsNullOrEmpty(data.marker));
-			Assert.IsFalse(string.IsNullOrEmpty(data.flag));
-			Assert.IsFalse(string.IsNullOrEmpty(data.securityType));
-		}
-
-		[Test]
-		[TestCase("", TimeSeriesRange.LastQuarter, false, 10, "")]
-		[TestCase("AAPL", TimeSeriesRange.LastQuarter, false, null, "")]
-		[TestCase("AAPL", TimeSeriesRange.OneMonth, false, null, "")]
-		public async Task DividendsAsyncTest(string symbol, TimeSeriesRange range, bool calendar, int last, string refId)
-		{
-			var response = await sandBoxClient.CorporateActions.DividendsAsync(symbol, range, calendar, last, refId);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-
-			// can sometimes be empty in case no dividend got declared in the selected time range
-			if (!response.Data.Any()) return;
-
-			var data = response.Data.First();
-
-			Assert.Greater(data.exDate, DateTime.MinValue);
-			Assert.Greater(data.amount, 0);
-			Assert.Greater(data.grossAmount, 0);
-
-			Assert.IsFalse(string.IsNullOrEmpty(data.currency));
-			Assert.IsFalse(string.IsNullOrEmpty(data.marker));
-			Assert.IsFalse(string.IsNullOrEmpty(data.flag));
-			Assert.IsFalse(string.IsNullOrEmpty(data.securityType));
-		}
-
-		[Test]
 		[TestCase("AAPL", null, false, null, "")]
 		public async Task BonusIssueAsyncTest(string symbol, TimeSeriesRange range, bool calendar, int last, string refId)
 		{
@@ -110,6 +57,64 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.NotNull(data.minPrice);
 			Assert.NotNull(data.maxPrice);
 			Assert.NotNull(data.hasWithdrawalRights);
+		}
+
+		[Test]
+		[TestCaseSource(nameof(DividendsAdvancedAsyncTestData))]
+		public async Task DividendsAdvancedAsyncTest(TimeSeriesRange range)
+		{
+			var response = await sandBoxClient.CorporateActions.DividendsAdvancedAsync("AAPL", range);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			// can sometimes be empty in case no dividend got declared in the selected time range
+			if (!response.Data.Any()) return;
+
+			var data = response.Data.First();
+
+			Assert.Greater(data.exDate, DateTime.MinValue);
+			Assert.Greater(data.declaredDate, DateTime.MinValue);
+			Assert.Greater(data.paymentDate, DateTime.MinValue);
+			Assert.Greater(data.amount, 0);
+			Assert.Greater(data.grossAmount, 0);
+
+			Assert.IsFalse(string.IsNullOrEmpty(data.currency));
+			Assert.IsFalse(string.IsNullOrEmpty(data.figi));
+			Assert.IsFalse(string.IsNullOrEmpty(data.marker));
+			Assert.IsFalse(string.IsNullOrEmpty(data.flag));
+			Assert.IsFalse(string.IsNullOrEmpty(data.securityType));
+		}
+
+		[Test]
+		[TestCase("", TimeSeriesRange.LastQuarter, false, 10, "")]
+		[TestCase("AAPL", TimeSeriesRange.LastQuarter, false, null, "")]
+		[TestCase("AAPL", TimeSeriesRange.OneMonth, false, null, "")]
+		public async Task DividendsAdvancedAsyncTest(string symbol, TimeSeriesRange range, bool calendar, int last, string refId)
+		{
+			var response = await sandBoxClient.CorporateActions.DividendsAdvancedAsync(symbol, range, calendar, last, refId);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+
+			// can sometimes be empty in case no dividend got declared in the selected time range
+			if (!response.Data.Any()) return;
+
+			var data = response.Data.First();
+
+			Assert.Greater(data.exDate, DateTime.MinValue);
+			Assert.Greater(data.amount, 0);
+			Assert.Greater(data.grossAmount, 0);
+
+			Assert.IsFalse(string.IsNullOrEmpty(data.currency));
+			Assert.IsFalse(string.IsNullOrEmpty(data.marker));
+			Assert.IsFalse(string.IsNullOrEmpty(data.flag));
+			Assert.IsFalse(string.IsNullOrEmpty(data.securityType));
+		}
+
+		private static IEnumerable<TimeSeriesRange> DividendsAdvancedAsyncTestData()
+		{
+			return (TimeSeriesRange[])Enum.GetValues(typeof(TimeSeriesRange));
 		}
 
 		[Test]
@@ -240,9 +245,9 @@ namespace VSLee.IEXSharpTest.Cloud
 
 		[Test]
 		[TestCase("AAPL", null, false, null, "")]
-		public async Task SplitsAsyncTest(string symbol, TimeSeriesRange range, bool calendar, int last, string refId)
+		public async Task SplitsAdvancedAsyncTest(string symbol, TimeSeriesRange range, bool calendar, int last, string refId)
 		{
-			var response = await sandBoxClient.CorporateActions.SplitsAsync(symbol, range, calendar, last, refId);
+			var response = await sandBoxClient.CorporateActions.SplitsAdvancedAsync(symbol, range, calendar, last, refId);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -255,11 +260,6 @@ namespace VSLee.IEXSharpTest.Cloud
 			Assert.NotNull(data.splitType);
 			Assert.NotNull(data.oldParValue);
 			Assert.NotNull(data.oldParValueCurrency);
-		}
-
-		private static IEnumerable<TimeSeriesRange> DividendsAsyncTestData()
-		{
-			return (TimeSeriesRange[])Enum.GetValues(typeof(TimeSeriesRange));
 		}
 	}
 }
