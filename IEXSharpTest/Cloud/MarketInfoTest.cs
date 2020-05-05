@@ -1,9 +1,7 @@
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharp;
 using VSLee.IEXSharp.Model.MarketInfo.Request;
 using VSLee.IEXSharpTest.Cloud;
@@ -34,6 +32,15 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
+		public async Task EarningsTodayAsyncTest()
+		{
+			var response = await sandBoxClient.MarketInfoService.EarningsTodayAsync();
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+		}
+
+		[Test]
 		[TestCase(IPOType.Today)]
 		[TestCase(IPOType.Upcoming)]
 		public async Task IPOCalendarAsyncTest(IPOType ipoType)
@@ -45,12 +52,12 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("mostactive")]
-		[TestCase("gainers")]
-		[TestCase("losers")]
-		[TestCase("iexvolume")]
-		[TestCase("iexpercent")]
-		public async Task ListAsyncTest(string listType)
+		[TestCase(ListType.MostActive)]
+		[TestCase(ListType.Gainers)]
+		[TestCase(ListType.Losers)]
+		[TestCase(ListType.IexVolume)]
+		[TestCase(ListType.IexPercent)]
+		public async Task ListAsyncTest(ListType listType)
 		{
 			var response = await sandBoxClient.MarketInfoService.ListAsync(listType);
 
@@ -67,6 +74,12 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			var data = response.Data.First();
+			Assert.NotNull(data.venueName);
+			Assert.NotNull(data.tapeA);
+			Assert.NotNull(data.volume);
+			Assert.NotNull(data.lastUpdated);
 		}
 
 		[Test]
@@ -77,6 +90,12 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			var data = response.Data.First();
+			Assert.NotNull(data.type);
+			Assert.NotNull(data.name);
+			Assert.NotNull(data.performance);
+			Assert.NotNull(data.lastUpdated);
 		}
 
 		[Test]
