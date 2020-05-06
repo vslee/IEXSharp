@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using IEXSharp.Model.Treasuries.Request;
 using NUnit.Framework;
 using VSLee.IEXSharp;
-using VSLee.IEXSharpTest.Cloud;
 
 namespace IEXSharpTest.Cloud
 {

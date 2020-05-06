@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 using VSLee.IEXSharp;
-using VSLee.IEXSharpTest.Cloud;
 
 namespace IEXSharpTest.Cloud
 {
