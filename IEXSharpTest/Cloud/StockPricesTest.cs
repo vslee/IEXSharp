@@ -1,13 +1,13 @@
-using IEXSharp.Helper;
-using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using IEXSharp.Helper;
+using NUnit.Framework;
 using VSLee.IEXSharp;
 using VSLee.IEXSharp.Helper;
 using VSLee.IEXSharp.Model.StockPrices.Request;
 
-namespace VSLee.IEXSharpTest.Cloud
+namespace IEXSharpTest.Cloud
 {
 	public class StockPricesTest
 	{
@@ -141,8 +141,8 @@ namespace VSLee.IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
+		[TestCase("F")]
+		[TestCase("GE")]
 		public async Task LargestTradesAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.StockPrices.LargestTradesAsync(symbol);

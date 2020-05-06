@@ -1,9 +1,9 @@
 using System.Linq;
-using NUnit.Framework;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using VSLee.IEXSharp;
 
-namespace VSLee.IEXSharpTest.Cloud
+namespace IEXSharpTest.Cloud
 {
 	public class CryptoTest
 	{

@@ -18,8 +18,8 @@ namespace VSLee.IEXSharp.Model.StockFundamentals.Response
 		public DateTime exDate { get; set; }
 		public DateTime declaredDate { get; set; }
 		public decimal ratio { get; set; }
-		public int toFactor { get; set; }
-		public int fromFactor { get; set; }
+		public decimal toFactor { get; set; }
+		public decimal fromFactor { get; set; }
 		public string description { get; set; }
 	}
 }

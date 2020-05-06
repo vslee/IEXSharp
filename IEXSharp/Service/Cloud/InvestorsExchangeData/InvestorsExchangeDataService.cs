@@ -12,55 +12,55 @@ namespace VSLee.IEXSharp.Service.Cloud.InvestorsExchangeData
 {
 	internal class InvestorsExchangeDataService : IInvestorsExchangeDataService
 	{
-		private readonly ExecutorREST _executor;
+		private readonly ExecutorREST executor;
 
 		public InvestorsExchangeDataService(HttpClient client, string sk, string pk, bool sign)
 		{
-			_executor = new ExecutorREST(client, sk, pk, sign);
+			executor = new ExecutorREST(client, sk, pk, sign);
 		}
 
 		public async Task<IEXResponse<DeepResponse>> DeepAsync(IEnumerable<string> symbols)
-		   => await _executor.SymbolsExecuteAsync<DeepResponse>("deep", symbols);
+		   => await executor.SymbolsExecuteAsync<DeepResponse>("deep", symbols);
 
-		public async Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepActionAsync(IEnumerable<string> symbols)
-		  => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbols);
+		public async Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepAuctionAsync(IEnumerable<string> symbols)
+		  => await executor.SymbolsExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbols);
 
 		public async Task<IEXResponse<Dictionary<string, DeepBookResponse>>> DeepBookAsync(IEnumerable<string> symbols)
-		   => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepBookResponse>>("deep/book", symbols);
+		   => await executor.SymbolsExecuteAsync<Dictionary<string, DeepBookResponse>>("deep/book", symbols);
 
 		public async Task<IEXResponse<Dictionary<string, DeepOperationalHaltStatusResponse>>> DeepOperationHaltStatusAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOperationalHaltStatusResponse>>("deep/op-halt-status", symbols);
+			=> await executor.SymbolsExecuteAsync<Dictionary<string, DeepOperationalHaltStatusResponse>>("deep/op-halt-status", symbols);
 
 		public async Task<IEXResponse<Dictionary<string, DeepOfficialPriceResponse>>> DeepOfficialPriceAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepOfficialPriceResponse>>("deep/official-price", symbols);
+			=> await executor.SymbolsExecuteAsync<Dictionary<string, DeepOfficialPriceResponse>>("deep/official-price", symbols);
 
 		public async Task<IEXResponse<Dictionary<string, DeepSecurityEventResponse>>> DeepSecurityEventAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepSecurityEventResponse>>("deep/security-event", symbols);
+			=> await executor.SymbolsExecuteAsync<Dictionary<string, DeepSecurityEventResponse>>("deep/security-event", symbols);
 
 		public async Task<IEXResponse<Dictionary<string, DeepShortSalePriceTestStatusResponse>>> DeepShortSalePriceTestStatusAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepShortSalePriceTestStatusResponse>>("deep/ssr-status", symbols);
+			=> await executor.SymbolsExecuteAsync<Dictionary<string, DeepShortSalePriceTestStatusResponse>>("deep/ssr-status", symbols);
 
 		public async Task<IEXResponse<DeepSystemEventResponse>> DeepSystemEventAsync()
-			=> await _executor.NoParamExecute<DeepSystemEventResponse>("deep/system-event");
+			=> await executor.NoParamExecute<DeepSystemEventResponse>("deep/system-event");
 
 		public async Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades", symbols);
+			=> await executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades", symbols);
 
 		public async Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeBreaksAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades-breaks", symbols);
+			=> await executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades-breaks", symbols);
 
 		public async Task<IEXResponse<Dictionary<string, DeepTradingStatusResponse>>> DeepTradingStatusAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<Dictionary<string, DeepTradingStatusResponse>>("deep/trades-status", symbols);
+			=> await executor.SymbolsExecuteAsync<Dictionary<string, DeepTradingStatusResponse>>("deep/trades-status", symbols);
 
 		public async Task<IEXResponse<IEnumerable<LastResponse>>> LastAsync(IEnumerable<string> symbols)
-			=> await _executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);
+			=> await executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);
 
 		public async Task<IEXResponse<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol)
-			=> await _executor.SymbolExecuteAsync<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>(
+			=> await executor.SymbolExecuteAsync<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>(
 				"stock/[symbol]/threshold-securities", symbol);
 
 		public async Task<IEXResponse<IEnumerable<ListedShortInterestListResponse>>> ListedShortInterestListAsync(string symbol)
-			=> await _executor.SymbolExecuteAsync<IEnumerable<ListedShortInterestListResponse>>(
+			=> await executor.SymbolExecuteAsync<IEnumerable<ListedShortInterestListResponse>>(
 				"stock/[symbol]/short-interest", symbol);
 
 		public async Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByDateAsync(string date)
@@ -72,7 +72,7 @@ namespace VSLee.IEXSharp.Service.Cloud.InvestorsExchangeData
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByLastAsync(int last)
@@ -84,7 +84,7 @@ namespace VSLee.IEXSharp.Service.Cloud.InvestorsExchangeData
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<StatsHistoricalSummaryResponse>>> StatsHistoricalSummaryAsync(DateTime? date = null)
@@ -96,25 +96,25 @@ namespace VSLee.IEXSharp.Service.Cloud.InvestorsExchangeData
 
 			var pathNvc = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<IEnumerable<StatsHistoricalSummaryResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<StatsHistoricalSummaryResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<StatsIntradayResponse>> StatsIntradayAsync()
-			=> await _executor.NoParamExecute<StatsIntradayResponse>("stats/intraday");
+			=> await executor.NoParamExecute<StatsIntradayResponse>("stats/intraday");
 
 		public async Task<IEXResponse<IEnumerable<StatsRecentResponse>>> StatsRecentAsync()
-			=> await _executor.NoParamExecute<IEnumerable<StatsRecentResponse>>("stats/recent");
+			=> await executor.NoParamExecute<IEnumerable<StatsRecentResponse>>("stats/recent");
 
 		public async Task<IEXResponse<StatsRecordResponse>> StatsRecordAsync()
-			=> await _executor.NoParamExecute<StatsRecordResponse>("stats/records");
+			=> await executor.NoParamExecute<StatsRecordResponse>("stats/records");
 
 		public async Task<IEXResponse<IEnumerable<TOPSResponse>>> TOPSAsync(IEnumerable<string> symbols)
 		{
 			if (symbols.Count() > 0)
 			{
-				return await _executor.SymbolsExecuteAsync<IEnumerable<TOPSResponse>>("tops", symbols);
+				return await executor.SymbolsExecuteAsync<IEnumerable<TOPSResponse>>("tops", symbols);
 			}
-			return await _executor.NoParamExecute<IEnumerable<TOPSResponse>>("tops");
+			return await executor.NoParamExecute<IEnumerable<TOPSResponse>>("tops");
 		}
 	}
 }
