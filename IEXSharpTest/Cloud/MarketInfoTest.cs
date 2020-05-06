@@ -1,9 +1,8 @@
+using IEXSharp;
+using IEXSharp.Model.MarketInfo.Request;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
-using IEXSharp.Model.MarketInfo.Request;
-using VSLee.IEXSharp;
-using VSLee.IEXSharp.Model.MarketInfo.Request;
 
 namespace IEXSharpTest.Cloud
 {

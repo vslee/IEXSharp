@@ -1,10 +1,10 @@
-using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
+using IEXSharp.Model.InvestorsExchangeData.Response;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
 
-namespace VSLee.IEXSharp.Service.Legacy.Stats
+namespace IEXSharp.Service.Legacy.Stats
 {
 	public interface IStatsService
 	{

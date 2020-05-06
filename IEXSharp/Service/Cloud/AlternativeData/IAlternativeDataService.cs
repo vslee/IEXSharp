@@ -2,10 +2,10 @@ using IEXSharp.Model;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Model.AlternativeData.Response;
-using VSLee.IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.AlternativeData.Response;
+using IEXSharp.Model.Shared.Response;
 
-namespace VSLee.IEXSharp.Service.Cloud.AlternativeData
+namespace IEXSharp.Service.Cloud.AlternativeData
 {
 	public interface IAlternativeDataService
 	{

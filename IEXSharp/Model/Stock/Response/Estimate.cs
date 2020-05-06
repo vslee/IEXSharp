@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VSLee.IEXSharp.Model.Stock.Response
+namespace IEXSharp.Model.Stock.Response
 {
 	public class Estimate
 	{

@@ -1,6 +1,6 @@
-﻿using VSLee.IEXSharp.Model.Shared.Response;
+﻿using IEXSharp.Model.Shared.Response;
 
-namespace VSLee.IEXSharp.Model.Stock.Response
+namespace IEXSharp.Model.Stock.Response
 {
 	public class NewsV1Response : NewsLegacy
 	{

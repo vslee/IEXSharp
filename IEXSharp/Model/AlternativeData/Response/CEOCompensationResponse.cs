@@ -1,4 +1,4 @@
-﻿namespace VSLee.IEXSharp.Model.AlternativeData.Response
+﻿namespace IEXSharp.Model.AlternativeData.Response
 {
 	public class CEOCompensationResponse
 	{

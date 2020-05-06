@@ -5,10 +5,10 @@ using System.Collections.Specialized;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.StockResearch.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.StockResearch.Response;
 
-namespace IEXSharp.Service.V2.StockResearch
+namespace IEXSharp.Service.Cloud.StockResearch
 {
 	public class StockResearchService : IStockResearchService
 	{
@@ -25,8 +25,8 @@ namespace IEXSharp.Service.V2.StockResearch
 		public async Task<IEXResponse<IEnumerable<AnalystRecommendationsResponse>>> AnalystRecommendationsAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<AnalystRecommendationsResponse>>("stock/[symbol]/recommendation-trends", symbol);
 
-		public async Task<IEXResponse<EstimateResponse>> EstimateAsync(string symbol, int last = 1) =>
-			await executor.SymbolLastExecuteAsync<EstimateResponse>("stock/[symbol]/estimates/[last]", symbol, last);
+		public async Task<IEXResponse<EstimatesResponse>> EstimatesAsync(string symbol, int last = 1) =>
+			await executor.SymbolLastExecuteAsync<EstimatesResponse>("stock/[symbol]/estimates/[last]", symbol, last);
 
 		public async Task<IEXResponse<string>> EstimateFieldAsync(string symbol, string field, int last = 1) =>
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/estimates/[last]/[field]", symbol, field, last);

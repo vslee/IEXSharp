@@ -1,9 +1,9 @@
 using IEXSharp.Model;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Model.Account.Request;
-using VSLee.IEXSharp.Model.Account.Response;
+using IEXSharp.Model.Account.Request;
+using IEXSharp.Model.Account.Response;
 
-namespace VSLee.IEXSharp.Service.Cloud.Account
+namespace IEXSharp.Service.Cloud.Account
 {
 	public interface IAccountService
 	{

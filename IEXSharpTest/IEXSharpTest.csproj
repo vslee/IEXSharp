@@ -9,9 +9,9 @@
 
     <Company />
 
-    <PackageId>VSLee.IEXSharpTest</PackageId>
+    <PackageId>IEXSharpTest</PackageId>
 
-    <Product>VSLee.IEXSharpTest</Product>
+    <Product>IEXSharpTest</Product>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,11 +1,10 @@
+using IEXSharp;
+using IEXSharp.Helper;
+using IEXSharp.Model.StockPrices.Request;
+using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using IEXSharp.Helper;
-using NUnit.Framework;
-using VSLee.IEXSharp;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.StockPrices.Request;
 
 namespace IEXSharpTest.Cloud
 {
@@ -133,7 +132,7 @@ namespace IEXSharpTest.Cloud
 		[TestCase("FB")]
 		public async Task IntradayPriceAsyncTest(string symbol)
 		{
-			var response = await sandBoxClient.StockPrices.IntradayPriceAsync(symbol);
+			var response = await sandBoxClient.StockPrices.IntradayPricesAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

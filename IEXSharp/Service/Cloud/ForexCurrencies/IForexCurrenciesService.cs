@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Data;
 using IEXSharp.Model;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Model.ForexCurrencies.Response;
+using IEXSharp.Model.ForexCurrencies.Response;
 
-namespace VSLee.IEXSharp.Service.Cloud.ForexCurrencies
+namespace IEXSharp.Service.Cloud.ForexCurrencies
 {
 	public interface IForexCurrenciesService
 	{

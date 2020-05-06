@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IEXSharp.Model.Treasuries.Request;
 using NUnit.Framework;
-using VSLee.IEXSharp;
+using IEXSharp;
 
 namespace IEXSharpTest.Cloud
 {

@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Model.StockProfiles.Response;
+using IEXSharp.Model.StockProfiles.Response;
 
-namespace IEXSharp.Service.V2.StockProfiles
+namespace IEXSharp.Service.Cloud.StockProfiles
 {
 	public interface IStockProfilesService
 	{
@@ -39,7 +39,7 @@ namespace IEXSharp.Service.V2.StockProfiles
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<InsiderTransactionResponse>>> InsiderTransactionAsync(string symbol);
+		Task<IEXResponse<IEnumerable<InsiderTransactionResponse>>> InsiderTransactionsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#logo"/>

@@ -1,17 +1,15 @@
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.Shared.Response;
-using VSLee.IEXSharp.Model.Stock.Request;
-using VSLee.IEXSharp.Model.Stock.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model;
+using IEXSharp.Model.Stock.Request;
+using IEXSharp.Model.Stock.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IEXSharp.Helper;
-using IEXSharp.Model;
 
-namespace VSLee.IEXSharp.Service.Cloud.Stock
+namespace IEXSharp.Service.Cloud.Stock
 {
 	internal class StockService : IStockService
 	{
@@ -26,7 +24,11 @@ namespace VSLee.IEXSharp.Service.Cloud.Stock
 			BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,
 			string range = "", int last = 1)
 		{
-			if (types?.Count() < 1)
+			if (string.IsNullOrEmpty(symbol))
+			{
+				throw new ArgumentNullException(nameof(symbol));
+			}
+			else if (types?.Count() < 1)
 			{
 				throw new ArgumentNullException(nameof(types));
 			}
@@ -34,25 +36,9 @@ namespace VSLee.IEXSharp.Service.Cloud.Stock
 			const string urlPattern = "stock/[symbol]/batch";
 
 			var qsType = new List<string>();
-			foreach (var x in types)
+			foreach (var type in types)
 			{
-				switch (x)
-				{
-					case BatchType.Quote:
-						qsType.Add("quote");
-						break;
-
-					case BatchType.News:
-						qsType.Add("news");
-						break;
-
-					case BatchType.Chart:
-						qsType.Add("chart");
-						break;
-
-					default:
-						throw new ArgumentOutOfRangeException(nameof(types));
-				}
+				qsType.Add(type.GetDescription());
 			}
 
 			var qsb = new QueryStringBuilder();
@@ -72,37 +58,21 @@ namespace VSLee.IEXSharp.Service.Cloud.Stock
 		public async Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols,
 			IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
-			if (types?.Count() < 1)
-			{
-				throw new ArgumentNullException("batchTypes cannot be null");
-			}
-			else if (symbols?.Count() < 1)
+			if (symbols?.Count() < 1)
 			{
 				throw new ArgumentNullException("symbols cannot be null");
+			}
+			else if (types?.Count() < 1)
+			{
+				throw new ArgumentNullException("batchTypes cannot be null");
 			}
 
 			const string urlPattern = "stock/market/batch";
 
 			var qsType = new List<string>();
-			foreach (var x in types)
+			foreach (var type in types)
 			{
-				switch (x)
-				{
-					case BatchType.Quote:
-						qsType.Add("quote");
-						break;
-
-					case BatchType.News:
-						qsType.Add("news");
-						break;
-
-					case BatchType.Chart:
-						qsType.Add("chart");
-						break;
-
-					default:
-						throw new ArgumentOutOfRangeException(nameof(types));
-				}
+				qsType.Add(type.GetDescription());
 			}
 
 			var qsb = new QueryStringBuilder();

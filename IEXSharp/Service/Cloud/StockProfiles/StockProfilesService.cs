@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.StockProfiles.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.StockProfiles.Response;
 
-namespace IEXSharp.Service.V2.StockProfiles
+namespace IEXSharp.Service.Cloud.StockProfiles
 {
 	public class StockProfilesService : IStockProfilesService
 	{
@@ -29,7 +29,7 @@ namespace IEXSharp.Service.V2.StockProfiles
 			await executor.SymbolExecuteAsync<IEnumerable<InsiderSummaryResponse>>("stock/[symbol]/insider-summary",
 				symbol);
 
-		public async Task<IEXResponse<IEnumerable<InsiderTransactionResponse>>> InsiderTransactionAsync(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<InsiderTransactionResponse>>> InsiderTransactionsAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<InsiderTransactionResponse>>(
 				"stock/[symbol]/insider-transactions", symbol);
 

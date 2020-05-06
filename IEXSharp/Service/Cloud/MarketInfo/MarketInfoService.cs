@@ -1,16 +1,13 @@
 using IEXSharp.Helper;
 using IEXSharp.Model;
+using IEXSharp.Model.MarketInfo.Request;
+using IEXSharp.Model.MarketInfo.Response;
+using IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.StockFundamentals.Response;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IEXSharp.Model.MarketInfo.Request;
-using IEXSharp.Model.MarketInfo.Response;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.MarketInfo.Request;
-using VSLee.IEXSharp.Model.MarketInfo.Response;
-using VSLee.IEXSharp.Model.Shared.Response;
-using VSLee.IEXSharp.Model.StockFundamentals.Response;
 
 namespace IEXSharp.Service.Cloud.MarketInfo
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IEXSharp.Model.CorporateActions.Request;
 using NUnit.Framework;
-using VSLee.IEXSharp;
+using IEXSharp;
 
 namespace IEXSharpTest.Cloud
 {

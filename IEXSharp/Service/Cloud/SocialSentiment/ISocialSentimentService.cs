@@ -3,7 +3,7 @@ using IEXSharp.Model.SocialSentiment.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Service.V2.Options
+namespace IEXSharp.Service.Cloud.Options
 {
 	public interface ISocialSentimentService
 	{

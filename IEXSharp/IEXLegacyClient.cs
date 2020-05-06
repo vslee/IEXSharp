@@ -1,11 +1,11 @@
-using VSLee.IEXSharp.Service.Legacy.Market;
-using VSLee.IEXSharp.Service.Legacy.ReferenceData;
-using VSLee.IEXSharp.Service.Legacy.Stats;
-using VSLee.IEXSharp.Service.Legacy.Stock;
+using IEXSharp.Service.Legacy.Market;
+using IEXSharp.Service.Legacy.ReferenceData;
+using IEXSharp.Service.Legacy.Stats;
+using IEXSharp.Service.Legacy.Stock;
 using System;
 using System.Net.Http;
 
-namespace VSLee.IEXSharp
+namespace IEXSharp
 {
 	public class IEXLegacyClient : IDisposable
 	{
@@ -34,7 +34,7 @@ namespace VSLee.IEXSharp
 			{
 				BaseAddress = new Uri("https://api.iextrading.com/1.0/")
 			};
-			_client.DefaultRequestHeaders.Add("User-Agent", "VSLee.IEXSharp IEX Legacy .Net");
+			_client.DefaultRequestHeaders.Add("User-Agent", "IEXSharp IEX Legacy .Net");
 		}
 
 		private bool disposed;

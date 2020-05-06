@@ -1,10 +1,10 @@
 using IEXSharp.Model;
 using System.Net.Http;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Helper;
+using IEXSharp.Helper;
 using IEXSharp.Model.CeoCompensation.Response;
 
-namespace IEXSharp.Service.V2.Options
+namespace IEXSharp.Service.Cloud.Options
 {
 	public class CeoCompensationService : ICeoCompensationService
 	{

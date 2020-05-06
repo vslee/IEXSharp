@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using VSLee.IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.Shared.Response;
 
-namespace VSLee.IEXSharp.Model.ReferenceData.Response
+namespace IEXSharp.Model.ReferenceData.Response
 {
 	public class SymbolFXResponse
 	{

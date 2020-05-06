@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace VSLee.IEXSharp.Model.StockFundamentals.Response
+namespace IEXSharp.Model.StockFundamentals.Response
 {
 	public class IncomeStatementResponse
 	{

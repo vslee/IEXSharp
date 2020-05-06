@@ -1,14 +1,13 @@
+using IEXSharp.Helper;
 using IEXSharp.Model;
+using IEXSharp.Model.CorporateActions.Request;
+using IEXSharp.Model.CorporateActions.Response;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IEXSharp.Helper;
-using IEXSharp.Model.CorporateActions.Request;
-using IEXSharp.Model.CorporateActions.Response;
-using VSLee.IEXSharp.Helper;
 
-namespace IEXSharp.Service.V2.CorporateActions
+namespace IEXSharp.Service.Cloud.CorporateActions
 {
 	public class CorporateActionsService : ICorporateActionsService
 	{

@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace VSLee.IEXSharp.Model.StockFundamentals.Request
+namespace IEXSharp.Model.StockFundamentals.Request
 {
 	public enum SplitRange
 	{
