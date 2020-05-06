@@ -1,4 +1,4 @@
-﻿namespace VSLee.IEXSharp.Model.Market.Response
+﻿namespace IEXSharp.Model.Market.Response
 {
 	public class HISTResponse
 	{

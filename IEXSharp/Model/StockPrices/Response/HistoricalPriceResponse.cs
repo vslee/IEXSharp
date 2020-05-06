@@ -1,7 +1,7 @@
 using IEXSharp.Helper;
 using System.Diagnostics;
 
-namespace VSLee.IEXSharp.Model.StockPrices.Response
+namespace IEXSharp.Model.StockPrices.Response
 {
 	[DebuggerDisplay("date={date}, open={open}, close={close}, high={high}, low={low}, vol={volume}")]
 	public class HistoricalPriceResponse : ITimestamped

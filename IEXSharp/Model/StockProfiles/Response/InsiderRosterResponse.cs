@@ -1,4 +1,4 @@
-namespace VSLee.IEXSharp.Model.StockProfiles.Response
+namespace IEXSharp.Model.StockProfiles.Response
 {
 	public class InsiderRosterResponse
 	{

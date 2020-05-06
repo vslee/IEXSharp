@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace VSLee.IEXSharp.Model.StockResearch.Response
+namespace IEXSharp.Model.StockResearch.Response
 {
 	public class TechnicalIndicatorsResponse
 	{

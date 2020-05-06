@@ -1,22 +1,22 @@
-using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
-using VSLee.IEXSharp.Model.Shared.Response;
-using VSLee.IEXSharp.Model.Stock.Request;
-using VSLee.IEXSharp.Model.Stock.Response;
-using VSLee.IEXSharp.Helper;
+using IEXSharp.Model.InvestorsExchangeData.Response;
+using IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.Stock.Request;
+using IEXSharp.Model.Stock.Response;
+using IEXSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
-using VSLee.IEXSharp.Model.StockPrices.Response;
-using VSLee.IEXSharp.Model.StockPrices.Request;
-using VSLee.IEXSharp.Model.StockProfiles.Response;
-using VSLee.IEXSharp.Model.StockFundamentals.Response;
-using VSLee.IEXSharp.Model.StockFundamentals.Request;
-using VSLee.IEXSharp.Model.StockResearch.Response;
-using VSLee.IEXSharp.Model.MarketInfo.Request;
-using VSLee.IEXSharp.Model.MarketInfo.Response;
+using IEXSharp.Model.StockPrices.Response;
+using IEXSharp.Model.StockPrices.Request;
+using IEXSharp.Model.StockProfiles.Response;
+using IEXSharp.Model.StockFundamentals.Response;
+using IEXSharp.Model.StockFundamentals.Request;
+using IEXSharp.Model.StockResearch.Response;
+using IEXSharp.Model.MarketInfo.Request;
+using IEXSharp.Model.MarketInfo.Response;
 
-namespace VSLee.IEXSharp.Service.Legacy.Stock
+namespace IEXSharp.Service.Legacy.Stock
 {
 	public interface IStockService
 	{
@@ -132,7 +132,7 @@ namespace VSLee.IEXSharp.Service.Legacy.Stock
 		/// </summary>
 		/// <param name="ipoType"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IPOCalendar>> IPOCalendarAsync(IPOType ipoType);
+		Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#iex-regulation-sho-threshold-securities-list"/>

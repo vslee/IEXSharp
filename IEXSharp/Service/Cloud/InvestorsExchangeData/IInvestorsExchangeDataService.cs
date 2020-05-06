@@ -2,9 +2,9 @@ using IEXSharp.Model;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
+using IEXSharp.Model.InvestorsExchangeData.Response;
 
-namespace VSLee.IEXSharp.Service.Cloud.InvestorsExchangeData
+namespace IEXSharp.Service.Cloud.InvestorsExchangeData
 {
 	public interface IInvestorsExchangeDataService
 	{
@@ -20,7 +20,7 @@ namespace VSLee.IEXSharp.Service.Cloud.InvestorsExchangeData
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepActionAsync(IEnumerable<string> symbols);
+		Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepAuctionAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-book"/>

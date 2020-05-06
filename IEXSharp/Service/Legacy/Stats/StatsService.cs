@@ -1,5 +1,5 @@
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.InvestorsExchangeData.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
 
-namespace VSLee.IEXSharp.Service.Legacy.Stats
+namespace IEXSharp.Service.Legacy.Stats
 {
 	internal class StatsService : IStatsService
 	{

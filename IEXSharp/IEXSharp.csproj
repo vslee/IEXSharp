@@ -42,6 +42,18 @@
 		<Folder Include="Model\Shared\Request\" />
 		<Folder Include="Model\StockProfiles\Request\" />
 		<Folder Include="Model\StockResearch\Request\" />
+		<Folder Include="Service\Cloud\SocialSentiment\" />
+		<Folder Include="Service\Cloud\CeoCompensation\" />
+		<Folder Include="Service\Cloud\Treasuries\" />
+		<Folder Include="Model\SocialSentiment\" />
+		<Folder Include="Model\SocialSentiment\Request\" />
+		<Folder Include="Model\SocialSentiment\Response\" />
+		<Folder Include="Model\CeoCompensation\" />
+		<Folder Include="Model\CeoCompensation\Request\" />
+		<Folder Include="Model\CeoCompensation\Response\" />
+		<Folder Include="Model\Treasuries\" />
+		<Folder Include="Model\Treasuries\Request\" />
+		<Folder Include="Model\Treasuries\Response\" />
 	</ItemGroup>
 
 	<ItemGroup>

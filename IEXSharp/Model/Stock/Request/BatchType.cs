@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace VSLee.IEXSharp.Model.Stock.Request
+namespace IEXSharp.Model.Stock.Request
 {
 	public enum BatchType
 	{
@@ -8,13 +8,13 @@ namespace VSLee.IEXSharp.Model.Stock.Request
 		AdvancedStats,
 
 		[Description("balance-sheet")]
-		BalanceSheet,
+		BalanceSheets,
 
 		[Description("book")]
 		Book,
 
 		[Description("cash-flow")]
-		CashFlow,
+		CashFlows,
 
 		[Description("chart")]
 		Chart,
@@ -25,14 +25,15 @@ namespace VSLee.IEXSharp.Model.Stock.Request
 		[Description("delayed-quote")]
 		DelayedQuote,
 
+		/// <summary> only DividendsBasic is available in batches (not DividendsAdvanced) </summary>
 		[Description("dividends")]
-		Dividends,
+		DividendsBasic,
 
 		[Description("earnings")]
 		Earnings,
 
 		[Description("today-earnings")]
-		TodayEarnings,
+		EarningsToday,
 
 		[Description("estimates")]
 		Estimates,
@@ -44,7 +45,7 @@ namespace VSLee.IEXSharp.Model.Stock.Request
 		FundOwnership,
 
 		[Description("income")]
-		Income,
+		IncomeStatement,
 
 		[Description("insider-roster")]
 		InsiderRoster,
@@ -72,6 +73,7 @@ namespace VSLee.IEXSharp.Model.Stock.Request
 
 		[Description("news")]
 		News,
+
 		[Description("ohlc")]
 		Ohlc,
 
@@ -82,7 +84,7 @@ namespace VSLee.IEXSharp.Model.Stock.Request
 		Peers,
 
 		[Description("previous")]
-		Previous,
+		PreviousDayPrice,
 
 		[Description("price")]
 		Price,
@@ -96,8 +98,9 @@ namespace VSLee.IEXSharp.Model.Stock.Request
 		[Description("recommendation-trends")]
 		RecommendationTrends,
 
+		/// <summary> only SplitsBasic is available in batches (not SplitsAdvanced) </summary>
 		[Description("splits")]
-		Splits,
+		SplitsBasic,
 
 		[Description("volume-by-venue")]
 		VolumeByVenue,

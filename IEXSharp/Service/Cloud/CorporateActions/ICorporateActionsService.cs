@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using IEXSharp.Model.CorporateActions.Request;
 using IEXSharp.Model.CorporateActions.Response;
 
-namespace IEXSharp.Service.V2.CorporateActions
+namespace IEXSharp.Service.Cloud.CorporateActions
 {
 	public interface ICorporateActionsService
 	{

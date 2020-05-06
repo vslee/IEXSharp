@@ -1,13 +1,13 @@
-using VSLee.IEXSharp.Model.Shared.Response;
-using VSLee.IEXSharp.Model.Stock.Request;
-using VSLee.IEXSharp.Model.Stock.Response;
-using VSLee.IEXSharp.Helper;
+using IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.Stock.Request;
+using IEXSharp.Model.Stock.Response;
+using IEXSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
 
-namespace VSLee.IEXSharp.Service.Cloud.Stock
+namespace IEXSharp.Service.Cloud.Stock
 {
 	public interface IStockService
 	{
@@ -31,13 +31,6 @@ namespace VSLee.IEXSharp.Service.Cloud.Stock
 		/// <param name="last"></param>
 		/// <returns></returns>
 		Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#effective-spread"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<EffectiveSpreadResponse>>> EffectiveSpreadAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#news"/>

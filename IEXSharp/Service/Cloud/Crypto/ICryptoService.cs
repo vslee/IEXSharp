@@ -1,9 +1,9 @@
 using IEXSharp.Model;
 using System.Threading.Tasks;
 using IEXSharp.Model.Crypto;
-using VSLee.IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.Shared.Response;
 
-namespace VSLee.IEXSharp.Service.Cloud.Crypto
+namespace IEXSharp.Service.Cloud.Crypto
 {
 	public interface ICryptoService
 	{

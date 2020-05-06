@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace VSLee.IEXSharp.Model.Options.Request
+namespace IEXSharp.Model.Options.Request
 {
 	public enum OptionSide
 	{

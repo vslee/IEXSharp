@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.ForexCurrencies.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.ForexCurrencies.Response;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
 
-namespace VSLee.IEXSharp.Service.Cloud.ForexCurrencies
+namespace IEXSharp.Service.Cloud.ForexCurrencies
 {
 	internal class ForexCurrenciesService : IForexCurrenciesService
 	{

@@ -1,10 +1,10 @@
-using VSLee.IEXSharp;
-using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using NUnit.Framework;
+using IEXSharp;
 
-namespace VSLee.IEXSharpTest.Legacy
+namespace IEXSharpTest.Legacy
 {
 	public class MarketTest
 	{
@@ -163,9 +163,9 @@ namespace VSLee.IEXSharpTest.Legacy
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task DeepActionAsyncTest(params string[] symbols)
+		public async Task DeepAuctionAsyncTest(params string[] symbols)
 		{
-			var response = await prodClient.Market.DeepActionAsync(symbols);
+			var response = await prodClient.Market.DeepAuctionAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

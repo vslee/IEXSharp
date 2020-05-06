@@ -1,7 +1,7 @@
-using VSLee.IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.Shared.Response;
 using System.Collections.Generic;
 
-namespace VSLee.IEXSharp.Model.Stock.Response
+namespace IEXSharp.Model.Stock.Response
 {
 	public class BatchBySymbolLegacyResponse : BatchResponse
 	{

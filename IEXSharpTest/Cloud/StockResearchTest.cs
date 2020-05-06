@@ -1,12 +1,9 @@
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using VSLee.IEXSharp;
+using NUnit.Framework;
+using IEXSharp;
 
-namespace VSLee.IEXSharpTest.Cloud
+namespace IEXSharpTest.Cloud
 {
 	public class StockResearchResearchTest
 	{
@@ -51,7 +48,7 @@ namespace VSLee.IEXSharpTest.Cloud
 		[TestCase("FB", 2)]
 		public async Task EstimateAsyncTest(string symbol, int last)
 		{
-			var response = await sandBoxClient.StockResearch.EstimateAsync(symbol, last);
+			var response = await sandBoxClient.StockResearch.EstimatesAsync(symbol, last);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

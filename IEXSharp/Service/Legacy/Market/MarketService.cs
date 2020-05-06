@@ -1,7 +1,7 @@
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
-using VSLee.IEXSharp.Model.Market.Response;
-using VSLee.IEXSharp.Model.Stock.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.InvestorsExchangeData.Response;
+using IEXSharp.Model.Market.Response;
+using IEXSharp.Model.Stock.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -9,9 +9,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
-using VSLee.IEXSharp.Model.MarketInfo.Response;
+using IEXSharp.Model.MarketInfo.Response;
 
-namespace VSLee.IEXSharp.Service.Legacy.Market
+namespace IEXSharp.Service.Legacy.Market
 {
 	internal class MarketService : IMarketService
 	{
@@ -84,7 +84,7 @@ namespace VSLee.IEXSharp.Service.Legacy.Market
 		public async Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeBreaksAsync(IEnumerable<string> symbols)
 			=> await _executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades-breaks", symbols);
 
-		public async Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepActionAsync(IEnumerable<string> symbols)
+		public async Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepAuctionAsync(IEnumerable<string> symbols)
 		  => await _executor.SymbolsExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbols);
 
 		public async Task<IEXResponse<Dictionary<string, DeepOfficialPriceResponse>>> DeepOfficialPriceAsync(IEnumerable<string> symbols)

@@ -1,10 +1,10 @@
 using IEXSharp.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Model.Options.Request;
-using VSLee.IEXSharp.Model.Options.Response;
+using IEXSharp.Model.Options.Request;
+using IEXSharp.Model.Options.Response;
 
-namespace IEXSharp.Service.V2.Options
+namespace IEXSharp.Service.Cloud.Options
 {
 	public interface IOptionsService
 	{

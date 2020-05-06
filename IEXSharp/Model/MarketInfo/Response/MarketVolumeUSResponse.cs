@@ -1,4 +1,4 @@
-namespace VSLee.IEXSharp.Model.MarketInfo.Response
+namespace IEXSharp.Model.MarketInfo.Response
 {
 	public class MarketVolumeUSResponse
 	{

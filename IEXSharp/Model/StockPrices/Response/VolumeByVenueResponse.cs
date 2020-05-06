@@ -1,6 +1,6 @@
 using System;
 
-namespace VSLee.IEXSharp.Model.StockPrices.Response
+namespace IEXSharp.Model.StockPrices.Response
 {
 	public class VolumeByVenueResponse
 	{

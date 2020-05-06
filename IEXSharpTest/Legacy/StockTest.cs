@@ -1,16 +1,16 @@
-using VSLee.IEXSharp;
-using VSLee.IEXSharp.Model.Stock.Request;
-using NUnit.Framework;
-using VSLee.IEXSharp.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Model.StockPrices.Request;
-using VSLee.IEXSharp.Model.StockFundamentals.Request;
-using VSLee.IEXSharp.Model.MarketInfo.Request;
+using NUnit.Framework;
+using IEXSharp;
+using IEXSharp.Helper;
+using IEXSharp.Model.MarketInfo.Request;
+using IEXSharp.Model.Stock.Request;
+using IEXSharp.Model.StockFundamentals.Request;
+using IEXSharp.Model.StockPrices.Request;
 
-namespace VSLee.IEXSharpTest.Legacy
+namespace IEXSharpTest.Legacy
 {
 	public class StockTest
 	{
