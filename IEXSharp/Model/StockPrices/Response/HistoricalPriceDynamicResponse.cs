@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace VSLee.IEXSharp.Model.StockPrices.Response
+namespace IEXSharp.Model.StockPrices.Response
 {
 	public class HistoricalPriceDynamicResponse
 	{

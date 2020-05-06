@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.Shared.Response;
-using VSLee.IEXSharp.Model.StockPrices.Request;
-using VSLee.IEXSharp.Model.StockPrices.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.StockPrices.Request;
+using IEXSharp.Model.StockPrices.Response;
 
-namespace IEXSharp.Service.V2.StockPrices
+namespace IEXSharp.Service.Cloud.StockPrices
 {
 	public interface IStockPricesService
 	{

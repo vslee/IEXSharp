@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Model.StockProfiles.Response;
+using IEXSharp.Model.StockProfiles.Response;
 
-namespace IEXSharp.Service.V2.StockProfiles
+namespace IEXSharp.Service.Cloud.StockProfiles
 {
 	public interface IStockProfilesService
 	{

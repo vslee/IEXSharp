@@ -1,8 +1,8 @@
 using IEXSharp.Model;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Model.APISystemMetadata.Response;
+using IEXSharp.Model.APISystemMetadata.Response;
 
-namespace VSLee.IEXSharp.Service.Cloud.APISystemMetadata
+namespace IEXSharp.Service.Cloud.APISystemMetadata
 {
 	public interface IAPISystemMetadataService
 	{

@@ -1,17 +1,15 @@
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.Shared.Response;
-using VSLee.IEXSharp.Model.Stock.Request;
-using VSLee.IEXSharp.Model.Stock.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model;
+using IEXSharp.Model.Stock.Request;
+using IEXSharp.Model.Stock.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IEXSharp.Helper;
-using IEXSharp.Model;
 
-namespace VSLee.IEXSharp.Service.Cloud.Stock
+namespace IEXSharp.Service.Cloud.Stock
 {
 	internal class StockService : IStockService
 	{

@@ -1,6 +1,6 @@
 using System;
 
-namespace VSLee.IEXSharp.Model.StockFundamentals.Response
+namespace IEXSharp.Model.StockFundamentals.Response
 {
 	public class SplitLegacy
 	{

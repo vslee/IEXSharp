@@ -1,6 +1,6 @@
 using System;
 
-namespace VSLee.IEXSharp.Model.ReferenceData.Response
+namespace IEXSharp.Model.ReferenceData.Response
 {
 	public class SymbolCryptoResponse
 	{

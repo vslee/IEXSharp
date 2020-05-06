@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using VSLee.IEXSharp;
-using VSLee.IEXSharp.Model.Stock.Request;
+using IEXSharp;
+using IEXSharp.Model.Stock.Request;
 
 namespace IEXSharpTest.Cloud
 {

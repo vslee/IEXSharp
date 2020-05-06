@@ -1,6 +1,6 @@
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.AlternativeData.Response;
-using VSLee.IEXSharp.Model.Shared.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.AlternativeData.Response;
+using IEXSharp.Model.Shared.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
 
-namespace VSLee.IEXSharp.Service.Cloud.AlternativeData
+namespace IEXSharp.Service.Cloud.AlternativeData
 {
 	internal class AlternativeDataService : IAlternativeDataService
 	{

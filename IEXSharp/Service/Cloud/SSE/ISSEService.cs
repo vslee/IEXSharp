@@ -1,10 +1,10 @@
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.Shared.Response;
-using VSLee.IEXSharp.Model.Stock.Request;
+using IEXSharp.Helper;
+using IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.Stock.Request;
 using System.Collections.Generic;
 using IEXSharp.Model.Crypto;
 
-namespace VSLee.IEXSharp.Service.Cloud.Stock
+namespace IEXSharp.Service.Cloud.Stock
 {
 	public interface ISSEService
 	{

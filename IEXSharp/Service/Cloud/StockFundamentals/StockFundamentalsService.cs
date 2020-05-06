@@ -1,16 +1,13 @@
+using IEXSharp.Helper;
 using IEXSharp.Model;
-using System;
+using IEXSharp.Model.StockFundamentals.Request;
+using IEXSharp.Model.StockFundamentals.Response;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using IEXSharp.Helper;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.StockFundamentals.Request;
-using VSLee.IEXSharp.Model.StockFundamentals.Response;
 
-namespace IEXSharp.Service.V2.StockFundamentals
+namespace IEXSharp.Service.Cloud.StockFundamentals
 {
 	public class StockFundamentalsService : IStockFundamentalsService
 	{

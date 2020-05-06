@@ -1,4 +1,4 @@
-﻿namespace VSLee.IEXSharp.Model.APISystemMetadata.Response
+﻿namespace IEXSharp.Model.APISystemMetadata.Response
 {
 	public class StatusResponse
 	{

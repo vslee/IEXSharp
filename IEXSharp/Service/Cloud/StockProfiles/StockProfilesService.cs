@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.StockProfiles.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.StockProfiles.Response;
 
-namespace IEXSharp.Service.V2.StockProfiles
+namespace IEXSharp.Service.Cloud.StockProfiles
 {
 	public class StockProfilesService : IStockProfilesService
 	{

@@ -1,13 +1,13 @@
-using VSLee.IEXSharp.Model.InvestorsExchangeData.Response;
-using VSLee.IEXSharp.Model.Market.Response;
-using VSLee.IEXSharp.Model.Stock.Response;
+using IEXSharp.Model.InvestorsExchangeData.Response;
+using IEXSharp.Model.Market.Response;
+using IEXSharp.Model.Stock.Response;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
-using VSLee.IEXSharp.Model.MarketInfo.Response;
+using IEXSharp.Model.MarketInfo.Response;
 
-namespace VSLee.IEXSharp.Service.Legacy.Market
+namespace IEXSharp.Service.Legacy.Market
 {
 	public interface IMarketService
 	{

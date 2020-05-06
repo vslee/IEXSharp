@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace VSLee.IEXSharp.Model.StockPrices.Request
+namespace IEXSharp.Model.StockPrices.Request
 {
 	public enum ChartRange
 	{

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Helper;
+using IEXSharp.Helper;
 
-namespace IEXSharp.Service.V2.Options
+namespace IEXSharp.Service.Cloud.Options
 {
 	public class SocialSentimentService : ISocialSentimentService
 	{

@@ -5,10 +5,10 @@ using System.Collections.Specialized;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.StockResearch.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.StockResearch.Response;
 
-namespace IEXSharp.Service.V2.StockResearch
+namespace IEXSharp.Service.Cloud.StockResearch
 {
 	public class StockResearchService : IStockResearchService
 	{

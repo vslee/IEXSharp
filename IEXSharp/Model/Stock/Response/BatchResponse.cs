@@ -1,12 +1,12 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using VSLee.IEXSharp.Model.Shared.Response;
-using VSLee.IEXSharp.Model.StockFundamentals.Response;
-using VSLee.IEXSharp.Model.StockPrices.Response;
-using VSLee.IEXSharp.Model.StockProfiles.Response;
-using VSLee.IEXSharp.Model.StockResearch.Response;
+using IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.StockFundamentals.Response;
+using IEXSharp.Model.StockPrices.Response;
+using IEXSharp.Model.StockProfiles.Response;
+using IEXSharp.Model.StockResearch.Response;
 
-namespace VSLee.IEXSharp.Model.Stock.Response
+namespace IEXSharp.Model.Stock.Response
 {
 	public class BatchResponse
 	{

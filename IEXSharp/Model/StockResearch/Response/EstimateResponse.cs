@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using VSLee.IEXSharp.Model.Stock.Response;
+using IEXSharp.Model.Stock.Response;
 
-namespace VSLee.IEXSharp.Model.StockResearch.Response
+namespace IEXSharp.Model.StockResearch.Response
 {
 	public class EstimatesResponse
 	{

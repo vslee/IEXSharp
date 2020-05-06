@@ -1,10 +1,10 @@
 using IEXSharp.Model;
 using System.Net.Http;
 using System.Threading.Tasks;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.APISystemMetadata.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.APISystemMetadata.Response;
 
-namespace VSLee.IEXSharp.Service.Cloud.APISystemMetadata
+namespace IEXSharp.Service.Cloud.APISystemMetadata
 {
 	internal class APISystemMetadata : IAPISystemMetadataService
 	{

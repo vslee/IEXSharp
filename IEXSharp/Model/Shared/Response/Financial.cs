@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VSLee.IEXSharp.Model.Shared.Response
+namespace IEXSharp.Model.Shared.Response
 {
 	public class Financial
 	{

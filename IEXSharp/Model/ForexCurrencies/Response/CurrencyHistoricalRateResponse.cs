@@ -1,6 +1,6 @@
 using System;
 
-namespace VSLee.IEXSharp.Model.ForexCurrencies.Response
+namespace IEXSharp.Model.ForexCurrencies.Response
 {
 	public class CurrencyHistoricalRateResponse : CurrencyRateResponse
 	{

@@ -1,4 +1,4 @@
-namespace VSLee.IEXSharp.Model.StockResearch.Response
+namespace IEXSharp.Model.StockResearch.Response
 {
 	public class InstitutionalOwnershipResponse
 	{

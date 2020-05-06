@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace VSLee.IEXSharp.Model.Account.Request
+namespace IEXSharp.Model.Account.Request
 {
 	public enum UsageType
 	{

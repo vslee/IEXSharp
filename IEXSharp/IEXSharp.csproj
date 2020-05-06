@@ -18,8 +18,8 @@
 		<PackageTags>IEX Cloud Stock API Rest SSE dotnet finance-api market-data</PackageTags>
 		<PackageReleaseNotes>https://github.com/vslee/IEXSharp/releases</PackageReleaseNotes>
 		<Configurations>Debug;Release;PreRelease</Configurations>
-		<PackageId>VSLee.IEXSharp</PackageId>
-		<Product>VSLee.IEXSharp</Product>
+		<PackageId>IEXSharp</PackageId>
+		<Product>IEXSharp</Product>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<Copyright>2019 Victor Lee</Copyright>
 	</PropertyGroup>

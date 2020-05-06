@@ -1,11 +1,10 @@
+using IEXSharp;
+using IEXSharp.Helper;
+using IEXSharp.Model.StockPrices.Request;
+using NUnit.Framework;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using IEXSharp.Helper;
-using NUnit.Framework;
-using VSLee.IEXSharp;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.StockPrices.Request;
 
 namespace IEXSharpTest.Cloud
 {
