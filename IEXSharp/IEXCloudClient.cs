@@ -48,6 +48,9 @@ namespace VSLee.IEXSharp
 		private ICorporateActionsService corporateActionsService;
 		private IMarketInfoService marketInfoService;
 		private IOptionsService optionsService;
+		private ICeoCompensationService ceoCompensationService;
+		private ISocialSentimentService socialSentimentService;
+		private ITreasuriesService treasuriesService;
 
 		public IAccountService Account => accountService ??	(accountService =
 			new AccountService(client, secretToken, publishableToken, signRequest));
@@ -95,8 +98,17 @@ namespace VSLee.IEXSharp
 		public IMarketInfoService MarketInfoService => marketInfoService
 			?? (marketInfoService = new MarketInfoService(client, secretToken, publishableToken, signRequest));
 
-    public IOptionsService Options => optionsService
+		public IOptionsService Options => optionsService
 			?? (optionsService = new OptionsService(client, secretToken, publishableToken, signRequest));
+
+		public ICeoCompensationService CeoCompensation => ceoCompensationService
+			?? (ceoCompensationService = new CeoCompensationService(client, secretToken, publishableToken, signRequest));
+
+		public ISocialSentimentService SocialSentiment => socialSentimentService
+			?? (socialSentimentService = new SocialSentimentService(client, secretToken, publishableToken, signRequest));
+
+		public ITreasuriesService Treasuries => treasuriesService
+			?? (treasuriesService = new TreasuriesService(client, secretToken, publishableToken, signRequest));
 
 		/// <summary>
 		/// create a new IEXCloudClient

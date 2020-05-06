@@ -67,11 +67,12 @@ namespace VSLee.IEXSharp.Helper
 						var token = JToken.Parse(content);
 						return new IEXResponse<ReturnType>() { ErrorMessage = token["error"].ToString() };
 					}
-					else if (content == "Forbidden" || content == "Not found")
+					else if (content.ToLower().Equals("forbidden") || content.ToLower().Equals("not found"))
 					{ // "Forbidden" or "Not found"
 						return new IEXResponse<ReturnType>() { ErrorMessage = content };
 					}
-					else {
+					else
+					{
 						return new IEXResponse<ReturnType>() {
 							Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
 						};
