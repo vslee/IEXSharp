@@ -29,7 +29,7 @@ namespace IEXSharp.Service.V2.StockProfiles
 			await executor.SymbolExecuteAsync<IEnumerable<InsiderSummaryResponse>>("stock/[symbol]/insider-summary",
 				symbol);
 
-		public async Task<IEXResponse<IEnumerable<InsiderTransactionResponse>>> InsiderTransactionAsync(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<InsiderTransactionResponse>>> InsiderTransactionsAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<InsiderTransactionResponse>>(
 				"stock/[symbol]/insider-transactions", symbol);
 

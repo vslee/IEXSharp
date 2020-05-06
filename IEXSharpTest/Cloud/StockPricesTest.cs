@@ -133,7 +133,7 @@ namespace IEXSharpTest.Cloud
 		[TestCase("FB")]
 		public async Task IntradayPriceAsyncTest(string symbol)
 		{
-			var response = await sandBoxClient.StockPrices.IntradayPriceAsync(symbol);
+			var response = await sandBoxClient.StockPrices.IntradayPricesAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

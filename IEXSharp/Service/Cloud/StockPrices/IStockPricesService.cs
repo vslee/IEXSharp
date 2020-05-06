@@ -53,11 +53,11 @@ namespace IEXSharp.Service.V2.StockPrices
 		Task<IEXResponse<HistoricalPriceDynamicResponse>> HistoricalPriceDynamicAsync(string symbol, QueryStringBuilder qsb = null);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#institutional-ownership"/>
+		/// <see cref="https://iexcloud.io/docs/api/#intraday-prices"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<IntradayPriceResponse>>> IntradayPriceAsync(string symbol);
+		Task<IEXResponse<IEnumerable<IntradayPriceResponse>>> IntradayPricesAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#largest-trades"/>

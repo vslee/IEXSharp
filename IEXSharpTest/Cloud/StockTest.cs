@@ -20,6 +20,8 @@ namespace IEXSharpTest.Cloud
 		[Test]
 		[TestCase("AAPL", new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote })]
 		[TestCase("FB", new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote }, "1m", 5)]
+		[TestCase("AAPL", new BatchType[] { BatchType.Peers, BatchType.AdvancedStats, BatchType.PreviousDayPrice })]
+		[TestCase("AAPL", new BatchType[] { BatchType.SplitsBasic, BatchType.DividendsBasic })]
 		public async Task BatchBySymbolAsyncTest(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
 			var response = await sandBoxClient.Stock.BatchBySymbolAsync(symbol, types, range, last);
@@ -31,6 +33,8 @@ namespace IEXSharpTest.Cloud
 		[Test]
 		[TestCase(new string[] { "AAPL" }, new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote })]
 		[TestCase(new string[] { "AAPL", "FB" }, new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote }, "1m", 2)]
+		[TestCase("AAPL", new BatchType[] { BatchType.Peers, BatchType.AdvancedStats, BatchType.PreviousDayPrice })]
+		[TestCase("AAPL", new BatchType[] { BatchType.SplitsBasic, BatchType.DividendsBasic })]
 		public async Task BatchByMarketAsyncTest(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
 			var response = await sandBoxClient.Stock.BatchByMarketAsync(symbols, types, range, last);
@@ -39,7 +43,7 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count, 1);
 			Assert.IsNotNull(response);
-			Assert.IsNotNull(response.Data[symbols.ToList()[0]]);
+			Assert.IsNotNull(response.Data[symbols.First()]);
 		}
 		
 		[Test]

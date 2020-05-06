@@ -58,7 +58,7 @@ namespace IEXSharpTest.Cloud
 		[TestCase("FB")]
 		public async Task InsiderTransactionAsyncTest(string symbol)
 		{
-			var response = await sandBoxClient.StockProfiles.InsiderTransactionAsync(symbol);
+			var response = await sandBoxClient.StockProfiles.InsiderTransactionsAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

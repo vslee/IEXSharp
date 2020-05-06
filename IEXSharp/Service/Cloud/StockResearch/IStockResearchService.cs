@@ -29,7 +29,7 @@ namespace IEXSharp.Service.V2.StockResearch
 		/// <param name="symbol"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<IEXResponse<EstimateResponse>> EstimateAsync(string symbol, int last = 1);
+		Task<IEXResponse<EstimatesResponse>> EstimatesAsync(string symbol, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#estimates"/>

@@ -74,7 +74,7 @@ namespace IEXSharp.Service.V2.StockPrices
 			return await executor.ExecuteAsync<HistoricalPriceDynamicResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IEnumerable<IntradayPriceResponse>>> IntradayPriceAsync(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<IntradayPriceResponse>>> IntradayPricesAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<IntradayPriceResponse>>("stock/[symbol]/intraday-prices", symbol);
 
 		public async Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol) =>

@@ -25,8 +25,8 @@ namespace IEXSharp.Service.V2.StockResearch
 		public async Task<IEXResponse<IEnumerable<AnalystRecommendationsResponse>>> AnalystRecommendationsAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<AnalystRecommendationsResponse>>("stock/[symbol]/recommendation-trends", symbol);
 
-		public async Task<IEXResponse<EstimateResponse>> EstimateAsync(string symbol, int last = 1) =>
-			await executor.SymbolLastExecuteAsync<EstimateResponse>("stock/[symbol]/estimates/[last]", symbol, last);
+		public async Task<IEXResponse<EstimatesResponse>> EstimatesAsync(string symbol, int last = 1) =>
+			await executor.SymbolLastExecuteAsync<EstimatesResponse>("stock/[symbol]/estimates/[last]", symbol, last);
 
 		public async Task<IEXResponse<string>> EstimateFieldAsync(string symbol, string field, int last = 1) =>
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/estimates/[last]/[field]", symbol, field, last);
