@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using VSLee.IEXSharp;
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.MarketInfo.Request;
-using VSLee.IEXSharp.Model.Stock.Request;
-using VSLee.IEXSharp.Model.StockFundamentals.Request;
-using VSLee.IEXSharp.Model.StockPrices.Request;
+using IEXSharp;
+using IEXSharp.Helper;
+using IEXSharp.Model.MarketInfo.Request;
+using IEXSharp.Model.Stock.Request;
+using IEXSharp.Model.StockFundamentals.Request;
+using IEXSharp.Model.StockPrices.Request;
 
 namespace IEXSharpTest.Legacy
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace VSLee.IEXSharp.Model.Stock.Response
+namespace IEXSharp.Model.Stock.Response
 {
 	public class RelevantResponse
 	{

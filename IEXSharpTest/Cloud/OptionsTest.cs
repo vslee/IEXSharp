@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
-using VSLee.IEXSharp;
-using VSLee.IEXSharp.Model.Options.Request;
+using IEXSharp;
+using IEXSharp.Model.Options.Request;
 
 namespace IEXSharpTest.Cloud
 {

@@ -2,7 +2,7 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Web;
 
-namespace VSLee.IEXSharp.Helper
+namespace IEXSharp.Helper
 {
 	/// <summary>
 	/// Simple query string builder

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
 
-namespace VSLee.IEXSharp.Helper
+namespace IEXSharp.Helper
 {
 	internal class ExecutorSSE : ExecutorBase
 	{

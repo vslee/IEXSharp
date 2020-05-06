@@ -1,15 +1,14 @@
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.ReferenceData.Request;
-using VSLee.IEXSharp.Model.ReferenceData.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model;
+using IEXSharp.Model.ReferenceData.Request;
+using IEXSharp.Model.ReferenceData.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IEXSharp.Helper;
-using IEXSharp.Model;
 
-namespace VSLee.IEXSharp.Service.Cloud.ReferenceData
+namespace IEXSharp.Service.Cloud.ReferenceData
 {
 	internal class ReferenceDataService : IReferenceDataService
 	{

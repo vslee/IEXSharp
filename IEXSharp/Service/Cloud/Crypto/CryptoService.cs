@@ -1,11 +1,11 @@
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.Shared.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model.Shared.Response;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
 using IEXSharp.Model.Crypto;
 
-namespace VSLee.IEXSharp.Service.Cloud.Crypto
+namespace IEXSharp.Service.Cloud.Crypto
 {
 	internal class CryptoService : ICryptoService
 	{

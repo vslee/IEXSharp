@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using VSLee.IEXSharp.Model.Stock.Response;
+using IEXSharp.Model.Stock.Response;
 
-namespace VSLee.IEXSharp.Model.MarketInfo.Response
+namespace IEXSharp.Model.MarketInfo.Response
 {
 	public class IPOCalendarResponse
 	{

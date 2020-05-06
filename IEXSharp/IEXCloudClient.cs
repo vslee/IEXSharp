@@ -1,22 +1,22 @@
+using IEXSharp.Service.Cloud.Account;
+using IEXSharp.Service.Cloud.AlternativeData;
+using IEXSharp.Service.Cloud.APISystemMetadata;
+using IEXSharp.Service.Cloud.CorporateActions;
+using IEXSharp.Service.Cloud.Crypto;
+using IEXSharp.Service.Cloud.ForexCurrencies;
+using IEXSharp.Service.Cloud.InvestorsExchangeData;
 using IEXSharp.Service.Cloud.MarketInfo;
-using IEXSharp.Service.V2.CorporateActions;
-using IEXSharp.Service.V2.Options;
-using IEXSharp.Service.V2.StockFundamentals;
-using IEXSharp.Service.V2.StockPrices;
-using IEXSharp.Service.V2.StockProfiles;
-using IEXSharp.Service.V2.StockResearch;
+using IEXSharp.Service.Cloud.Options;
+using IEXSharp.Service.Cloud.ReferenceData;
+using IEXSharp.Service.Cloud.Stock;
+using IEXSharp.Service.Cloud.StockFundamentals;
+using IEXSharp.Service.Cloud.StockPrices;
+using IEXSharp.Service.Cloud.StockProfiles;
+using IEXSharp.Service.Cloud.StockResearch;
 using System;
 using System.Net.Http;
-using VSLee.IEXSharp.Service.Cloud.Account;
-using VSLee.IEXSharp.Service.Cloud.AlternativeData;
-using VSLee.IEXSharp.Service.Cloud.APISystemMetadata;
-using VSLee.IEXSharp.Service.Cloud.Crypto;
-using VSLee.IEXSharp.Service.Cloud.ForexCurrencies;
-using VSLee.IEXSharp.Service.Cloud.InvestorsExchangeData;
-using VSLee.IEXSharp.Service.Cloud.ReferenceData;
-using VSLee.IEXSharp.Service.Cloud.Stock;
 
-namespace VSLee.IEXSharp
+namespace IEXSharp
 {
 	/// <summary> https://iexcloud.io/docs/api/#api-versioning </summary>
 	public enum APIVersion

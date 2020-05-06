@@ -1,14 +1,13 @@
-using VSLee.IEXSharp.Helper;
-using VSLee.IEXSharp.Model.Account.Request;
-using VSLee.IEXSharp.Model.Account.Response;
+using IEXSharp.Helper;
+using IEXSharp.Model;
+using IEXSharp.Model.Account.Request;
+using IEXSharp.Model.Account.Response;
 using System;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
-using IEXSharp.Helper;
-using IEXSharp.Model;
 
-namespace VSLee.IEXSharp.Service.Cloud.Account
+namespace IEXSharp.Service.Cloud.Account
 {
 	internal class AccountService : IAccountService
 	{

@@ -1,12 +1,13 @@
 using IEXSharp.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace VSLee.IEXSharp.Helper
+namespace IEXSharp.Helper
 {
 	internal class ExecutorREST : ExecutorBase
 	{
@@ -67,7 +68,8 @@ namespace VSLee.IEXSharp.Helper
 						var token = JToken.Parse(content);
 						return new IEXResponse<ReturnType>() { ErrorMessage = token["error"].ToString() };
 					}
-					else if (content.ToLower().Equals("forbidden") || content.ToLower().Equals("not found"))
+					else if (content.Equals("forbidden", StringComparison.InvariantCultureIgnoreCase)
+						|| content.Equals("not found", StringComparison.InvariantCultureIgnoreCase))
 					{ // "Forbidden" or "Not found"
 						return new IEXResponse<ReturnType>() { ErrorMessage = content };
 					}

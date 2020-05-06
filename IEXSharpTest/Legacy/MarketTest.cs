@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
-using VSLee.IEXSharp;
+using IEXSharp;
 
 namespace IEXSharpTest.Legacy
 {

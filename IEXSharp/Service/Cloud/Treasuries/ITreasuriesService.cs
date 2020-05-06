@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using IEXSharp.Model.Treasuries.Request;
 using IEXSharp.Model.Treasuries.Response;
 
-namespace IEXSharp.Service.V2.Options
+namespace IEXSharp.Service.Cloud.Options
 {
 	public interface ITreasuriesService
 	{
