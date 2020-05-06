@@ -9,7 +9,7 @@ IEX Cloud API for C# and other .net languages. Supports SSE streaming
 ## Usage
 ![](https://github.com/vslee/iexsharp/workflows/prerelease%20NuGet/badge.svg) Prereleases are on [GH Packages](https://github.com/vslee/IEXSharp/packages). A new prerelease is built automatically after every commit. 
 
-[![NuGet Badge](https://buildstats.info/nuget/IEXSharp)](https://www.nuget.org/packages/IEXSharp/) Releases are on [NuGet](https://www.nuget.org/packages/IEXSharp/)
+[![NuGet Badge](https://buildstats.info/nuget/VSLee.IEXSharp)](https://www.nuget.org/packages/VSLee.IEXSharp/) Releases are on [NuGet](https://www.nuget.org/packages/VSLee.IEXSharp/)
 
 ### IEX Cloud
 ```c#
