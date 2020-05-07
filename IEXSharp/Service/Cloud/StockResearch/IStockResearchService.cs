@@ -18,6 +18,7 @@ namespace IEXSharp.Service.Cloud.StockResearch
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#analyst-recommendations"/>
+		/// (previously called Recommendation Trends, but renamed by IEX. Endpoint URL is still the same though.
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
