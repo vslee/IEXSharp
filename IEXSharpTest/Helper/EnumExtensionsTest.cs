@@ -45,5 +45,12 @@ namespace IEXSharpTest.Helper
 			var result = input.GetEnumFromDescription<BatchType>();
 			Assert.AreEqual(expected, result);
 		}
+
+		[Test]
+		[TestCase("gibberish", BatchType.AdvancedStats)]
+		public void GetEnumFromDescriptionFailure(string input, Enum expected)
+		{
+			Assert.Throws<Exception>(code: () => input.GetEnumFromDescription<BatchType>());
+		}
 	}
 }

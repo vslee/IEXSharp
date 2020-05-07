@@ -36,7 +36,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Model\AlternativeData\Request\" />
 		<Folder Include="Model\ForexCurrencies\Request\" />
 		<Folder Include="Model\InvestorsExchangeData\Request\" />
 		<Folder Include="Model\Shared\Request\" />
