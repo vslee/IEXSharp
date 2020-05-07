@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using IEXSharp.Model.InvestorsExchangeData.Response;
-using IEXSharp.Model.Shared.Response;
-
 namespace IEXSharp.Model.Options.Response
 {
 	public class OptionResponse

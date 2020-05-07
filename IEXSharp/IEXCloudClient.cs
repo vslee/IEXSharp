@@ -17,6 +17,10 @@ using IEXSharp.Service.Cloud.StockProfiles;
 using IEXSharp.Service.Cloud.StockResearch;
 using System;
 using System.Net.Http;
+using IEXSharp.Service.Cloud.CeoCompensation;
+using IEXSharp.Service.Cloud.SocialSentiment;
+using IEXSharp.Service.Cloud.SSE;
+using IEXSharp.Service.Cloud.Treasuries;
 
 namespace IEXSharp
 {

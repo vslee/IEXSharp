@@ -2,7 +2,6 @@ using LaunchDarkly.EventSource;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Text;
 
 namespace IEXSharp.Helper
 {
