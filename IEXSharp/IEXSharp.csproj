@@ -56,6 +56,10 @@
 		<Folder Include="Service\Cloud\News\" />
 		<Folder Include="Model\News\" />
 		<Folder Include="Model\News\Response\" />
+		<Folder Include="Model\Commodities\" />
+		<Folder Include="Model\Commodities\Request\" />
+		<Folder Include="Model\Commodities\Response\" />
+		<Folder Include="Service\Cloud\Commodities\" />
 	</ItemGroup>
 
 	<ItemGroup>

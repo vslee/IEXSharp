@@ -81,7 +81,7 @@ namespace IEXSharp.Model.Stock.Response
 		public Quote Quote { get; set; }
 
 		[JsonProperty("recommendation-trends")]
-		public List<RecommendationTrendResponse> RecommendationTrends { get; set; }
+		public List<AnalystRecommendationsResponse> RecommendationTrends { get; set; }
 
 		/// <summary> only SplitsBasic is available in batches (not SplitsAdvanced) </summary>
 		[JsonProperty("splits")]

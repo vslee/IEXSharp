@@ -1,3 +1,4 @@
+using IEXSharp.Helper;
 using IEXSharp.Model;
 using IEXSharp.Model.SocialSentiment.Response;
 using System.Collections.Generic;
@@ -7,6 +8,13 @@ namespace IEXSharp.Service.Cloud.Options
 {
 	public interface ISocialSentimentService
 	{
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#streaming-news"/>
+		/// </summary>
+		/// <param name="symbols">One or more stock symbols.</param>
+		/// <returns></returns>
+		SSEClient<SentimentResponse> SubscribeToSentiment(IEnumerable<string> symbols);
+
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#social-sentiment"/>
 		/// </summary>

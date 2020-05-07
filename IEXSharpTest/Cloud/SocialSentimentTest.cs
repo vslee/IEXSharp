@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 using IEXSharp;
+using System.Linq;
 
 namespace IEXSharpTest.Cloud
 {
@@ -12,6 +13,27 @@ namespace IEXSharpTest.Cloud
 		public void Setup()
 		{
 			sandBoxClient = new IEXCloudClient(publishableToken: TestGlobal.pk, secretToken: TestGlobal.sk, signRequest: false, useSandBox: true);
+		}
+
+		[Test]
+		[TestCase(new object[] { "AAPL" })]
+		[TestCase(new object[] { "AAPL", "FB" })]
+		public async Task StreamingSentimentTest(object[] symbols)
+		{
+			using (var sseClient = sandBoxClient.SocialSentiment.SubscribeToSentiment(symbols.Cast<string>()))
+			{
+				sseClient.Error += (s, e) =>
+				{
+					sseClient.Close();
+					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+				};
+				sseClient.MessageReceived += (s, m) =>
+				{
+					sseClient.Close();
+					Assert.Pass(m.ToString());
+				};
+				await sseClient.StartAsync();
+			}
 		}
 
 		[Test]
@@ -45,12 +67,12 @@ namespace IEXSharpTest.Cloud
 		[TestCase("FB")]
 		public async Task GetSocialSentimentByMinuteTest(string symbol)
 		{
-			var response = await sandBoxClient.SocialSentiment.SentimentByDayAsync(symbol);
+			var response = await sandBoxClient.SocialSentiment.SentimentByMinuteAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.sentiment);
-			Assert.IsNotNull(response.Data.totalScores);
+			Assert.IsNotNull(response.Data.FirstOrDefault()?.sentiment);
+			Assert.IsNotNull(response.Data.FirstOrDefault()?.totalScores);
 		}
 
 		[Test]
@@ -58,12 +80,12 @@ namespace IEXSharpTest.Cloud
 		[TestCase("FB", "20200505")]
 		public async Task GetSocialSentimentByMinuteTest(string symbol, string date)
 		{
-			var response = await sandBoxClient.SocialSentiment.SentimentByDayAsync(symbol, date);
+			var response = await sandBoxClient.SocialSentiment.SentimentByMinuteAsync(symbol, date);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.sentiment);
-			Assert.IsNotNull(response.Data.totalScores);
+			Assert.IsNotNull(response.Data.FirstOrDefault()?.sentiment);
+			Assert.IsNotNull(response.Data.FirstOrDefault()?.totalScores);
 		}
 	}
 }
