@@ -36,7 +36,7 @@ namespace IEXSharp.Service.Cloud.Options
 			const string urlPattern = "stock/[symbol]/options/[expiration]/[optionSide]";
 
 			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "expiration", expiration }, { "optionSide", optionSide.GetDescription() } };
+			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "expiration", expiration }, { "optionSide", optionSide.GetDescriptionFromEnum() } };
 
 			return await executor.ExecuteAsync<IEnumerable<OptionResponse>>(urlPattern, pathNvc, qsb);
 		}

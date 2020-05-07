@@ -38,7 +38,7 @@ namespace IEXSharp.Service.Cloud.Stock
 			var qsType = new List<string>();
 			foreach (var type in types)
 			{
-				qsType.Add(type.GetDescription());
+				qsType.Add(type.GetDescriptionFromEnum());
 			}
 
 			var qsb = new QueryStringBuilder();
@@ -72,7 +72,7 @@ namespace IEXSharp.Service.Cloud.Stock
 			var qsType = new List<string>();
 			foreach (var type in types)
 			{
-				qsType.Add(type.GetDescription());
+				qsType.Add(type.GetDescriptionFromEnum());
 			}
 
 			var qsb = new QueryStringBuilder();

@@ -24,7 +24,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			const string urlPattern = "stock/[symbol]/balance-sheet/[last]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.GetDescription());
+			qsb.Add("period", period.GetDescriptionFromEnum());
 
 			var pathNvc = new NameValueCollection
 			{
@@ -41,7 +41,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			const string urlPattern = "stock/[symbol]/balance-sheet/[last]/[field]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.GetDescription());
+			qsb.Add("period", period.GetDescriptionFromEnum());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
@@ -52,7 +52,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			const string urlPattern = "stock/[symbol]/cash-flow/[last]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.GetDescription());
+			qsb.Add("period", period.GetDescriptionFromEnum());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
@@ -65,7 +65,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			const string urlPattern = "stock/[symbol]/cash-flow/[last]/[field]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.GetDescription());
+			qsb.Add("period", period.GetDescriptionFromEnum());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
@@ -80,7 +80,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 
 			var pathNvc = new NameValueCollection
 			{
-				{"symbol", symbol}, {"range", range.GetDescription()}
+				{"symbol", symbol}, {"range", range.GetDescriptionFromEnum()}
 			};
 
 			return await executor.ExecuteAsync<IEnumerable<DividendBasicResponse>>(urlPattern, pathNvc, qsb);
@@ -107,7 +107,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			const string urlPattern = "stock/[symbol]/income/[last]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.GetDescription());
+			qsb.Add("period", period.GetDescriptionFromEnum());
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
@@ -132,7 +132,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 
 			var qsb = new QueryStringBuilder();
 
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescription() } };
+			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescriptionFromEnum() } };
 
 			return await executor.ExecuteAsync<IEnumerable<SplitBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
