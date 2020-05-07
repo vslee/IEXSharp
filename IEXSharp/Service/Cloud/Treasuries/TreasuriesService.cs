@@ -19,7 +19,7 @@ namespace IEXSharp.Service.Cloud.Options
 
 		public async Task<IEXResponse<decimal>> DataPointAsync(TreasuryRateSymbol symbol)
 		{
-			var returnValue = await executor.SymbolExecuteAsync<string>("data-points/market/[symbol]", symbol.GetDescription());
+			var returnValue = await executor.SymbolExecuteAsync<string>("data-points/market/[symbol]", symbol.GetDescriptionFromEnum());
 			if (returnValue.ErrorMessage != null)
 				return new IEXResponse<decimal>() { ErrorMessage = returnValue.ErrorMessage };
 			else
@@ -27,6 +27,6 @@ namespace IEXSharp.Service.Cloud.Options
 		}
 
 		public async Task<IEXResponse<IEnumerable<TreasuryResponse>>> TimeSeriesAsync(TreasuryRateSymbol symbol) =>
-			await executor.SymbolExecuteAsync<IEnumerable<TreasuryResponse>>("time-series/treasury/[symbol]", symbol.GetDescription());
+			await executor.SymbolExecuteAsync<IEnumerable<TreasuryResponse>>("time-series/treasury/[symbol]", symbol.GetDescriptionFromEnum());
 	}
 }

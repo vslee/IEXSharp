@@ -134,7 +134,7 @@ namespace IEXSharp.Service.Cloud.CorporateActions
 
 			if (range != null)
 			{
-				queryStringBuilder.Add("range", range.GetDescription());
+				queryStringBuilder.Add("range", range.GetDescriptionFromEnum());
 			}
 
 			if (calendar)

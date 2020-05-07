@@ -142,7 +142,7 @@ namespace IEXSharp.Service.Legacy.Stock
 			var pathNvc = new NameValueCollection
 			{
 				{"symbol", symbol},
-				{"range", range.GetDescription()},
+				{"range", range.GetDescriptionFromEnum()},
 				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
 			};
 
@@ -170,7 +170,7 @@ namespace IEXSharp.Service.Legacy.Stock
 
 			var qsb = new QueryStringBuilder();
 
-			var pathNvc = new NameValueCollection { { "collectionType", collection.GetDescription() } };
+			var pathNvc = new NameValueCollection { { "collectionType", collection.GetDescriptionFromEnum() } };
 
 			return await _executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
 		}
@@ -192,7 +192,7 @@ namespace IEXSharp.Service.Legacy.Stock
 
 			var pathNvc = new NameValueCollection
 			{
-				{"symbol", symbol}, {"range", range.GetDescription()}
+				{"symbol", symbol}, {"range", range.GetDescriptionFromEnum()}
 			};
 
 			return await _executor.ExecuteAsync<IEnumerable<DividendV1Response>>(urlPattern, pathNvc, qsb);
@@ -213,7 +213,7 @@ namespace IEXSharp.Service.Legacy.Stock
 			const string urlPattern = "stock/[symbol]/financials";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.GetDescription());
+			qsb.Add("period", period.GetDescriptionFromEnum());
 
 			var pathNvc = new NameValueCollection
 			{
@@ -229,7 +229,7 @@ namespace IEXSharp.Service.Legacy.Stock
 
 			var qsb = new QueryStringBuilder();
 
-			var pathNvc = new NameValueCollection { { "ipoType", ipoType.GetDescription() } };
+			var pathNvc = new NameValueCollection { { "ipoType", ipoType.GetDescriptionFromEnum() } };
 
 			return await _executor.ExecuteAsync<IPOCalendarResponse>(urlPattern, pathNvc, qsb);
 		}
@@ -298,7 +298,7 @@ namespace IEXSharp.Service.Legacy.Stock
 
 			var qsb = new QueryStringBuilder();
 
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescription() } };
+			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescriptionFromEnum() } };
 
 			return await _executor.ExecuteAsync<IEnumerable<SplitV1Response>>(urlPattern, pathNvc, qsb);
 		}

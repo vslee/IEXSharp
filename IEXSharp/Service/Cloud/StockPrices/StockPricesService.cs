@@ -33,7 +33,7 @@ namespace IEXSharp.Service.Cloud.StockPrices
 			var pathNvc = new NameValueCollection
 			{
 				{"symbol", symbol},
-				{"range", range.GetDescription()},
+				{"range", range.GetDescriptionFromEnum()},
 			};
 
 			return await executor.ExecuteAsync<IEnumerable<HistoricalPriceResponse>>(urlPattern, pathNvc, qsb);

@@ -39,7 +39,7 @@ namespace IEXSharp.Service.Cloud.Account
 
 			if (type != UsageType.All)
 			{
-				pathNVC["type"] = type.GetDescription();
+				pathNVC["type"] = type.GetDescriptionFromEnum();
 			}
 
 			return await _executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);
