@@ -26,7 +26,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 			const string urlPattern = "stock/market/collection/[collectionType]";
 			var qsb = new QueryStringBuilder();
 			qsb.Add("collectionName", collectionName);
-			var pathNvc = new NameValueCollection {{"collectionType", collection.GetDescription()}};
+			var pathNvc = new NameValueCollection {{"collectionType", collection.GetDescriptionFromEnum()}};
 
 			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
 		}
@@ -35,10 +35,10 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 			await executor.NoParamExecute<EarningTodayResponse>("stock/market/today-earnings");
 
 		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType) =>
-			await executor.NoParamExecute<IPOCalendarResponse>($"stock/market/{ipoType.GetDescription()}");
+			await executor.NoParamExecute<IPOCalendarResponse>($"stock/market/{ipoType.GetDescriptionFromEnum()}");
 
 		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType) =>
-			await executor.NoParamExecute<IEnumerable<Quote>>($"stock/market/list/{listType.GetDescription()}");
+			await executor.NoParamExecute<IEnumerable<Quote>>($"stock/market/list/{listType.GetDescriptionFromEnum()}");
 
 		public async Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync() =>
 			await executor.NoParamExecute<IEnumerable<MarketVolumeUSResponse>>("stock/market/volume");
@@ -51,7 +51,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		{
 			const string urlPattern = "stock/[symbol]/upcoming-[type]";
 			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection {{"symbol", symbol}, {"type", type.GetDescription()}};
+			var pathNvc = new NameValueCollection {{"symbol", symbol}, {"type", type.GetDescriptionFromEnum()}};
 
 			return await executor.ExecuteAsync<UpcomingEventSymbolResponse>(urlPattern, pathNvc, qsb);
 		}
@@ -61,7 +61,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		{
 			const string urlPattern = "stock/market/upcoming-[type]";
 			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection {{"type", type.GetDescription()}};
+			var pathNvc = new NameValueCollection {{"type", type.GetDescriptionFromEnum()}};
 
 			return await executor.ExecuteAsync<IEnumerable<UpcomingEventMarketResponse>>(urlPattern, pathNvc, qsb);
 		}
@@ -70,7 +70,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		{
 			string urlPattern = "stock/[symbol]/upcoming-[type]";
 			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection {{"type", UpcomingEventType.Events.GetDescription()}};
+			var pathNvc = new NameValueCollection {{"type", UpcomingEventType.Events.GetDescriptionFromEnum()}};
 
 			if (string.IsNullOrEmpty(symbol))
 			{
@@ -103,7 +103,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		{
 			string urlPattern = "stock/[symbol]/upcoming-[type]";
 			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection {{"type", UpcomingEventType.IPOs.GetDescription()}};
+			var pathNvc = new NameValueCollection {{"type", UpcomingEventType.IPOs.GetDescriptionFromEnum()}};
 
 			if (string.IsNullOrEmpty(symbol))
 			{
@@ -121,7 +121,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		{
 			string urlPattern = "stock/[symbol]/upcoming-[type]";
 			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection {{"type", eventType.GetDescription()}};
+			var pathNvc = new NameValueCollection {{"type", eventType.GetDescriptionFromEnum()}};
 
 			if (string.IsNullOrEmpty(symbol))
 			{

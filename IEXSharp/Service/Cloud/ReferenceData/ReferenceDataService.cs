@@ -98,8 +98,8 @@ namespace IEXSharp.Service.Cloud.ReferenceData
 
 			var pathNvc = new NameValueCollection
 			{
-				{"type", type.GetDescription()},
-				{"direction", direction.GetDescription()},
+				{"type", type.GetDescriptionFromEnum()},
+				{"direction", direction.GetDescriptionFromEnum()},
 				{"last", last.ToString()},
 				{"startDate", startDate == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) startDate).ToString("yyyyMMdd")}
 			};
