@@ -1,4 +1,3 @@
-using System;
 namespace IEXSharp.Model.News.Response
 {
 	public class HistoricalNewResponse : NewsResponse

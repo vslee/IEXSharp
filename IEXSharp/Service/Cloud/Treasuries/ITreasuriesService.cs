@@ -2,7 +2,7 @@ using IEXSharp.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model.Treasuries.Request;
-using IEXSharp.Model.Treasuries.Response;
+using IEXSharp.Model.Shared.Response;
 
 namespace IEXSharp.Service.Cloud.Options
 {
@@ -20,6 +20,6 @@ namespace IEXSharp.Service.Cloud.Options
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<TreasuryResponse>>> TimeSeriesAsync(TreasuryRateSymbol symbol);
+		Task<IEXResponse<IEnumerable<TimeSeriesResponse>>> TimeSeriesAsync(TreasuryRateSymbol symbol);
 	}
 }
