@@ -1,8 +1,5 @@
-using IEXSharp.Model.Shared.Response;
 using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.Stock.Response;
-using IEXSharp.Helper;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
@@ -31,20 +28,5 @@ namespace IEXSharp.Service.Cloud.Stock
 		/// <param name="last"></param>
 		/// <returns></returns>
 		Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#news"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#recommendation-trends"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<RecommendationTrendResponse>>> RecommendationTrendAsync(string symbol);
 	}
 }

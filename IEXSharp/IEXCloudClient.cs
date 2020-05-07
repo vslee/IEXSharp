@@ -5,6 +5,7 @@ using IEXSharp.Service.Cloud.Crypto;
 using IEXSharp.Service.Cloud.ForexCurrencies;
 using IEXSharp.Service.Cloud.InvestorsExchangeData;
 using IEXSharp.Service.Cloud.MarketInfo;
+using IEXSharp.Service.Cloud.News;
 using IEXSharp.Service.Cloud.Options;
 using IEXSharp.Service.Cloud.ReferenceData;
 using IEXSharp.Service.Cloud.Stock;
@@ -49,6 +50,7 @@ namespace IEXSharp
 		private ICeoCompensationService ceoCompensationService;
 		private ISocialSentimentService socialSentimentService;
 		private ITreasuriesService treasuriesService;
+		private INewsService newsService;
 
 		public IAccountService Account => accountService ??	(accountService =
 			new AccountService(client, secretToken, publishableToken, signRequest));
@@ -104,6 +106,9 @@ namespace IEXSharp
 
 		public ITreasuriesService Treasuries => treasuriesService
 			?? (treasuriesService = new TreasuriesService(client, secretToken, publishableToken, signRequest));
+
+		public INewsService News => newsService
+			?? (newsService = new NewsService(client, baseSSEURL, secretToken, publishableToken, signRequest));
 
 		/// <summary>
 		/// create a new IEXCloudClient

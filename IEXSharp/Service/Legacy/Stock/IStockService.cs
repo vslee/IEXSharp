@@ -15,6 +15,7 @@ using IEXSharp.Model.StockFundamentals.Request;
 using IEXSharp.Model.StockResearch.Response;
 using IEXSharp.Model.MarketInfo.Request;
 using IEXSharp.Model.MarketInfo.Response;
+using IEXSharp.Model.News.Response;
 
 namespace IEXSharp.Service.Legacy.Stock
 {

@@ -89,13 +89,5 @@ namespace IEXSharp.Service.Cloud.Stock
 
 			return await executor.ExecuteAsync<Dictionary<string, BatchResponse>>(urlPattern, pathNvc, qsb);
 		}
-
-		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last = 10) =>
-			await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last);
-
-		public async Task<IEXResponse<IEnumerable<RecommendationTrendResponse>>> RecommendationTrendAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<IEnumerable<RecommendationTrendResponse>>(
-				"stock/[symbol]/recommendation-trends", symbol);
-
 	}
 }

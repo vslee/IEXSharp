@@ -45,29 +45,5 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNotNull(response);
 			Assert.IsNotNull(response.Data[symbols.First()]);
 		}
-		
-		[Test]
-		[TestCase("AAPL", 10)]
-		[TestCase("FB", 20)]
-		public async Task NewsAsyncTest(string symbol, int last)
-		{
-			var response = await sandBoxClient.Stock.NewsAsync(symbol, last);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task RecommandationTrendAsyncTest(string symbol)
-		{
-			var response = await sandBoxClient.Stock.RecommendationTrendAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
 	}
 }
