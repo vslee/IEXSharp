@@ -1,10 +1,10 @@
+using System.Collections.Generic;
 using IEXSharp.Helper;
+using IEXSharp.Model.Crypto.Response;
 using IEXSharp.Model.Shared.Response;
 using IEXSharp.Model.Stock.Request;
-using System.Collections.Generic;
-using IEXSharp.Model.Crypto;
 
-namespace IEXSharp.Service.Cloud.Stock
+namespace IEXSharp.Service.Cloud.SSE
 {
 	public interface ISSEService
 	{

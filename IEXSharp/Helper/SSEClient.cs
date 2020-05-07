@@ -2,7 +2,6 @@ using LaunchDarkly.EventSource;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IEXSharp.Helper

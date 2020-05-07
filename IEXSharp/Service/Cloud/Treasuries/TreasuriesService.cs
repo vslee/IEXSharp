@@ -1,12 +1,12 @@
-using IEXSharp.Helper;
-using IEXSharp.Model;
-using IEXSharp.Model.Treasuries.Request;
-using IEXSharp.Model.Shared.Response;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IEXSharp.Helper;
+using IEXSharp.Model;
+using IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.Treasuries.Request;
 
-namespace IEXSharp.Service.Cloud.Options
+namespace IEXSharp.Service.Cloud.Treasuries
 {
 	public class TreasuriesService : ITreasuriesService
 	{

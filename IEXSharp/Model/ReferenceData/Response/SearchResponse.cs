@@ -1,4 +1,4 @@
-namespace IEXSharp.Model
+namespace IEXSharp.Model.ReferenceData.Response
 {
 	public class SearchResponse
 	{

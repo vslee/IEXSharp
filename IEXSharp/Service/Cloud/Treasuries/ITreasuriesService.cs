@@ -1,10 +1,10 @@
-using IEXSharp.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IEXSharp.Model.Treasuries.Request;
+using IEXSharp.Model;
 using IEXSharp.Model.Shared.Response;
+using IEXSharp.Model.Treasuries.Request;
 
-namespace IEXSharp.Service.Cloud.Options
+namespace IEXSharp.Service.Cloud.Treasuries
 {
 	public interface ITreasuriesService
 	{

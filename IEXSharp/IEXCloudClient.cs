@@ -3,6 +3,7 @@ using IEXSharp.Service.Cloud.APISystemMetadata;
 using IEXSharp.Service.Cloud.Commodities;
 using IEXSharp.Service.Cloud.CorporateActions;
 using IEXSharp.Service.Cloud.Crypto;
+using IEXSharp.Service.Cloud.EconomicData;
 using IEXSharp.Service.Cloud.ForexCurrencies;
 using IEXSharp.Service.Cloud.InvestorsExchangeData;
 using IEXSharp.Service.Cloud.MarketInfo;
@@ -16,6 +17,10 @@ using IEXSharp.Service.Cloud.StockProfiles;
 using IEXSharp.Service.Cloud.StockResearch;
 using System;
 using System.Net.Http;
+using IEXSharp.Service.Cloud.CeoCompensation;
+using IEXSharp.Service.Cloud.SocialSentiment;
+using IEXSharp.Service.Cloud.SSE;
+using IEXSharp.Service.Cloud.Treasuries;
 
 namespace IEXSharp
 {
@@ -52,6 +57,7 @@ namespace IEXSharp
 		private ISocialSentimentService socialSentimentService;
 		private ITreasuriesService treasuriesService;
 		private INewsService newsService;
+		private IEconomicDataService economicDataService;
 		private ICommoditiesService commoditiesService;
 
 		public IAccountService Account => accountService ??	(accountService =
@@ -111,6 +117,9 @@ namespace IEXSharp
 
 		public INewsService News => newsService
 			?? (newsService = new NewsService(client, baseSSEURL, secretToken, publishableToken, signRequest));
+
+		public IEconomicDataService EconomicData => economicDataService
+			?? (economicDataService = new EconomicDataService(client, secretToken, publishableToken, signRequest));
 
 		public ICommoditiesService Commodities => commoditiesService
 			?? (commoditiesService = new CommoditiesService(client, secretToken, publishableToken, signRequest));
