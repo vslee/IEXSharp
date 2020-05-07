@@ -18,10 +18,10 @@ namespace IEXSharp.Service.Cloud.Options
 		}
 
 		public async Task<IEXResponse<IEnumerable<SentimentMinuteResponse>>> SentimentByMinuteAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<IEnumerable<SentimentMinuteResponse>>("stock/[symbol]/sentiment", symbol);
+			await executor.SymbolExecuteAsync<IEnumerable<SentimentMinuteResponse>>("stock/[symbol]/sentiment/minute", symbol);
 
 		public async Task<IEXResponse<SentimentResponse>> SentimentByDayAsync(string symbol) =>
-			await executor.SymbolExecuteAsync<SentimentResponse>("stock/[symbol]/sentiment", symbol);
+			await executor.SymbolExecuteAsync<SentimentResponse>("stock/[symbol]/sentiment/daily", symbol);
 
 		public async Task<IEXResponse<IEnumerable<SentimentMinuteResponse>>> SentimentByMinuteAsync(string symbol, string date)
 		{

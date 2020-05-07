@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 using IEXSharp;
+using System.Linq;
 
 namespace IEXSharpTest.Cloud
 {
@@ -45,12 +46,12 @@ namespace IEXSharpTest.Cloud
 		[TestCase("FB")]
 		public async Task GetSocialSentimentByMinuteTest(string symbol)
 		{
-			var response = await sandBoxClient.SocialSentiment.SentimentByDayAsync(symbol);
+			var response = await sandBoxClient.SocialSentiment.SentimentByMinuteAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.sentiment);
-			Assert.IsNotNull(response.Data.totalScores);
+			Assert.IsNotNull(response.Data.FirstOrDefault()?.sentiment);
+			Assert.IsNotNull(response.Data.FirstOrDefault()?.totalScores);
 		}
 
 		[Test]
@@ -58,12 +59,12 @@ namespace IEXSharpTest.Cloud
 		[TestCase("FB", "20200505")]
 		public async Task GetSocialSentimentByMinuteTest(string symbol, string date)
 		{
-			var response = await sandBoxClient.SocialSentiment.SentimentByDayAsync(symbol, date);
+			var response = await sandBoxClient.SocialSentiment.SentimentByMinuteAsync(symbol, date);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.sentiment);
-			Assert.IsNotNull(response.Data.totalScores);
+			Assert.IsNotNull(response.Data.FirstOrDefault()?.sentiment);
+			Assert.IsNotNull(response.Data.FirstOrDefault()?.totalScores);
 		}
 	}
 }
