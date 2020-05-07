@@ -1,8 +1,8 @@
+using System.Threading.Tasks;
 using IEXSharp.Model;
 using IEXSharp.Model.CeoCompensation.Response;
-using System.Threading.Tasks;
 
-namespace IEXSharp.Service.Cloud.Options
+namespace IEXSharp.Service.Cloud.CeoCompensation
 {
 	public interface ICeoCompensationService
 	{

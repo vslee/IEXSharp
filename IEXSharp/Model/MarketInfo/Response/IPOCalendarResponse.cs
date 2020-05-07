@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using IEXSharp.Model.Stock.Response;
 
 namespace IEXSharp.Model.MarketInfo.Response
 {

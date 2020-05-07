@@ -1,9 +1,7 @@
 using IEXSharp.Model;
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using IEXSharp.Helper;
 using IEXSharp.Model.StockResearch.Response;

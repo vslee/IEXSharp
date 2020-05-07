@@ -1,12 +1,12 @@
-using IEXSharp.Model;
-using IEXSharp.Model.SocialSentiment.Response;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Helper;
+using IEXSharp.Model;
+using IEXSharp.Model.SocialSentiment.Response;
 
-namespace IEXSharp.Service.Cloud.Options
+namespace IEXSharp.Service.Cloud.SocialSentiment
 {
 	public class SocialSentimentService : ISocialSentimentService
 	{
