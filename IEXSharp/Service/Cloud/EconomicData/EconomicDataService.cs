@@ -21,9 +21,11 @@ namespace IEXSharp.Service.Cloud.EconomicData
 		{
 			var returnValue = await executor.SymbolExecuteAsync<string>("data-points/market/[symbol]", symbol.GetDescriptionFromEnum());
 			if (returnValue.ErrorMessage != null)
+			{
 				return new IEXResponse<decimal> { ErrorMessage = returnValue.ErrorMessage };
-			else
-				return new IEXResponse<decimal> { Data = decimal.Parse(returnValue.Data) };
+			}
+
+			return new IEXResponse<decimal> { Data = decimal.Parse(returnValue.Data) };
 		}
 
 		public async Task<IEXResponse<IEnumerable<TimeSeriesResponse>>> TimeSeriesAsync(EconomicDataTimeSeriesSymbol? symbol) =>

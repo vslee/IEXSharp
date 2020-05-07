@@ -1,9 +1,8 @@
 using IEXSharp.Helper;
-using IEXSharp.Model.Shared.Response;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
-using IEXSharp.Model.Crypto;
+using IEXSharp.Model.Crypto.Response;
 
 namespace IEXSharp.Service.Cloud.Crypto
 {
