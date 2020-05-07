@@ -10,12 +10,19 @@ namespace IEXSharp.Service.Cloud.Options
 {
 	public class SocialSentimentService : ISocialSentimentService
 	{
+		private readonly string pk;
+		private readonly ExecutorSSE executorSSE;
 		private readonly ExecutorREST executor;
 
-		public SocialSentimentService(HttpClient client, string sk, string pk, bool sign)
+		public SocialSentimentService(HttpClient client, string baseSSEURL, string sk, string pk, bool sign)
 		{
+			this.pk = pk;
 			executor = new ExecutorREST(client, sk, pk, sign);
+			executorSSE = new ExecutorSSE(baseSSEURL, sk: sk, pk: pk);
 		}
+
+		public SSEClient<SentimentResponse> SubscribeToSentiment(IEnumerable<string> symbols) =>
+			executorSSE.SymbolsSubscribeSSE<SentimentResponse>("sentiment", symbols, pk);
 
 		public async Task<IEXResponse<IEnumerable<SentimentMinuteResponse>>> SentimentByMinuteAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<SentimentMinuteResponse>>("stock/[symbol]/sentiment/minute", symbol);

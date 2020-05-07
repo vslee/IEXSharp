@@ -104,7 +104,7 @@ namespace IEXSharp
 			?? (ceoCompensationService = new CeoCompensationService(client, secretToken, publishableToken, signRequest));
 
 		public ISocialSentimentService SocialSentiment => socialSentimentService
-			?? (socialSentimentService = new SocialSentimentService(client, secretToken, publishableToken, signRequest));
+			?? (socialSentimentService = new SocialSentimentService(client, baseSSEURL, secretToken, publishableToken, signRequest));
 
 		public ITreasuriesService Treasuries => treasuriesService
 			?? (treasuriesService = new TreasuriesService(client, secretToken, publishableToken, signRequest));

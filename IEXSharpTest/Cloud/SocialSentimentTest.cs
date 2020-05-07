@@ -16,6 +16,27 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
+		[TestCase(new object[] { "AAPL" })]
+		[TestCase(new object[] { "AAPL", "FB" })]
+		public async Task StreamingSentimentTest(object[] symbols)
+		{
+			using (var sseClient = sandBoxClient.SocialSentiment.SubscribeToSentiment(symbols.Cast<string>()))
+			{
+				sseClient.Error += (s, e) =>
+				{
+					sseClient.Close();
+					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+				};
+				sseClient.MessageReceived += (s, m) =>
+				{
+					sseClient.Close();
+					Assert.Pass(m.ToString());
+				};
+				await sseClient.StartAsync();
+			}
+		}
+
+		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task GetSocialSentimentByDayTest(string symbol)

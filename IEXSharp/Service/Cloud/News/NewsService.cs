@@ -20,7 +20,7 @@ namespace IEXSharp.Service.Cloud.News
 		{
 			this.pk = pk;
 			executor = new ExecutorREST(client, sk, pk, sign);
-			executorSSE = new ExecutorSSE(baseSSEURL: baseSSEURL, sk: sk, pk: pk);
+			executorSSE = new ExecutorSSE(baseSSEURL, sk: sk, pk: pk);
 		}
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol) =>
