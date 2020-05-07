@@ -1,4 +1,5 @@
 using System;
+
 namespace IEXSharp.Model.Shared.Response
 {
 	public class TimeSeriesResponse
