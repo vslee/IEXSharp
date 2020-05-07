@@ -54,6 +54,9 @@
 		<Folder Include="Model\Treasuries\" />
 		<Folder Include="Model\Treasuries\Request\" />
 		<Folder Include="Model\Treasuries\Response\" />
+		<Folder Include="Service\Cloud\News\" />
+		<Folder Include="Model\News\" />
+		<Folder Include="Model\News\Response\" />
 	</ItemGroup>
 
 	<ItemGroup>
