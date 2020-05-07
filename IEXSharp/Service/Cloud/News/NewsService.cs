@@ -56,7 +56,7 @@ namespace IEXSharp.Service.Cloud.News
 
 			if (range != null)
 			{
-				queryStringBuilder.Add("range", range.GetDescription());
+				queryStringBuilder.Add("range", range.GetDescriptionFromEnum());
 			}
 
 			if (limit != null)
