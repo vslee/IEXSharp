@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace IEXSharp.Model.Crypto
+namespace IEXSharp.Model.Crypto.Response
 {
 	public class CryptoBookResponse
 	{

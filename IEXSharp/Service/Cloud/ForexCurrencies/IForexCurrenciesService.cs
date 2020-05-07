@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Data;
 using IEXSharp.Model;
 using System.Threading.Tasks;
 using IEXSharp.Model.ForexCurrencies.Response;

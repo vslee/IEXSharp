@@ -1,7 +1,6 @@
 using IEXSharp.Helper;
 using IEXSharp.Model.InvestorsExchangeData.Response;
 using IEXSharp.Model.Market.Response;
-using IEXSharp.Model.Stock.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;

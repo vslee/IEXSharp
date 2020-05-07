@@ -1,5 +1,3 @@
-using System;
-
 namespace IEXSharp.Model.StockResearch.Response
 {
 	public class AnalystRecommendationsResponse
