@@ -37,7 +37,7 @@ namespace IEXSharp.Helper
 					return (TEnum)Enum.Parse(enumType, member.Name);
 				}
 			}
-			throw new Exception("Description string not found.");
+			throw new Exception($"Description string {stringValue} not found in {enumType}.");
 		}
 	}
 }

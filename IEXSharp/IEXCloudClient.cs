@@ -1,5 +1,4 @@
 using IEXSharp.Service.Cloud.Account;
-using IEXSharp.Service.Cloud.AlternativeData;
 using IEXSharp.Service.Cloud.APISystemMetadata;
 using IEXSharp.Service.Cloud.CorporateActions;
 using IEXSharp.Service.Cloud.Crypto;
@@ -39,7 +38,6 @@ namespace IEXSharp
 		private IStockResearchService stockResearchService;
 		private IStockService stockService;
 		private ISSEService sseService;
-		private IAlternativeDataService alternativeDataService;
 		private ICryptoService cryptoService;
 		private IReferenceDataService referenceDataService;
 		private IForexCurrenciesService forexCurrenciesService;
@@ -73,9 +71,6 @@ namespace IEXSharp
 		/// <summary> SSE streaming service </summary>
 		public ISSEService SSE => sseService ?? (sseService =
 			new SSEService(baseSSEURL: baseSSEURL, sk: secretToken, pk: publishableToken));
-
-		public IAlternativeDataService AlternativeData => alternativeDataService ??
-			(alternativeDataService = new AlternativeDataService(client, secretToken, publishableToken, signRequest));
 
 		public ICryptoService Crypto => cryptoService ??
 		    (cryptoService = new CryptoService(client, secretToken, publishableToken, signRequest));
