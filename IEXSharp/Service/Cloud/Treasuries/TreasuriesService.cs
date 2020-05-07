@@ -1,7 +1,7 @@
 using IEXSharp.Helper;
 using IEXSharp.Model;
 using IEXSharp.Model.Treasuries.Request;
-using IEXSharp.Model.Treasuries.Response;
+using IEXSharp.Model.Shared.Response;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -26,7 +26,7 @@ namespace IEXSharp.Service.Cloud.Options
 				return new IEXResponse<decimal>() { Data = decimal.Parse(returnValue.Data) };
 		}
 
-		public async Task<IEXResponse<IEnumerable<TreasuryResponse>>> TimeSeriesAsync(TreasuryRateSymbol symbol) =>
-			await executor.SymbolExecuteAsync<IEnumerable<TreasuryResponse>>("time-series/treasury/[symbol]", symbol.GetDescriptionFromEnum());
+		public async Task<IEXResponse<IEnumerable<TimeSeriesResponse>>> TimeSeriesAsync(TreasuryRateSymbol symbol) =>
+			await executor.SymbolExecuteAsync<IEnumerable<TimeSeriesResponse>>("time-series/treasury/[symbol]", symbol.GetDescriptionFromEnum());
 	}
 }
