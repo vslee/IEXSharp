@@ -1,11 +1,11 @@
 using IEXSharp.Service.Cloud.Account;
-using IEXSharp.Service.Cloud.AlternativeData;
 using IEXSharp.Service.Cloud.APISystemMetadata;
 using IEXSharp.Service.Cloud.CorporateActions;
 using IEXSharp.Service.Cloud.Crypto;
 using IEXSharp.Service.Cloud.ForexCurrencies;
 using IEXSharp.Service.Cloud.InvestorsExchangeData;
 using IEXSharp.Service.Cloud.MarketInfo;
+using IEXSharp.Service.Cloud.News;
 using IEXSharp.Service.Cloud.Options;
 using IEXSharp.Service.Cloud.ReferenceData;
 using IEXSharp.Service.Cloud.Stock;
@@ -39,7 +39,6 @@ namespace IEXSharp
 		private IStockResearchService stockResearchService;
 		private IStockService stockService;
 		private ISSEService sseService;
-		private IAlternativeDataService alternativeDataService;
 		private ICryptoService cryptoService;
 		private IReferenceDataService referenceDataService;
 		private IForexCurrenciesService forexCurrenciesService;
@@ -51,6 +50,7 @@ namespace IEXSharp
 		private ICeoCompensationService ceoCompensationService;
 		private ISocialSentimentService socialSentimentService;
 		private ITreasuriesService treasuriesService;
+		private INewsService newsService;
 
 		public IAccountService Account => accountService ??	(accountService =
 			new AccountService(client, secretToken, publishableToken, signRequest));
@@ -73,9 +73,6 @@ namespace IEXSharp
 		/// <summary> SSE streaming service </summary>
 		public ISSEService SSE => sseService ?? (sseService =
 			new SSEService(baseSSEURL: baseSSEURL, sk: secretToken, pk: publishableToken));
-
-		public IAlternativeDataService AlternativeData => alternativeDataService ??
-			(alternativeDataService = new AlternativeDataService(client, secretToken, publishableToken, signRequest));
 
 		public ICryptoService Crypto => cryptoService ??
 		    (cryptoService = new CryptoService(client, secretToken, publishableToken, signRequest));
@@ -109,6 +106,9 @@ namespace IEXSharp
 
 		public ITreasuriesService Treasuries => treasuriesService
 			?? (treasuriesService = new TreasuriesService(client, secretToken, publishableToken, signRequest));
+
+		public INewsService News => newsService
+			?? (newsService = new NewsService(client, baseSSEURL, secretToken, publishableToken, signRequest));
 
 		/// <summary>
 		/// create a new IEXCloudClient

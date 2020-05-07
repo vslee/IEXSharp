@@ -5,6 +5,7 @@ using IEXSharp.Model.StockFundamentals.Response;
 using IEXSharp.Model.StockPrices.Response;
 using IEXSharp.Model.StockProfiles.Response;
 using IEXSharp.Model.StockResearch.Response;
+using IEXSharp.Model.News.Response;
 
 namespace IEXSharp.Model.Stock.Response
 {
@@ -67,7 +68,7 @@ namespace IEXSharp.Model.Stock.Response
 		public List<LargestTradeResponse> LargestTrades { get; set; }
 
 		public LogoResponse Logo { get; set; }
-		public List<News> News { get; set; }
+		public List<NewsResponse> News { get; set; }
 		public OHLCResponse Ohlc { get; set; }
 		public List<string> Options { get; set; }
 		public List<string> Peers { get; set; }
