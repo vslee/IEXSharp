@@ -32,45 +32,11 @@ namespace IEXSharp.Service.Legacy.Stock
 		Task<IEXResponse<BatchBySymbolLegacyResponse>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1);
 
 		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#batch-requests"/>
-		/// </summary>
-		/// <param name="symbols"></param>
-		/// <param name="types"></param>
-		/// <param name="range"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<Dictionary<string, BatchBySymbolLegacyResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
-
-		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#book"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
 		Task<IEXResponse<BookResponse>> BookAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#chart"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="range"></param>
-		/// <param name="qsb">Additional optional querystring</param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<ChartLegacyResponse>>> ChartAsync(string symbol, ChartRange range = ChartRange.OneMonth, DateTime? date = null, QueryStringBuilder qsb = null);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#chart"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="qsb">Additional optional querystring</param>
-		/// <returns></returns>
-		Task<IEXResponse<ChartDynamicResponse>> ChartDynamicAsync(string symbol, QueryStringBuilder qsb = null);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#collections"/>
-		/// </summary>
-		/// <param name="collection"></param>
-		/// <param name="collectionName"></param>
-		Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection, string collectionName);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#company"/>
@@ -121,14 +87,6 @@ namespace IEXSharp.Service.Legacy.Stock
 		Task<IEXResponse<IEnumerable<EffectiveSpreadResponse>>> EffectiveSpreadAsync(string symbol);
 
 		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#financials"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="period"></param>
-		/// <returns></returns>
-		Task<IEXResponse<FinancialResponse>> FinancialAsync(string symbol, Period period = Period.Quarter);
-
-		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#intraday-prices"/>
 		/// </summary>
 		/// <param name="ipoType"></param>
@@ -164,26 +122,11 @@ namespace IEXSharp.Service.Legacy.Stock
 		Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol);
 
 		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#list"/>
-		/// </summary>
-		/// <param name="listType"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType);
-
-		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#logo"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
 		Task<IEXResponse<LogoResponse>> LogoAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#news"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="last"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<NewsV1Response>>> NewsAsync(string symbol, int last = 10);
 
 		/// <summary>
 		/// https://iextrading.com/developer/docs/#ohlc
@@ -232,15 +175,6 @@ namespace IEXSharp.Service.Legacy.Stock
 		/// </summary>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync();
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#splits"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="range"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<SplitV1Response>>> SplitAsync(string symbol, SplitRange range = SplitRange.OneMonth);
-
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#volume-by-venue"/>

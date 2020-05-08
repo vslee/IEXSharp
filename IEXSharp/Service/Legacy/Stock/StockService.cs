@@ -78,103 +78,8 @@ namespace IEXSharp.Service.Legacy.Stock
 			return await _executor.ExecuteAsync<BatchBySymbolLegacyResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<Dictionary<string, BatchBySymbolLegacyResponse>>> BatchByMarketAsync(IEnumerable<string> symbols,
-			IEnumerable<BatchType> types, string range = "", int last = 1)
-		{
-			if (types?.Count() < 1)
-			{
-				throw new ArgumentNullException("batchTypes cannot be null");
-			}
-			else if (symbols?.Count() < 1)
-			{
-				throw new ArgumentNullException("symbols cannot be null");
-			}
-
-			const string urlPattern = "stock/market/batch";
-
-			var qsType = new List<string>();
-			foreach (var x in types)
-			{
-				switch (x)
-				{
-					case BatchType.Quote:
-						qsType.Add("quote");
-						break;
-
-					case BatchType.News:
-						qsType.Add("news");
-						break;
-
-					case BatchType.Chart:
-						qsType.Add("chart");
-						break;
-
-					default:
-						throw new ArgumentOutOfRangeException(nameof(types));
-				}
-			}
-
-			var qsb = new QueryStringBuilder();
-
-			qsb.Add("symbols", string.Join(",", symbols));
-			qsb.Add("types", string.Join(",", qsType));
-			if (!string.IsNullOrWhiteSpace(range))
-			{
-				qsb.Add("range", range);
-			}
-
-			qsb.Add("last", last);
-
-			var pathNvc = new NameValueCollection();
-
-			return await _executor.ExecuteAsync<Dictionary<string, BatchBySymbolLegacyResponse>>(urlPattern, pathNvc, qsb);
-		}
-
 		public async Task<IEXResponse<BookResponse>> BookAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol);
-
-		public async Task<IEXResponse<IEnumerable<ChartLegacyResponse>>> ChartAsync(string symbol,
-			ChartRange range = ChartRange.OneMonth, DateTime? date = null, QueryStringBuilder qsb = null)
-		{
-			const string urlPattern = "stock/[symbol]/chart/[range]/[date]";
-
-			qsb = qsb ?? new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection
-			{
-				{"symbol", symbol},
-				{"range", range.GetDescriptionFromEnum()},
-				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
-			};
-
-			return await _executor.ExecuteAsync<IEnumerable<ChartLegacyResponse>>(urlPattern, pathNvc, qsb);
-		}
-
-		public async Task<IEXResponse<ChartDynamicResponse>> ChartDynamicAsync(string symbol,
-			QueryStringBuilder qsb = null)
-		{
-			const string urlPattern = "stock/[symbol]/chart/dynamic";
-
-			qsb = qsb ?? new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection
-			{
-				{"symbol", symbol}
-			};
-
-			return await _executor.ExecuteAsync<ChartDynamicResponse>(urlPattern, pathNvc, qsb);
-		}
-
-		public async Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection, string collectionName)
-		{
-			const string urlPattern = "stock/market/collection/[collectionType]";
-
-			var qsb = new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection { { "collectionType", collection.GetDescriptionFromEnum() } };
-
-			return await _executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
-		}
 
 		public async Task<IEXResponse<CompanyResponse>> CompanyAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<CompanyResponse>("stock/[symbol]/company", symbol);
@@ -209,21 +114,6 @@ namespace IEXSharp.Service.Legacy.Stock
 			await _executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(
 				"stock/[symbol]/effective-spread", symbol);
 
-		public async Task<IEXResponse<FinancialResponse>> FinancialAsync(string symbol, Period period = Period.Quarter)
-		{
-			const string urlPattern = "stock/[symbol]/financials";
-
-			var qsb = new QueryStringBuilder();
-			qsb.Add("period", period.GetDescriptionFromEnum());
-
-			var pathNvc = new NameValueCollection
-			{
-				{"symbol", symbol}
-			};
-
-			return await _executor.ExecuteAsync<FinancialResponse>(urlPattern, pathNvc, qsb);
-		}
-
 		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType)
 		{
 			const string urlPattern = "stock/market/[ipoType]";
@@ -249,22 +139,8 @@ namespace IEXSharp.Service.Legacy.Stock
 		public async Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<IEnumerable<LargestTradeResponse>>("stock/[symbol]/largest-trades", symbol);
 
-		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(string listType)
-		{
-			const string urlPattern = "stock/market/list/[list-type]";
-
-			var qsb = new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection { { "list-type", listType } };
-
-			return await _executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
-		}
-
 		public async Task<IEXResponse<LogoResponse>> LogoAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol);
-
-		public async Task<IEXResponse<IEnumerable<NewsV1Response>>> NewsAsync(string symbol, int last = 10) =>
-			await _executor.SymbolLastExecuteAsync<IEnumerable<NewsV1Response>>("stock/[symbol]/news/last/[last]", symbol, last);
 
 		public async Task<IEXResponse<OHLCResponse>> OHLCAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol);
@@ -292,17 +168,6 @@ namespace IEXSharp.Service.Legacy.Stock
 
 		public async Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync() =>
 			await _executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");
-
-		public async Task<IEXResponse<IEnumerable<SplitV1Response>>> SplitAsync(string symbol, SplitRange range = SplitRange.OneMonth)
-		{
-			const string urlPattern = "stock/[symbol]/splits/[range]";
-
-			var qsb = new QueryStringBuilder();
-
-			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescriptionFromEnum() } };
-
-			return await _executor.ExecuteAsync<IEnumerable<SplitV1Response>>(urlPattern, pathNvc, qsb);
-		}
 
 		public async Task<IEXResponse<VolumeByVenueResponse>> VolumeByVenueAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<VolumeByVenueResponse>("stock/[symbol]/delayed-quote", symbol);

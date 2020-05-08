@@ -39,12 +39,5 @@ namespace IEXSharp.Service.Legacy.Stats
 		/// <param name="last">Up to 90</param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByLastAsync(int last);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#historical-daily"/>
-		/// </summary>
-		/// <param name="date">yyyyMM or yyyyMMdd</param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByDateAsync(string date);
 	}
 }

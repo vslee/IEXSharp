@@ -43,18 +43,6 @@ namespace IEXSharpTest.Legacy
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 		}
-		[Test]
-		[TestCase("201902")]
-		[TestCase("201900225")]
-		[Ignore("IEX Legacy appears to have deprecated this method?")]
-		public async Task StatsHistoricalDailyByDateAsyncTest(string date)
-		{
-			var response = await prodClient.Stats.StatsHistoricalDailyByDateAsync(date);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
 
 		[Test]
 		[TestCase(1)]

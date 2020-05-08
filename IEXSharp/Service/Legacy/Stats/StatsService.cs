@@ -39,18 +39,6 @@ namespace IEXSharp.Service.Legacy.Stats
 			return await _executor.ExecuteAsync<IEnumerable<StatsHistoricalSummaryResponse>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByDateAsync(string date)
-		{
-			const string urlPattern = "stats/historical/daily";
-
-			var qsb = new QueryStringBuilder();
-			qsb.Add("date", date);
-
-			var pathNvc = new NameValueCollection();
-
-			return await _executor.ExecuteAsync<IEnumerable<StatsHisoricalDailyResponse>>(urlPattern, pathNvc, qsb);
-		}
-
 		public async Task<IEXResponse<IEnumerable<StatsHisoricalDailyResponse>>> StatsHistoricalDailyByLastAsync(int last)
 		{
 			const string urlPattern = "stats/historical/daily";
