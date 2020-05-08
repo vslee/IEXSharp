@@ -34,7 +34,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		/// </summary>
 		/// <param name="listType"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType);
+		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType, int listLimit = 10);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#market-volume-u-s"/>

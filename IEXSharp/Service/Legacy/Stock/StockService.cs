@@ -4,6 +4,7 @@ using IEXSharp.Model.InvestorsExchangeData.Response;
 using IEXSharp.Model.MarketInfo.Request;
 using IEXSharp.Model.MarketInfo.Response;
 using IEXSharp.Model.News.Response;
+using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.Shared.Response;
 using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.Stock.Response;

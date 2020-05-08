@@ -1,5 +1,6 @@
 using IEXSharp.Helper;
 using IEXSharp.Model;
+using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.StockFundamentals.Request;
 using IEXSharp.Model.StockFundamentals.Response;
 using System.Collections.Generic;
@@ -47,6 +48,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
+
 		public async Task<IEXResponse<CashFlowResponse>> CashFlowAsync(string symbol, Period period = Period.Quarter, int last = 1)
 		{
 			const string urlPattern = "stock/[symbol]/cash-flow/[last]";
@@ -83,6 +85,16 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 				{"symbol", symbol}, {"range", range.GetDescriptionFromEnum()}
 			};
 
+			if (range == DividendRange.Next)
+			{
+				var dividendResponse = await executor.ExecuteAsync<DividendBasicResponse>(urlPattern, pathNvc, qsb);
+
+				return new IEXResponse<IEnumerable<DividendBasicResponse>>()
+				{
+					Data = new List<DividendBasicResponse> { dividendResponse.Data }
+				};
+			}
+
 			return await executor.ExecuteAsync<IEnumerable<DividendBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
 
@@ -91,9 +103,6 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 
 		public async Task<IEXResponse<string>> EarningFieldAsync(string symbol, string field, int last = 1) =>
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/earnings/[last]/[field]", symbol, field, last);
-
-		public async Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync() =>
-			await executor.NoParamExecute<EarningTodayResponse>("stock/market/today-earnings");
 
 		public async Task<IEXResponse<FinancialResponse>> FinancialAsync(string symbol, int last = 1) =>
 			await executor.SymbolLastExecuteAsync<FinancialResponse>("stock/[symbol]/financials/[last]", symbol, last);
@@ -133,6 +142,17 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			var qsb = new QueryStringBuilder();
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescriptionFromEnum() } };
+
+
+			if (range == SplitRange.Next)
+			{
+				var splitResponse = await executor.ExecuteAsync<SplitBasicResponse>(urlPattern, pathNvc, qsb);
+
+				return new IEXResponse<IEnumerable<SplitBasicResponse>>()
+				{
+					Data = new List<SplitBasicResponse> { splitResponse.Data }
+				};
+			}
 
 			return await executor.ExecuteAsync<IEnumerable<SplitBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
