@@ -56,7 +56,7 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
 			Assert.IsNotEmpty(response.Data.First().date);
-			Assert.Greater(response.Data.First().GetDateTimeInUTC(), DateTime.MinValue);
+			Assert.Greater(response.Data.First().GetTimestampInUTC(), DateTime.MinValue);
 		}
 
 		[Test]
@@ -93,7 +93,7 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
 			Assert.IsNotEmpty(response.Data.First().minute);
-			Assert.Greater(response.Data.First().GetDateTimeInUTC(), DateTime.MinValue);
+			Assert.Greater(response.Data.First().GetTimestampInUTC(), DateTime.MinValue);
 		}
 
 		private static DateTime getLatestWeekday()
