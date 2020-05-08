@@ -1,6 +1,7 @@
 using IEXSharp.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.StockFundamentals.Request;
 using IEXSharp.Model.StockFundamentals.Response;
 

@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using IEXSharp;
+using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.StockFundamentals.Request;
 
 namespace IEXSharpTest.Cloud

@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace IEXSharp.Model.StockFundamentals.Request
+namespace IEXSharp.Model.Shared.Request
 {
 	public enum Period
 	{
