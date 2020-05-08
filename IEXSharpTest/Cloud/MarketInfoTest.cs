@@ -59,17 +59,24 @@ namespace IEXSharpTest.Cloud
 		[TestCase(ListType.Losers)]
 		[TestCase(ListType.IexVolume)]
 		[TestCase(ListType.IexPercent)]
-		[TestCase(ListType.MostActive, 5)]
-		[TestCase(ListType.Gainers, 5)]
-		[TestCase(ListType.Losers, 5)]
-		[TestCase(ListType.IexVolume, 5)]
-		[TestCase(ListType.IexPercent, 5)]
-		public async Task ListAsyncTest(ListType listType, int listLimit = 10)
+		[TestCase(ListType.MostActive, false, 5)]
+		[TestCase(ListType.Gainers, false, 5)]
+		[TestCase(ListType.Losers, false, 5)]
+		[TestCase(ListType.IexVolume, false, 5)]
+		[TestCase(ListType.IexPercent, false, 5)]
+		[TestCase(ListType.Losers, true)]
+		[TestCase(ListType.IexVolume, true)]
+		[TestCase(ListType.IexPercent, true)]
+		[TestCase(ListType.MostActive, true, 5)]
+		[TestCase(ListType.Gainers, true, 5)]
+		[TestCase(ListType.Losers, true, 5)]
+		public async Task ListAsyncTest(ListType listType, bool displayPercent = false, int listLimit = 10)
 		{
-			var response = await sandBoxClient.MarketInfoService.ListAsync(listType, listLimit);
+			var response = await sandBoxClient.MarketInfoService.ListAsync(listType, displayPercent, listLimit);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 0);
 			Assert.LessOrEqual(response.Data.Count(), listLimit);
 		}
 

@@ -37,12 +37,14 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType) =>
 			await executor.NoParamExecute<IPOCalendarResponse>($"stock/market/{ipoType.GetDescriptionFromEnum()}");
 
-		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType, int listLimit = 10)
+		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType, bool displayPercent = false,
+			int listLimit = 10)
 		{
 			const string urlPattern = "stock/market/list/[listType]";
 
 			var qsb = new QueryStringBuilder();
-			qsb.Add("listLimit", listLimit);
+			if (!displayPercent) qsb.Add("displayPercent", displayPercent);
+			if (listLimit != 10) qsb.Add("listLimit", listLimit);
 
 			var pathNvc = new NameValueCollection { { "listType", listType.GetDescriptionFromEnum() } };
 
