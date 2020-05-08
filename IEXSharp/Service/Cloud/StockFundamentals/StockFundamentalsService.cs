@@ -85,16 +85,6 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 				{"symbol", symbol}, {"range", range.GetDescriptionFromEnum()}
 			};
 
-			if (range == DividendRange.Next)
-			{
-				var dividendResponse = await executor.ExecuteAsync<DividendBasicResponse>(urlPattern, pathNvc, qsb);
-
-				return new IEXResponse<IEnumerable<DividendBasicResponse>>()
-				{
-					Data = new List<DividendBasicResponse> { dividendResponse.Data }
-				};
-			}
-
 			return await executor.ExecuteAsync<IEnumerable<DividendBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
 
