@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using IEXSharp;
-using IEXSharp.Helper;
 using IEXSharp.Model.MarketInfo.Request;
 using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.StockFundamentals.Request;
-using IEXSharp.Model.StockPrices.Request;
 
 namespace IEXSharpTest.Legacy
 {
@@ -44,38 +41,6 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task CompanyAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.CompanyAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		public async Task CryptoAsyncTest()
-		{
-			var response = await prodClient.Stock.CryptoAsync();
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task DelayedQuoteAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.DelayedQuoteAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
 		[TestCase("AAPL", DividendRange.OneMonth)]
 		[TestCase("AAPL", DividendRange.OneYear)]
 		[TestCase("AAPL", DividendRange.TwoYears)]
@@ -89,17 +54,6 @@ namespace IEXSharpTest.Legacy
 			var response = await prodClient.Stock.DividendAsync(symbol, range);
 
 			Assert.IsNotNull(response);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task EarningAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.EarningAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -160,29 +114,6 @@ namespace IEXSharpTest.Legacy
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task KeyStatsAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.KeyStatsAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task LargestTradesAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.LargestTradesAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
 		public async Task LogoAsyncTest(string symbol)
 		{
 			var response = await prodClient.Stock.LogoAsync(symbol);
@@ -214,50 +145,6 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task PreviousDayPriceAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.PreviousDayPriceAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task PriceAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.PriceAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task QuoteAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.QuoteAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task RelevantAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.RelevantAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
 		public async Task SectorPerformanceAsync()
 		{
 			var response = await prodClient.Stock.SectorPerformanceAsync();
@@ -265,17 +152,6 @@ namespace IEXSharpTest.Legacy
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task VolumeByVenueAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.VolumeByVenueAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
 		}
 	}
 }

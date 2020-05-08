@@ -3,16 +3,12 @@ using IEXSharp.Model;
 using IEXSharp.Model.InvestorsExchangeData.Response;
 using IEXSharp.Model.MarketInfo.Request;
 using IEXSharp.Model.MarketInfo.Response;
-using IEXSharp.Model.News.Response;
-using IEXSharp.Model.Shared.Response;
 using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.Stock.Response;
 using IEXSharp.Model.StockFundamentals.Request;
 using IEXSharp.Model.StockFundamentals.Response;
-using IEXSharp.Model.StockPrices.Request;
 using IEXSharp.Model.StockPrices.Response;
 using IEXSharp.Model.StockProfiles.Response;
-using IEXSharp.Model.StockResearch.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -81,15 +77,6 @@ namespace IEXSharp.Service.Legacy.Stock
 		public async Task<IEXResponse<BookResponse>> BookAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol);
 
-		public async Task<IEXResponse<CompanyResponse>> CompanyAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<CompanyResponse>("stock/[symbol]/company", symbol);
-
-		public async Task<IEXResponse<IEnumerable<Quote>>> CryptoAsync() =>
-			await _executor.NoParamExecute<IEnumerable<Quote>>("crypto/market/quote");
-
-		public async Task<IEXResponse<DelayedQuoteResponse>> DelayedQuoteAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<DelayedQuoteResponse>("stock/[symbol]/delayed-quote", symbol);
-
 		public async Task<IEXResponse<IEnumerable<DividendV1Response>>> DividendAsync(string symbol, DividendRange range)
 		{
 			const string urlPattern = "stock/[symbol]/dividends/[range]";
@@ -103,9 +90,6 @@ namespace IEXSharp.Service.Legacy.Stock
 
 			return await _executor.ExecuteAsync<IEnumerable<DividendV1Response>>(urlPattern, pathNvc, qsb);
 		}
-
-		public async Task<IEXResponse<EarningResponse>> EarningAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<EarningResponse>("stock/[symbol]/earnings", symbol);
 
 		public async Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync() =>
 			await _executor.NoParamExecute<EarningTodayResponse>("stock/market/today-earnings");
@@ -133,12 +117,6 @@ namespace IEXSharp.Service.Legacy.Stock
 			=> await _executor.SymbolExecuteAsync<IEnumerable<ListedShortInterestListResponse>>(
 				"stock/[symbol]/short-interest", symbol);
 
-		public async Task<IEXResponse<KeyStatsResponse>> KeyStatsAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<KeyStatsResponse>("stock/[symbol]/stats", symbol);
-
-		public async Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<IEnumerable<LargestTradeResponse>>("stock/[symbol]/largest-trades", symbol);
-
 		public async Task<IEXResponse<LogoResponse>> LogoAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol);
 
@@ -148,28 +126,7 @@ namespace IEXSharp.Service.Legacy.Stock
 		public async Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<IEnumerable<string>>("stock/[symbol]/peers", symbol);
 
-		public async Task<IEXResponse<HistoricalPriceResponse>> PreviousDayPriceAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<HistoricalPriceResponse>("stock/[symbol]/previous", symbol);
-
-		public async Task<IEXResponse<decimal>> PriceAsync(string symbol)
-		{
-			var returnValue = await _executor.SymbolExecuteAsync<string>("stock/[symbol]/price", symbol);
-			if (returnValue.ErrorMessage != null)
-				return new IEXResponse<decimal>() { ErrorMessage = returnValue.ErrorMessage };
-			else
-				return new IEXResponse<decimal>() { Data = decimal.Parse(returnValue.Data) };
-		}
-
-		public async Task<IEXResponse<Quote>> QuoteAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<Quote>("stock/[symbol]/quote", symbol);
-
-		public async Task<IEXResponse<RelevantResponse>> RelevantAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<RelevantResponse>("stock/[symbol]/relevant", symbol);
-
 		public async Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync() =>
 			await _executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");
-
-		public async Task<IEXResponse<VolumeByVenueResponse>> VolumeByVenueAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<VolumeByVenueResponse>("stock/[symbol]/delayed-quote", symbol);
 	}
 }

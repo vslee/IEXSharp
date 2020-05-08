@@ -72,20 +72,6 @@ namespace IEXSharp.Service.Cloud.InvestorsExchangeData
 		Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeAsync(IEnumerable<string> symbols);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#deep-trade-break"/>
-		/// </summary>
-		/// <param name="symbols"></param>
-		/// <returns></returns>
-		Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeBreaksAsync(IEnumerable<string> symbols);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#deep-trading-status"/>
-		/// </summary>
-		/// <param name="symbols"></param>
-		/// <returns></returns>
-		Task<IEXResponse<Dictionary<string, DeepTradingStatusResponse>>> DeepTradingStatusAsync(IEnumerable<string> symbols);
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#last"/>
 		/// </summary>
 		/// <param name="symbols"></param>

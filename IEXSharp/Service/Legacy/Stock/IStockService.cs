@@ -1,21 +1,15 @@
 using IEXSharp.Model.InvestorsExchangeData.Response;
-using IEXSharp.Model.Shared.Response;
 using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.Stock.Response;
-using IEXSharp.Helper;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
 using IEXSharp.Model.StockPrices.Response;
-using IEXSharp.Model.StockPrices.Request;
 using IEXSharp.Model.StockProfiles.Response;
 using IEXSharp.Model.StockFundamentals.Response;
 using IEXSharp.Model.StockFundamentals.Request;
-using IEXSharp.Model.StockResearch.Response;
 using IEXSharp.Model.MarketInfo.Request;
 using IEXSharp.Model.MarketInfo.Response;
-using IEXSharp.Model.News.Response;
 
 namespace IEXSharp.Service.Legacy.Stock
 {
@@ -39,39 +33,12 @@ namespace IEXSharp.Service.Legacy.Stock
 		Task<IEXResponse<BookResponse>> BookAsync(string symbol);
 
 		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#company"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<CompanyResponse>> CompanyAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#crypto"/>
-		/// </summary>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<Quote>>> CryptoAsync();
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#delayed-quote"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<DelayedQuoteResponse>> DelayedQuoteAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#dividends"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<DividendV1Response>>> DividendAsync(string symbol, DividendRange range);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#earnings"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<EarningResponse>> EarningAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#earnings-today"/>
@@ -108,20 +75,6 @@ namespace IEXSharp.Service.Legacy.Stock
 		Task<IEXResponse<IEnumerable<ListedShortInterestListResponse>>> ListedShortInterestListAsync(string symbol);
 
 		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#key-stats"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<KeyStatsResponse>> KeyStatsAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#largest-trades"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<LargestTradeResponse>>> LargestTradesAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#logo"/>
 		/// </summary>
 		/// <param name="symbol"></param>
@@ -143,44 +96,9 @@ namespace IEXSharp.Service.Legacy.Stock
 		Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol);
 
 		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#previous-day-price"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<HistoricalPriceResponse>> PreviousDayPriceAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#price"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<decimal>> PriceAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#quote"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<Quote>> QuoteAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#relevant"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<RelevantResponse>> RelevantAsync(string symbol);
-
-		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#sector-performance"/>
 		/// </summary>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync();
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#volume-by-venue"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<VolumeByVenueResponse>> VolumeByVenueAsync(string symbol);
 	}
 }

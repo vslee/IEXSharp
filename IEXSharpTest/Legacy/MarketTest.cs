@@ -105,17 +105,6 @@ namespace IEXSharpTest.Legacy
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task DeepTradingStatusAsyncTest(params string[] symbols)
-		{
-			var response = await prodClient.Market.DeepTradingStatusAsync(symbols);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count, 1);
-		}
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
 		public async Task DeepOperationHaltStatusAsyncTest(params string[] symbols)
 		{
 			var response = await prodClient.Market.DeepOperationHaltStatusAsync(symbols);
@@ -149,17 +138,6 @@ namespace IEXSharpTest.Legacy
 			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task DeepTradeBreaksAsyncTest(params string[] symbols)
-		{
-			var response = await prodClient.Market.DeepTradeBreaksAsync(symbols);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count, 1);
-		}
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]

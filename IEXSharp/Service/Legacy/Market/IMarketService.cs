@@ -66,13 +66,6 @@ namespace IEXSharp.Service.Legacy.Market
 		Task<IEXResponse<DeepSystemEventResponse>> DeepSystemEventAsync();
 
 		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#trading-status"/>
-		/// </summary>
-		/// <param name="symbols"></param>
-		/// <returns></returns>
-		Task<IEXResponse<Dictionary<string, DeepTradingStatusResponse>>> DeepTradingStatusAsync(IEnumerable<string> symbols);
-
-		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#operational-halt-status"/>
 		/// </summary>
 		/// <param name="symbols"></param>
@@ -92,13 +85,6 @@ namespace IEXSharp.Service.Legacy.Market
 		/// <param name="symbols"></param>
 		/// <returns></returns>
 		Task<IEXResponse<Dictionary<string, DeepSecurityEventResponse>>> DeepSecurityEventAsync(IEnumerable<string> symbols);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#trade-break"/>
-		/// </summary>
-		/// <param name="symbols"></param>
-		/// <returns></returns>
-		Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeBreaksAsync(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#auction"/>

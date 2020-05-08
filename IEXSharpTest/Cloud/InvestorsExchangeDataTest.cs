@@ -122,30 +122,6 @@ namespace IEXSharpTest.Cloud
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
-		public async Task DeepTradeBreaksAsyncTest(params string[] symbols)
-		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepTradeBreaksAsync(symbols);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count, 1);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task DeepTradingStatusAsyncTest(params string[] symbols)
-		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepTradingStatusAsync(symbols);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count, 1);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
 		public async Task LastAsyncTest(params string[] symbols)
 		{
 			var response = await sandBoxClient.InvestorsExchangeData.LastAsync(symbols);
