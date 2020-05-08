@@ -33,8 +33,11 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		/// <see cref="https://iexcloud.io/docs/api/#list"/>
 		/// </summary>
 		/// <param name="listType"></param>
+		/// <param name="displayPercent"></param>
+		/// <param name="listLimit"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType, int listLimit = 10);
+		Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType, bool displayPercent = false,
+			int listLimit = 10);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#market-volume-u-s"/>

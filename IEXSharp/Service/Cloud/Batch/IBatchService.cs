@@ -1,12 +1,12 @@
-using IEXSharp.Model.Stock.Request;
-using IEXSharp.Model.Stock.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
+using IEXSharp.Model.Batch.Request;
+using IEXSharp.Model.Batch.Response;
 
-namespace IEXSharp.Service.Cloud.Stock
+namespace IEXSharp.Service.Cloud.Batch
 {
-	public interface IStockService
+	public interface IBatchService
 	{
 
 		/// <summary>

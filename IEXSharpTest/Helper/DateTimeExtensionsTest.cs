@@ -4,8 +4,6 @@ using IEXSharp.Model.SocialSentiment.Response;
 using IEXSharp.Model.StockPrices.Response;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace IEXSharpTest.Helper
 {

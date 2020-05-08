@@ -9,7 +9,7 @@ namespace IEXSharp.Service.Cloud.SocialSentiment
 	public interface ISocialSentimentService
 	{
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#streaming-news"/>
+		/// <see cref="https://iexcloud.io/docs/api/#social-sentiment" and cref="https://iexcloud.io/docs/api/#sse-streaming"/>
 		/// </summary>
 		/// <param name="symbols">One or more stock symbols.</param>
 		/// <returns></returns>
