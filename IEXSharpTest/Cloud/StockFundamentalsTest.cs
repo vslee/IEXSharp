@@ -74,20 +74,10 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", DividendRange.Ytd)]
 		public async Task DividendsBasicAsyncTest(string symbol, DividendRange range)
 		{
-			if (range == DividendRange.Next)
-			{
-				var response = await sandBoxClient.StockFundamentals.DividendsBasicNextAsync(symbol);
+			var response = await sandBoxClient.StockFundamentals.DividendsBasicAsync(symbol, range);
 
-				Assert.IsNull(response.ErrorMessage);
-				Assert.IsNotNull(response.Data);
-			}
-			else
-			{
-				var response = await sandBoxClient.StockFundamentals.DividendsBasicAsync(symbol, range);
-
-				Assert.IsNull(response.ErrorMessage);
-				Assert.IsNotNull(response.Data);
-			}
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 
 		[Test]
@@ -186,20 +176,10 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", SplitRange.Ytd)]
 		public async Task SplitsBasicAsyncTest(string symbol, SplitRange range)
 		{
-			if (range == SplitRange.Next)
-			{
-				var response = await sandBoxClient.StockFundamentals.SplitsBasicNextAsync(symbol);
+			var response = await sandBoxClient.StockFundamentals.SplitsBasicAsync(symbol, range);
 
-				Assert.IsNull(response.ErrorMessage);
-				Assert.IsNotNull(response.Data);
-			}
-			else
-			{
-				var response = await sandBoxClient.StockFundamentals.SplitsBasicAsync(symbol, range);
-
-				Assert.IsNull(response.ErrorMessage);
-				Assert.IsNotNull(response.Data);
-			}
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
 		}
 	}
 }

@@ -54,23 +54,12 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#dividends-basic"/>
 		/// Dividends (Basic), as opposed to the Dividends (Advanced) found in CorporateActionsService
-		/// Dividends prior to last reported are only included with paid subscription plans.
-		///
-		/// This method is for the special case when retrieving the "Next" dividend.
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<DividendBasicResponse>> DividendsBasicNextAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#dividends-basic"/>
-		/// Dividends (Basic), as opposed to the Dividends (Advanced) found in CorporateActionsService
 		/// Dividends prior to last reported are only included with paid subscription plans
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<DividendBasicResponse>>> DividendsBasicAsync(string symbol, DividendRange range);
+		Task<IEXResponse<dynamic>> DividendsBasicAsync(string symbol, DividendRange range);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#earnings"/>
@@ -137,21 +126,10 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		/// <see cref="https://iexcloud.io/docs/api/#splits"/>
 		/// Splits (Basic), as opposed to the Splits (Advanced) found in CorporateActionsService
 		/// Splits prior to last reported are only included with paid subscription plans.
-		///
-		/// This method is for the special case when retrieving the "Next" split.
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<SplitBasicResponse>> SplitsBasicNextAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#splits"/>
-		/// Splits (Basic), as opposed to the Splits (Advanced) found in CorporateActionsService
-		/// Splits prior to last reported are only included with paid subscription plans.
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<SplitBasicResponse>>> SplitsBasicAsync(string symbol, SplitRange range = SplitRange.OneMonth);
+		Task<IEXResponse<dynamic>> SplitsBasicAsync(string symbol, SplitRange range = SplitRange.OneMonth);
 	}
 }
