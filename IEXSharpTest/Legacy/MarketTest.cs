@@ -103,6 +103,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("This endpoint is now returning 'forbidden'.")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task DeepTradingStatusAsyncTest(params string[] symbols)
@@ -150,6 +151,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("This endpoint is now returning 'forbidden'.")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task DeepTradeBreaksAsyncTest(params string[] symbols)

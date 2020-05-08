@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using IEXSharp;
-using IEXSharp.Model.Stock.Request;
+using IEXSharp.Model.Batch.Request;
 
 namespace IEXSharpTest.Cloud
 {
-	public class StockTest
+	public class BatchTest
 	{
 		private IEXCloudClient sandBoxClient;
 
@@ -24,7 +24,7 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", new BatchType[] { BatchType.SplitsBasic, BatchType.DividendsBasic })]
 		public async Task BatchBySymbolAsyncTest(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
-			var response = await sandBoxClient.Stock.BatchBySymbolAsync(symbol, types, range, last);
+			var response = await sandBoxClient.Batch.BatchBySymbolAsync(symbol, types, range, last);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -37,7 +37,7 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", new BatchType[] { BatchType.SplitsBasic, BatchType.DividendsBasic })]
 		public async Task BatchByMarketAsyncTest(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
-			var response = await sandBoxClient.Stock.BatchByMarketAsync(symbols, types, range, last);
+			var response = await sandBoxClient.Batch.BatchByMarketAsync(symbols, types, range, last);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

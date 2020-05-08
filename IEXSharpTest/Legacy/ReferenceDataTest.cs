@@ -36,6 +36,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX are no longer listing symbols.")]
 		public async Task IEXDividentsAsyncTest()
 		{
 			var response = await prodClient.ReferenceData.IEXDividentsAsync();
@@ -46,6 +47,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX are no longer listing symbols.")]
 		public async Task IEXNextDayExDateAsyncTest()
 		{
 			var response = await prodClient.ReferenceData.IEXNextDayExDateAsync();
@@ -56,6 +58,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX are no longer listing symbols.")]
 		public async Task IEXListedSymbolDirectoryAsyncTest()
 		{
 			var response = await prodClient.ReferenceData.IEXListedSymbolDirectoryAsync();
