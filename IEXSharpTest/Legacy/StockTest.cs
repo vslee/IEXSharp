@@ -220,6 +220,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method - No longer listed on https://iextrading.com/developers/docs/")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task ListedRegulationSHOThresholdSecuritiesListAsyncTest(string symbol)
@@ -232,6 +233,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method - No longer listed on https://iextrading.com/developers/docs/")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task ListedShortInterestListAsyncTest(string symbol)
