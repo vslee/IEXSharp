@@ -1,11 +1,13 @@
 using System;
-using System.Globalization;
+using System.Runtime.InteropServices;
 
 namespace IEXSharp.Helper
 {
 	public static class DateTimeExtensions
 	{
-		public static readonly TimeZoneInfo EST = TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time");
+		public static TimeZoneInfo EST =>
+			TimeZoneInfo.FindSystemTimeZoneById(RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+				? "Eastern Standard Time" : "America/New_York");
 		public readonly static DateTime UnixEpoch = new DateTime(1970, 1, 1);
 
 		public static DateTime GetTimestampInUTC(this ITimestampedDateMinute timestampedObj) =>

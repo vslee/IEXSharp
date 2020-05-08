@@ -1,5 +1,4 @@
 using IEXSharp.Helper;
-using System;
 
 namespace IEXSharp.Model.Stock.Response
 {
