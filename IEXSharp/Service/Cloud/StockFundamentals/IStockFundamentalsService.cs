@@ -1,6 +1,7 @@
 using IEXSharp.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.StockFundamentals.Request;
 using IEXSharp.Model.StockFundamentals.Response;
 
@@ -80,13 +81,6 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		Task<IEXResponse<string>> EarningFieldAsync(string symbol, string field, int last = 1);
 
 		/// <summary>
-		/// <see cref="https://iexcloud.io/docs/api/#earnings-today"/>
-		/// Earnings prior to last quarter are only included with paid subscription plans
-		/// </summary>
-		/// <returns></returns>
-		Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync();
-
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#financials"/>
 		/// Financial Firms report financials in a different format than our 3rd party processes therefore our data is limited
 		/// Only included with paid subscription plans
@@ -131,7 +125,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#splits"/>
 		/// Splits (Basic), as opposed to the Splits (Advanced) found in CorporateActionsService
-		/// Splits prior to last reported are only included with paid subscription plans
+		/// Splits prior to last reported are only included with paid subscription plans.
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>

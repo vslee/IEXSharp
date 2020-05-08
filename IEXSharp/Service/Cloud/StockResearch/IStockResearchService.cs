@@ -1,6 +1,7 @@
 using IEXSharp.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.StockResearch.Response;
 
 namespace IEXSharp.Service.Cloud.StockResearch
@@ -26,18 +27,20 @@ namespace IEXSharp.Service.Cloud.StockResearch
 		/// <see cref="https://iexcloud.io/docs/api/#estimates"/>
 		/// </summary>
 		/// <param name="symbol"></param>
+		/// <param name="period"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<IEXResponse<EstimatesResponse>> EstimatesAsync(string symbol, int last = 1);
+		Task<IEXResponse<EstimatesResponse>> EstimatesAsync(string symbol, Period period = Period.Quarter, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#estimates"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="field"></param>
+		/// <param name="period"></param>
 		/// <param name="last"></param>
 		/// <returns></returns>
-		Task<IEXResponse<string>> EstimateFieldAsync(string symbol, string field, int last = 1);
+		Task<IEXResponse<string>> EstimateFieldAsync(string symbol, string field, Period period = Period.Quarter, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#fund-ownership"/>

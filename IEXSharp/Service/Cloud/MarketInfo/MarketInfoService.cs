@@ -37,8 +37,17 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType) =>
 			await executor.NoParamExecute<IPOCalendarResponse>($"stock/market/{ipoType.GetDescriptionFromEnum()}");
 
-		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType) =>
-			await executor.NoParamExecute<IEnumerable<Quote>>($"stock/market/list/{listType.GetDescriptionFromEnum()}");
+		public async Task<IEXResponse<IEnumerable<Quote>>> ListAsync(ListType listType, int listLimit = 10)
+		{
+			const string urlPattern = "stock/market/list/[listType]";
+
+			var qsb = new QueryStringBuilder();
+			qsb.Add("listLimit", listLimit);
+
+			var pathNvc = new NameValueCollection { { "listType", listType.GetDescriptionFromEnum() } };
+
+			return await executor.ExecuteAsync<IEnumerable<Quote>>(urlPattern, pathNvc, qsb);
+		}
 
 		public async Task<IEXResponse<IEnumerable<MarketVolumeUSResponse>>> MarketVolumeUSAsync() =>
 			await executor.NoParamExecute<IEnumerable<MarketVolumeUSResponse>>("stock/market/volume");

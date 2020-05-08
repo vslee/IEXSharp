@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using IEXSharp;
+using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.StockFundamentals.Request;
 
 namespace IEXSharpTest.Cloud
@@ -74,15 +75,6 @@ namespace IEXSharpTest.Cloud
 		public async Task DividendsBasicAsyncTest(string symbol, DividendRange range)
 		{
 			var response = await sandBoxClient.StockFundamentals.DividendsBasicAsync(symbol, range);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		public async Task EarningTodayAsyncTest()
-		{
-			var response = await sandBoxClient.StockFundamentals.EarningTodayAsync();
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -180,7 +172,7 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", SplitRange.ThreeMonths)]
 		[TestCase("AAPL", SplitRange.FiveYears)]
 		[TestCase("AAPL", SplitRange.SixMonths)]
-		[TestCase("AAPL", SplitRange.Next)]
+		[TestCase("AMLP", SplitRange.Next)]
 		[TestCase("AAPL", SplitRange.Ytd)]
 		public async Task SplitsBasicAsyncTest(string symbol, SplitRange range)
 		{
@@ -188,7 +180,6 @@ namespace IEXSharpTest.Cloud
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 	}
 }

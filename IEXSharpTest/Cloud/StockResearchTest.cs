@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using IEXSharp;
+using IEXSharp.Model.Shared.Request;
 
 namespace IEXSharpTest.Cloud
 {
@@ -44,11 +45,13 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL", 1)]
-		[TestCase("FB", 2)]
-		public async Task EstimateAsyncTest(string symbol, int last)
+		[TestCase("AAPL", Period.Quarter, 1)]
+		[TestCase("FB", Period.Quarter, 2)]
+		[TestCase("AAPL", Period.Annual, 1)]
+		[TestCase("AAPL", Period.Annual, 2)]
+		public async Task EstimateAsyncTest(string symbol, Period period, int last)
 		{
-			var response = await sandBoxClient.StockResearch.EstimatesAsync(symbol, last);
+			var response = await sandBoxClient.StockResearch.EstimatesAsync(symbol, period, last);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -56,11 +59,13 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("AAPL", "consensusEPS", 1)]
-		[TestCase("FB", "consensusEPS", 2)]
-		public async Task EstimateFieldAsyncTest(string symbol, string field, int last)
+		[TestCase("AAPL", "consensusEPS", Period.Quarter, 1)]
+		[TestCase("FB", "consensusEPS", Period.Quarter, 2)]
+		[TestCase("AAPL", "consensusEPS", Period.Annual, 1)]
+		[TestCase("AAPL", "consensusEPS", Period.Annual, 2)]
+		public async Task EstimateFieldAsyncTest(string symbol, string field, Period period, int last)
 		{
-			var response = await sandBoxClient.StockResearch.EstimateFieldAsync(symbol, field, last);
+			var response = await sandBoxClient.StockResearch.EstimateFieldAsync(symbol, field, period, last);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
