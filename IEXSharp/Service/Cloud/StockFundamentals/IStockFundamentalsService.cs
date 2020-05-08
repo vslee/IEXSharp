@@ -59,7 +59,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEXResponse<dynamic>> DividendsBasicAsync(string symbol, DividendRange range);
+		Task<IEXResponse<IEnumerable<DividendBasicResponse>>> DividendsBasicAsync(string symbol, DividendRange range);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#earnings"/>
@@ -130,6 +130,6 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
 		/// <returns></returns>
-		Task<IEXResponse<dynamic>> SplitsBasicAsync(string symbol, SplitRange range = SplitRange.OneMonth);
+		Task<IEXResponse<IEnumerable<SplitBasicResponse>>> SplitsBasicAsync(string symbol, SplitRange range = SplitRange.OneMonth);
 	}
 }

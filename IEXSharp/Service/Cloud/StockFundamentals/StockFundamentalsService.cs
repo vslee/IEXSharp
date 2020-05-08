@@ -48,6 +48,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
+
 		public async Task<IEXResponse<CashFlowResponse>> CashFlowAsync(string symbol, Period period = Period.Quarter, int last = 1)
 		{
 			const string urlPattern = "stock/[symbol]/cash-flow/[last]";
@@ -73,7 +74,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<dynamic>> DividendsBasicAsync(string symbol, DividendRange range)
+		public async Task<IEXResponse<IEnumerable<DividendBasicResponse>>> DividendsBasicAsync(string symbol, DividendRange range)
 		{
 			const string urlPattern = "stock/[symbol]/dividends/[range]";
 
@@ -84,7 +85,17 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 				{"symbol", symbol}, {"range", range.GetDescriptionFromEnum()}
 			};
 
-			return await executor.ExecuteAsync<dynamic>(urlPattern, pathNvc, qsb);
+			if (range == DividendRange.Next)
+			{
+				var dividendResponse = await executor.ExecuteAsync<DividendBasicResponse>(urlPattern, pathNvc, qsb);
+
+				return new IEXResponse<IEnumerable<DividendBasicResponse>>()
+				{
+					Data = new List<DividendBasicResponse> { dividendResponse.Data }
+				};
+			}
+
+			return await executor.ExecuteAsync<IEnumerable<DividendBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<EarningResponse>> EarningAsync(string symbol, int last = 1) =>
@@ -124,7 +135,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<dynamic>> SplitsBasicAsync(string symbol, SplitRange range = SplitRange.OneMonth)
+		public async Task<IEXResponse<IEnumerable<SplitBasicResponse>>> SplitsBasicAsync(string symbol, SplitRange range = SplitRange.OneMonth)
 		{
 			const string urlPattern = "stock/[symbol]/splits/[range]";
 
@@ -132,7 +143,18 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescriptionFromEnum() } };
 
-			return await executor.ExecuteAsync<dynamic>(urlPattern, pathNvc, qsb);
+
+			if (range == SplitRange.Next)
+			{
+				var splitResponse = await executor.ExecuteAsync<SplitBasicResponse>(urlPattern, pathNvc, qsb);
+
+				return new IEXResponse<IEnumerable<SplitBasicResponse>>()
+				{
+					Data = new List<SplitBasicResponse> { splitResponse.Data }
+				};
+			}
+
+			return await executor.ExecuteAsync<IEnumerable<SplitBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
 	}
 }
