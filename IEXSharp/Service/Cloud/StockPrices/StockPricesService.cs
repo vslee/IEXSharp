@@ -14,10 +14,12 @@ namespace IEXSharp.Service.Cloud.StockPrices
 	public class StockPricesService : IStockPricesService
 	{
 		private readonly ExecutorREST executor;
+		private readonly ExecutorSSE executorSSE;
 
-		public StockPricesService(HttpClient client, string sk, string pk, bool sign)
+		public StockPricesService(HttpClient client, string baseSSEURL, string publishableToken, string secretToken, bool sign)
 		{
-			executor = new ExecutorREST(client, sk, pk, sign);
+			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			executorSSE = new ExecutorSSE(baseSSEURL, publishableToken: publishableToken, secretToken: secretToken);
 		}
 		public async Task<IEXResponse<BookResponse>> BookAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol);
@@ -106,6 +108,11 @@ namespace IEXSharp.Service.Cloud.StockPrices
 
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
+
+		public SSEClient<QuoteSSE> SubscribeStockQuotesUS(
+			IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval) =>
+			executorSSE.SymbolsSubscribeSSE<QuoteSSE>(
+				UTP ? $"stocksUS{interval.GetDescriptionFromEnum()}" : $"stocksUSNoUTP{interval.GetDescriptionFromEnum()}", symbols);
 
 		public async Task<IEXResponse<IEnumerable<VolumeByVenueResponse>>> VolumeByVenueAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<VolumeByVenueResponse>>("stock/[symbol]/volume-by-venue", symbol);
