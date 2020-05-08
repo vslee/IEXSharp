@@ -112,6 +112,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task CompanyAsyncTest(string symbol)
@@ -123,6 +124,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		public async Task CryptoAsyncTest()
 		{
 			var response = await prodClient.Stock.CryptoAsync();
@@ -133,6 +135,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task DelayedQuoteAsyncTest(string symbol)
@@ -160,6 +163,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task EarningAsyncTest(string symbol)
@@ -171,6 +175,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		public async Task EarningTodayAsyncTest()
 		{
 			var response = await prodClient.Stock.EarningTodayAsync();
@@ -239,6 +244,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task KeyStatsAsyncTest(string symbol)
@@ -250,6 +256,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task LargestTradesAsyncTest(string symbol)
@@ -313,6 +320,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task PeersAsyncTest(string symbol)
@@ -325,6 +333,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task PreviousDayPriceAsyncTest(string symbol)
@@ -336,6 +345,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task PriceAsyncTest(string symbol)
@@ -347,6 +357,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task QuoteAsyncTest(string symbol)
@@ -358,6 +369,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task RelevantAsyncTest(string symbol)
@@ -369,6 +381,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		public async Task SectorPerformanceAsync()
 		{
 			var response = await prodClient.Stock.SectorPerformanceAsync();
@@ -398,6 +411,7 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
+		[Ignore("IEX Legacy has now deprecated this method")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task VolumeByVenueAsyncTest(string symbol)
