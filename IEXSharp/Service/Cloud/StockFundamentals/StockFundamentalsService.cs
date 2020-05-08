@@ -74,13 +74,13 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 
 		public async Task<IEXResponse<DividendBasicResponse>> DividendsBasicNextAsync(string symbol)
 		{
-			const string urlPattern = "stock/[symbol]/dividends/[range]";
+			const string urlPattern = "stock/[symbol]/dividends/next";
 
 			var qsb = new QueryStringBuilder();
 
 			var pathNvc = new NameValueCollection
 			{
-				{"symbol", symbol}, {"range", DividendRange.Next.GetDescriptionFromEnum()}
+				{"symbol", symbol}
 			};
 
 			return await executor.ExecuteAsync<DividendBasicResponse>(urlPattern, pathNvc, qsb);
@@ -135,6 +135,17 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<SplitBasicResponse>> SplitsBasicNextAsync(string symbol)
+		{
+			const string urlPattern = "stock/[symbol]/splits/next";
+
+			var qsb = new QueryStringBuilder();
+
+			var pathNvc = new NameValueCollection { { "symbol", symbol } };
+
+			return await executor.ExecuteAsync<SplitBasicResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<SplitBasicResponse>>> SplitsBasicAsync(string symbol, SplitRange range = SplitRange.OneMonth)

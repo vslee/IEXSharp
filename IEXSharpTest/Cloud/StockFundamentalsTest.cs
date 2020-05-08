@@ -181,15 +181,24 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", SplitRange.ThreeMonths)]
 		[TestCase("AAPL", SplitRange.FiveYears)]
 		[TestCase("AAPL", SplitRange.SixMonths)]
-		[TestCase("AAPL", SplitRange.Next)]
+		[TestCase("AMLP", SplitRange.Next)]
 		[TestCase("AAPL", SplitRange.Ytd)]
 		public async Task SplitsBasicAsyncTest(string symbol, SplitRange range)
 		{
-			var response = await sandBoxClient.StockFundamentals.SplitsBasicAsync(symbol, range);
+			if (range == SplitRange.Next)
+			{
+				var response = await sandBoxClient.StockFundamentals.SplitsBasicNextAsync(symbol);
 
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
+				Assert.IsNull(response.ErrorMessage);
+				Assert.IsNotNull(response.Data);
+			}
+			else
+			{
+				var response = await sandBoxClient.StockFundamentals.SplitsBasicAsync(symbol, range);
+
+				Assert.IsNull(response.ErrorMessage);
+				Assert.IsNotNull(response.Data);
+			}
 		}
 	}
 }

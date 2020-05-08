@@ -135,7 +135,18 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#splits"/>
 		/// Splits (Basic), as opposed to the Splits (Advanced) found in CorporateActionsService
-		/// Splits prior to last reported are only included with paid subscription plans
+		/// Splits prior to last reported are only included with paid subscription plans.
+		///
+		/// This method is for the special case when retrieving the "Next" split.
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <returns></returns>
+		Task<IEXResponse<SplitBasicResponse>> SplitsBasicNextAsync(string symbol);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#splits"/>
+		/// Splits (Basic), as opposed to the Splits (Advanced) found in CorporateActionsService
+		/// Splits prior to last reported are only included with paid subscription plans.
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="range"></param>
