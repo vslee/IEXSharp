@@ -1,5 +1,7 @@
 using IEXSharp.Service.Cloud.Account;
 using IEXSharp.Service.Cloud.APISystemMetadata;
+using IEXSharp.Service.Cloud.Batch;
+using IEXSharp.Service.Cloud.CeoCompensation;
 using IEXSharp.Service.Cloud.Commodities;
 using IEXSharp.Service.Cloud.CorporateActions;
 using IEXSharp.Service.Cloud.Crypto;
@@ -10,17 +12,15 @@ using IEXSharp.Service.Cloud.MarketInfo;
 using IEXSharp.Service.Cloud.News;
 using IEXSharp.Service.Cloud.Options;
 using IEXSharp.Service.Cloud.ReferenceData;
-using IEXSharp.Service.Cloud.Stock;
+using IEXSharp.Service.Cloud.SocialSentiment;
+using IEXSharp.Service.Cloud.SSE;
 using IEXSharp.Service.Cloud.StockFundamentals;
 using IEXSharp.Service.Cloud.StockPrices;
 using IEXSharp.Service.Cloud.StockProfiles;
 using IEXSharp.Service.Cloud.StockResearch;
+using IEXSharp.Service.Cloud.Treasuries;
 using System;
 using System.Net.Http;
-using IEXSharp.Service.Cloud.CeoCompensation;
-using IEXSharp.Service.Cloud.SocialSentiment;
-using IEXSharp.Service.Cloud.SSE;
-using IEXSharp.Service.Cloud.Treasuries;
 
 namespace IEXSharp
 {
@@ -43,7 +43,7 @@ namespace IEXSharp
 		private IStockProfilesService stockProfilesService;
 		private IStockFundamentalsService stockFundamentalsService;
 		private IStockResearchService stockResearchService;
-		private IStockService stockService;
+		private IBatchService batchService;
 		private ISSEService sseService;
 		private ICryptoService cryptoService;
 		private IReferenceDataService referenceDataService;
@@ -75,8 +75,12 @@ namespace IEXSharp
 		public IStockResearchService StockResearch => stockResearchService ?? (stockResearchService =
 			new StockResearchService(client, secretToken, publishableToken, signRequest));
 
-		public IStockService Stock => stockService ?? (stockService =
-			new StockService(client, secretToken, publishableToken, signRequest));
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
+		/// Currently only available for /stock endpoints
+		/// </summary>
+		public IBatchService Batch => batchService ?? (batchService =
+			new BatchService(client, secretToken, publishableToken, signRequest));
 
 		/// <summary> SSE streaming service </summary>
 		public ISSEService SSE => sseService ?? (sseService =

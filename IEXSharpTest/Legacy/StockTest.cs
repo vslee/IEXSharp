@@ -6,6 +6,7 @@ using IEXSharp;
 using IEXSharp.Model.MarketInfo.Request;
 using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.StockFundamentals.Request;
+using IEXSharp.Model.Batch.Request;
 
 namespace IEXSharpTest.Legacy
 {

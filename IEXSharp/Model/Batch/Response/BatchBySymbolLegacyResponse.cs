@@ -1,7 +1,7 @@
 using IEXSharp.Model.News.Response;
 using System.Collections.Generic;
 
-namespace IEXSharp.Model.Stock.Response
+namespace IEXSharp.Model.Batch.Response
 {
 	public class BatchBySymbolLegacyResponse : BatchResponse
 	{

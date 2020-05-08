@@ -1,8 +1,9 @@
 using IEXSharp.Helper;
 using IEXSharp.Model;
+using IEXSharp.Model.Batch.Request;
+using IEXSharp.Model.Batch.Response;
 using IEXSharp.Model.MarketInfo.Request;
 using IEXSharp.Model.MarketInfo.Response;
-using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.Stock.Response;
 using IEXSharp.Model.StockFundamentals.Request;
 using IEXSharp.Model.StockFundamentals.Response;
