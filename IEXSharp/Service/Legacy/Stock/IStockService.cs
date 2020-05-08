@@ -55,7 +55,7 @@ namespace IEXSharp.Service.Legacy.Stock
 		/// <param name="range"></param>
 		/// <param name="qsb">Additional optional querystring</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<ChartResponse>>> ChartAsync(string symbol, ChartRange range = ChartRange.OneMonth, DateTime? date = null, QueryStringBuilder qsb = null);
+		Task<IEXResponse<IEnumerable<ChartLegacyResponse>>> ChartAsync(string symbol, ChartRange range = ChartRange.OneMonth, DateTime? date = null, QueryStringBuilder qsb = null);
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#chart"/>

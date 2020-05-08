@@ -133,7 +133,7 @@ namespace IEXSharp.Service.Legacy.Stock
 		public async Task<IEXResponse<BookResponse>> BookAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol);
 
-		public async Task<IEXResponse<IEnumerable<ChartResponse>>> ChartAsync(string symbol,
+		public async Task<IEXResponse<IEnumerable<ChartLegacyResponse>>> ChartAsync(string symbol,
 			ChartRange range = ChartRange.OneMonth, DateTime? date = null, QueryStringBuilder qsb = null)
 		{
 			const string urlPattern = "stock/[symbol]/chart/[range]/[date]";
@@ -147,7 +147,7 @@ namespace IEXSharp.Service.Legacy.Stock
 				{"date", date == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) date).ToString("yyyyMMdd")}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<ChartResponse>>(urlPattern, pathNvc, qsb);
+			return await _executor.ExecuteAsync<IEnumerable<ChartLegacyResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<ChartDynamicResponse>> ChartDynamicAsync(string symbol,

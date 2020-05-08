@@ -13,7 +13,8 @@ IEX Cloud API for C# and other .net languages. Supports SSE streaming
 
 ### IEX Cloud
 ```c#
-public IEXCloudClient(string publishableToken, string secretToken, bool signRequest, bool useSandBox, APIVersion version = APIVersion.stable)
+public IEXCloudClient(string publishableToken, string secretToken, bool signRequest, bool useSandBox,
+	APIVersion version = APIVersion.stable)
 ```
 First, create an instance of IEXCloudClient
 ```c#
@@ -29,7 +30,7 @@ IEXCloudClient iexCloudClient =
 IEXCloudClient iexCloudClient = 
 	new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: true); 
 ```
-To display historical prices
+To display historical prices. [Read more about DateTime in the wiki](https://github.com/vslee/IEXSharp/wiki/DateTime)
 ```c#
 using (var iexCloudClient = 
 	new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: false))
@@ -43,8 +44,9 @@ using (var iexCloudClient =
 	{
 		foreach (var ohlc in response.Data)
 		{
+			var dt = ohlc.GetTimestampInEST(); // note the use of the extension method instead of ohlc.date
 			Console.WriteLine(
-				$"{ohlc.date} Open: {ohlc.open}, High: {ohlc.high}, Low: {ohlc.low}, Close: {ohlc.close}, Volume: {ohlc.volume}");
+			   $"{dt} Open: {ohlc.open}, High: {ohlc.high}, Low: {ohlc.low}, Close: {ohlc.close}, Vol: {ohlc.volume}");
 		}
 	}
 }

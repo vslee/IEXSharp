@@ -47,8 +47,8 @@ namespace IEXSharpTest.Helper
 		}
 
 		[Test]
-		[TestCase("gibberish", BatchType.AdvancedStats)]
-		public void GetEnumFromDescriptionFailure(string input, Enum expected)
+		[TestCase("gibberish")]
+		public void GetEnumFromDescriptionFailure(string input)
 		{
 			Assert.Throws<Exception>(code: () => input.GetEnumFromDescription<BatchType>());
 		}

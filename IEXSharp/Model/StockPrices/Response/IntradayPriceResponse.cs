@@ -1,7 +1,12 @@
+using IEXSharp.Helper;
+
 namespace IEXSharp.Model.StockPrices.Response
 {
-	public class IntradayPriceResponse
+	public class IntradayPriceResponse : ITimestampedDateMinute
 	{
+		/// <summary>
+		/// Use DateTimeExtensions.GetTimestampInUTC(), which takes into account both 'date' and 'minute' and timezone
+		/// </summary>
 		public string date { get; set; }
 		public string minute { get; set; }
 		public string label { get; set; }
