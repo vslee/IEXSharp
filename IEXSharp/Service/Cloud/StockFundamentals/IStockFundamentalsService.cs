@@ -53,6 +53,17 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#dividends-basic"/>
 		/// Dividends (Basic), as opposed to the Dividends (Advanced) found in CorporateActionsService
+		/// Dividends prior to last reported are only included with paid subscription plans.
+		///
+		/// This method is for the special case when retrieving the "Next" dividend.
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <returns></returns>
+		Task<IEXResponse<DividendBasicResponse>> DividendsBasicNextAsync(string symbol);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#dividends-basic"/>
+		/// Dividends (Basic), as opposed to the Dividends (Advanced) found in CorporateActionsService
 		/// Dividends prior to last reported are only included with paid subscription plans
 		/// </summary>
 		/// <param name="symbol"></param>

@@ -72,6 +72,20 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
+		public async Task<IEXResponse<DividendBasicResponse>> DividendsBasicNextAsync(string symbol)
+		{
+			const string urlPattern = "stock/[symbol]/dividends/[range]";
+
+			var qsb = new QueryStringBuilder();
+
+			var pathNvc = new NameValueCollection
+			{
+				{"symbol", symbol}, {"range", DividendRange.Next.GetDescriptionFromEnum()}
+			};
+
+			return await executor.ExecuteAsync<DividendBasicResponse>(urlPattern, pathNvc, qsb);
+		}
+
 		public async Task<IEXResponse<IEnumerable<DividendBasicResponse>>> DividendsBasicAsync(string symbol, DividendRange range)
 		{
 			const string urlPattern = "stock/[symbol]/dividends/[range]";

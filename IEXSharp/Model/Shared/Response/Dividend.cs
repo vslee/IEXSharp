@@ -9,7 +9,7 @@ namespace IEXSharp.Model.Shared.Response
 
 	public enum DividendFrequency : byte
 	{
-		Quarterly = 2,
+		quarterly = 2,
 	}
 
 	public class DividendV1
