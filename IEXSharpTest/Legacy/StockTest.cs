@@ -57,15 +57,6 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
-		public async Task EarningTodayAsyncTest()
-		{
-			var response = await prodClient.Stock.EarningTodayAsync();
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task EffectiveSpreadAsyncTest(string symbol)
@@ -130,28 +121,6 @@ namespace IEXSharpTest.Legacy
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
-		[TestCase("AAPL")]
-		[TestCase("FB")]
-		public async Task PeersAsyncTest(string symbol)
-		{
-			var response = await prodClient.Stock.PeersAsync(symbol);
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
-		}
-
-		[Test]
-		public async Task SectorPerformanceAsync()
-		{
-			var response = await prodClient.Stock.SectorPerformanceAsync();
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.GreaterOrEqual(response.Data.Count(), 1);
 		}
 	}
 }

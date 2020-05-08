@@ -91,9 +91,6 @@ namespace IEXSharp.Service.Legacy.Stock
 			return await _executor.ExecuteAsync<IEnumerable<DividendV1Response>>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync() =>
-			await _executor.NoParamExecute<EarningTodayResponse>("stock/market/today-earnings");
-
 		public async Task<IEXResponse<IEnumerable<EffectiveSpreadResponse>>> EffectiveSpreadAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(
 				"stock/[symbol]/effective-spread", symbol);
@@ -122,11 +119,5 @@ namespace IEXSharp.Service.Legacy.Stock
 
 		public async Task<IEXResponse<OHLCResponse>> OHLCAsync(string symbol) =>
 			await _executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol);
-
-		public async Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<IEnumerable<string>>("stock/[symbol]/peers", symbol);
-
-		public async Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync() =>
-			await _executor.NoParamExecute<IEnumerable<SectorPerformanceResponse>>("stock/market/sector-performance");
 	}
 }

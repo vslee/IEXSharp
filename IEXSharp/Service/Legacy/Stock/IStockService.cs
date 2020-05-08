@@ -41,12 +41,6 @@ namespace IEXSharp.Service.Legacy.Stock
 		Task<IEXResponse<IEnumerable<DividendV1Response>>> DividendAsync(string symbol, DividendRange range);
 
 		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#earnings-today"/>
-		/// </summary>
-		/// <returns></returns>
-		Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync();
-
-		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#effective-spread"/>
 		/// </summary>
 		/// <param name="symbol"></param>
@@ -87,18 +81,5 @@ namespace IEXSharp.Service.Legacy.Stock
 		/// <param name="symbol"></param>
 		/// <returns></returns>
 		Task<IEXResponse<OHLCResponse>> OHLCAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#peers"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<string>>> PeersAsync(string symbol);
-
-		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#sector-performance"/>
-		/// </summary>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<SectorPerformanceResponse>>> SectorPerformanceAsync();
 	}
 }
