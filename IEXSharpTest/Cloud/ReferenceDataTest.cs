@@ -117,6 +117,16 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
+		public async Task SymbolsOptionsAsyncTest()
+		{
+			var response = await sandBoxClient.ReferenceData.SymbolsOptionsAsync();
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+		}
+
+		[Test]
 		public async Task SymbolsOTCAsyncTest()
 		{
 			var response = await sandBoxClient.ReferenceData.SymbolsOTCAsync();

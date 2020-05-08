@@ -119,7 +119,7 @@ namespace IEXSharp
 			?? (newsService = new NewsService(client, baseSSEURL, secretToken, publishableToken, signRequest));
 
 		public IEconomicDataService EconomicData => economicDataService
-		    ?? (economicDataService = new EconomicDataService(client, secretToken, publishableToken, signRequest));
+			?? (economicDataService = new EconomicDataService(client, secretToken, publishableToken, signRequest));
 
 		public ICommoditiesService Commodities => commoditiesService
 			?? (commoditiesService = new CommoditiesService(client, secretToken, publishableToken, signRequest));

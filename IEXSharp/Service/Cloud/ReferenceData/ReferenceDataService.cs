@@ -74,6 +74,9 @@ namespace IEXSharp.Service.Cloud.ReferenceData
 		public async Task<IEXResponse<IEnumerable<SymbolMutualFundResponse>>> SymbolsMutualFundAsync() =>
 			await _executor.NoParamExecute<IEnumerable<SymbolMutualFundResponse>>("ref-data/mutual-funds/symbols");
 
+		public async Task<IEXResponse<Dictionary<string, string[]>>> SymbolsOptionsAsync() =>
+			await _executor.NoParamExecute<Dictionary<string, string[]>>("ref-data/options/symbols");
+
 		public async Task<IEXResponse<IEnumerable<SymbolOTCResponse>>> SymbolsOTCAsync() =>
 			await _executor.NoParamExecute<IEnumerable<SymbolOTCResponse>>("ref-data/otc/symbols");
 
