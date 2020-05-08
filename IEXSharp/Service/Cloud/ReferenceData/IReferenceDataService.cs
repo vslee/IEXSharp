@@ -61,6 +61,12 @@ namespace IEXSharp.Service.Cloud.ReferenceData
 		Task<IEXResponse<IEnumerable<SymbolMutualFundResponse>>> SymbolsMutualFundAsync();
 
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#options-symbols"/>
+		/// </summary>
+		/// <returns></returns>
+		Task<IEXResponse<Dictionary<string, string[]>>> SymbolsOptionsAsync();
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#otc-symbols"/>
 		/// </summary>
 		/// <returns></returns>

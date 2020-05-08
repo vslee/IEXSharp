@@ -4,8 +4,11 @@ using System.Diagnostics;
 namespace IEXSharp.Model.StockPrices.Response
 {
 	[DebuggerDisplay("date={date}, open={open}, close={close}, high={high}, low={low}, vol={volume}")]
-	public class HistoricalPriceResponse : ITimestamped
+	public class HistoricalPriceResponse : ITimestampedDateMinute
 	{
+		/// <summary>
+		/// Use DateTimeExtensions.GetTimestampInUTC(), which takes into account both 'date' and 'minute' and timezone
+		/// </summary>
 		public string date { get; set; }
 		public string minute { get; set; }
 		public decimal open { get; set; }

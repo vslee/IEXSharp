@@ -1,10 +1,14 @@
-﻿using System;
+using IEXSharp.Helper;
+using System;
 
 namespace IEXSharp.Model.Stock.Response
 {
-	public class ChartResponse
+	public class ChartLegacyResponse : ITimestampedDateMinute
 	{
-		public DateTime date { get; set; }
+		/// <summary>
+		/// Use DateTimeExtensions.GetTimestampInUTC(), which takes into account both 'date' and 'minute' and timezone
+		/// </summary>
+		public string date { get; set; }
 		public string minute { get; set; }
 		public string label { get; set; }
 		public decimal high { get; set; }
