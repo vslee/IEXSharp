@@ -106,9 +106,6 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		public async Task<IEXResponse<string>> EarningFieldAsync(string symbol, string field, int last = 1) =>
 			await executor.SymbolLastFieldExecuteAsync("stock/[symbol]/earnings/[last]/[field]", symbol, field, last);
 
-		public async Task<IEXResponse<EarningTodayResponse>> EarningTodayAsync() =>
-			await executor.NoParamExecute<EarningTodayResponse>("stock/market/today-earnings");
-
 		public async Task<IEXResponse<FinancialResponse>> FinancialAsync(string symbol, int last = 1) =>
 			await executor.SymbolLastExecuteAsync<FinancialResponse>("stock/[symbol]/financials/[last]", symbol, last);
 

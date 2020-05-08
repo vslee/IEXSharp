@@ -90,15 +90,6 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
-		public async Task EarningTodayAsyncTest()
-		{
-			var response = await sandBoxClient.StockFundamentals.EarningTodayAsync();
-
-			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-		}
-
-		[Test]
 		[TestCase("AAPL", 1)]
 		[TestCase("FB", 2)]
 		public async Task EarningAsyncTest(string symbol, int last)
