@@ -3,7 +3,6 @@ using IEXSharp.Model.Stock.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
-using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.StockPrices.Response;
 using IEXSharp.Model.StockProfiles.Response;
 using IEXSharp.Model.StockFundamentals.Response;
