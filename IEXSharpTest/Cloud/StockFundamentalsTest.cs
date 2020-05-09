@@ -87,7 +87,7 @@ namespace IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.StockFundamentals.DividendsBasicAsync(symbol, range);
 
-			Assert.IsTrue(response.ErrorMessage.Equals("unknown symbol", StringComparison.InvariantCultureIgnoreCase));
+			Assert.IsTrue(response.ErrorMessage.Equals("NotFound - Unknown symbol", StringComparison.InvariantCultureIgnoreCase));
 		}
 
 
@@ -198,7 +198,7 @@ namespace IEXSharpTest.Cloud
 		{
 			var response = await sandBoxClient.StockFundamentals.SplitsBasicAsync(symbol, range);
 
-			Assert.IsTrue(response.ErrorMessage.Equals("unknown symbol", StringComparison.InvariantCultureIgnoreCase));
+			Assert.IsTrue(response.ErrorMessage.Equals("NotFound - Unknown symbol", StringComparison.InvariantCultureIgnoreCase));
 		}
 	}
 }
