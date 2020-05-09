@@ -68,7 +68,20 @@ namespace IEXSharp.Helper
 					content = await responseContent.Content.ReadAsStringAsync();
 					if (responseContent.StatusCode == HttpStatusCode.OK)
 					{ // Successful Request
+						// The logic that follows is included to handle the edge case of pulling
+						// dividend or split information in the cases where the DividendRange or
+						// SplitRange are set to "Next". When dividends and splits do not exist,
+						// the IEXCloud API returns an empty array for all other types of
+						// DividendRange and SplitRange values, but in the case of "Next", it
+						// returns an empty object (i.e., "{}"). As such, this case must be handled
+						// separately without breaking existing functionality.
 						if (typeof(IEnumerable).IsAssignableFrom(typeof(ReturnType))
+							// Must exclude desired return types of string from this conditional because
+							// strings are also assignable from IEnumerable (i.e., IEnumerable<char>)
+							&& typeof(ReturnType) != typeof(string)
+							// Dictionaries will also be assignable from IEnumerable but it is expected
+							// that their JSON representation would begin with "{" instead of "["
+							&& !typeof(IDictionary).IsAssignableFrom(typeof(ReturnType)) 
 							&& content[0] != '[')
 						{ // if expecting an array but receive a single item instead, create a new List with that single item
 							content = '[' + content + ']';

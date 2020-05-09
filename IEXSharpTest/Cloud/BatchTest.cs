@@ -33,8 +33,8 @@ namespace IEXSharpTest.Cloud
 		[Test]
 		[TestCase(new string[] { "AAPL" }, new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote })]
 		[TestCase(new string[] { "AAPL", "FB" }, new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote }, "1m", 2)]
-		[TestCase("AAPL", new BatchType[] { BatchType.Peers, BatchType.AdvancedStats, BatchType.PreviousDayPrice })]
-		[TestCase("AAPL", new BatchType[] { BatchType.SplitsBasic, BatchType.DividendsBasic })]
+		[TestCase(new string[] { "AAPL" }, new BatchType[] { BatchType.Peers, BatchType.AdvancedStats, BatchType.PreviousDayPrice })]
+		[TestCase(new string[] { "AAPL" }, new BatchType[] { BatchType.SplitsBasic, BatchType.DividendsBasic })]
 		public async Task BatchByMarketAsyncTest(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
 			var response = await sandBoxClient.Batch.BatchByMarketAsync(symbols, types, range, last);

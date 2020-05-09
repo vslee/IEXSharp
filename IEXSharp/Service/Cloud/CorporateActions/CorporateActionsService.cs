@@ -41,7 +41,7 @@ namespace IEXSharp.Service.Cloud.CorporateActions
 		}
 
 		public async Task<IEXResponse<IEnumerable<DividendAdvancedResponse>>> DividendsAdvancedAsync(
-			string symbol, TimeSeriesRange range, bool calendar, int? last, string refId)
+			string symbol, TimeSeriesRange? range, bool calendar, int? last, string refId)
 		{
 			string urlPattern = "time-series/advanced_dividends/[symbol]";
 			urlPattern = GetBaseUrl(urlPattern, symbol);
