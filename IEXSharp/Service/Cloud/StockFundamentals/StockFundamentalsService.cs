@@ -92,6 +92,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 				return dividendResponse != null
 					? new IEXResponse<IEnumerable<DividendBasicResponse>>()
 					{
+						ErrorMessage = dividendResponse.ErrorMessage,
 						Data = new List<DividendBasicResponse> { dividendResponse.Data }
 					}
 					: new IEXResponse<IEnumerable<DividendBasicResponse>>()
@@ -156,6 +157,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 				return splitResponse != null
 					? new IEXResponse<IEnumerable<SplitBasicResponse>>()
 					{
+						ErrorMessage = splitResponse.ErrorMessage,
 						Data = new List<SplitBasicResponse> { splitResponse.Data }
 					}
 					: new IEXResponse<IEnumerable<SplitBasicResponse>>()

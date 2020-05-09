@@ -71,6 +71,8 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", DividendRange.FiveYears)]
 		[TestCase("AAPL", DividendRange.SixMonths)]
 		[TestCase("AAPL", DividendRange.Next)]
+		[TestCase("AMLP", DividendRange.Next)]
+		[TestCase("ZIEXT", DividendRange.Next)]
 		[TestCase("AAPL", DividendRange.Ytd)]
 		public async Task DividendsBasicAsyncTest(string symbol, DividendRange range)
 		{
@@ -172,7 +174,9 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", SplitRange.ThreeMonths)]
 		[TestCase("AAPL", SplitRange.FiveYears)]
 		[TestCase("AAPL", SplitRange.SixMonths)]
+		[TestCase("AAPL", SplitRange.Next)]
 		[TestCase("AMLP", SplitRange.Next)]
+		[TestCase("ZIEXT", SplitRange.Next)]
 		[TestCase("AAPL", SplitRange.Ytd)]
 		public async Task SplitsBasicAsyncTest(string symbol, SplitRange range)
 		{

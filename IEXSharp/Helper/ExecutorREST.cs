@@ -71,8 +71,9 @@ namespace IEXSharp.Helper
 						return new IEXResponse<ReturnType>() { ErrorMessage = token["error"].ToString() };
 					}
 					else if (content.Equals("forbidden", StringComparison.InvariantCultureIgnoreCase)
-						|| content.Equals("not found", StringComparison.InvariantCultureIgnoreCase))
-					{ // "Forbidden" or "Not found"
+						|| content.Equals("not found", StringComparison.InvariantCultureIgnoreCase)
+						|| content.Equals("unknown symbol", StringComparison.InvariantCultureIgnoreCase))
+					{ // "Forbidden" or "Not found" or "Unknown symbol"
 						return new IEXResponse<ReturnType>() { ErrorMessage = content };
 					}
 					else
