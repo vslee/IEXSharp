@@ -68,18 +68,15 @@ namespace IEXSharp.Helper
 					content = await responseContent.Content.ReadAsStringAsync();
 					if (responseContent.StatusCode == HttpStatusCode.OK)
 					{ // Successful Request
-						if (!typeof(IEnumerable).IsAssignableFrom(typeof(ReturnType))
-							&& content == "[]")
-						{ // if not expecting an array but receive an empty array, return null
-							return null;
+						if (typeof(IEnumerable).IsAssignableFrom(typeof(ReturnType))
+							&& content[0] != '[')
+						{ // if expecting an array but receive a single item instead, create a new List with that single item
+							content = '[' + content + ']';
 						}
-						else
+						return new IEXResponse<ReturnType>()
 						{
-							return new IEXResponse<ReturnType>()
-							{
-								Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
-							};
-						}
+							Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
+						};
 					}
 					else
 					{ // Failed Request
