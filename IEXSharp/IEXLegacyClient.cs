@@ -7,6 +7,7 @@ using System.Net.Http;
 
 namespace IEXSharp
 {
+	/// <summary> Main class for IEX Legacy API. Deprecated methods have been removed. IDisposable </summary>
 	public class IEXLegacyClient : IDisposable
 	{
 		private readonly HttpClient _client;
@@ -28,6 +29,7 @@ namespace IEXSharp
 		public IStatsService Stats =>
 			statsService ?? (statsService = new StatsService(_client));
 
+		/// <summary> create a new IEXLegacyClient. No API keys are needed. </summary>
 		public IEXLegacyClient()
 		{
 			_client = new HttpClient

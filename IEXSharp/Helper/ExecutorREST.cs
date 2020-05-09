@@ -95,7 +95,7 @@ namespace IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNVC = new NameValueCollection();
 
-			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb).ConfigureAwait(false);
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolExecuteAsync<ReturnType>(string urlPattern, string symbol)
@@ -104,7 +104,7 @@ namespace IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolsExecuteAsync<ReturnType>(string urlPattern, IEnumerable<string> symbols)
@@ -115,7 +115,7 @@ namespace IEXSharp.Helper
 
 			var pathNvc = new NameValueCollection();
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolLastExecuteAsync<ReturnType>(string urlPattern, string symbol, int last)
@@ -124,7 +124,7 @@ namespace IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
 		}
 
 		public async Task<IEXResponse<string>> SymbolLastFieldExecuteAsync(string urlPattern, string symbol, string field, int last)
@@ -132,7 +132,7 @@ namespace IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
-			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
 		}
 	}
 }

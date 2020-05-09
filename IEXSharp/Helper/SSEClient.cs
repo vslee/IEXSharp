@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace IEXSharp.Helper
 {
+	/// <summary> SSEClient which provides events to subscribe to and method to start streaming. IDisposable </summary>
+	/// <typeparam name="T"></typeparam>
 	public class SSEClient<T> : IDisposable //,IEventSource
 	{
 		EventSource eventSource;
@@ -70,7 +72,7 @@ namespace IEXSharp.Helper
 		public ReadyState ReadyState => eventSource.ReadyState;
 
 		/// <summary>
-		/// Initiates the request to the EventSource API and parses Server Sent Events received by the API.
+		/// This will block until cancelled! Initiates the request to the EventSource API and parses Server Sent Events received by the API.
 		/// </summary>
 		/// <returns>A <see cref="System.Threading.Tasks.Task"/> A task that represents the work queued to execute in the ThreadPool.</returns>
 		/// <exception cref="InvalidOperationException">The method was called after the connection <see cref="ReadyState"/> was Open or Connecting.</exception>
