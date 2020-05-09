@@ -4,6 +4,7 @@ using NUnit.Framework;
 using IEXSharp;
 using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.StockFundamentals.Request;
+using System;
 
 namespace IEXSharpTest.Cloud
 {
@@ -72,7 +73,6 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", DividendRange.SixMonths)]
 		[TestCase("AAPL", DividendRange.Next)]
 		[TestCase("AMLP", DividendRange.Next)]
-		[TestCase("ZIEXT", DividendRange.Next)]
 		[TestCase("AAPL", DividendRange.Ytd)]
 		public async Task DividendsBasicAsyncTest(string symbol, DividendRange range)
 		{
@@ -81,6 +81,15 @@ namespace IEXSharpTest.Cloud
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 		}
+
+		[TestCase("ZIEXT", DividendRange.Next)]
+		public async Task DividendsBasicAsyncWithUnknownSymbolTest(string symbol, DividendRange range)
+		{
+			var response = await sandBoxClient.StockFundamentals.DividendsBasicAsync(symbol, range);
+
+			Assert.IsTrue(response.ErrorMessage.Equals("unknown symbol", StringComparison.InvariantCultureIgnoreCase));
+		}
+
 
 		[Test]
 		[TestCase("AAPL", 1)]
@@ -174,9 +183,7 @@ namespace IEXSharpTest.Cloud
 		[TestCase("AAPL", SplitRange.ThreeMonths)]
 		[TestCase("AAPL", SplitRange.FiveYears)]
 		[TestCase("AAPL", SplitRange.SixMonths)]
-		[TestCase("AAPL", SplitRange.Next)]
 		[TestCase("AMLP", SplitRange.Next)]
-		[TestCase("ZIEXT", SplitRange.Next)]
 		[TestCase("AAPL", SplitRange.Ytd)]
 		public async Task SplitsBasicAsyncTest(string symbol, SplitRange range)
 		{
@@ -184,6 +191,14 @@ namespace IEXSharpTest.Cloud
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+		}
+
+		[TestCase("ZIEXT", SplitRange.Next)]
+		public async Task SplitsBasicAsyncUnkownSymbolTest(string symbol, SplitRange range)
+		{
+			var response = await sandBoxClient.StockFundamentals.SplitsBasicAsync(symbol, range);
+
+			Assert.IsTrue(response.ErrorMessage.Equals("unknown symbol", StringComparison.InvariantCultureIgnoreCase));
 		}
 	}
 }
