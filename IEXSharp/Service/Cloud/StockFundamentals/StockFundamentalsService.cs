@@ -85,22 +85,6 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 				{"symbol", symbol}, {"range", range.GetDescriptionFromEnum()}
 			};
 
-			if (range == DividendRange.Next)
-			{
-				var dividendResponse = await executor.ExecuteAsync<DividendBasicResponse>(urlPattern, pathNvc, qsb);
-
-				return dividendResponse != null
-					? new IEXResponse<IEnumerable<DividendBasicResponse>>()
-					{
-						ErrorMessage = dividendResponse.ErrorMessage,
-						Data = new List<DividendBasicResponse> { dividendResponse.Data }
-					}
-					: new IEXResponse<IEnumerable<DividendBasicResponse>>()
-					{
-						Data = new List<DividendBasicResponse>()
-					};
-			}
-
 			return await executor.ExecuteAsync<IEnumerable<DividendBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
 
@@ -148,23 +132,6 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			var qsb = new QueryStringBuilder();
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescriptionFromEnum() } };
-
-
-			if (range == SplitRange.Next)
-			{
-				var splitResponse = await executor.ExecuteAsync<SplitBasicResponse>(urlPattern, pathNvc, qsb);
-
-				return splitResponse != null
-					? new IEXResponse<IEnumerable<SplitBasicResponse>>()
-					{
-						ErrorMessage = splitResponse.ErrorMessage,
-						Data = new List<SplitBasicResponse> { splitResponse.Data }
-					}
-					: new IEXResponse<IEnumerable<SplitBasicResponse>>()
-					{
-						Data = new List<SplitBasicResponse>()
-					};
-			}
 
 			return await executor.ExecuteAsync<IEnumerable<SplitBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
