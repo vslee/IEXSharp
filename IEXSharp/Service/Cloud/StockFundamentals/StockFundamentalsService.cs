@@ -133,17 +133,6 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "range", range.GetDescriptionFromEnum() } };
 
-
-			if (range == SplitRange.Next)
-			{
-				var splitResponse = await executor.ExecuteAsync<SplitBasicResponse>(urlPattern, pathNvc, qsb);
-
-				return new IEXResponse<IEnumerable<SplitBasicResponse>>()
-				{
-					Data = new List<SplitBasicResponse> { splitResponse.Data }
-				};
-			}
-
 			return await executor.ExecuteAsync<IEnumerable<SplitBasicResponse>>(urlPattern, pathNvc, qsb);
 		}
 	}

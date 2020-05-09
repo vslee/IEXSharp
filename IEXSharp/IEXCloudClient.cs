@@ -26,52 +26,48 @@ namespace IEXSharp
 	/// <summary> https://iexcloud.io/docs/api/#api-versioning </summary>
 	public enum APIVersion
 	{
-		stable, latest, beta, V1
+		/// <summary> can be used to access the latest stable API version </summary>
+		stable,
+		/// <summary> can be used to access the latest API version which may be in beta </summary>
+		latest,
+		/// <summary> this will need to be revised when new beta versions appear (beta vs v2-beta)/ </summary>
+		beta,
+		/// <summary> current version </summary>
+		V1
 	}
 
+	/// <summary> Main class for IEX Cloud REST and SSE streaming IDisposable </summary>
 	public class IEXCloudClient : IDisposable
 	{
+		/// <summary> only used for REST calls, not by the SSEClient </summary>
 		private readonly HttpClient client;
 		private readonly string baseSSEURL;
 		private readonly string publishableToken;
 		private readonly string secretToken;
 		private readonly bool signRequest;
 
+		private IBatchService batchService;
 		private IAccountService accountService;
+		private IAPISystemMetadataService apiSystemMetadataService;
 		private IStockPricesService stockPricesService;
 		private IStockProfilesService stockProfilesService;
 		private IStockFundamentalsService stockFundamentalsService;
 		private IStockResearchService stockResearchService;
-		private IBatchService batchService;
-		private ICryptoService cryptoService;
-		private IReferenceDataService referenceDataService;
-		private IForexCurrenciesService forexCurrenciesService;
-		private IInvestorsExchangeDataService investorsExchangeDataService;
-		private IAPISystemMetadataService apiSystemMetadataService;
 		private ICorporateActionsService corporateActionsService;
 		private IMarketInfoService marketInfoService;
-		private IOptionsService optionsService;
-		private ICeoCompensationService ceoCompensationService;
-		private ISocialSentimentService socialSentimentService;
-		private ITreasuriesService treasuriesService;
 		private INewsService newsService;
+		private ICryptoService cryptoService;
+		private IForexCurrenciesService forexCurrenciesService;
+		private IOptionsService optionsService;
+		private ISocialSentimentService socialSentimentService;
+		private ICeoCompensationService ceoCompensationService;
+		private ITreasuriesService treasuriesService;
 		private IEconomicDataService economicDataService;
 		private ICommoditiesService commoditiesService;
+		private IReferenceDataService referenceDataService;
+		private IInvestorsExchangeDataService investorsExchangeDataService;
 
-		public IAccountService Account => accountService ??	(accountService =
-			new AccountService(client, publishableToken, secretToken, signRequest));
-
-		public IStockPricesService StockPrices => stockPricesService ?? (stockPricesService =
-			new StockPricesService(client, baseSSEURL, publishableToken, secretToken, signRequest));
-
-		public IStockProfilesService StockProfiles => stockProfilesService ?? (stockProfilesService =
-			new StockProfilesService(client, publishableToken, secretToken, signRequest));
-
-		public IStockFundamentalsService StockFundamentals => stockFundamentalsService ?? (stockFundamentalsService =
-			new StockFundamentalsService(client, publishableToken, secretToken, signRequest));
-
-		public IStockResearchService StockResearch => stockResearchService ?? (stockResearchService =
-			new StockResearchService(client, publishableToken, secretToken, signRequest));
+		// The following properties are arranged in the same order as https://iexcloud.io/docs/api
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
@@ -80,47 +76,119 @@ namespace IEXSharp
 		public IBatchService Batch => batchService ?? (batchService =
 			new BatchService(client, publishableToken, secretToken, signRequest));
 
-		public ICryptoService Crypto => cryptoService ??
-		    (cryptoService = new CryptoService(client, baseSSEURL, publishableToken, secretToken, signRequest));
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#accounts"/>
+		/// </summary>
+		public IAccountService Account => accountService ??	(accountService =
+			new AccountService(client, publishableToken, secretToken, signRequest));
 
-		public IReferenceDataService ReferenceData => referenceDataService ??
-			(referenceDataService = new ReferenceDataService(client, publishableToken, secretToken, signRequest));
-
-		public IForexCurrenciesService ForexCurrencies => forexCurrenciesService ??
-			(forexCurrenciesService = new ForexCurrenciesService(client, publishableToken, secretToken, signRequest));
-
-		public IInvestorsExchangeDataService InvestorsExchangeData =>
-			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, publishableToken, secretToken, signRequest));
-
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#api-system-metadata"/>
+		/// </summary>
 		public IAPISystemMetadataService ApiSystemMetadata => apiSystemMetadataService
 			?? (apiSystemMetadataService = new APISystemMetadata(client, publishableToken, secretToken, signRequest));
 
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#stock-prices"/>
+		/// </summary>
+		public IStockPricesService StockPrices => stockPricesService ?? (stockPricesService =
+			new StockPricesService(client, baseSSEURL, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#stock-profiles"/>
+		/// </summary>
+		public IStockProfilesService StockProfiles => stockProfilesService ?? (stockProfilesService =
+			new StockProfilesService(client, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#stock-fundamentals"/>
+		/// </summary>
+		public IStockFundamentalsService StockFundamentals => stockFundamentalsService ?? (stockFundamentalsService =
+			new StockFundamentalsService(client, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#stock-research"/>
+		/// </summary>
+		public IStockResearchService StockResearch => stockResearchService ?? (stockResearchService =
+			new StockResearchService(client, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#corporate-actions"/>
+		/// </summary>
 		public ICorporateActionsService CorporateActions => corporateActionsService
 			?? (corporateActionsService = new CorporateActionsService(client, publishableToken, secretToken, signRequest));
 
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#market-info"/>
+		/// </summary>
 		public IMarketInfoService MarketInfoService => marketInfoService
 			?? (marketInfoService = new MarketInfoService(client, publishableToken, secretToken, signRequest));
 
-		public IOptionsService Options => optionsService
-			?? (optionsService = new OptionsService(client, secretToken, publishableToken, signRequest));
-
-		public ICeoCompensationService CeoCompensation => ceoCompensationService
-			?? (ceoCompensationService = new CeoCompensationService(client, publishableToken, secretToken, signRequest));
-
-		public ISocialSentimentService SocialSentiment => socialSentimentService
-			?? (socialSentimentService = new SocialSentimentService(client, baseSSEURL, publishableToken, secretToken, signRequest));
-
-		public ITreasuriesService Treasuries => treasuriesService
-			?? (treasuriesService = new TreasuriesService(client, publishableToken, secretToken, signRequest));
-
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#news"/>
+		/// </summary>
 		public INewsService News => newsService
 			?? (newsService = new NewsService(client, baseSSEURL, publishableToken, secretToken, signRequest));
 
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#cryptocurrency"/>
+		/// </summary>
+		public ICryptoService Crypto => cryptoService ??
+		    (cryptoService = new CryptoService(client, baseSSEURL, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#forex-currencies"/>
+		/// </summary>
+		public IForexCurrenciesService ForexCurrencies => forexCurrenciesService ??
+			(forexCurrenciesService = new ForexCurrenciesService(client, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#options"/>
+		/// </summary>
+		public IOptionsService Options => optionsService
+			?? (optionsService = new OptionsService(client, secretToken, publishableToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#social-sentiment"/>
+		/// </summary>
+		public ISocialSentimentService SocialSentiment => socialSentimentService
+			?? (socialSentimentService = new SocialSentimentService(client, baseSSEURL, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#ceo-compensation"/>
+		/// </summary>
+		public ICeoCompensationService CeoCompensation => ceoCompensationService
+			?? (ceoCompensationService = new CeoCompensationService(client, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#treasuries"/>
+		/// </summary>
+		public ITreasuriesService Treasuries => treasuriesService
+			?? (treasuriesService = new TreasuriesService(client, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#commodities"/>
+		/// </summary>
+		public ICommoditiesService Commodities => commoditiesService
+			?? (commoditiesService = new CommoditiesService(client, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#economic-data"/>
+		/// </summary>
 		public IEconomicDataService EconomicData => economicDataService
 			?? (economicDataService = new EconomicDataService(client, publishableToken, secretToken, signRequest));
 
-		public ICommoditiesService Commodities => commoditiesService
-			?? (commoditiesService = new CommoditiesService(client, publishableToken, secretToken, signRequest));
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#reference-data"/>
+		/// </summary>
+		public IReferenceDataService ReferenceData => referenceDataService ??
+			(referenceDataService = new ReferenceDataService(client, publishableToken, secretToken, signRequest));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#investors-exchange-data"/>
+		/// </summary>
+		public IInvestorsExchangeDataService InvestorsExchangeData =>
+			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, publishableToken, secretToken, signRequest));
 
 		/// <summary>
 		/// create a new IEXCloudClient

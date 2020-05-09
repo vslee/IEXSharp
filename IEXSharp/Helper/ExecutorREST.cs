@@ -2,8 +2,10 @@ using IEXSharp.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -64,21 +66,21 @@ namespace IEXSharp.Helper
 				try
 				{
 					content = await responseContent.Content.ReadAsStringAsync();
-					if (content.Length > 7 && content.Substring(startIndex: 0, length: 8) == "{\"error\"")
-					{ // {"error":"child \"token\" fails because [\"token\" must be a string]"}
-						var token = JToken.Parse(content);
-						return new IEXResponse<ReturnType>() { ErrorMessage = token["error"].ToString() };
-					}
-					else if (content.Equals("forbidden", StringComparison.InvariantCultureIgnoreCase)
-						|| content.Equals("not found", StringComparison.InvariantCultureIgnoreCase))
-					{ // "Forbidden" or "Not found"
-						return new IEXResponse<ReturnType>() { ErrorMessage = content };
-					}
-					else
-					{
-						return new IEXResponse<ReturnType>() {
+					if (responseContent.StatusCode == HttpStatusCode.OK)
+					{ // Successful Request
+						if (typeof(IEnumerable).IsAssignableFrom(typeof(ReturnType))
+							&& content[0] != '[')
+						{ // if expecting an array but receive a single item instead, create a new List with that single item
+							content = '[' + content + ']';
+						}
+						return new IEXResponse<ReturnType>()
+						{
 							Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
 						};
+					}
+					else
+					{ // Failed Request
+						return new IEXResponse<ReturnType> { ErrorMessage = $"{responseContent.StatusCode} - {content}" };
 					}
 				}
 				catch (JsonException ex)
@@ -93,7 +95,7 @@ namespace IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNVC = new NameValueCollection();
 
-			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<ReturnType>(url, pathNVC, qsb).ConfigureAwait(false);
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolExecuteAsync<ReturnType>(string urlPattern, string symbol)
@@ -102,7 +104,7 @@ namespace IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolsExecuteAsync<ReturnType>(string urlPattern, IEnumerable<string> symbols)
@@ -113,7 +115,7 @@ namespace IEXSharp.Helper
 
 			var pathNvc = new NameValueCollection();
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolLastExecuteAsync<ReturnType>(string urlPattern, string symbol, int last)
@@ -122,7 +124,7 @@ namespace IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
-			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<ReturnType>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
 		}
 
 		public async Task<IEXResponse<string>> SymbolLastFieldExecuteAsync(string urlPattern, string symbol, string field, int last)
@@ -130,7 +132,7 @@ namespace IEXSharp.Helper
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
-			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false);;
+			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
 		}
 	}
 }
