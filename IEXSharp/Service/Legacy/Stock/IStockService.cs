@@ -1,4 +1,3 @@
-using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.Stock.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,6 +8,8 @@ using IEXSharp.Model.StockFundamentals.Response;
 using IEXSharp.Model.StockFundamentals.Request;
 using IEXSharp.Model.MarketInfo.Request;
 using IEXSharp.Model.MarketInfo.Response;
+using IEXSharp.Model.Batch.Response;
+using IEXSharp.Model.Batch.Request;
 
 namespace IEXSharp.Service.Legacy.Stock
 {

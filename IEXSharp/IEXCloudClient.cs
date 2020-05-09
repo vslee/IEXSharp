@@ -1,5 +1,7 @@
 using IEXSharp.Service.Cloud.Account;
 using IEXSharp.Service.Cloud.APISystemMetadata;
+using IEXSharp.Service.Cloud.Batch;
+using IEXSharp.Service.Cloud.CeoCompensation;
 using IEXSharp.Service.Cloud.Commodities;
 using IEXSharp.Service.Cloud.CorporateActions;
 using IEXSharp.Service.Cloud.Crypto;
@@ -10,17 +12,14 @@ using IEXSharp.Service.Cloud.MarketInfo;
 using IEXSharp.Service.Cloud.News;
 using IEXSharp.Service.Cloud.Options;
 using IEXSharp.Service.Cloud.ReferenceData;
-using IEXSharp.Service.Cloud.Stock;
+using IEXSharp.Service.Cloud.SocialSentiment;
 using IEXSharp.Service.Cloud.StockFundamentals;
 using IEXSharp.Service.Cloud.StockPrices;
 using IEXSharp.Service.Cloud.StockProfiles;
 using IEXSharp.Service.Cloud.StockResearch;
+using IEXSharp.Service.Cloud.Treasuries;
 using System;
 using System.Net.Http;
-using IEXSharp.Service.Cloud.CeoCompensation;
-using IEXSharp.Service.Cloud.SocialSentiment;
-using IEXSharp.Service.Cloud.SSE;
-using IEXSharp.Service.Cloud.Treasuries;
 
 namespace IEXSharp
 {
@@ -43,8 +42,7 @@ namespace IEXSharp
 		private IStockProfilesService stockProfilesService;
 		private IStockFundamentalsService stockFundamentalsService;
 		private IStockResearchService stockResearchService;
-		private IStockService stockService;
-		private ISSEService sseService;
+		private IBatchService batchService;
 		private ICryptoService cryptoService;
 		private IReferenceDataService referenceDataService;
 		private IForexCurrenciesService forexCurrenciesService;
@@ -61,68 +59,68 @@ namespace IEXSharp
 		private ICommoditiesService commoditiesService;
 
 		public IAccountService Account => accountService ??	(accountService =
-			new AccountService(client, secretToken, publishableToken, signRequest));
+			new AccountService(client, publishableToken, secretToken, signRequest));
 
 		public IStockPricesService StockPrices => stockPricesService ?? (stockPricesService =
-			new StockPricesService(client, secretToken, publishableToken, signRequest));
+			new StockPricesService(client, baseSSEURL, publishableToken, secretToken, signRequest));
 
 		public IStockProfilesService StockProfiles => stockProfilesService ?? (stockProfilesService =
-			new StockProfilesService(client, secretToken, publishableToken, signRequest));
+			new StockProfilesService(client, publishableToken, secretToken, signRequest));
 
 		public IStockFundamentalsService StockFundamentals => stockFundamentalsService ?? (stockFundamentalsService =
-			new StockFundamentalsService(client, secretToken, publishableToken, signRequest));
+			new StockFundamentalsService(client, publishableToken, secretToken, signRequest));
 
 		public IStockResearchService StockResearch => stockResearchService ?? (stockResearchService =
-			new StockResearchService(client, secretToken, publishableToken, signRequest));
+			new StockResearchService(client, publishableToken, secretToken, signRequest));
 
-		public IStockService Stock => stockService ?? (stockService =
-			new StockService(client, secretToken, publishableToken, signRequest));
-
-		/// <summary> SSE streaming service </summary>
-		public ISSEService SSE => sseService ?? (sseService =
-			new SSEService(baseSSEURL: baseSSEURL, sk: secretToken, pk: publishableToken));
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
+		/// Currently only available for /stock endpoints
+		/// </summary>
+		public IBatchService Batch => batchService ?? (batchService =
+			new BatchService(client, publishableToken, secretToken, signRequest));
 
 		public ICryptoService Crypto => cryptoService ??
-		    (cryptoService = new CryptoService(client, secretToken, publishableToken, signRequest));
+		    (cryptoService = new CryptoService(client, baseSSEURL, publishableToken, secretToken, signRequest));
 
 		public IReferenceDataService ReferenceData => referenceDataService ??
-			(referenceDataService = new ReferenceDataService(client, secretToken, publishableToken, signRequest));
+			(referenceDataService = new ReferenceDataService(client, publishableToken, secretToken, signRequest));
 
 		public IForexCurrenciesService ForexCurrencies => forexCurrenciesService ??
-			(forexCurrenciesService = new ForexCurrenciesService(client, secretToken, publishableToken, signRequest));
+			(forexCurrenciesService = new ForexCurrenciesService(client, publishableToken, secretToken, signRequest));
 
 		public IInvestorsExchangeDataService InvestorsExchangeData =>
-			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, secretToken, publishableToken, signRequest));
+			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, publishableToken, secretToken, signRequest));
 
 		public IAPISystemMetadataService ApiSystemMetadata => apiSystemMetadataService
-			?? (apiSystemMetadataService = new APISystemMetadata(client, secretToken, publishableToken, signRequest));
+			?? (apiSystemMetadataService = new APISystemMetadata(client, publishableToken, secretToken, signRequest));
 
 		public ICorporateActionsService CorporateActions => corporateActionsService
-			?? (corporateActionsService = new CorporateActionsService(client, secretToken, publishableToken, signRequest));
+			?? (corporateActionsService = new CorporateActionsService(client, publishableToken, secretToken, signRequest));
 
 		public IMarketInfoService MarketInfoService => marketInfoService
-			?? (marketInfoService = new MarketInfoService(client, secretToken, publishableToken, signRequest));
+			?? (marketInfoService = new MarketInfoService(client, publishableToken, secretToken, signRequest));
 
 		public IOptionsService Options => optionsService
 			?? (optionsService = new OptionsService(client, secretToken, publishableToken, signRequest));
 
 		public ICeoCompensationService CeoCompensation => ceoCompensationService
-			?? (ceoCompensationService = new CeoCompensationService(client, secretToken, publishableToken, signRequest));
+			?? (ceoCompensationService = new CeoCompensationService(client, publishableToken, secretToken, signRequest));
 
 		public ISocialSentimentService SocialSentiment => socialSentimentService
-			?? (socialSentimentService = new SocialSentimentService(client, baseSSEURL, secretToken, publishableToken, signRequest));
+			?? (socialSentimentService = new SocialSentimentService(client, baseSSEURL, publishableToken, secretToken, signRequest));
 
 		public ITreasuriesService Treasuries => treasuriesService
-			?? (treasuriesService = new TreasuriesService(client, secretToken, publishableToken, signRequest));
+			?? (treasuriesService = new TreasuriesService(client, publishableToken, secretToken, signRequest));
 
 		public INewsService News => newsService
-			?? (newsService = new NewsService(client, baseSSEURL, secretToken, publishableToken, signRequest));
+			?? (newsService = new NewsService(client, baseSSEURL, publishableToken, secretToken, signRequest));
 
 		public IEconomicDataService EconomicData => economicDataService
-			?? (economicDataService = new EconomicDataService(client, secretToken, publishableToken, signRequest));
+			?? (economicDataService = new EconomicDataService(client, publishableToken, secretToken, signRequest));
 
 		public ICommoditiesService Commodities => commoditiesService
-			?? (commoditiesService = new CommoditiesService(client, secretToken, publishableToken, signRequest));
+			?? (commoditiesService = new CommoditiesService(client, publishableToken, secretToken, signRequest));
 
 		/// <summary>
 		/// create a new IEXCloudClient

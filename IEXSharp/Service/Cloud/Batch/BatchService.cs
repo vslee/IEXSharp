@@ -1,7 +1,7 @@
 using IEXSharp.Helper;
 using IEXSharp.Model;
-using IEXSharp.Model.Stock.Request;
-using IEXSharp.Model.Stock.Response;
+using IEXSharp.Model.Batch.Request;
+using IEXSharp.Model.Batch.Response;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -9,15 +9,15 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace IEXSharp.Service.Cloud.Stock
+namespace IEXSharp.Service.Cloud.Batch
 {
-	internal class StockService : IStockService
+	internal class BatchService : IBatchService
 	{
 		private readonly ExecutorREST executor;
 
-		public StockService(HttpClient client, string sk, string pk, bool sign)
+		public BatchService(HttpClient client, string publishableToken, string secretToken, bool sign)
 		{
-			executor = new ExecutorREST(client, sk, pk, sign);
+			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
 		}
 
 		public async Task<IEXResponse<BatchResponse>>

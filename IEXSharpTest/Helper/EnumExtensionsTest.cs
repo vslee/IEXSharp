@@ -1,7 +1,7 @@
 using System;
 using IEXSharp.Helper;
+using IEXSharp.Model.Batch.Request;
 using IEXSharp.Model.CorporateActions.Request;
-using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.StockPrices.Request;
 using NUnit.Framework;
 

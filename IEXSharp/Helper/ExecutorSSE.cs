@@ -8,7 +8,8 @@ namespace IEXSharp.Helper
 	internal class ExecutorSSE : ExecutorBase
 	{
 		readonly string baseSSEURL;
-		public ExecutorSSE(string baseSSEURL, string sk, string pk) : base(publishableToken: pk, sk)
+		public ExecutorSSE(string baseSSEURL, string publishableToken, string secretToken)
+			: base(publishableToken: publishableToken, secretToken: secretToken)
 		{
 			this.baseSSEURL = baseSSEURL;
 		}
@@ -20,14 +21,20 @@ namespace IEXSharp.Helper
 			return new SSEClient<T>(Configuration.Builder(new Uri(url)).Build());
 		}
 
-		public SSEClient<T> SymbolsSubscribeSSE<T>(string urlPattern, IEnumerable<string> symbols, string token)
+		public SSEClient<T> SymbolsSubscribeSSE<T>(string urlPattern, IEnumerable<string> symbols, bool forceUseSecretToken = false)
 			where T : class
 		{
 			var qsb = new QueryStringBuilder();
-			if (!string.IsNullOrEmpty(token))
+			if (!string.IsNullOrEmpty(publishableToken) && !forceUseSecretToken)
 			{
-				qsb.Add("token", token);
+				qsb.Add("token", publishableToken);
 			}
+
+			if (!string.IsNullOrEmpty(secretToken) && forceUseSecretToken)
+			{
+				qsb.Add("token", secretToken);
+			}
+
 			qsb.Add("symbols", string.Join(",", symbols));
 
 			var pathNvc = new NameValueCollection();

@@ -13,9 +13,9 @@ namespace IEXSharp.Service.Cloud.CorporateActions
 	{
 		private ExecutorREST executor;
 
-		public CorporateActionsService(HttpClient client, string sk, string pk, bool sign)
+		public CorporateActionsService(HttpClient client, string publishableToken, string secretToken, bool sign)
 		{
-			executor = new ExecutorREST(client, sk, pk, sign);
+			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
 		}
 
 		public async Task<IEXResponse<IEnumerable<BonusIssueResponse>>> BonusIssueAsync(

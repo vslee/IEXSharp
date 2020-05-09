@@ -10,9 +10,9 @@ namespace IEXSharp.Service.Cloud.CeoCompensation
 	{
 		private readonly ExecutorREST executor;
 
-		public CeoCompensationService(HttpClient client, string sk, string pk, bool sign)
+		public CeoCompensationService(HttpClient client, string publishableToken, string secretToken, bool sign)
 		{
-			executor = new ExecutorREST(client, sk, pk, sign);
+			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
 		}
 
 		public async Task<IEXResponse<CeoCompensationResponse>> CeoCompensationAsync(string symbol) =>

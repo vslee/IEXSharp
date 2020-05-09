@@ -11,9 +11,9 @@ namespace IEXSharp.Service.Cloud.StockProfiles
 	{
 		private readonly ExecutorREST executor;
 
-		public StockProfilesService(HttpClient client, string sk, string pk, bool sign)
+		public StockProfilesService(HttpClient client, string publishableToken, string secretToken, bool sign)
 		{
-			executor = new ExecutorREST(client, sk, pk, sign);
+			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
 		}
 
 		public async Task<IEXResponse<CompanyResponse>> CompanyAsync(string symbol) =>

@@ -16,7 +16,8 @@ namespace IEXSharp.Helper
 		private readonly bool sign;
 		private readonly JsonSerializerSettings jsonSerializerSettings;
 
-		public ExecutorREST(HttpClient client, string secretToken, string publishableToken, bool sign) : base(publishableToken, secretToken)
+		public ExecutorREST(HttpClient client, string publishableToken, string secretToken, bool sign)
+			: base(publishableToken: publishableToken, secretToken: secretToken)
 		{
 			this.client = client;
 			if (sign)

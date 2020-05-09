@@ -7,7 +7,7 @@ using IEXSharp.Model.StockProfiles.Response;
 using IEXSharp.Model.StockResearch.Response;
 using IEXSharp.Model.News.Response;
 
-namespace IEXSharp.Model.Stock.Response
+namespace IEXSharp.Model.Batch.Response
 {
 	public class BatchResponse
 	{
@@ -20,7 +20,7 @@ namespace IEXSharp.Model.Stock.Response
 		public BookResponse Book { get; set; }
 
 		[JsonProperty("cash-flow")]
-		public CashFlowResponse CashFlows { get; set; }
+		public CashFlowsResponse CashFlows { get; set; }
 
 		public List<Chart> Chart { get; set; }
 		public CompanyResponse Company { get; set; }

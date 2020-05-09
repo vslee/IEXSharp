@@ -13,9 +13,9 @@ namespace IEXSharp.Service.Cloud.Options
 	{
 		private readonly ExecutorREST executor;
 
-		public OptionsService(HttpClient client, string sk, string pk, bool sign)
+		public OptionsService(HttpClient client, string secretToken, string publishableToken, bool sign)
 		{
-			executor = new ExecutorREST(client, sk, pk, sign);
+			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
 		}
 
 		public async Task<IEXResponse<IEnumerable<string>>> OptionsAsync(string symbol) =>

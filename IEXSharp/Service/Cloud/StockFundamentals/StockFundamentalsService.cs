@@ -14,9 +14,9 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 	{
 		private readonly ExecutorREST executor;
 
-		public StockFundamentalsService(HttpClient client, string sk, string pk, bool sign)
+		public StockFundamentalsService(HttpClient client, string publishableToken, string secretToken, bool sign)
 		{
-			executor = new ExecutorREST(client, sk, pk, sign);
+			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
 		}
 
 		public async Task<IEXResponse<BalanceSheetResponse>> BalanceSheetAsync(string symbol, Period period = Period.Quarter,
@@ -49,7 +49,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
-		public async Task<IEXResponse<CashFlowResponse>> CashFlowAsync(string symbol, Period period = Period.Quarter, int last = 1)
+		public async Task<IEXResponse<CashFlowsResponse>> CashFlowAsync(string symbol, Period period = Period.Quarter, int last = 1)
 		{
 			const string urlPattern = "stock/[symbol]/cash-flow/[last]";
 
@@ -58,7 +58,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() } };
 
-			return await executor.ExecuteAsync<CashFlowResponse>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<CashFlowsResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<string>> CashFlowFieldAsync(string symbol, string field, Period period = Period.Quarter,

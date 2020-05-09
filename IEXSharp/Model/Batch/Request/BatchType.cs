@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace IEXSharp.Model.Stock.Request
+namespace IEXSharp.Model.Batch.Request
 {
 	public enum BatchType
 	{
