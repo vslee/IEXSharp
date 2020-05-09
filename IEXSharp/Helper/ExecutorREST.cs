@@ -2,8 +2,10 @@ using IEXSharp.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -64,21 +66,24 @@ namespace IEXSharp.Helper
 				try
 				{
 					content = await responseContent.Content.ReadAsStringAsync();
-					if (content.Length > 7 && content.Substring(startIndex: 0, length: 8) == "{\"error\"")
-					{ // {"error":"child \"token\" fails because [\"token\" must be a string]"}
-						var token = JToken.Parse(content);
-						return new IEXResponse<ReturnType>() { ErrorMessage = token["error"].ToString() };
-					}
-					else if (content.Equals("forbidden", StringComparison.InvariantCultureIgnoreCase)
-						|| content.Equals("not found", StringComparison.InvariantCultureIgnoreCase))
-					{ // "Forbidden" or "Not found"
-						return new IEXResponse<ReturnType>() { ErrorMessage = content };
+					if (responseContent.StatusCode == HttpStatusCode.OK)
+					{ // Successful Request
+						if (!typeof(IEnumerable).IsAssignableFrom(typeof(ReturnType))
+							&& content == "[]")
+						{ // if not expecting an array but receive an empty array, return null
+							return null;
+						}
+						else
+						{
+							return new IEXResponse<ReturnType>()
+							{
+								Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
+							};
+						}
 					}
 					else
-					{
-						return new IEXResponse<ReturnType>() {
-							Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
-						};
+					{ // Failed Request
+						return new IEXResponse<ReturnType> { ErrorMessage = $"{responseContent.StatusCode} - {content}" };
 					}
 				}
 				catch (JsonException ex)
