@@ -20,7 +20,7 @@ namespace IEXSharp.Model.Batch.Response
 		public BookResponse Book { get; set; }
 
 		[JsonProperty("cash-flow")]
-		public CashFlowResponse CashFlows { get; set; }
+		public CashFlowsResponse CashFlows { get; set; }
 
 		public List<Chart> Chart { get; set; }
 		public CompanyResponse Company { get; set; }

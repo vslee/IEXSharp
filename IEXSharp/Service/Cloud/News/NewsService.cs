@@ -11,15 +11,13 @@ namespace IEXSharp.Service.Cloud.News
 {
 	public class NewsService : INewsService
 	{
-		private readonly string pk;
-		private readonly ExecutorSSE executorSSE;
 		private readonly ExecutorREST executor;
+		private readonly ExecutorSSE executorSSE;
 
-		public NewsService(HttpClient client, string baseSSEURL, string sk, string pk, bool sign)
+		public NewsService(HttpClient client, string baseSSEURL, string publishableToken, string secretToken, bool sign)
 		{
-			this.pk = pk;
-			executor = new ExecutorREST(client, sk, pk, sign);
-			executorSSE = new ExecutorSSE(baseSSEURL, sk: sk, pk: pk);
+			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			executorSSE = new ExecutorSSE(baseSSEURL, publishableToken: publishableToken, secretToken: secretToken);
 		}
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol) =>
@@ -29,11 +27,11 @@ namespace IEXSharp.Service.Cloud.News
 			await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last);
 
 		public SSEClient<NewsResponse> SubscribeToNews(IEnumerable<string> symbols) =>
-			executorSSE.SymbolsSubscribeSSE<NewsResponse>("news-stream", symbols, pk);
+			executorSSE.SymbolsSubscribeSSE<NewsResponse>("news-stream", symbols);
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> HistoricalNewsAsync(TimeSeriesRange? range = null, int? limit = null)
 		{
-			string urlPattern = "time-series/news";
+			const string urlPattern = "time-series/news";
 			var qsb = GetQueryString(range, limit);
 			var pathNvc = GetPathNvc(null);
 
@@ -42,7 +40,7 @@ namespace IEXSharp.Service.Cloud.News
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> HistoricalNewsAsync(string symbol, TimeSeriesRange? range = null, int? limit = null)
 		{
-			string urlPattern = "time-series/news/[symbol]";
+			const string urlPattern = "time-series/news/[symbol]";
 			var qsb = GetQueryString(range, limit);
 			var pathNvc = GetPathNvc(symbol);
 

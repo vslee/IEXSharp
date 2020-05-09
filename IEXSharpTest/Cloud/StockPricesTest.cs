@@ -15,7 +15,7 @@ namespace IEXSharpTest.Cloud
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXCloudClient(publishableToken: TestGlobal.pk, secretToken: TestGlobal.sk, signRequest: false, useSandBox: true);
+			sandBoxClient = new IEXCloudClient(publishableToken: TestGlobal.publishableToken, secretToken: TestGlobal.secretToken, signRequest: false, useSandBox: true);
 		}
 
 		[Test]
@@ -205,6 +205,32 @@ namespace IEXSharpTest.Cloud
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+		}
+
+		[Test]
+		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.Firehose)]
+		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.FiveSeconds)]
+		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.OneMinute)]
+		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.OneSecond)]
+		[TestCase(new object[] { "spy" }, true, StockQuoteSSEInterval.OneSecond)]
+		[TestCase(new object[] { "spy", "aapl" }, false, StockQuoteSSEInterval.OneSecond)]
+		public async Task StockQuoteUSSSETest(object[] symbols, bool UTP, StockQuoteSSEInterval interval)
+		{
+			using (var sseClient = sandBoxClient.StockPrices.SubscribeStockQuotesUS(
+										symbols.Cast<string>(), UTP: UTP, interval: interval))
+			{
+				sseClient.Error += (s, e) =>
+				{
+					sseClient.Close();
+					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+				};
+				sseClient.MessageReceived += (s, m) =>
+				{
+					sseClient.Close();
+					Assert.Pass(m.ToString());
+				};
+				await sseClient.StartAsync();
+			}
 		}
 
 		[Test]

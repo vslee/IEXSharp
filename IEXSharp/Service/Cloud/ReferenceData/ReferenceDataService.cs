@@ -14,9 +14,9 @@ namespace IEXSharp.Service.Cloud.ReferenceData
 	{
 		private readonly ExecutorREST _executor;
 
-		public ReferenceDataService(HttpClient client, string sk, string pk, bool sign)
+		public ReferenceDataService(HttpClient client, string publishableToken, string secretToken, bool sign)
 		{
-			_executor = new ExecutorREST(client, sk, pk, sign);
+			_executor = new ExecutorREST(client, publishableToken, secretToken, sign);
 		}
 
 		public async Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment)

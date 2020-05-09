@@ -12,7 +12,7 @@ namespace IEXSharpTest.Cloud
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXCloudClient(TestGlobal.pk, TestGlobal.sk, false, true);
+			sandBoxClient = new IEXCloudClient(TestGlobal.publishableToken, TestGlobal.secretToken, false, true);
 		}
 
 		[Test]

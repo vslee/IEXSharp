@@ -1,4 +1,4 @@
-namespace IEXSharp.Model.Shared.Response
+namespace IEXSharp.Model.Crypto.Response
 {
 	public class EventCrypto
 	{

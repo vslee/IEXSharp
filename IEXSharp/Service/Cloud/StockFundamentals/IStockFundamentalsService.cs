@@ -39,7 +39,7 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 		/// <param name="symbol"></param>
 		/// <param name="period"></param>
 		/// <param name="last"></param>
-		Task<IEXResponse<CashFlowResponse>> CashFlowAsync(string symbol, Period period = Period.Quarter, int last = 1);
+		Task<IEXResponse<CashFlowsResponse>> CashFlowAsync(string symbol, Period period = Period.Quarter, int last = 1);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#cash-flow"/>
