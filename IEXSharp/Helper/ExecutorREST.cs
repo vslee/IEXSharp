@@ -2,6 +2,7 @@ using IEXSharp.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net.Http;
@@ -76,9 +77,18 @@ namespace IEXSharp.Helper
 					}
 					else
 					{
-						return new IEXResponse<ReturnType>() {
-							Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
-						};
+						if (!typeof(IEnumerable).IsAssignableFrom(typeof(ReturnType))
+							&& content == "[]")
+						{ // if not expecting an array but receive an empty array, return null
+							return null;
+						}
+						else
+						{
+							return new IEXResponse<ReturnType>()
+							{
+								Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
+							};
+						}
 					}
 				}
 				catch (JsonException ex)

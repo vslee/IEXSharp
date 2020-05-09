@@ -89,10 +89,15 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			{
 				var dividendResponse = await executor.ExecuteAsync<DividendBasicResponse>(urlPattern, pathNvc, qsb);
 
-				return new IEXResponse<IEnumerable<DividendBasicResponse>>()
-				{
-					Data = new List<DividendBasicResponse> { dividendResponse.Data }
-				};
+				return dividendResponse != null
+					? new IEXResponse<IEnumerable<DividendBasicResponse>>()
+					{
+						Data = new List<DividendBasicResponse> { dividendResponse.Data }
+					}
+					: new IEXResponse<IEnumerable<DividendBasicResponse>>()
+					{
+						Data = new List<DividendBasicResponse>()
+					};
 			}
 
 			return await executor.ExecuteAsync<IEnumerable<DividendBasicResponse>>(urlPattern, pathNvc, qsb);
@@ -148,10 +153,15 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 			{
 				var splitResponse = await executor.ExecuteAsync<SplitBasicResponse>(urlPattern, pathNvc, qsb);
 
-				return new IEXResponse<IEnumerable<SplitBasicResponse>>()
-				{
-					Data = new List<SplitBasicResponse> { splitResponse.Data }
-				};
+				return splitResponse != null
+					? new IEXResponse<IEnumerable<SplitBasicResponse>>()
+					{
+						Data = new List<SplitBasicResponse> { splitResponse.Data }
+					}
+					: new IEXResponse<IEnumerable<SplitBasicResponse>>()
+					{
+						Data = new List<SplitBasicResponse>()
+					};
 			}
 
 			return await executor.ExecuteAsync<IEnumerable<SplitBasicResponse>>(urlPattern, pathNvc, qsb);
