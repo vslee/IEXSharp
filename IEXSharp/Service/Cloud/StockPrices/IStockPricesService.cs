@@ -102,6 +102,15 @@ namespace IEXSharp.Service.Cloud.StockPrices
 		Task<IEXResponse<string>> QuoteFieldAsync(string symbol, string field);
 
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#quote"/>
+		/// </summary>
+		/// <param name="symbols"></param>
+		/// <param name="UTP"></param>
+		/// <param name="interval"></param>
+		/// <returns></returns>
+		SSEClient<QuoteSSE> SubscribeStockQuotesUS(IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval);
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#volume-by-venue"/>
 		/// </summary>
 		/// <param name="symbol"></param>

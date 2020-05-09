@@ -1,4 +1,3 @@
-using IEXSharp.Model.Stock.Request;
 using IEXSharp.Model.Stock.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;

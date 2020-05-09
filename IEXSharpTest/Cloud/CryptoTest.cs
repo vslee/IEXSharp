@@ -12,7 +12,7 @@ namespace IEXSharpTest.Cloud
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXCloudClient(TestGlobal.pk, TestGlobal.sk, false, true);
+			sandBoxClient = new IEXCloudClient(TestGlobal.publishableToken, TestGlobal.secretToken, false, true);
 		}
 
 		[Test]
@@ -30,6 +30,28 @@ namespace IEXSharpTest.Cloud
 
 			Assert.IsNotNull(response.Data.bids);
 			Assert.IsNotNull(response.Data.bids.First().price);
+		}
+
+		[Test]
+		[TestCase(new object[] { "btcusdt" })]
+		[TestCase(new object[] { "btcusdt", "ethusdt" })]
+		public async Task CryptoEventSSETest(object[] symbols)
+		{
+			using (var sseClient = sandBoxClient.Crypto.SubscribeCryptoEvents(
+										symbols.Cast<string>()))
+			{
+				sseClient.Error += (s, e) =>
+				{
+					sseClient.Close();
+					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+				};
+				sseClient.MessageReceived += (s, m) =>
+				{
+					sseClient.Close();
+					Assert.Pass(m.ToString());
+				};
+				await sseClient.StartAsync();
+			}
 		}
 
 		[Test]
@@ -58,6 +80,28 @@ namespace IEXSharpTest.Cloud
 
 			Assert.IsNotNull(response.Data.symbol);
 			Assert.IsNotNull(response.Data.latestPrice);
+		}
+
+		[Test]
+		[TestCase(new object[] { "btcusdt" })]
+		[TestCase(new object[] { "btcusdt", "ethusdt" })]
+		public async Task CryptoQuoteSSETest(object[] symbols)
+		{
+			using (var sseClient = sandBoxClient.Crypto.SubscribeCryptoQuotes(
+										symbols.Cast<string>()))
+			{
+				sseClient.Error += (s, e) =>
+				{
+					sseClient.Close();
+					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+				};
+				sseClient.MessageReceived += (s, m) =>
+				{
+					sseClient.Close();
+					Assert.Pass(m.ToString());
+				};
+				await sseClient.StartAsync();
+			}
 		}
 	}
 }

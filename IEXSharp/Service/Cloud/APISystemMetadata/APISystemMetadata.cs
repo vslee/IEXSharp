@@ -10,9 +10,9 @@ namespace IEXSharp.Service.Cloud.APISystemMetadata
 	{
 		private readonly ExecutorREST _executor;
 
-		public APISystemMetadata(HttpClient client, string sk, string pk, bool sign)
+		public APISystemMetadata(HttpClient client, string publishableToken, string secretToken, bool sign)
 		{
-			_executor = new ExecutorREST(client, sk, pk, sign);
+			_executor = new ExecutorREST(client, publishableToken, secretToken, sign);
 		}
 
 		public async Task<IEXResponse<StatusResponse>> StatusAsync() =>
