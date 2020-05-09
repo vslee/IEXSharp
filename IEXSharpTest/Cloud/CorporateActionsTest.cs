@@ -90,6 +90,7 @@ namespace IEXSharpTest.Cloud
 		[TestCase("", TimeSeriesRange.LastQuarter, false, 10, "")]
 		[TestCase("AAPL", TimeSeriesRange.LastQuarter, false, null, "")]
 		[TestCase("AAPL", TimeSeriesRange.OneMonth, false, null, "")]
+		[TestCase("AAPL", null, false, null, "")]
 		public async Task DividendsAdvancedAsyncTest(string symbol, TimeSeriesRange range, bool calendar, int last, string refId)
 		{
 			var response = await sandBoxClient.CorporateActions.DividendsAdvancedAsync(symbol, range, calendar, last, refId);
