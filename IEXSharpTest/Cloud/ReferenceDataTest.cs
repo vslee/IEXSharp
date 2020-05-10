@@ -18,7 +18,7 @@ namespace IEXSharpTest.Cloud
 		}
 
 		[Test]
-		[TestCase("apple")]
+		[TestCase("appl")]
 		public async Task SearchAsyncTest(string pattern)
 		{
 			var response = await sandBoxClient.ReferenceData.SearchAsync(pattern);

@@ -39,7 +39,7 @@ namespace IEXSharp.Service.Cloud.CorporateActions
 		/// <param name="refId">Optional. Id that matches the refId field returned in the response object. This allows you to pull a specific dividend for a symbol.</param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<DividendAdvancedResponse>>> DividendsAdvancedAsync(
-			string symbol, TimeSeriesRange range = TimeSeriesRange.ThisQuarter, bool calendar = false, int? last = null, string refId = null);
+			string symbol, TimeSeriesRange? range = TimeSeriesRange.ThisQuarter, bool calendar = false, int? last = null, string refId = null);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#return-of-capital"/>
