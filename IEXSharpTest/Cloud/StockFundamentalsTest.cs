@@ -169,8 +169,8 @@ namespace IEXSharpTest.Cloud
 
 			var response = await sandBoxClient.StockFundamentals.IncomeStatementAsync(symbol, period, upToXStatements);
 
-			var firstStatementReportYear = response.Data.income.ElementAt(0).reportDate.Substring(0, 4);
-			var secondStatementReportYear = response.Data.income.ElementAt(1).reportDate.Substring(0, 4);
+			var firstStatementReportYear = response.Data.income.ElementAt(0).reportDate.Year;
+			var secondStatementReportYear = response.Data.income.ElementAt(1).reportDate.Year;
 
 			Assert.That(firstStatementReportYear != secondStatementReportYear);
 		}
