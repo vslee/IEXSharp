@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace IEXSharp.Model.StockFundamentals.Response
@@ -10,7 +11,7 @@ namespace IEXSharp.Model.StockFundamentals.Response
 
 	public class Income
 	{
-		public string reportDate { get; set; }
+		public DateTime reportDate { get; set; }
 		public long totalRevenue { get; set; }
 		public long costOfRevenue { get; set; }
 		public long grossProfit { get; set; }
