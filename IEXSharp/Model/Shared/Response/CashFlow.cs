@@ -5,6 +5,8 @@ namespace IEXSharp.Model.Shared.Response
 	public class Cashflow
 	{
 		public DateTime reportDate { get; set; }
+		public DateTime fiscalDate { get; set; }
+		public string currency { get; set; }
 		public long netIncome { get; set; }
 		public long depreciation { get; set; }
 		public long changesInReceivables { get; set; }

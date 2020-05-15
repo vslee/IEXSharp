@@ -47,8 +47,8 @@ namespace IEXSharp
 		private readonly string secretToken;
 		private readonly bool signRequest;
 
-		internal readonly ExecutorREST executor;
-		internal readonly ExecutorSSE executorSSE;
+		private protected readonly ExecutorREST executor;
+		private protected ExecutorSSE executorSSE;
 
 		private IBatchService batchService;
 		private IAccountService accountService;
