@@ -11,11 +11,11 @@ namespace IEXSharp.Service.Cloud.Account
 {
 	internal class AccountService : IAccountService
 	{
-		private readonly ExecutorREST _executor;
+		private readonly ExecutorREST executor;
 
-		public AccountService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal AccountService(ExecutorREST executor)
 		{
-			_executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<MetadataResponse>> MetadataAsync()
@@ -26,7 +26,7 @@ namespace IEXSharp.Service.Cloud.Account
 
 			var pathNVC = new NameValueCollection();
 
-			return await _executor.ExecuteAsync<MetadataResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);
+			return await executor.ExecuteAsync<MetadataResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);
 		}
 
 		public async Task<IEXResponse<UsageResponse>> UsageAsync(UsageType type)
@@ -42,7 +42,7 @@ namespace IEXSharp.Service.Cloud.Account
 				pathNVC["type"] = type.GetDescriptionFromEnum();
 			}
 
-			return await _executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);
+			return await executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);
 		}
 
 		public Task PayAsYouGoAsync(bool allow)

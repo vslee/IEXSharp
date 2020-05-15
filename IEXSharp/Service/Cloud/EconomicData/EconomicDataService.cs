@@ -12,9 +12,9 @@ namespace IEXSharp.Service.Cloud.EconomicData
 	{
 		private readonly ExecutorREST executor;
 
-		public EconomicDataService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal EconomicDataService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<decimal>> DataPointAsync(EconomicDataSymbol symbol)

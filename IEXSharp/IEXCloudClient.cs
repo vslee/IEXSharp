@@ -20,6 +20,7 @@ using IEXSharp.Service.Cloud.StockResearch;
 using IEXSharp.Service.Cloud.Treasuries;
 using System;
 using System.Net.Http;
+using IEXSharp.Helper;
 
 namespace IEXSharp
 {
@@ -45,6 +46,9 @@ namespace IEXSharp
 		private readonly string publishableToken;
 		private readonly string secretToken;
 		private readonly bool signRequest;
+
+		private readonly ExecutorREST executor;
+		private readonly ExecutorSSE executorSSE;
 
 		private IBatchService batchService;
 		private IAccountService accountService;
@@ -74,121 +78,121 @@ namespace IEXSharp
 		/// Currently only available for /stock endpoints
 		/// </summary>
 		public IBatchService Batch => batchService ?? (batchService =
-			new BatchService(client, publishableToken, secretToken, signRequest));
+			new BatchService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#accounts"/>
 		/// </summary>
 		public IAccountService Account => accountService ??	(accountService =
-			new AccountService(client, publishableToken, secretToken, signRequest));
+			new AccountService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#api-system-metadata"/>
 		/// </summary>
 		public IAPISystemMetadataService ApiSystemMetadata => apiSystemMetadataService
-			?? (apiSystemMetadataService = new APISystemMetadata(client, publishableToken, secretToken, signRequest));
+			?? (apiSystemMetadataService = new APISystemMetadata(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-prices"/>
 		/// </summary>
 		public IStockPricesService StockPrices => stockPricesService ?? (stockPricesService =
-			new StockPricesService(client, baseSSEURL, publishableToken, secretToken, signRequest));
+			new StockPricesService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-profiles"/>
 		/// </summary>
 		public IStockProfilesService StockProfiles => stockProfilesService ?? (stockProfilesService =
-			new StockProfilesService(client, publishableToken, secretToken, signRequest));
+			new StockProfilesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-fundamentals"/>
 		/// </summary>
 		public IStockFundamentalsService StockFundamentals => stockFundamentalsService ?? (stockFundamentalsService =
-			new StockFundamentalsService(client, publishableToken, secretToken, signRequest));
+			new StockFundamentalsService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-research"/>
 		/// </summary>
 		public IStockResearchService StockResearch => stockResearchService ?? (stockResearchService =
-			new StockResearchService(client, publishableToken, secretToken, signRequest));
+			new StockResearchService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#corporate-actions"/>
 		/// </summary>
 		public ICorporateActionsService CorporateActions => corporateActionsService
-			?? (corporateActionsService = new CorporateActionsService(client, publishableToken, secretToken, signRequest));
+			?? (corporateActionsService = new CorporateActionsService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#market-info"/>
 		/// </summary>
 		public IMarketInfoService MarketInfoService => marketInfoService
-			?? (marketInfoService = new MarketInfoService(client, publishableToken, secretToken, signRequest));
+			?? (marketInfoService = new MarketInfoService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#news"/>
 		/// </summary>
 		public INewsService News => newsService
-			?? (newsService = new NewsService(client, baseSSEURL, publishableToken, secretToken, signRequest));
+			?? (newsService = new NewsService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#cryptocurrency"/>
 		/// </summary>
 		public ICryptoService Crypto => cryptoService ??
-		    (cryptoService = new CryptoService(client, baseSSEURL, publishableToken, secretToken, signRequest));
+		    (cryptoService = new CryptoService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#forex-currencies"/>
 		/// </summary>
 		public IForexCurrenciesService ForexCurrencies => forexCurrenciesService ??
-			(forexCurrenciesService = new ForexCurrenciesService(client, publishableToken, secretToken, signRequest));
+			(forexCurrenciesService = new ForexCurrenciesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#options"/>
 		/// </summary>
 		public IOptionsService Options => optionsService
-			?? (optionsService = new OptionsService(client, secretToken, publishableToken, signRequest));
+			?? (optionsService = new OptionsService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#social-sentiment"/>
 		/// </summary>
 		public ISocialSentimentService SocialSentiment => socialSentimentService
-			?? (socialSentimentService = new SocialSentimentService(client, baseSSEURL, publishableToken, secretToken, signRequest));
+			?? (socialSentimentService = new SocialSentimentService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#ceo-compensation"/>
 		/// </summary>
 		public ICeoCompensationService CeoCompensation => ceoCompensationService
-			?? (ceoCompensationService = new CeoCompensationService(client, publishableToken, secretToken, signRequest));
+			?? (ceoCompensationService = new CeoCompensationService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#treasuries"/>
 		/// </summary>
 		public ITreasuriesService Treasuries => treasuriesService
-			?? (treasuriesService = new TreasuriesService(client, publishableToken, secretToken, signRequest));
+			?? (treasuriesService = new TreasuriesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#commodities"/>
 		/// </summary>
 		public ICommoditiesService Commodities => commoditiesService
-			?? (commoditiesService = new CommoditiesService(client, publishableToken, secretToken, signRequest));
+			?? (commoditiesService = new CommoditiesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#economic-data"/>
 		/// </summary>
 		public IEconomicDataService EconomicData => economicDataService
-			?? (economicDataService = new EconomicDataService(client, publishableToken, secretToken, signRequest));
+			?? (economicDataService = new EconomicDataService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#reference-data"/>
 		/// </summary>
 		public IReferenceDataService ReferenceData => referenceDataService ??
-			(referenceDataService = new ReferenceDataService(client, publishableToken, secretToken, signRequest));
+			(referenceDataService = new ReferenceDataService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#investors-exchange-data"/>
 		/// </summary>
 		public IInvestorsExchangeDataService InvestorsExchangeData =>
-			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(client, publishableToken, secretToken, signRequest));
+			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(executor));
 
 		/// <summary>
 		/// create a new IEXCloudClient
@@ -220,6 +224,9 @@ namespace IEXSharp
 				BaseAddress = new Uri(baseAddress)
 			};
 			client.DefaultRequestHeaders.Add("User-Agent", "VSLee.IEXSharp IEX Cloud .Net");
+
+			executor = new ExecutorREST(client, publishableToken, secretToken, signRequest);
+			executorSSE = new ExecutorSSE(baseSSEURL, publishableToken, secretToken);
 		}
 
 		private bool disposed;

@@ -4,6 +4,7 @@ using IEXSharp.Service.Legacy.Stats;
 using IEXSharp.Service.Legacy.Stock;
 using System;
 using System.Net.Http;
+using IEXSharp.Helper;
 
 namespace IEXSharp
 {
@@ -12,22 +13,24 @@ namespace IEXSharp
 	{
 		private readonly HttpClient _client;
 
+		private readonly ExecutorREST executor;
+
 		private IStockService stockService;
 		private IReferenceDataService referenceDataService;
 		private IMarketService marketService;
 		private IStatsService statsService;
 
 		public IStockService Stock =>
-			stockService ?? (stockService = new StockService(_client));
+			stockService ?? (stockService = new StockService(executor));
 
 		public IReferenceDataService ReferenceData => referenceDataService ??
-			(referenceDataService = new ReferenceDataService(_client));
+			(referenceDataService = new ReferenceDataService(executor));
 
 		public IMarketService Market =>
-			marketService ?? (marketService = new MarketService(_client));
+			marketService ?? (marketService = new MarketService(executor));
 
 		public IStatsService Stats =>
-			statsService ?? (statsService = new StatsService(_client));
+			statsService ?? (statsService = new StatsService(executor));
 
 		/// <summary> create a new IEXLegacyClient. No API keys are needed. </summary>
 		public IEXLegacyClient()
@@ -37,6 +40,8 @@ namespace IEXSharp
 				BaseAddress = new Uri("https://api.iextrading.com/1.0/")
 			};
 			_client.DefaultRequestHeaders.Add("User-Agent", "IEXSharp IEX Legacy .Net");
+
+			executor = new ExecutorREST(_client, string.Empty, string.Empty, false);
 		}
 
 		private bool disposed;

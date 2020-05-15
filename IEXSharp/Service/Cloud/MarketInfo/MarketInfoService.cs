@@ -15,9 +15,9 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 	{
 		private readonly ExecutorREST executor;
 
-		public MarketInfoService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal MarketInfoService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection,

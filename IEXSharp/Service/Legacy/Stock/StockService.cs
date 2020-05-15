@@ -20,11 +20,11 @@ namespace IEXSharp.Service.Legacy.Stock
 {
 	internal class StockService : IStockService
 	{
-		private readonly ExecutorREST _executor;
+		private readonly ExecutorREST executor;
 
-		public StockService(HttpClient client)
+		internal StockService(ExecutorREST executor)
 		{
-			_executor = new ExecutorREST(client, string.Empty, string.Empty, false);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<BatchBySymbolLegacyResponse>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,
@@ -71,11 +71,11 @@ namespace IEXSharp.Service.Legacy.Stock
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
-			return await _executor.ExecuteAsync<BatchBySymbolLegacyResponse>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<BatchBySymbolLegacyResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<BookResponse>> BookAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol);
+			await executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol);
 
 		public async Task<IEXResponse<IEnumerable<DividendV1Response>>> DividendAsync(string symbol, DividendRange range)
 		{
@@ -86,11 +86,11 @@ namespace IEXSharp.Service.Legacy.Stock
 				{"symbol", symbol}, {"range", range.GetDescriptionFromEnum()}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<DividendV1Response>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<DividendV1Response>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<EffectiveSpreadResponse>>> EffectiveSpreadAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(
+			await executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(
 				"stock/[symbol]/effective-spread", symbol);
 
 		public async Task<IEXResponse<IPOCalendarResponse>> IPOCalendarAsync(IPOType ipoType)
@@ -99,13 +99,13 @@ namespace IEXSharp.Service.Legacy.Stock
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "ipoType", ipoType.GetDescriptionFromEnum() } };
 
-			return await _executor.ExecuteAsync<IPOCalendarResponse>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IPOCalendarResponse>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<LogoResponse>> LogoAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol);
+			await executor.SymbolExecuteAsync<LogoResponse>("stock/[symbol]/logo", symbol);
 
 		public async Task<IEXResponse<OHLCResponse>> OHLCAsync(string symbol) =>
-			await _executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol);
+			await executor.SymbolExecuteAsync<OHLCResponse>("stock/[symbol]/ohlc", symbol);
 	}
 }
