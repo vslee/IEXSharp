@@ -12,6 +12,8 @@ namespace IEXSharp.Model.StockFundamentals.Response
 	public class Balancesheet
 	{
 		public DateTime reportDate { get; set; }
+		public DateTime fiscalDate { get; set; }
+		public string currency { get; set; }
 		public long currentCash { get; set; }
 		public long shortTermInvestments { get; set; }
 		public long receivables { get; set; }

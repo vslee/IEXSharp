@@ -14,10 +14,10 @@ namespace IEXSharp.Service.Cloud.News
 		private readonly ExecutorREST executor;
 		private readonly ExecutorSSE executorSSE;
 
-		public NewsService(HttpClient client, string baseSSEURL, string publishableToken, string secretToken, bool sign)
+		internal NewsService(ExecutorREST executor, ExecutorSSE executorSSE)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
-			executorSSE = new ExecutorSSE(baseSSEURL, publishableToken: publishableToken, secretToken: secretToken);
+			this.executor = executor;
+			this.executorSSE = executorSSE;
 		}
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol) =>

@@ -38,6 +38,7 @@ namespace IEXSharp.Model.Shared.Response
 		public string currency { get; set; }
 		public string description { get; set; }
 		public string frequency { get; set; }
+		public string symbol { get; set; }
 		public DividendFrequency DividendFrequency =>
 			(DividendFrequency)Enum.Parse(typeof(DividendFrequency), frequency);
 	}

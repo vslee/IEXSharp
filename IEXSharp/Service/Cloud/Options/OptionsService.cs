@@ -13,9 +13,9 @@ namespace IEXSharp.Service.Cloud.Options
 	{
 		private readonly ExecutorREST executor;
 
-		public OptionsService(HttpClient client, string secretToken, string publishableToken, bool sign)
+		internal OptionsService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<IEnumerable<string>>> OptionsAsync(string symbol) =>
@@ -27,7 +27,7 @@ namespace IEXSharp.Service.Cloud.Options
 
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "expiration", expiration } };
-			
+
 			return await executor.ExecuteAsync<IEnumerable<OptionResponse>>(urlPattern, pathNvc, qsb);
 		}
 

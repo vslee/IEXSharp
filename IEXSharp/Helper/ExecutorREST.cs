@@ -16,7 +16,8 @@ namespace IEXSharp.Helper
 		private readonly HttpClient client;
 		private readonly Signer signer;
 		private readonly bool sign;
-		private readonly JsonSerializerSettings jsonSerializerSettings;
+
+		internal readonly JsonSerializerSettings JsonSerializerSettings;
 
 		public ExecutorREST(HttpClient client, string publishableToken, string secretToken, bool sign)
 			: base(publishableToken: publishableToken, secretToken: secretToken)
@@ -27,7 +28,7 @@ namespace IEXSharp.Helper
 				signer = new Signer(client.BaseAddress.Host, secretToken);
 			}
 			this.sign = sign;
-			jsonSerializerSettings = new JsonSerializerSettings
+			JsonSerializerSettings = new JsonSerializerSettings
 			{
 				NullValueHandling = NullValueHandling.Ignore
 			};
@@ -81,14 +82,14 @@ namespace IEXSharp.Helper
 							&& typeof(ReturnType) != typeof(string)
 							// Dictionaries will also be assignable from IEnumerable but it is expected
 							// that their JSON representation would begin with "{" instead of "["
-							&& !typeof(IDictionary).IsAssignableFrom(typeof(ReturnType)) 
+							&& !typeof(IDictionary).IsAssignableFrom(typeof(ReturnType))
 							&& content[0] != '[')
 						{ // if expecting an array but receive a single item instead, create a new List with that single item
 							content = '[' + content + ']';
 						}
 						return new IEXResponse<ReturnType>()
 						{
-							Data = JsonConvert.DeserializeObject<ReturnType>(content, jsonSerializerSettings)
+							Data = JsonConvert.DeserializeObject<ReturnType>(content, JsonSerializerSettings)
 						};
 					}
 					else

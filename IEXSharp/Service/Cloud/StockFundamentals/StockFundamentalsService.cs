@@ -14,9 +14,9 @@ namespace IEXSharp.Service.Cloud.StockFundamentals
 	{
 		private readonly ExecutorREST executor;
 
-		public StockFundamentalsService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal StockFundamentalsService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<BalanceSheetResponse>> BalanceSheetAsync(string symbol, Period period = Period.Quarter,

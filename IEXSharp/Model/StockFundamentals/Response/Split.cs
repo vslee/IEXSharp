@@ -21,5 +21,6 @@ namespace IEXSharp.Model.StockFundamentals.Response
 		public decimal toFactor { get; set; }
 		public decimal fromFactor { get; set; }
 		public string description { get; set; }
+		public string symbol { get; set; }
 	}
 }

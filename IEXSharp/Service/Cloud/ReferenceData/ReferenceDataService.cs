@@ -12,11 +12,11 @@ namespace IEXSharp.Service.Cloud.ReferenceData
 {
 	internal class ReferenceDataService : IReferenceDataService
 	{
-		private readonly ExecutorREST _executor;
+		private readonly ExecutorREST executor;
 
-		public ReferenceDataService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal ReferenceDataService(ExecutorREST executor)
 		{
-			_executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<IEnumerable<SearchResponse>>> SearchAsync(string fragment)
@@ -28,17 +28,17 @@ namespace IEXSharp.Service.Cloud.ReferenceData
 				{"fragment", fragment},
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<SearchResponse>>(urlPattern, pathNvc, null);
+			return await executor.ExecuteAsync<IEnumerable<SearchResponse>>(urlPattern, pathNvc, null);
 		}
 
 		public async Task<IEXResponse<SymbolFXResponse>> SymbolFXAsync() =>
-			await _executor.NoParamExecute<SymbolFXResponse>("ref-data/fx/symbols");
+			await executor.NoParamExecute<SymbolFXResponse>("ref-data/fx/symbols");
 
 		public async Task<IEXResponse<IEnumerable<SymbolCryptoResponse>>> SymbolCryptoAsync() =>
-			await _executor.NoParamExecute<IEnumerable<SymbolCryptoResponse>>("ref-data/crypto/symbols");
+			await executor.NoParamExecute<IEnumerable<SymbolCryptoResponse>>("ref-data/crypto/symbols");
 
 		public async Task<IEXResponse<IEnumerable<SymbolIEXResponse>>> SymbolsIEXAsync() =>
-			await _executor.NoParamExecute<IEnumerable<SymbolIEXResponse>>("ref-data/iex/symbols");
+			await executor.NoParamExecute<IEnumerable<SymbolIEXResponse>>("ref-data/iex/symbols");
 
 		public async Task<IEXResponse<IEnumerable<SymbolInternationalResponse>>> SymbolsInternationalRegionAsync(string region)
 		{
@@ -51,7 +51,7 @@ namespace IEXSharp.Service.Cloud.ReferenceData
 				{"region", region}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<SymbolInternationalResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<SymbolInternationalResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<SymbolInternationalResponse>>> SymbolsInternationalExchangeAsync(string exchange)
@@ -65,32 +65,32 @@ namespace IEXSharp.Service.Cloud.ReferenceData
 				{"exchange", exchange}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<SymbolInternationalResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<SymbolInternationalResponse>>(urlPattern, pathNvc, qsb);
 		}
 
 		public async Task<IEXResponse<IEnumerable<ExchangeInternationalResponse>>> ExchangeInternationalAsync() =>
-			await _executor.NoParamExecute<IEnumerable<ExchangeInternationalResponse>>("ref-data/exchanges");
+			await executor.NoParamExecute<IEnumerable<ExchangeInternationalResponse>>("ref-data/exchanges");
 
 		public async Task<IEXResponse<IEnumerable<SymbolMutualFundResponse>>> SymbolsMutualFundAsync() =>
-			await _executor.NoParamExecute<IEnumerable<SymbolMutualFundResponse>>("ref-data/mutual-funds/symbols");
+			await executor.NoParamExecute<IEnumerable<SymbolMutualFundResponse>>("ref-data/mutual-funds/symbols");
 
 		public async Task<IEXResponse<Dictionary<string, string[]>>> SymbolsOptionsAsync() =>
-			await _executor.NoParamExecute<Dictionary<string, string[]>>("ref-data/options/symbols");
+			await executor.NoParamExecute<Dictionary<string, string[]>>("ref-data/options/symbols");
 
 		public async Task<IEXResponse<IEnumerable<SymbolOTCResponse>>> SymbolsOTCAsync() =>
-			await _executor.NoParamExecute<IEnumerable<SymbolOTCResponse>>("ref-data/otc/symbols");
+			await executor.NoParamExecute<IEnumerable<SymbolOTCResponse>>("ref-data/otc/symbols");
 
 		public async Task<IEXResponse<IEnumerable<SectorResponse>>> SectorsAsync() =>
-			await _executor.NoParamExecute<IEnumerable<SectorResponse>>("ref-data/sectors");
+			await executor.NoParamExecute<IEnumerable<SectorResponse>>("ref-data/sectors");
 
 		public async Task<IEXResponse<IEnumerable<SymbolResponse>>> SymbolsAsync() =>
-			await _executor.NoParamExecute<IEnumerable<SymbolResponse>>("ref-data/symbols");
+			await executor.NoParamExecute<IEnumerable<SymbolResponse>>("ref-data/symbols");
 
 		public async Task<IEXResponse<IEnumerable<TagResponse>>> TagsAsync() =>
-			await _executor.NoParamExecute<IEnumerable<TagResponse>>("ref-data/tags");
+			await executor.NoParamExecute<IEnumerable<TagResponse>>("ref-data/tags");
 
 		public async Task<IEXResponse<IEnumerable<ExchangeUSResponse>>> ExchangeUSAsync() =>
-			await _executor.NoParamExecute<IEnumerable<ExchangeUSResponse>>("ref-data/market/us/exchanges");
+			await executor.NoParamExecute<IEnumerable<ExchangeUSResponse>>("ref-data/market/us/exchanges");
 
 		public async Task<IEXResponse<IEnumerable<HolidaysAndTradingDatesUSResponse>>> HolidaysAndTradingDatesUSAsync(
 			DateType type, DirectionType direction = DirectionType.Next, int last = 1, DateTime? startDate = null)
@@ -107,7 +107,7 @@ namespace IEXSharp.Service.Cloud.ReferenceData
 				{"startDate", startDate == null ? DateTime.Now.ToString("yyyyMMdd") : ((DateTime) startDate).ToString("yyyyMMdd")}
 			};
 
-			return await _executor.ExecuteAsync<IEnumerable<HolidaysAndTradingDatesUSResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<HolidaysAndTradingDatesUSResponse>>(urlPattern, pathNvc, qsb);
 		}
 	}
 }

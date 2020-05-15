@@ -2,7 +2,8 @@
 {
 	public class Pair
 	{
-		public string from { get; set; }
-		public string to { get; set; }
+		public string fromCurrency { get; set; }
+		public string toCurrency { get; set; }
+		public string symbol { get; set; }
 	}
 }

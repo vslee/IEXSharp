@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace IEXSharp.Model.MarketInfo.Response
@@ -6,6 +7,7 @@ namespace IEXSharp.Model.MarketInfo.Response
 	{
 		public List<RawData> rawData { get; set; }
 		public List<ViewData> viewData { get; set; }
+		public DateTime lastUpdate { get; set; }
 	}
 
 	public class RawData
@@ -54,6 +56,12 @@ namespace IEXSharp.Model.MarketInfo.Response
 
 	public class ViewData
 	{
+		public class Quote
+		{
+			public float latestPrice { get; set; }
+			public float changePercent { get; set; }
+		}
+
 		public string Company { get; set; }
 		public string Symbol { get; set; }
 		public string Price { get; set; }
@@ -63,5 +71,6 @@ namespace IEXSharp.Model.MarketInfo.Response
 		public string Percent { get; set; }
 		public string Market { get; set; }
 		public string Expected { get; set; }
+		public ViewData.Quote quote { get; set; }
 	}
 }

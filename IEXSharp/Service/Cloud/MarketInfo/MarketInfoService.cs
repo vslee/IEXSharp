@@ -15,9 +15,9 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 	{
 		private readonly ExecutorREST executor;
 
-		public MarketInfoService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal MarketInfoService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<IEnumerable<Quote>>> CollectionsAsync(CollectionType collection,
@@ -97,17 +97,17 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 
 		public async Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingEarningsAsync(string symbol)
 		{
-			return await UpcomingEventTypeAsync(symbol, UpcomingEventType.Earnings);
+			return await UpcomingEventTypeAsync<UpcomingEarningsResponse>(symbol, UpcomingEventType.Earnings);
 		}
 
-		public async Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingDividendsAsync(string symbol)
+		public async Task<IEXResponse<IEnumerable<Dividend>>> UpcomingDividendsAsync(string symbol)
 		{
-			return await UpcomingEventTypeAsync(symbol, UpcomingEventType.Dividends);
+			return await UpcomingEventTypeAsync<Dividend>(symbol, UpcomingEventType.Dividends);
 		}
 
-		public async Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingSplitsAsync(string symbol)
+		public async Task<IEXResponse<IEnumerable<Split>>> UpcomingSplitsAsync(string symbol)
 		{
-			return await UpcomingEventTypeAsync(symbol, UpcomingEventType.Splits);
+			return await UpcomingEventTypeAsync<Split>(symbol, UpcomingEventType.Splits);
 		}
 
 		public async Task<IEXResponse<IPOCalendarResponse>> UpcomingIposAsync(string symbol)
@@ -128,7 +128,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 			return await executor.ExecuteAsync<IPOCalendarResponse>(urlPattern, pathNvc, qsb);
 		}
 
-		private async Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingEventTypeAsync(string symbol, UpcomingEventType eventType)
+		private async Task<IEXResponse<IEnumerable<T>>> UpcomingEventTypeAsync<T>(string symbol, UpcomingEventType eventType)
 		{
 			string urlPattern = "stock/[symbol]/upcoming-[type]";
 			var qsb = new QueryStringBuilder();
@@ -143,7 +143,7 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 				pathNvc.Add("symbol", symbol);
 			}
 
-			return await executor.ExecuteAsync<IEnumerable<UpcomingEarningsResponse>>(urlPattern, pathNvc, qsb);
+			return await executor.ExecuteAsync<IEnumerable<T>>(urlPattern, pathNvc, qsb);
 		}
 	}
 }

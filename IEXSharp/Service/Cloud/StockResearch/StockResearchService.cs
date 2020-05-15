@@ -13,9 +13,9 @@ namespace IEXSharp.Service.Cloud.StockResearch
 	{
 		private readonly ExecutorREST executor;
 
-		public StockResearchService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal StockResearchService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<AdvancedStatsResponse>> AdvancedStatsAsync(string symbol) =>
