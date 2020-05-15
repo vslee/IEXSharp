@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using IEXSharp;
 using IEXSharp.Model.ReferenceData.Request;
+using IEXSharpTest.Helper;
+using Newtonsoft.Json;
 
 namespace IEXSharpTest.Cloud
 {
@@ -14,7 +16,10 @@ namespace IEXSharpTest.Cloud
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXCloudClient(TestGlobal.publishableToken, TestGlobal.secretToken, false, true);
+			sandBoxClient = new IEXCloudClientForTest(TestGlobal.publishableToken, TestGlobal.secretToken, false, true)
+			{
+				JsonMissingMemberHandling = MissingMemberHandling.Error
+			};
 		}
 
 		[Test]
