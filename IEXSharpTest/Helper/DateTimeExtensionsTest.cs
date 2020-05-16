@@ -1,9 +1,9 @@
 using IEXSharp.Helper;
-using IEXSharp.Model.Crypto.Response;
-using IEXSharp.Model.SocialSentiment.Response;
-using IEXSharp.Model.StockPrices.Response;
 using NUnit.Framework;
 using System;
+using IEXSharp.Model.CoreData.Crypto.Response;
+using IEXSharp.Model.CoreData.SocialSentiment.Response;
+using IEXSharp.Model.CoreData.StockPrices.Response;
 
 namespace IEXSharpTest.Helper
 {

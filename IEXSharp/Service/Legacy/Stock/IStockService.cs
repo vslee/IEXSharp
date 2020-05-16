@@ -1,15 +1,15 @@
-using IEXSharp.Model.Stock.Response;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
-using IEXSharp.Model.StockPrices.Response;
-using IEXSharp.Model.StockProfiles.Response;
-using IEXSharp.Model.StockFundamentals.Response;
-using IEXSharp.Model.StockFundamentals.Request;
-using IEXSharp.Model.MarketInfo.Request;
-using IEXSharp.Model.MarketInfo.Response;
-using IEXSharp.Model.Batch.Response;
-using IEXSharp.Model.Batch.Request;
+using IEXSharp.Model.CoreData.Batch.Request;
+using IEXSharp.Model.CoreData.Batch.Response;
+using IEXSharp.Model.CoreData.MarketInfo.Request;
+using IEXSharp.Model.CoreData.MarketInfo.Response;
+using IEXSharp.Model.CoreData.Stock.Response;
+using IEXSharp.Model.CoreData.StockFundamentals.Request;
+using IEXSharp.Model.CoreData.StockFundamentals.Response;
+using IEXSharp.Model.CoreData.StockPrices.Response;
+using IEXSharp.Model.CoreData.StockProfiles.Response;
 
 namespace IEXSharp.Service.Legacy.Stock
 {
