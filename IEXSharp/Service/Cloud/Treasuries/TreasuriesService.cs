@@ -12,9 +12,9 @@ namespace IEXSharp.Service.Cloud.Treasuries
 	{
 		private readonly ExecutorREST executor;
 
-		public TreasuriesService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal TreasuriesService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<decimal>> DataPointAsync(TreasuryRateSymbol symbol)

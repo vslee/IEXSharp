@@ -3,6 +3,8 @@ using IEXSharp.Model.MarketInfo.Request;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
+using IEXSharpTest.Helper;
+using Newtonsoft.Json;
 
 namespace IEXSharpTest.Cloud
 {
@@ -13,7 +15,10 @@ namespace IEXSharpTest.Cloud
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXCloudClient(publishableToken: TestGlobal.publishableToken, secretToken: TestGlobal.secretToken, signRequest: false, useSandBox: true);
+			sandBoxClient = new IEXCloudClientForTest(publishableToken: TestGlobal.publishableToken, secretToken: TestGlobal.secretToken, signRequest: false, useSandBox: true)
+			{
+				JsonMissingMemberHandling = MissingMemberHandling.Error
+			};
 		}
 
 		[Test]
@@ -144,7 +149,7 @@ namespace IEXSharpTest.Cloud
 
 		[Test]
 		[TestCase("")]
-		[TestCase("AAPL")]
+		[TestCase("market")]
 		public async Task UpcomingDividendsAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.MarketInfoService.UpcomingDividendsAsync(symbol);
@@ -154,7 +159,7 @@ namespace IEXSharpTest.Cloud
 
 			var data = response.Data.First();
 			Assert.NotNull(data.symbol);
-			Assert.NotNull(data.reportDate);
+			Assert.NotNull(data.exDate);
 		}
 
 		[Test]
@@ -172,7 +177,7 @@ namespace IEXSharpTest.Cloud
 
 			var data = response.Data.First();
 			Assert.NotNull(data.symbol);
-			Assert.NotNull(data.reportDate);
+			Assert.NotNull(data.exDate);
 		}
 
 		[Test]

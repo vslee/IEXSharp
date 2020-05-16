@@ -12,9 +12,9 @@ namespace IEXSharp.Service.Cloud.Commodities
 	{
 		private readonly ExecutorREST executor;
 
-		public CommoditiesService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal CommoditiesService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<decimal>> DataPointAsync(CommoditySymbol symbol)

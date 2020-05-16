@@ -12,9 +12,9 @@ namespace IEXSharp.Service.Cloud.ForexCurrencies
 	{
 		private readonly ExecutorREST executor;
 
-		public ForexCurrenciesService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal ForexCurrenciesService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<IEnumerable<CurrencyRateResponse>>> LatestRatesAsync(string symbols)

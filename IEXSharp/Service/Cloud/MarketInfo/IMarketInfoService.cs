@@ -70,14 +70,14 @@ namespace IEXSharp.Service.Cloud.MarketInfo
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingDividendsAsync(string symbol);
+		Task<IEXResponse<IEnumerable<Dividend>>> UpcomingDividendsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#upcoming-events"/>
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<UpcomingEarningsResponse>>> UpcomingSplitsAsync(string symbol);
+		Task<IEXResponse<IEnumerable<Split>>> UpcomingSplitsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#upcoming-events"/>

@@ -1,3 +1,4 @@
+using System;
 using IEXSharp.Model.Shared.Response;
 
 namespace IEXSharp.Model.StockFundamentals.Response
@@ -6,5 +7,6 @@ namespace IEXSharp.Model.StockFundamentals.Response
 
 	public class DividendBasicResponse : Dividend
 	{
+		public DateTime date { get; set; }
 	}
 }

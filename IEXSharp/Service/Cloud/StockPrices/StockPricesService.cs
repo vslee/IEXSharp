@@ -16,11 +16,12 @@ namespace IEXSharp.Service.Cloud.StockPrices
 		private readonly ExecutorREST executor;
 		private readonly ExecutorSSE executorSSE;
 
-		public StockPricesService(HttpClient client, string baseSSEURL, string publishableToken, string secretToken, bool sign)
+		internal StockPricesService(ExecutorREST executor, ExecutorSSE executorSSE)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
-			executorSSE = new ExecutorSSE(baseSSEURL, publishableToken: publishableToken, secretToken: secretToken);
+			this.executor = executor;
+			this.executorSSE = executorSSE;
 		}
+
 		public async Task<IEXResponse<BookResponse>> BookAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol);
 

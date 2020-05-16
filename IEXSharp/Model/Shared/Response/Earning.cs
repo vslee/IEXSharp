@@ -12,5 +12,6 @@
 		public string fiscalEndDate { get; set; }
 		public decimal yearAgo { get; set; }
 		public decimal yearAgoChangePercent { get; set; }
+		public string currency { get; set; }
 	}
 }

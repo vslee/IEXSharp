@@ -5,6 +5,8 @@ using IEXSharp;
 using IEXSharp.Model.Shared.Request;
 using IEXSharp.Model.StockFundamentals.Request;
 using System;
+using IEXSharpTest.Helper;
+using Newtonsoft.Json;
 
 namespace IEXSharpTest.Cloud
 {
@@ -15,7 +17,10 @@ namespace IEXSharpTest.Cloud
 		[SetUp]
 		public void Setup()
 		{
-			sandBoxClient = new IEXCloudClient(TestGlobal.publishableToken, TestGlobal.secretToken, false, true);
+			sandBoxClient = new IEXCloudClientForTest(TestGlobal.publishableToken, TestGlobal.secretToken, false, true)
+			{
+				JsonMissingMemberHandling = MissingMemberHandling.Error
+			};
 		}
 
 		[Test]

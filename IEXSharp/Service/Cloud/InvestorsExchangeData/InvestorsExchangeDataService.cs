@@ -14,9 +14,9 @@ namespace IEXSharp.Service.Cloud.InvestorsExchangeData
 	{
 		private readonly ExecutorREST executor;
 
-		public InvestorsExchangeDataService(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal InvestorsExchangeDataService(ExecutorREST executor)
 		{
-			executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<DeepResponse>> DeepAsync(IEnumerable<string> symbols)

@@ -8,14 +8,14 @@ namespace IEXSharp.Service.Cloud.APISystemMetadata
 {
 	internal class APISystemMetadata : IAPISystemMetadataService
 	{
-		private readonly ExecutorREST _executor;
+		private readonly ExecutorREST executor;
 
-		public APISystemMetadata(HttpClient client, string publishableToken, string secretToken, bool sign)
+		internal APISystemMetadata(ExecutorREST executor)
 		{
-			_executor = new ExecutorREST(client, publishableToken, secretToken, sign);
+			this.executor = executor;
 		}
 
 		public async Task<IEXResponse<StatusResponse>> StatusAsync() =>
-			await _executor.NoParamExecute<StatusResponse>("status");
+			await executor.NoParamExecute<StatusResponse>("status");
 	}
 }
