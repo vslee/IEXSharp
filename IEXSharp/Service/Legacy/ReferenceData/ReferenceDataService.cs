@@ -1,9 +1,9 @@
 using IEXSharp.Helper;
-using IEXSharp.Model.ReferenceData.Response;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model;
+using IEXSharp.Model.CoreData.ReferenceData.Response;
 
 namespace IEXSharp.Service.Legacy.ReferenceData
 {

@@ -1,10 +1,10 @@
-using IEXSharp.Model.InvestorsExchangeData.Response;
-using IEXSharp.Model.Market.Response;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
-using IEXSharp.Model.MarketInfo.Response;
+using IEXSharp.Model.CoreData.InvestorsExchangeData.Response;
+using IEXSharp.Model.CoreData.Market.Response;
+using IEXSharp.Model.CoreData.MarketInfo.Response;
 
 namespace IEXSharp.Service.Legacy.Market
 {
