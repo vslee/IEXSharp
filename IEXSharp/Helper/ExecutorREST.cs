@@ -5,15 +5,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Polly;
+using Polly.Retry;
 
 namespace IEXSharp.Helper
 {
 	internal class ExecutorREST : ExecutorBase
 	{
 		private readonly HttpClient client;
+		private readonly AsyncRetryPolicy<HttpResponseMessage> exponentialBackOffPolicy;
+
 		private readonly Signer signer;
 		private readonly bool sign;
 
@@ -23,6 +28,8 @@ namespace IEXSharp.Helper
 			: base(publishableToken: publishableToken, secretToken: secretToken)
 		{
 			this.client = client;
+			exponentialBackOffPolicy = ExponentialBackOffPolicy();
+
 			if (sign)
 			{
 				signer = new Signer(client.BaseAddress.Host, secretToken);
@@ -62,13 +69,15 @@ namespace IEXSharp.Helper
 				client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", headers.authorization_header);
 			}
 
-			using (var responseContent = await client.GetAsync($"{urlPattern}{qsb.Build()}"))
+			using (var responseContent = await exponentialBackOffPolicy.ExecuteAsync(() => client.GetAsync($"{urlPattern}{qsb.Build()}")))
 			{
 				try
 				{
 					content = await responseContent.Content.ReadAsStringAsync();
 					if (responseContent.StatusCode == HttpStatusCode.OK)
-					{ // Successful Request
+					{
+						Debug.WriteLine("Successful Request");
+						// Successful Request
 						// The logic that follows is included to handle the edge case of pulling
 						// dividend or split information in the cases where the DividendRange or
 						// SplitRange are set to "Next". When dividends and splits do not exist,
@@ -147,6 +156,27 @@ namespace IEXSharp.Helper
 			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "last", last.ToString() }, { "field", field } };
 
 			return await ExecuteAsync<string>(urlPattern, pathNvc, qsb).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// Creates an 'Exponential BackOff' strategy that helps with TooManyRequests faults (Http Code = 429) when communicating
+		/// with the IEXCloud Service.
+		/// </summary>
+		/// <returns></returns>
+		private static AsyncRetryPolicy<HttpResponseMessage> ExponentialBackOffPolicy()
+		{
+			var random = new Random();
+
+			// Define our waitAndRetry policy: retry n times with an exponential back-off in case the IEXCloud API throttles us for too many requests.
+			var waitAndRetryPolicy = Policy
+				.HandleResult<HttpResponseMessage>(e => e.StatusCode == HttpStatusCode.ServiceUnavailable ||
+				                                        e.StatusCode == (System.Net.HttpStatusCode) 429)
+				.WaitAndRetryAsync(10, // Retry 10 times with a delay between retries before ultimately giving up
+					attempt => TimeSpan.FromMilliseconds(250 * Math.Pow(2, attempt) * (1 + random.NextDouble())), // Use Exponential Back off with some randomness to better distribute calls
+					(exception, calculatedWaitDuration) => { Debug.WriteLine($"IEXCloud API is throttling our requests. Automatically delaying for {calculatedWaitDuration.TotalMilliseconds}ms"); }
+				);
+
+			return waitAndRetryPolicy;
 		}
 	}
 }
