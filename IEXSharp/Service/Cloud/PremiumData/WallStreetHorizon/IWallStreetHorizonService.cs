@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
-using IEXSharp.Model.CoreData.CeoCompensation.Response;
 using IEXSharp.Model.PremiumData.WallStreetHorizon.Response;
 
 namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon

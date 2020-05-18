@@ -1,9 +1,6 @@
-using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using IEXSharp;
-using IEXSharp.Helper;
 using NUnit.Framework;
 
 namespace IEXSharpTest.Cloud

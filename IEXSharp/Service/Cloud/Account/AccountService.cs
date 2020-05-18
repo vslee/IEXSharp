@@ -4,7 +4,6 @@ using IEXSharp.Model.Account.Request;
 using IEXSharp.Model.Account.Response;
 using System;
 using System.Collections.Specialized;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace IEXSharp.Service.Cloud.Account
