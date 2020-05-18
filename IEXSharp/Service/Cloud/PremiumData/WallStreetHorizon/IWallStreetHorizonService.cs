@@ -105,7 +105,6 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <see cref="https://iexcloud.io/docs/api/#legal-actions"/>
 		/// </summary>
 		/// <returns></returns>
-		// TODO - This feels like it should take a symbol / event ID
 		Task<IEXResponse<IEnumerable<LegalActionsResponse>>> LegalActionsAsync();
 
 		/// <summary>
@@ -154,7 +153,6 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <see cref="https://iexcloud.io/docs/api/#shareholder-meetings"/>
 		/// </summary>
 		/// <returns></returns>
-		// TODO - This feels like it should take a symbol / event ID
 		Task<IEXResponse<IEnumerable<ShareHolderMeetingsResponse>>> ShareholderMeetingsAsync();
 
 		/// <summary>
