@@ -1,8 +1,8 @@
 using System;
 using IEXSharp.Helper;
-using IEXSharp.Model.Batch.Request;
-using IEXSharp.Model.CorporateActions.Request;
-using IEXSharp.Model.StockPrices.Request;
+using IEXSharp.Model.CoreData.Batch.Request;
+using IEXSharp.Model.CoreData.CorporateActions.Request;
+using IEXSharp.Model.CoreData.StockPrices.Request;
 using NUnit.Framework;
 
 namespace IEXSharpTest.Helper
