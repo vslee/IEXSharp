@@ -5,6 +5,7 @@ using NUnit.Framework;
 
 namespace IEXSharpTest.Cloud.PremiumData
 {
+	[Ignore("Ignored for now. It seems even with Sandbox keys these charge you per call.")]
 	public class WallStreetHorizonTest
 	{
 		private IEXCloudClient sandBoxClient;
