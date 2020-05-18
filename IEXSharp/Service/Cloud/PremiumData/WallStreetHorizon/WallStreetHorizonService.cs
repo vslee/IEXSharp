@@ -104,42 +104,42 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> SameStoreSalesAsync(string symbol, string eventId)
+		public async Task<IEXResponse<IEnumerable<SameStoreSalesResponse>>> SameStoreSalesAsync(string symbol, string eventId)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> SecondaryOfferingsAsync()
+		public async Task<IEXResponse<IEnumerable<SecondaryOfferingsResponse>>> SecondaryOfferingsAsync()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> SeminarsAsync()
+		public async Task<IEXResponse<IEnumerable<WallStreetHorizonEventResponse>>> SeminarsAsync()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> ShareholderMeetingsAsync()
+		public async Task<IEXResponse<IEnumerable<ShareHolderMeetingsResponse>>> ShareholderMeetingsAsync()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> SummitMeetingsAsync()
+		public async Task<IEXResponse<IEnumerable<WallStreetHorizonEventResponse>>> SummitMeetingsAsync()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> TradeShowsAsync()
+		public async Task<IEXResponse<IEnumerable<WallStreetHorizonEventResponse>>> TradeShowsAsync()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> WitchingHoursAsync()
+		public async Task<IEXResponse<IEnumerable<WitchingHourResponse>>> WitchingHoursAsync()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> WorkshopsAsync()
+		public async Task<IEXResponse<IEnumerable<WallStreetHorizonEventResponse>>> WorkshopsAsync()
 		{
 			throw new System.NotImplementedException();
 		}

@@ -137,49 +137,49 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <param name="symbol">Stock symbol</param>
 		/// <param name="eventId">Event ID</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> SameStoreSalesAsync(string symbol, string eventId);
+		Task<IEXResponse<IEnumerable<SameStoreSalesResponse>>> SameStoreSalesAsync(string symbol, string eventId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#secondary-offerings"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> SecondaryOfferingsAsync();
+		Task<IEXResponse<IEnumerable<SecondaryOfferingsResponse>>> SecondaryOfferingsAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#seminars"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> SeminarsAsync();
+		Task<IEXResponse<IEnumerable<WallStreetHorizonEventResponse>>> SeminarsAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#shareholder-meetings"/>
 		/// </summary>
 		/// <returns></returns>
 		// TODO - This feels like it should take a symbol / event ID
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> ShareholderMeetingsAsync();
+		Task<IEXResponse<IEnumerable<ShareHolderMeetingsResponse>>> ShareholderMeetingsAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#summit-meetings"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> SummitMeetingsAsync();
+		Task<IEXResponse<IEnumerable<WallStreetHorizonEventResponse>>> SummitMeetingsAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#trade-shows"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> TradeShowsAsync();
+		Task<IEXResponse<IEnumerable<WallStreetHorizonEventResponse>>> TradeShowsAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#witching-hours"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> WitchingHoursAsync();
+		Task<IEXResponse<IEnumerable<WitchingHourResponse>>> WitchingHoursAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#workshops"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> WorkshopsAsync();
+		Task<IEXResponse<IEnumerable<WallStreetHorizonEventResponse>>> WorkshopsAsync();
 	}
 }
