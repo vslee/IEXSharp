@@ -13,7 +13,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <param name="symbol">Stock symbol</param>
 		/// /// <param name="eventId">Event ID</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<WallStreetHorizonService>>> AnalystDaysAsync(string symbol, string eventId);
+		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> AnalystDaysAsync(string symbol, string eventId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#board-of-directors-meeting"/>
@@ -29,7 +29,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <param name="symbol">Stock symbol</param>
 		/// /// <param name="eventId">Event ID</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<WallStreetHorizonService>>> BusinessUpdatesAsync(string symbol, string eventId);
+		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> BusinessUpdatesAsync(string symbol, string eventId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#buybacks"/>
@@ -43,7 +43,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <see cref="https://iexcloud.io/docs/api/#capital-markets-day"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<WallStreetHorizonService>>> CapitalMarketsDayAsync();
+		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> CapitalMarketsDayAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#company-travel"/>
@@ -51,7 +51,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <param name="symbol">Stock symbol</param>
 		/// /// <param name="eventId">Event ID</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<WallStreetHorizonService>>> CompanyTravelAsync(string symbol, string eventId);
+		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> CompanyTravelAsync(string symbol, string eventId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#filing-due-dates"/>
