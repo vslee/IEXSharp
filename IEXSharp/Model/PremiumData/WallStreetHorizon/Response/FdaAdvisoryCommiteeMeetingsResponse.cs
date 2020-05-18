@@ -18,7 +18,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string venuestate { get; set; }
 		public string venuecountry { get; set; }
 		public string venuecountryiso { get; set; }
-		public object externalnote { get; set; }
+		public string externalnote { get; set; }
 		public string referencelink { get; set; }
 		public string updated { get; set; }
 		public string id { get; set; }

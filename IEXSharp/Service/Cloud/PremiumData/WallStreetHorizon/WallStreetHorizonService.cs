@@ -74,32 +74,32 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> IndexChangesAsync()
+		public async Task<IEXResponse<IEnumerable<IndexChangesResponse>>> IndexChangesAsync()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> IposAsync()
+		public async Task<IEXResponse<IEnumerable<IposResponse>>> IposAsync()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> LegalActionsAsync()
+		public async Task<IEXResponse<IEnumerable<LegalActionsResponse>>> LegalActionsAsync()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> MergersAndAcquisitionsAsync(string symbol, string eventId)
+		public async Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> MergersAndAcquisitionsAsync(string symbol, string eventId)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> ProductEventsAsync(string symbol, string eventId)
+		public async Task<IEXResponse<IEnumerable<ProductEventsResponse>>> ProductEventsAsync(string symbol, string eventId)
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public async Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> ResearchAndDevelopmentDaysAsync()
+		public async Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> ResearchAndDevelopmentDaysAsync()
 		{
 			throw new System.NotImplementedException();
 		}

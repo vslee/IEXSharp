@@ -1,6 +1,6 @@
 namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 {
-	public class AnalystDaysResponse
+	public class WallStreetHorizonResponse
 	{
 		public string eventid { get; set; }
 		public string symbol { get; set; }

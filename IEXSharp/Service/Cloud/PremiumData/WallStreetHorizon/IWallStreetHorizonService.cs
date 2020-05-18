@@ -94,20 +94,20 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <see cref="https://iexcloud.io/docs/api/#index-changes"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> IndexChangesAsync();
+		Task<IEXResponse<IEnumerable<IndexChangesResponse>>> IndexChangesAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#ipos"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> IposAsync();
+		Task<IEXResponse<IEnumerable<IposResponse>>> IposAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#legal-actions"/>
 		/// </summary>
 		/// <returns></returns>
 		// TODO - This feels like it should take a symbol / event ID
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> LegalActionsAsync();
+		Task<IEXResponse<IEnumerable<LegalActionsResponse>>> LegalActionsAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#mergers-acquisitions"/>
@@ -115,7 +115,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <param name="symbol">Stock symbol</param>
 		/// <param name="eventId">Event ID</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> MergersAndAcquisitionsAsync(string symbol, string eventId);
+		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> MergersAndAcquisitionsAsync(string symbol, string eventId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#product-events"/>
@@ -123,13 +123,13 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <param name="symbol">Stock symbol</param>
 		/// <param name="eventId">Event ID</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> ProductEventsAsync(string symbol, string eventId);
+		Task<IEXResponse<IEnumerable<ProductEventsResponse>>> ProductEventsAsync(string symbol, string eventId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#research-and-development-days"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<CeoCompensationResponse>>> ResearchAndDevelopmentDaysAsync();
+		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> ResearchAndDevelopmentDaysAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#same-store-sales"/>
