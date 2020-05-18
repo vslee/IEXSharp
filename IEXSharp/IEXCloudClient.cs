@@ -21,6 +21,7 @@ using IEXSharp.Service.Cloud.CoreData.StockPrices;
 using IEXSharp.Service.Cloud.CoreData.StockProfiles;
 using IEXSharp.Service.Cloud.CoreData.StockResearch;
 using IEXSharp.Service.Cloud.CoreData.Treasuries;
+using IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon;
 
 namespace IEXSharp
 {
@@ -70,6 +71,7 @@ namespace IEXSharp
 		private ICommoditiesService commoditiesService;
 		private IReferenceDataService referenceDataService;
 		private IInvestorsExchangeDataService investorsExchangeDataService;
+		private IWallStreetHorizonService wallStreetHorizonService;
 
 		// The following properties are arranged in the same order as https://iexcloud.io/docs/api
 
@@ -193,6 +195,12 @@ namespace IEXSharp
 		/// </summary>
 		public IInvestorsExchangeDataService InvestorsExchangeData =>
 			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(executor));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#wall-street-horizon"/>
+		/// </summary>
+		public IWallStreetHorizonService WallStreetHorizonService => wallStreetHorizonService
+			?? (wallStreetHorizonService = new WallStreetHorizonService(executor));
 
 		/// <summary>
 		/// create a new IEXCloudClient
