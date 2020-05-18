@@ -79,14 +79,14 @@ namespace IEXSharp
 		/// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
 		/// Currently only available for /stock endpoints
 		/// </summary>
-		public IBatchService Batch => batchService ?? (batchService =
-			new BatchService(executor));
+		public IBatchService Batch => batchService
+		    ?? (batchService = new BatchService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#accounts"/>
 		/// </summary>
-		public IAccountService Account => accountService ??	(accountService =
-			new AccountService(executor));
+		public IAccountService Account => accountService
+			?? (accountService = new AccountService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#api-system-metadata"/>
@@ -97,26 +97,26 @@ namespace IEXSharp
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-prices"/>
 		/// </summary>
-		public IStockPricesService StockPrices => stockPricesService ?? (stockPricesService =
-			new StockPricesService(executor, executorSSE));
+		public IStockPricesService StockPrices => stockPricesService
+			?? (stockPricesService = new StockPricesService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-profiles"/>
 		/// </summary>
-		public IStockProfilesService StockProfiles => stockProfilesService ?? (stockProfilesService =
-			new StockProfilesService(executor));
+		public IStockProfilesService StockProfiles => stockProfilesService
+			?? (stockProfilesService = new StockProfilesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-fundamentals"/>
 		/// </summary>
-		public IStockFundamentalsService StockFundamentals => stockFundamentalsService ?? (stockFundamentalsService =
-			new StockFundamentalsService(executor));
+		public IStockFundamentalsService StockFundamentals => stockFundamentalsService
+			?? (stockFundamentalsService = new StockFundamentalsService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-research"/>
 		/// </summary>
-		public IStockResearchService StockResearch => stockResearchService ?? (stockResearchService =
-			new StockResearchService(executor));
+		public IStockResearchService StockResearch => stockResearchService
+		    ?? (stockResearchService = new StockResearchService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#corporate-actions"/>
@@ -139,14 +139,14 @@ namespace IEXSharp
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#cryptocurrency"/>
 		/// </summary>
-		public ICryptoService Crypto => cryptoService ??
-		    (cryptoService = new CryptoService(executor, executorSSE));
+		public ICryptoService Crypto => cryptoService
+		    ?? (cryptoService = new CryptoService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#forex-currencies"/>
 		/// </summary>
-		public IForexCurrenciesService ForexCurrencies => forexCurrenciesService ??
-			(forexCurrenciesService = new ForexCurrenciesService(executor));
+		public IForexCurrenciesService ForexCurrencies => forexCurrenciesService
+			?? (forexCurrenciesService = new ForexCurrenciesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#options"/>
@@ -187,14 +187,14 @@ namespace IEXSharp
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#reference-data"/>
 		/// </summary>
-		public IReferenceDataService ReferenceData => referenceDataService ??
-			(referenceDataService = new ReferenceDataService(executor));
+		public IReferenceDataService ReferenceData => referenceDataService
+			?? (referenceDataService = new ReferenceDataService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#investors-exchange-data"/>
 		/// </summary>
-		public IInvestorsExchangeDataService InvestorsExchangeData =>
-			investorsExchangeDataService ?? (investorsExchangeDataService = new InvestorsExchangeDataService(executor));
+		public IInvestorsExchangeDataService InvestorsExchangeDataService => investorsExchangeDataService
+			?? (investorsExchangeDataService = new InvestorsExchangeDataService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#wall-street-horizon"/>
