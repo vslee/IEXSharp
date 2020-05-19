@@ -21,7 +21,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task DeepAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -31,7 +31,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("ziext")]
 		public async Task DeepAuctionAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepAuctionAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepAuctionAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -43,7 +43,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task DeepBookAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepBookAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepBookAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -55,7 +55,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task DeepOperationHaltStatusAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepOperationHaltStatusAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepOperationHaltStatusAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -67,7 +67,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task DeepOfficialPriceAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepOfficialPriceAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepOfficialPriceAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -79,7 +79,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task DeepSecurityEventAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepSecurityEventAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepSecurityEventAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -91,7 +91,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task DeepShortSalePriceTestStatusAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepShortSalePriceTestStatusAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepShortSalePriceTestStatusAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -101,7 +101,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		public async Task DeepSystemEventAsyncTest()
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepSystemEventAsync();
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepSystemEventAsync();
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -112,7 +112,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task DeepTradeAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepTradeAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepTradeAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -124,7 +124,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task DeepTradeBreaksAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepTradeBreaksAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepTradeBreaksAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -136,7 +136,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task DeepTradingStatusAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.DeepTradingStatusAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.DeepTradingStatusAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -148,7 +148,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task LastAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.LastAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.LastAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -160,7 +160,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task ListedRegulationSHOThresholdSecuritiesListAsyncTest(string symbol)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.ListedRegulationSHOThresholdSecuritiesListAsync(symbol);
+			var response = await sandBoxClient.InvestorsExchangeDataService.ListedRegulationSHOThresholdSecuritiesListAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -172,7 +172,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task ListedShortInterestListAsyncTest(string symbol)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.ListedShortInterestListAsync(symbol);
+			var response = await sandBoxClient.InvestorsExchangeDataService.ListedShortInterestListAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -184,7 +184,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("201900225")]
 		public async Task StatsHistoricalDailyByDateAsyncTest(string date)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.StatsHistoricalDailyByDateAsync(date);
+			var response = await sandBoxClient.InvestorsExchangeDataService.StatsHistoricalDailyByDateAsync(date);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -196,7 +196,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase(5)]
 		public async Task StatsHistoricalDailyByLastAsync(int last)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.StatsHistoricalDailyByLastAsync(last);
+			var response = await sandBoxClient.InvestorsExchangeDataService.StatsHistoricalDailyByLastAsync(last);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -206,8 +206,8 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		public async Task StatsHistoricalSummaryAsyncTest()
 		{
-			var response1 = await sandBoxClient.InvestorsExchangeData.StatsHistoricalSummaryAsync();
-			var response2 = await sandBoxClient.InvestorsExchangeData.StatsHistoricalSummaryAsync(new DateTime(2019, 02, 01));
+			var response1 = await sandBoxClient.InvestorsExchangeDataService.StatsHistoricalSummaryAsync();
+			var response2 = await sandBoxClient.InvestorsExchangeDataService.StatsHistoricalSummaryAsync(new DateTime(2019, 02, 01));
 
 			Assert.IsNull(response1.ErrorMessage);
 			Assert.IsNotNull(response1.Data);
@@ -220,7 +220,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		public async Task StatsIntradayAsyncTest()
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.StatsIntradayAsync();
+			var response = await sandBoxClient.InvestorsExchangeDataService.StatsIntradayAsync();
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -229,7 +229,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		public async Task StatsRecentAsyncTest()
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.StatsRecentAsync();
+			var response = await sandBoxClient.InvestorsExchangeDataService.StatsRecentAsync();
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -239,7 +239,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		public async Task StatsRecordAsyncTest()
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.StatsRecordAsync();
+			var response = await sandBoxClient.InvestorsExchangeDataService.StatsRecordAsync();
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -250,7 +250,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("FB")]
 		public async Task TOPSAsyncTest(params string[] symbols)
 		{
-			var response = await sandBoxClient.InvestorsExchangeData.TOPSAsync(symbols);
+			var response = await sandBoxClient.InvestorsExchangeDataService.TOPSAsync(symbols);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Model.CoreData.Batch.Request;
 using IEXSharp.Model.CoreData.Batch.Response;
