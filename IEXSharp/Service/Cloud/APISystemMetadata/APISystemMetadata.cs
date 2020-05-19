@@ -1,5 +1,4 @@
 using IEXSharp.Model;
-using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp.Helper;
 using IEXSharp.Model.APISystemMetadata.Response;
