@@ -35,7 +35,7 @@ namespace IEXSharp.Service.Cloud.CoreData.ForexCurrencies
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <param name="query"></param>
-		/// /// <param name="queryValue"></param>
+		/// <param name="queryValue"></param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<IEnumerable<CurrencyHistoricalRateResponse>>>> HistoricalDailyAsync(string symbols, string query, string queryValue);
 	}
