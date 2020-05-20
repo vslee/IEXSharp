@@ -11,7 +11,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <see cref="https://iexcloud.io/docs/api/#analyst-days"/>
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
-		/// /// <param name="eventId">Event ID</param>
+		/// <param name="eventId">Event ID</param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> AnalystDaysAsync(string symbol, string eventId);
 
@@ -19,7 +19,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <see cref="https://iexcloud.io/docs/api/#board-of-directors-meeting"/>
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
-		/// /// <param name="eventId">Event ID</param>
+		/// <param name="eventId">Event ID</param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<BoardOfDirectorsMeetingResponse>>> BoardOfDirectorsMeetingAsync(string symbol, string eventId);
 
@@ -27,7 +27,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <see cref="https://iexcloud.io/docs/api/#business-updates"/>
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
-		/// /// <param name="eventId">Event ID</param>
+		/// <param name="eventId">Event ID</param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> BusinessUpdatesAsync(string symbol, string eventId);
 
@@ -35,7 +35,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <see cref="https://iexcloud.io/docs/api/#buybacks"/>
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
-		/// /// <param name="eventId">Event ID</param>
+		/// <param name="eventId">Event ID</param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<BuybacksResponse>>> BuybacksAsync(string symbol, string eventId);
 
@@ -49,7 +49,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <see cref="https://iexcloud.io/docs/api/#company-travel"/>
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
-		/// /// <param name="eventId">Event ID</param>
+		/// <param name="eventId">Event ID</param>
 		/// <returns></returns>
 		Task<IEXResponse<IEnumerable<CompanyTravelResponse>>> CompanyTravelAsync(string symbol, string eventId);
 
