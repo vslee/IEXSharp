@@ -24,6 +24,8 @@ using IEXSharp.Service.Cloud.CoreData.Treasuries;
 using IEXSharp.Service.Cloud.PremiumData.AuditAnalytics;
 using IEXSharp.Service.Cloud.PremiumData.ExtractAlpha;
 using IEXSharp.Service.Cloud.PremiumData.FraudFactors;
+using IEXSharp.Service.Cloud.PremiumData.PrecisionAlpha;
+using IEXSharp.Service.Cloud.PremiumData.Kavout;
 using IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon;
 
 namespace IEXSharp
@@ -77,7 +79,9 @@ namespace IEXSharp
 		private IWallStreetHorizonService wallStreetHorizonService;
 		private IFraudFactorsService fraudFactorsService;
 		private IExtractAlphaService extractAlphaService;
-		private IAuditAnalyticsService auditAnalyticsService;
+		private IPrecisionAlphaService precisionAlphaService;
+		private IKavoutService kavoutService;
+ 		private IAuditAnalyticsService auditAnalyticsService;
 
 		// The following properties are arranged in the same order as https://iexcloud.io/docs/api
 
@@ -214,11 +218,22 @@ namespace IEXSharp
 		public IFraudFactorsService FraudFactorsService => fraudFactorsService
 		    ?? (fraudFactorsService = new FraudFactorsService(executor));
 
-		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#extractalpha"/>
 		/// </summary>
 		public IExtractAlphaService ExtractAlphaService => extractAlphaService
-		        ?? (extractAlphaService = new ExtractAlphaService(executor));
+		    ?? (extractAlphaService = new ExtractAlphaService(executor));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#precision-alpha"/>
+		/// </summary>
+		public IPrecisionAlphaService PrecisionAlphaService => precisionAlphaService
+		    ?? (precisionAlphaService = new PrecisionAlphaService(executor));
+        
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#kavout"/>
+		/// </summary>
+		public IKavoutService KavoutService => kavoutService
+		     ?? (kavoutService = new KavoutService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#audit-analytics"/>
