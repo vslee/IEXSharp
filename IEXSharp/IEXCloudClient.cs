@@ -21,6 +21,7 @@ using IEXSharp.Service.Cloud.CoreData.StockPrices;
 using IEXSharp.Service.Cloud.CoreData.StockProfiles;
 using IEXSharp.Service.Cloud.CoreData.StockResearch;
 using IEXSharp.Service.Cloud.CoreData.Treasuries;
+using IEXSharp.Service.Cloud.PremiumData.AuditAnalytics;
 using IEXSharp.Service.Cloud.PremiumData.ExtractAlpha;
 using IEXSharp.Service.Cloud.PremiumData.FraudFactors;
 using IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon;
@@ -76,6 +77,7 @@ namespace IEXSharp
 		private IWallStreetHorizonService wallStreetHorizonService;
 		private IFraudFactorsService fraudFactorsService;
 		private IExtractAlphaService extractAlphaService;
+		private IAuditAnalyticsService auditAnalyticsService;
 
 		// The following properties are arranged in the same order as https://iexcloud.io/docs/api
 
@@ -217,6 +219,12 @@ namespace IEXSharp
 		/// </summary>
 		public IExtractAlphaService ExtractAlphaService => extractAlphaService
 		        ?? (extractAlphaService = new ExtractAlphaService(executor));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#audit-analytics"/>
+		/// </summary>
+		public IAuditAnalyticsService AuditAnalyticsService => auditAnalyticsService
+			?? (auditAnalyticsService = new AuditAnalyticsService(executor));
 
 		/// <summary>
 		/// create a new IEXCloudClient
