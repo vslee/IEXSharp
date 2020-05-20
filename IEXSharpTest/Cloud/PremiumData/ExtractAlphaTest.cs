@@ -27,6 +27,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().VolumeComponent);
 		}
 
@@ -39,6 +41,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().ComplaintId);
 		}
 
@@ -51,6 +55,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().RecallNumber);
 		}
 
@@ -63,6 +69,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().TotalWorkers);
 		}
 
@@ -75,6 +83,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().EnfSummaryText);
 		}
 
@@ -87,6 +97,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().DefendantName);
 		}
 
@@ -99,6 +111,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().TransactionAmt);
 		}
 
@@ -111,6 +125,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().InspType);
 		}
 
@@ -123,6 +139,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().ClientName);
 		}
 
@@ -135,6 +153,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().VendorName);
 		}
 
@@ -147,6 +167,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().FilingDate);
 		}
 
@@ -159,6 +181,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().PatentNumber);
 		}
 
@@ -171,6 +195,8 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+
+			if (!response.Data.Any()) return;
 			Assert.IsNotNull(response.Data.First().LiquidityShockComponent);
 		}
 	}
