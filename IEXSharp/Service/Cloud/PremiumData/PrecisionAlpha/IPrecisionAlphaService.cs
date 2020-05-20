@@ -8,7 +8,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.PrecisionAlpha
 	public interface IPrecisionAlphaService
 	{
 		/// <summary>
-		///     <see cref="https://iexcloud.io/docs/api/#precision-alpha-price-dynamics" />
+		/// <see cref="https://iexcloud.io/docs/api/#precision-alpha-price-dynamics" />
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
 		/// <returns></returns>
