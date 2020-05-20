@@ -16,7 +16,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string contactphone { get; set; }
 		public string lawfirmhomepage { get; set; }
 		public long classperiodbegin { get; set; }
-		public long motiondeadline { get; set; }
+		public object motiondeadline { get; set; }
 		public long classperiodend { get; set; }
 		public string prurl { get; set; }
 		public string stage { get; set; }

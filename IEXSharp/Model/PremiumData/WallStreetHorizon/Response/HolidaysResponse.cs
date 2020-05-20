@@ -6,7 +6,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string eventdate { get; set; }
 		public string eventday { get; set; }
 		public string eventname { get; set; }
-		public string earlyclosetime { get; set; }
+		public object earlyclosetime { get; set; }
 		public string countrycode { get; set; }
 		public string financialcentername { get; set; }
 		public string updated { get; set; }
