@@ -21,6 +21,7 @@ using IEXSharp.Service.Cloud.CoreData.StockPrices;
 using IEXSharp.Service.Cloud.CoreData.StockProfiles;
 using IEXSharp.Service.Cloud.CoreData.StockResearch;
 using IEXSharp.Service.Cloud.CoreData.Treasuries;
+using IEXSharp.Service.Cloud.PremiumData.FraudFactors;
 using IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon;
 
 namespace IEXSharp
@@ -72,6 +73,7 @@ namespace IEXSharp
 		private IReferenceDataService referenceDataService;
 		private IInvestorsExchangeDataService investorsExchangeDataService;
 		private IWallStreetHorizonService wallStreetHorizonService;
+		private IFraudFactorsService fraudFactorsService;
 
 		// The following properties are arranged in the same order as https://iexcloud.io/docs/api
 
@@ -201,6 +203,12 @@ namespace IEXSharp
 		/// </summary>
 		public IWallStreetHorizonService WallStreetHorizonService => wallStreetHorizonService
 			?? (wallStreetHorizonService = new WallStreetHorizonService(executor));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#fraud-factors"/>
+		/// </summary>
+		public IFraudFactorsService FraudFactorsService => fraudFactorsService
+		    ?? (fraudFactorsService = new FraudFactorsService(executor));
 
 		/// <summary>
 		/// create a new IEXCloudClient
