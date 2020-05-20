@@ -1,12 +1,12 @@
 namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 {
-	public class CrossAssetModelOneResponse
+	public class EsgOshaInspectionsResponse
 	{
-		public decimal SpreadComponent { get; set; }
-		public decimal SkewComponent { get; set; }
-		public decimal VolumeComponent { get; set; }
-		public decimal Cam1 { get; set; }
-		public decimal Cam1Slow { get; set; }
+		public string EventId { get; set; }
+		public string MasterName { get; set; }
+		public string EstabName { get; set; }
+		public string ActivityNr { get; set; }
+		public string InspType { get; set; }
 		public string Updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }

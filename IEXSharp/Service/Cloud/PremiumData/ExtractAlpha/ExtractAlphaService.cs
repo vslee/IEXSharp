@@ -15,54 +15,70 @@ namespace IEXSharp.Service.Cloud.PremiumData.ExtractAlpha
 			this.executor = executor;
 		}
 
-		public async Task<IEXResponse<IEnumerable<CrossAssetModelOneResponse>>> CrossAssetModelOneAsync(string symbol) =>
-			await executor.NoParamExecute<IEnumerable<CrossAssetModelOneResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_CAM/{symbol}");
-
-		public async Task<IEXResponse<IEnumerable<EsgCpscComplaintsResponse>>> EsgCpscComplaintsAsync(string symbol) =>
-			await executor.NoParamExecute<IEnumerable<EsgCpscComplaintsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/1");
-
-		public async Task<IEXResponse<IEnumerable<EsgCpscRecallsResponse>>> EsgCpscRecallsAsync(string symbol) =>
-			await executor.NoParamExecute<IEnumerable<EsgCpscRecallsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/5");
-
-		public async Task<IEXResponse<IEnumerable<EsgDolVisaApplicationsResponse>>> EsgDolVisaApplicationsAsync(string symbol) =>
-			await executor.NoParamExecute<IEnumerable<EsgDolVisaApplicationsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/8");
-
-		public async Task<IEXResponse<IEnumerable<EsgEpaEnforcementsResponse>>> EsgEpaEnforcementsAsync(string symbol) =>
-			await executor.NoParamExecute<IEnumerable<EsgEpaEnforcementsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/2");
-
-		public Task<IEXResponse<IEnumerable<object>>> EsgEpaMilestonesAsync(string symbol)
+		public async Task<IEXResponse<IEnumerable<CrossAssetModelOneResponse>>> CrossAssetModelOneAsync(string symbol)
 		{
-			throw new System.NotImplementedException();
+			return await executor.NoParamExecute<IEnumerable<CrossAssetModelOneResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_CAM/{symbol}");
 		}
 
-		public Task<IEXResponse<IEnumerable<object>>> EsgFecIndividualCampaignContributionsAsync(string symbol)
+		public async Task<IEXResponse<IEnumerable<EsgCpscComplaintsResponse>>> EsgCpscComplaintsAsync(string symbol)
 		{
-			throw new System.NotImplementedException();
+			return await executor.NoParamExecute<IEnumerable<EsgCpscComplaintsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/1");
 		}
 
-		public Task<IEXResponse<IEnumerable<object>>> EsgOshaInspectionsAsync(string symbol)
+		public async Task<IEXResponse<IEnumerable<EsgCpscRecallsResponse>>> EsgCpscRecallsAsync(string symbol)
 		{
-			throw new System.NotImplementedException();
+			return await executor.NoParamExecute<IEnumerable<EsgCpscRecallsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/5");
 		}
 
-		public Task<IEXResponse<IEnumerable<object>>> EsgSenateLobbyingAsync(string symbol)
+		public async Task<IEXResponse<IEnumerable<EsgDolVisaApplicationsResponse>>> EsgDolVisaApplicationsAsync(string symbol)
 		{
-			throw new System.NotImplementedException();
+			return await executor.NoParamExecute<IEnumerable<EsgDolVisaApplicationsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/8");
 		}
 
-		public Task<IEXResponse<IEnumerable<object>>> EsgUsaSpendingAsync(string symbol)
+		public async Task<IEXResponse<IEnumerable<EsgEpaEnforcementsResponse>>> EsgEpaEnforcementsAsync(string symbol)
 		{
-			throw new System.NotImplementedException();
+			return await executor.NoParamExecute<IEnumerable<EsgEpaEnforcementsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/2");
 		}
 
-		public Task<IEXResponse<IEnumerable<object>>> EsgUsptoPatentApplicationsAsync(string symbol)
+		public async Task<IEXResponse<IEnumerable<EsgEpaMilestonesResponse>>> EsgEpaMilestonesAsync(string symbol)
 		{
-			throw new System.NotImplementedException();
+			return await executor.NoParamExecute<IEnumerable<EsgEpaMilestonesResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/3");
 		}
 
-		public Task<IEXResponse<IEnumerable<object>>> TacticalModelOneAsync(string symbol)
+		public async Task<IEXResponse<IEnumerable<EsgFecIndividualCampaignContributionsResponse>>> EsgFecIndividualCampaignContributionsAsync(string symbol)
 		{
-			throw new System.NotImplementedException();
+			return await executor.NoParamExecute<IEnumerable<EsgFecIndividualCampaignContributionsResponse>>(
+				$"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/7");
+		}
+
+		public async Task<IEXResponse<IEnumerable<EsgOshaInspectionsResponse>>> EsgOshaInspectionsAsync(string symbol)
+		{
+			return await executor.NoParamExecute<IEnumerable<EsgOshaInspectionsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/4");
+		}
+
+		public async Task<IEXResponse<IEnumerable<EsgSenateLobbyingResponse>>> EsgSenateLobbyingAsync(string symbol)
+		{
+			return await executor.NoParamExecute<IEnumerable<EsgSenateLobbyingResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/6");
+		}
+
+		public async Task<IEXResponse<IEnumerable<EsgUsaSpendingResponse>>> EsgUsaSpendingAsync(string symbol)
+		{
+			return await executor.NoParamExecute<IEnumerable<EsgUsaSpendingResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/9");
+		}
+
+		public async Task<IEXResponse<IEnumerable<EsgUsptoPatentApplicationsResponse>>> EsgUsptoPatentApplicationsAsync(string symbol)
+		{
+			return await executor.NoParamExecute<IEnumerable<EsgUsptoPatentApplicationsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/10");
+		}
+
+		public async Task<IEXResponse<IEnumerable<EsgUsptoPatentGrantsResponse>>> EsgUsptoPatentGrantsAsync(string symbol)
+		{
+			return await executor.NoParamExecute<IEnumerable<EsgUsptoPatentGrantsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/11");
+		}
+
+		public async Task<IEXResponse<IEnumerable<TacticalModelOneResponse>>> TacticalModelOneAsync(string symbol)
+		{
+			return await executor.NoParamExecute<IEnumerable<TacticalModelOneResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_TM/{symbol}");
 		}
 	}
 }
