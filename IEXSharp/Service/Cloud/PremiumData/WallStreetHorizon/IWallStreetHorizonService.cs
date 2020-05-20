@@ -113,7 +113,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <param name="symbol">Stock symbol</param>
 		/// <param name="eventId">Event ID</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> MergersAndAcquisitionsAsync(string symbol, string eventId);
+		Task<IEXResponse<IEnumerable<MergersAndAcquisitionsResponse>>> MergersAndAcquisitionsAsync(string symbol, string eventId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#product-events"/>
