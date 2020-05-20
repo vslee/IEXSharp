@@ -50,12 +50,12 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		public async Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> CapitalMarketsDayAsync() =>
 			await executor.NoParamExecute<IEnumerable<WallStreetHorizonResponse>>("time-series/PREMIUM_WALLSTREETHORIZON_CAPITAL_MARKETS_DAY");
 
-		public async Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> CompanyTravelAsync(string symbol, string eventId)
+		public async Task<IEXResponse<IEnumerable<CompanyTravelResponse>>> CompanyTravelAsync(string symbol, string eventId)
 		{
 			const string url = "time-series/PREMIUM_WALLSTREETHORIZON_COMPANY_TRAVEL/";
 			var fullUrl = GetWallSymbolEventUrl(url, symbol, eventId);
 
-			return await executor.NoParamExecute<IEnumerable<WallStreetHorizonResponse>>(fullUrl);
+			return await executor.NoParamExecute<IEnumerable<CompanyTravelResponse>>(fullUrl);
 		}
 
 		public async Task<IEXResponse<IEnumerable<FilingsDueDatesResponse>>> FilingDueDatesAsync() =>

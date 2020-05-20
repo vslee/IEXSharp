@@ -51,7 +51,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon
 		/// <param name="symbol">Stock symbol</param>
 		/// /// <param name="eventId">Event ID</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<WallStreetHorizonResponse>>> CompanyTravelAsync(string symbol, string eventId);
+		Task<IEXResponse<IEnumerable<CompanyTravelResponse>>> CompanyTravelAsync(string symbol, string eventId);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#filing-due-dates"/>

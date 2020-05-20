@@ -82,7 +82,7 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.First().venue);
+			Assert.IsNotNull(response.Data.First().companyName);
 		}
 
 		[Test]
