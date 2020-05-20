@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
+using IEXSharp.Model.PremiumData.ExtractAlpha.Response;
 
 namespace IEXSharp.Service.Cloud.PremiumData.ExtractAlpha
 {
@@ -11,35 +12,35 @@ namespace IEXSharp.Service.Cloud.PremiumData.ExtractAlpha
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<object>>> CrossAssetModelOneAsync(string symbol);
+		Task<IEXResponse<IEnumerable<CrossAssetModelOneResponse>>> CrossAssetModelOneAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#esg-cfpb-complaints"/>
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<object>>> EsgCpscComplaintsAsync(string symbol);
+		Task<IEXResponse<IEnumerable<EsgCpscComplaintsResponse>>> EsgCpscComplaintsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#esg-cpsc-recalls"/>
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<object>>> EsgCpscRecallsAsync(string symbol);
+		Task<IEXResponse<IEnumerable<EsgCpscRecallsResponse>>> EsgCpscRecallsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#esg-dol-visa-applications"/>
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<object>>> EsgDolVisaApplicationsAsync(string symbol);
+		Task<IEXResponse<IEnumerable<EsgDolVisaApplicationsResponse>>> EsgDolVisaApplicationsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#esg-epa-enforcements"/>
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<object>>> EsgEpaEnforcementsAsync(string symbol);
+		Task<IEXResponse<IEnumerable<EsgEpaEnforcementsResponse>>> EsgEpaEnforcementsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#esg-epa-milestones"/>
