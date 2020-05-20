@@ -5,7 +5,6 @@ using NUnit.Framework;
 
 namespace IEXSharpTest.Cloud.PremiumData
 {
-	[Ignore("Ignored for now. It seems even with Sandbox keys these charge you per call.")]
 	public class WallStreetHorizonTest
 	{
 		private IEXCloudClient sandBoxClient;
@@ -83,7 +82,7 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.First().venue);
+			Assert.IsNotNull(response.Data.First().companyName);
 		}
 
 		[Test]
@@ -177,7 +176,6 @@ namespace IEXSharpTest.Cloud.PremiumData
 		}
 
 		[Test]
-		[Ignore("Not yet sure of return type - docs are incomplete. It's a IEnumerable<WallStreetHorizonResponse> for now.")]
 		[TestCase("", "")]
 		[TestCase("AAPL", "")]
 		public async Task MergersAndAcquisitionsAsyncTest(string symbol, string eventId)
@@ -186,7 +184,7 @@ namespace IEXSharpTest.Cloud.PremiumData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.First().eventid);
+			Assert.IsNotNull(response.Data.First().eventId);
 		}
 
 		[Test]

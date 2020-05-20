@@ -20,7 +20,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string purl { get; set; }
 		public string shmdistance { get; set; }
 		public string referencelink { get; set; }
-		public double shmmeetingtype { get; set; }
+		public object shmmeetingtype { get; set; }
 		public string updated { get; set; }
 		public string id { get; set; }
 		public string source { get; set; }
