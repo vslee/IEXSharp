@@ -44,9 +44,10 @@
 	<ItemGroup>
 		<PackageReference Include="LaunchDarkly.EventSource" Version="3.3.2" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
 		<PackageReference Include="Polly" Version="7.2.1" />
-		<!--development dependency, which means it is only used during build.-->
+		
+		<!--development dependency, which means it is only used during build, the final NuGet package does not have a dependency on SourceLink-->
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
 	</ItemGroup>
 
 </Project>

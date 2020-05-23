@@ -1,10 +1,10 @@
 # IEXSharp
 
-IEX Cloud API for C# and other .net languages. Supports SSE streaming
+IEX Cloud API for C# and other .net languages. Supports SSE streaming.
 
 ## Prerequisites
 
- This library currently targets `netstandard20`. Thus, it can be used with `.net framework 4.6.1`+ and `.net core 2.0`+
+ This library currently targets `netstandard20`. Thus, it can be used with `.net framework 4.6.1`+ or `.net core 2.0`+
 
 ## Usage
 ![](https://github.com/vslee/iexsharp/workflows/prerelease%20NuGet/badge.svg) Prereleases are on [GH Packages](https://github.com/vslee/IEXSharp/packages). A new prerelease is built automatically after every commit. 
@@ -16,7 +16,7 @@ IEX Cloud API for C# and other .net languages. Supports SSE streaming
 public IEXCloudClient(string publishableToken, string secretToken, bool signRequest, bool useSandBox,
 	APIVersion version = APIVersion.stable)
 ```
-First, create an instance of IEXCloudClient
+First, create an instance of `IEXCloudClient`
 ```c#
 // For FREE and LAUNCH users
 IEXCloudClient iexCloudClient = 
@@ -30,31 +30,31 @@ IEXCloudClient iexCloudClient =
 IEXCloudClient iexCloudClient = 
 	new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: true); 
 ```
-To display historical prices. [Read more about DateTime in the wiki](https://github.com/vslee/IEXSharp/wiki/DateTime)
+To display historical prices. Read more about [DateTime in the wiki](https://github.com/vslee/IEXSharp/wiki/DateTime).
 ```c#
 using (var iexCloudClient = 
 	new IEXCloudClient("publishableToken", "secretToken", signRequest: false, useSandBox: false))
 {
-	var response = await iexCloudClient.Stock.HistoricalPriceAsync("AAPL", ChartRange.OneMonth);
+	var response = await iexCloudClient.StockPrices.HistoricalPriceAsync("AAPL", ChartRange.OneMonth);
 	if (response.ErrorMessage != null)
 	{
 		Console.WriteLine(response.ErrorMessage);
 	}
 	else
 	{
-		foreach (var ohlc in response.Data)
-		{
-			var dt = ohlc.GetTimestampInEST(); // note the use of the extension method instead of ohlc.date
-			Console.WriteLine(
-			   $"{dt} Open: {ohlc.open}, High: {ohlc.high}, Low: {ohlc.low}, Close: {ohlc.close}, Vol: {ohlc.volume}");
-		}
+	   foreach (var ohlc in response.Data)
+	   {
+	      var dt = ohlc.GetTimestampInEST(); // note use of the extension method instead of ohlc.date
+	      Console.WriteLine(
+	   	  $"{dt} Open: {ohlc.open}, High: {ohlc.high}, Low: {ohlc.low}, Close: {ohlc.close}, Vol: {ohlc.volume}");
+	   }
 	}
 }
 
 ```
-To use SSE streaming (only included with paid IEX subscription plans)
+To use SSE streaming (only included with paid IEX subscription plans). Extended [example in wiki](https://github.com/vslee/IEXSharp/wiki/SSE-Streaming-Example).
 ```c#
-using (var sseClient = iexCloudClient.SSE.SubscribeStockQuoteUSSSE(symbols: new string[] { "spy", "aapl" }, 
+using (var sseClient = iexCloudClient.StockPrices.SubscribeStockQuotesUS(symbols: new string[] { "spy", "aapl" }, 
 	UTP: false, interval: StockQuoteSSEInterval.OneSecond))
 {
 	sseClient.Error += (s, e) =>
@@ -65,7 +65,7 @@ using (var sseClient = iexCloudClient.SSE.SubscribeStockQuoteUSSSE(symbols: new 
 	{
 		Console.WriteLine(m.ToString());
 	};
-	await sseClient.StartAsync(); // this will block until cancelled
+	await sseClient.StartAsync(); // this will block until Stop() is called
 }
 
 ```
@@ -94,7 +94,7 @@ Per their [guidelines](https://iexcloud.io/docs/api/#disclaimers):
 - Required: If you display latestVolume you must display “Consolidated Volume in Real-time” as a disclaimer.
 - Note on pricing data: All CTA and UTP pricing data is delayed at least 15 minutes.
 
-This project is not related to the similarly named [IEX-Sharp](https://iexsharp.com//)
+This project is not related to the similarly named [IEX-Sharp](https://iexsharp.com/)
 
 ## Acknowledgments
 
