@@ -1,3 +1,5 @@
+using System;
+
 namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 {
 	public class EsgCpscRecallsResponse
@@ -11,12 +13,12 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string URL { get; set; }
 		public string Title { get; set; }
 		public string ConsumerContact { get; set; }
-		public string LastPublishDate { get; set; }
-		public string Updated { get; set; }
+		public DateTime LastPublishDate { get; set; }
+		public long Updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string key { get; set; }
-		public string Subkey { get; set; }
-		public string Date { get; set; }
+		public DateTime Subkey { get; set; }
+		public long Date { get; set; }
 	}
 }

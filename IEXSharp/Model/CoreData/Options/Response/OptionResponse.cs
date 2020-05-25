@@ -1,9 +1,12 @@
+using System;
+
 namespace IEXSharp.Model.CoreData.Options.Response
 {
 	public class OptionResponse
 	{
 		public string symbol { get; set; }
 		public string id { get; set; }
+		public DateTime expirationDate { get; set; }
 		public int contractSize { get; set; }
 		public decimal strikePrice { get; set; }
 		public decimal closingPrice { get; set; }
@@ -13,7 +16,7 @@ namespace IEXSharp.Model.CoreData.Options.Response
 		public int openInterest { get; set; }
 		public decimal bid { get; set; }
 		public decimal ask { get; set; }
-		public string lastUpdated { get; set; }
+		public DateTime lastUpdated { get; set; }
 		public bool isAdjusted { get; set; }
 	}
 }

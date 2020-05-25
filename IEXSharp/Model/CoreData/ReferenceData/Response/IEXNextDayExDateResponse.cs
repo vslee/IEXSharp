@@ -1,7 +1,10 @@
-﻿using System;
+using System;
 
 namespace IEXSharp.Model.CoreData.ReferenceData.Response
 {
+	/// <summary>
+	/// Legacy
+	/// </summary>
 	public class IEXNextDayExDateResponse
 	{
 		public string RecordID { get; set; }

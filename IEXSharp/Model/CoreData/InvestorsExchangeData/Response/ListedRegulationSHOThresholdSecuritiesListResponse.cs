@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
+using System;
 
 namespace IEXSharp.Model.CoreData.InvestorsExchangeData.Response
 {
 	public class ListedRegulationSHOThresholdSecuritiesListResponse
 	{
-		public string TradeDate { get; set; }
+		public DateTime TradeDate { get; set; }
 
 		[JsonProperty("SymbolinINET Symbology")]
 		public string SymbolinINETSymbology { get; set; }

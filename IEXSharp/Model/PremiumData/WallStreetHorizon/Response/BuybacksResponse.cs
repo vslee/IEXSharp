@@ -1,3 +1,5 @@
+using System;
+
 namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 {
 	public class BuybacksResponse
@@ -8,8 +10,8 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string CompanyName { get; set; }
 		public string BuybackStatus { get; set; }
 		public string BuybackMethod { get; set; }
-		public string AnnounceDate { get; set; }
-		public string ApprovalDate { get; set; }
+		public DateTime AnnounceDate { get; set; }
+		public DateTime? ApprovalDate { get; set; }
 		public string NumberOfShares { get; set; }
 		public string SharesDifferent { get; set; }
 		public string PercentOfShares { get; set; }
@@ -24,11 +26,11 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string NewsReferences { get; set; }
 		public string ExternalNotes { get; set; }
 		public string Created { get; set; }
-		public string Updated { get; set; }
+		public long Updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }
 		public string Subkey { get; set; }
-		public string Date { get; set; }
+		public long Date { get; set; }
 	}
 }

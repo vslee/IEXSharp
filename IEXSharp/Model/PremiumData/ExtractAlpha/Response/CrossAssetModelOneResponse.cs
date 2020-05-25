@@ -7,11 +7,11 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public decimal VolumeComponent { get; set; }
 		public decimal Cam1 { get; set; }
 		public decimal Cam1Slow { get; set; }
-		public string Updated { get; set; }
+		public long Updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }
 		public string Subkey { get; set; }
-		public string Date { get; set; }
+		public long Date { get; set; }
 	}
 }

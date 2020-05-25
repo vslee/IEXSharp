@@ -1,3 +1,5 @@
+using System;
+
 namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 {
 	public class EsgEpaEnforcementsResponse
@@ -16,7 +18,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string CaseName { get; set; }
 		public string ActivityTypeCode { get; set; }
 		public string ActivityTypeDesc { get; set; }
-		public string ActivityStatusDate { get; set; }
+		public DateTime ActivityStatusDate { get; set; }
 		public string Lead { get; set; }
 		public string DojDocketNmbr { get; set; }
 		public string EnfOutcomeCode { get; set; }
@@ -29,11 +31,11 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string VoluntarySelfDisclosureFlag { get; set; }
 		public string MultimediaFlag { get; set; }
 		public string EnfSummaryText { get; set; }
-		public string Updated { get; set; }
+		public long Updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }
-		public string Subkey { get; set; }
-		public string Date { get; set; }
+		public DateTime Subkey { get; set; }
+		public long Date { get; set; }
 	}
 }

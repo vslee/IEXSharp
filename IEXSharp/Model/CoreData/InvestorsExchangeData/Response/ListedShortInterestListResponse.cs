@@ -1,8 +1,10 @@
-﻿namespace IEXSharp.Model.CoreData.InvestorsExchangeData.Response
+using System;
+
+namespace IEXSharp.Model.CoreData.InvestorsExchangeData.Response
 {
 	public class ListedShortInterestListResponse
 	{
-		public string SettlementDate { get; set; }
+		public DateTime SettlementDate { get; set; }
 		public string SecurityName { get; set; }
 		public long CurrentShortInterest { get; set; }
 		public long PreviousShortInterest { get; set; }

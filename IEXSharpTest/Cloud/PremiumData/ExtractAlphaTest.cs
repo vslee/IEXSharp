@@ -35,9 +35,9 @@ namespace IEXSharpTest.Cloud.PremiumData
 		[Test]
 		[TestCase("")]
 		[TestCase("AAPL")]
-		public async Task EsgCpscComplaintsAsyncTest(string symbol)
+		public async Task EsgCpfbComplaintsAsyncTest(string symbol)
 		{
-			var response = await sandBoxClient.ExtractAlphaService.EsgCpscComplaintsAsync(symbol);
+			var response = await sandBoxClient.ExtractAlphaService.EsgCpfbComplaintsAsync(symbol);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

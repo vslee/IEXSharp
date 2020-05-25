@@ -14,7 +14,7 @@ namespace IEXSharp.Model.CoreData.MarketInfo.Response
 	{
 		public string symbol { get; set; }
 		public string companyName { get; set; }
-		public string expectedDate { get; set; }
+		public DateTime expectedDate { get; set; }
 		public List<string> leadUnderwriters { get; set; }
 		public List<string> underwriters { get; set; }
 		public List<string> companyCounsel { get; set; }

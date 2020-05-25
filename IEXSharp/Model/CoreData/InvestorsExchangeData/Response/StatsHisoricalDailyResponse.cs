@@ -1,8 +1,10 @@
-﻿namespace IEXSharp.Model.CoreData.InvestorsExchangeData.Response
+using System;
+
+namespace IEXSharp.Model.CoreData.InvestorsExchangeData.Response
 {
 	public class StatsHisoricalDailyResponse
 	{
-		public string date { get; set; }
+		public DateTime date { get; set; }
 		public long volume { get; set; }
 		public long routedVolume { get; set; }
 		public decimal marketShare { get; set; }

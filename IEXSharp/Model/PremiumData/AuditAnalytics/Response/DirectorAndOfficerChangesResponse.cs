@@ -1,3 +1,5 @@
+using System;
+
 namespace IEXSharp.Model.PremiumData.AuditAnalytics.Response
 {
 	public class DirectorAndOfficerChangesResponse
@@ -7,7 +9,7 @@ namespace IEXSharp.Model.PremiumData.AuditAnalytics.Response
         public string Key { get; set; }
         public string Subkey { get; set; }
         public string Symbol { get; set; }
-        public string EffectiveDate { get; set; }
+        public DateTime? EffectiveDate { get; set; }
         public string TitleAsReported { get; set; }
         public int IsCLevel { get; set; }
         public int IsBoardmemberPerson { get; set; }
@@ -47,12 +49,12 @@ namespace IEXSharp.Model.PremiumData.AuditAnalytics.Response
         public string DirectorOfficerChangeText { get; set; }
         public string FtpFileNameFkey { get; set; }
         public string FormFkey { get; set; }
-        public string FileDate { get; set; }
+        public DateTime FileDate { get; set; }
         public string FileSize { get; set; }
-        public string FileAccepted { get; set; }
+        public DateTime FileAccepted { get; set; }
         public string HttpFileNameHtml { get; set; }
         public string HttpFileNameText { get; set; }
-        public string Date { get; set; }
-        public string Updated { get; set; }
+        public long Date { get; set; }
+        public long Updated { get; set; }
 	}
 }

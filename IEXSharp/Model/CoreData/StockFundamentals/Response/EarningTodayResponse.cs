@@ -37,9 +37,9 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 			public string announceTime { get; set; }
 			public long numberOfEstimates { get; set; }
 			public string fiscalPeriod { get; set; }
-			public string fiscalEndDate { get; set; }
+			public DateTime fiscalEndDate { get; set; }
 			public string symbol { get; set; }
-			public string reportDate { get; set; }
+			public DateTime reportDate { get; set; }
 			public string currency { get; set; }
 			public Quote quote { get; set; }
 		}

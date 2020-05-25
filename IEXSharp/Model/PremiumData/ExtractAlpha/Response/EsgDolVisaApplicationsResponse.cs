@@ -1,3 +1,5 @@
+using System;
+
 namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 {
 	public class EsgDolVisaApplicationsResponse
@@ -10,14 +12,14 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string TotalWorkers { get; set; }
 		public string Type { get; set; }
 		public string DcaseSubmitted { get; set; }
-		public string DemploymentStartDate { get; set; }
-		public string DemploymentEndDate { get; set; }
+		public DateTime? DemploymentStartDate { get; set; }
+		public DateTime? DemploymentEndDate { get; set; }
 		public string CaseStatus { get; set; }
-		public string Updated { get; set; }
+		public long Updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }
-		public string Subkey { get; set; }
-		public string Date { get; set; }
+		public DateTime Subkey { get; set; }
+		public long Date { get; set; }
 	}
 }

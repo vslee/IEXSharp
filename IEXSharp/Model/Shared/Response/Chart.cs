@@ -1,8 +1,10 @@
-﻿namespace IEXSharp.Model.Shared.Response
+using System;
+
+namespace IEXSharp.Model.Shared.Response
 {
 	public class Chart
 	{
-		public string date { get; set; }
+		public DateTime date { get; set; }
 		public decimal open { get; set; }
 		public decimal close { get; set; }
 		public decimal high { get; set; }

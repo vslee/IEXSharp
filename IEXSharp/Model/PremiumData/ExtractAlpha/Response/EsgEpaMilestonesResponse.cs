@@ -1,3 +1,5 @@
+using System;
+
 namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 {
 	public class EsgEpaMilestonesResponse
@@ -11,11 +13,11 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string CaseNumber { get; set; }
 		public string SubActivityTypeCode { get; set; }
 		public string SubActivityTypeDesc { get; set; }
-		public string Updated { get; set; }
+		public long Updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }
-		public string Subkey { get; set; }
-		public string Date { get; set; }
+		public DateTime Subkey { get; set; }
+		public long Date { get; set; }
 	}
 }

@@ -18,8 +18,8 @@ namespace IEXSharp.Service.Cloud.PremiumData.ExtractAlpha
 		public async Task<IEXResponse<IEnumerable<CrossAssetModelOneResponse>>> CrossAssetModelOneAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<CrossAssetModelOneResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_CAM/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<EsgCpscComplaintsResponse>>> EsgCpscComplaintsAsync(string symbol) =>
-			await executor.NoParamExecute<IEnumerable<EsgCpscComplaintsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/1");
+		public async Task<IEXResponse<IEnumerable<EsgCpfbComplaintsResponse>>> EsgCpfbComplaintsAsync(string symbol) =>
+			await executor.NoParamExecute<IEnumerable<EsgCpfbComplaintsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/1");
 
 		public async Task<IEXResponse<IEnumerable<EsgCpscRecallsResponse>>> EsgCpscRecallsAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<EsgCpscRecallsResponse>>($"time-series/PREMIUM_EXTRACT_ALPHA_ESG/{symbol}/5");

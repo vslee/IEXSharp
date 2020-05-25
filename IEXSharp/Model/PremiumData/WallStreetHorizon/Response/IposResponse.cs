@@ -1,3 +1,5 @@
+using System;
+
 namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 {
 	public class IposResponse
@@ -9,8 +11,8 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public long iposcoopid { get; set; }
 		public string iposcoopcompanyname { get; set; }
 		public string industry { get; set; }
-		public string fileddate { get; set; }
-		public string offeringdate { get; set; }
+		public DateTime fileddate { get; set; }
+		public DateTime offeringdate { get; set; }
 		public double offerprice { get; set; }
 		public double firstdayclose { get; set; }
 		public double currentprice { get; set; }
@@ -23,11 +25,11 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string quietperiod { get; set; }
 		public string lockupperiod { get; set; }
 		public double rating { get; set; }
-		public string updated { get; set; }
+		public long updated { get; set; }
 		public string id { get; set; }
 		public string source { get; set; }
 		public string key { get; set; }
 		public string subkey { get; set; }
-		public string date { get; set; }
+		public long date { get; set; }
 	}
 }

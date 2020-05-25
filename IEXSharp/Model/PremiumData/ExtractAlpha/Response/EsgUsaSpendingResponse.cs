@@ -1,3 +1,5 @@
+using System;
+
 namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 {
 	public class EsgUsaSpendingResponse
@@ -12,13 +14,13 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string ModParent { get; set; }
 		public string UniqueTransactionId { get; set; }
 		public string DollarsObligated { get; set; }
-		public string SignedDate { get; set; }
+		public DateTime SignedDate { get; set; }
 		public string MajAgencyCat { get; set; }
-		public string Updated { get; set; }
+		public long Updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }
-		public string Subkey { get; set; }
-		public string Date { get; set; }
+		public DateTime Subkey { get; set; }
+		public long Date { get; set; }
 	}
 }

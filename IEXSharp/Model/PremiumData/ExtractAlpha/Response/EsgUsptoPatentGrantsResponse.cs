@@ -1,3 +1,5 @@
+using System;
+
 namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 {
 	public class EsgUsptoPatentGrantsResponse
@@ -8,13 +10,13 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string Name2 { get; set; }
 		public string Name3 { get; set; }
 		public string PatentNumber { get; set; }
-		public string FilingDate { get; set; }
-		public string PublicationDate { get; set; }
-		public string Updated { get; set; }
+		public DateTime FilingDate { get; set; }
+		public DateTime PublicationDate { get; set; }
+		public long Updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }
-		public string Subkey { get; set; }
-		public string Date { get; set; }
+		public DateTime Subkey { get; set; }
+		public long Date { get; set; }
 	}
 }

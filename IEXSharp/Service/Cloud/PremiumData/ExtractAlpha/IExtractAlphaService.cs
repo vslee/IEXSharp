@@ -19,7 +19,7 @@ namespace IEXSharp.Service.Cloud.PremiumData.ExtractAlpha
 		/// </summary>
 		/// <param name="symbol">Stock symbol</param>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<EsgCpscComplaintsResponse>>> EsgCpscComplaintsAsync(string symbol);
+		Task<IEXResponse<IEnumerable<EsgCpfbComplaintsResponse>>> EsgCpfbComplaintsAsync(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#esg-cpsc-recalls" />
