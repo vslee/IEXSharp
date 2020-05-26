@@ -3,9 +3,8 @@ using System.Threading.Tasks;
 using IEXSharp.Helper;
 using IEXSharp.Model;
 using IEXSharp.Model.PremiumData.PrecisionAlpha.Response;
-using IEXSharp.Service.Cloud.PremiumData.PrecisionAlpha;
 
-namespace IEXSharp.Service.Cloud.PremiumData.FraudFactors
+namespace IEXSharp.Service.Cloud.PremiumData.PrecisionAlpha
 {
 	public class PrecisionAlphaService : IPrecisionAlphaService
 	{
