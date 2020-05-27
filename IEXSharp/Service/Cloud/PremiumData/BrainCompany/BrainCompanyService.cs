@@ -15,37 +15,37 @@ namespace IEXSharp.Service.Cloud.PremiumData.BrainCompany
 			this.executor = executor;
 		}
 
-		public async Task<IEXResponse<IEnumerable<SentimentIndicatorResponse>>> ThirtyDaySentimentIndicator(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<SentimentIndicatorResponse>>> ThirtyDaySentimentIndicatorAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<SentimentIndicatorResponse>>($"time-series/PREMIUM_BRAIN_SENTIMENT_30_DAYS/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<SentimentIndicatorResponse>>> SevenDaySentimentIndicator(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<SentimentIndicatorResponse>>> SevenDaySentimentIndicatorAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<SentimentIndicatorResponse>>($"time-series/PREMIUM_BRAIN_SENTIMENT_7_DAYS/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> TwentyOneDayMachineLearningEstimatedReturnRanking(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> TwentyOneDayMachineLearningEstimatedReturnRankingAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<EstimatedReturnRankingResponse>>($"time-series/PREMIUM_BRAIN_RANKING_21_DAYS/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> TenDayMachineLearningEstimatedReturnRanking(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> TenDayMachineLearningEstimatedReturnRankingAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<EstimatedReturnRankingResponse>>($"time-series/PREMIUM_BRAIN_RANKING_10_DAYS/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> FiveDayMachineLearningEstimatedReturnRanking(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> FiveDayMachineLearningEstimatedReturnRankingAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<EstimatedReturnRankingResponse>>($"time-series/PREMIUM_BRAIN_RANKING_5_DAYS/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> ThreeDayMachineLearningEstimatedReturnRanking(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> ThreeDayMachineLearningEstimatedReturnRankingAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<EstimatedReturnRankingResponse>>($"time-series/PREMIUM_BRAIN_RANKING_3_DAYS/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> TwoDayMachineLearningEstimatedReturnRanking(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<EstimatedReturnRankingResponse>>> TwoDayMachineLearningEstimatedReturnRankingAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<EstimatedReturnRankingResponse>>($"time-series/PREMIUM_BRAIN_RANKING_2_DAYS/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<LanguageMetricsOnCompanyFilingsResponse>>> LanguageMetricsOnCompanyFilingsQuarterlyAndAnnual(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<LanguageMetricsOnCompanyFilingsResponse>>> LanguageMetricsOnCompanyFilingsQuarterlyAndAnnualAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<LanguageMetricsOnCompanyFilingsResponse>>($"time-series/PREMIUM_BRAIN_LANGUAGE_METRICS_ALL/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<LanguageMetricsOnCompanyFilingsResponse>>> LanguageMetricsOnCompanyFilingsAnnualOnly(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<LanguageMetricsOnCompanyFilingsResponse>>> LanguageMetricsOnCompanyFilingsAnnualOnlyAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<LanguageMetricsOnCompanyFilingsResponse>>($"time-series/PREMIUM_BRAIN_LANGUAGE_METRICS_10K/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<DifferencesInLanguageMetricsOnCompanyFilingsResponse>>> DifferencesInLanguageMetricsOnCompanyFilingsQuarterlyAndAnnualFromPriorPeriod(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<DifferencesInLanguageMetricsOnCompanyFilingsResponse>>> DifferencesInLanguageMetricsOnCompanyFilingsQuarterlyAndAnnualFromPriorPeriodAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<DifferencesInLanguageMetricsOnCompanyFilingsResponse>>($"time-series/PREMIUM_BRAIN_LANGUAGE_DIFFERENCES_ALL/{symbol}");
 
-		public async Task<IEXResponse<IEnumerable<DifferencesInLanguageMetricsOnCompanyFilingsResponse>>> DifferencesInLanguageMetricsOnCompanyAnnualFilingsFromPriorYear(string symbol) =>
+		public async Task<IEXResponse<IEnumerable<DifferencesInLanguageMetricsOnCompanyFilingsResponse>>> DifferencesInLanguageMetricsOnCompanyAnnualFilingsFromPriorYearAsync(string symbol) =>
 			await executor.NoParamExecute<IEnumerable<DifferencesInLanguageMetricsOnCompanyFilingsResponse>>($"time-series/PREMIUM_BRAIN_LANGUAGE_DIFFERENCES_10K/{symbol}");
 	}
 }
