@@ -10,5 +10,6 @@ namespace IEXSharp.Model.CoreData.StockResearch.Response
 		public decimal priceTargetHigh { get; set; }
 		public decimal priceTargetLow { get; set; }
 		public int numberOfAnalysts { get; set; }
+		public string currency { get; set; }
 	}
 }
