@@ -1,9 +1,6 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IEXSharp;
-using IEXSharp.Model;
-using IEXSharp.Model.PremiumData.ExtractAlpha.Response;
 using NUnit.Framework;
 
 namespace IEXSharpTest.Cloud.PremiumData

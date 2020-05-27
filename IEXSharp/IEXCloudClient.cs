@@ -263,9 +263,11 @@ namespace IEXSharp
 			{
 				throw new ArgumentException("publishableToken cannot be null");
 			}
+
 			this.publishableToken = publishableToken;
 			this.secretToken = secretToken;
 			this.signRequest = signRequest;
+
 			var baseAddress = useSandBox
 				? "https://sandbox.iexapis.com/"
 				: "https://cloud.iexapis.com/";
