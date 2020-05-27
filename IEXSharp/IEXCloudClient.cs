@@ -22,6 +22,7 @@ using IEXSharp.Service.Cloud.CoreData.StockProfiles;
 using IEXSharp.Service.Cloud.CoreData.StockResearch;
 using IEXSharp.Service.Cloud.CoreData.Treasuries;
 using IEXSharp.Service.Cloud.PremiumData.AuditAnalytics;
+using IEXSharp.Service.Cloud.PremiumData.BrainCompany;
 using IEXSharp.Service.Cloud.PremiumData.ExtractAlpha;
 using IEXSharp.Service.Cloud.PremiumData.FraudFactors;
 using IEXSharp.Service.Cloud.PremiumData.PrecisionAlpha;
@@ -82,6 +83,7 @@ namespace IEXSharp
 		private IPrecisionAlphaService precisionAlphaService;
 		private IKavoutService kavoutService;
  		private IAuditAnalyticsService auditAnalyticsService;
+        private IBrainCompanyService brainCompanyService;
 
 		// The following properties are arranged in the same order as https://iexcloud.io/docs/api
 
@@ -228,7 +230,7 @@ namespace IEXSharp
 		/// </summary>
 		public IPrecisionAlphaService PrecisionAlphaService => precisionAlphaService
 		    ?? (precisionAlphaService = new PrecisionAlphaService(executor));
-        
+
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#kavout"/>
 		/// </summary>
@@ -240,6 +242,12 @@ namespace IEXSharp
 		/// </summary>
 		public IAuditAnalyticsService AuditAnalyticsService => auditAnalyticsService
 			?? (auditAnalyticsService = new AuditAnalyticsService(executor));
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#brain-company"/>
+		/// </summary>
+		public IBrainCompanyService BrainCompanyService => brainCompanyService
+			?? (brainCompanyService = new BrainCompanyService(executor));
 
 		/// <summary>
 		/// create a new IEXCloudClient
@@ -255,9 +263,11 @@ namespace IEXSharp
 			{
 				throw new ArgumentException("publishableToken cannot be null");
 			}
+
 			this.publishableToken = publishableToken;
 			this.secretToken = secretToken;
 			this.signRequest = signRequest;
+
 			var baseAddress = useSandBox
 				? "https://sandbox.iexapis.com/"
 				: "https://cloud.iexapis.com/";
