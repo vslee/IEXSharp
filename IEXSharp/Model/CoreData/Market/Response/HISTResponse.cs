@@ -1,5 +1,8 @@
-﻿namespace IEXSharp.Model.CoreData.Market.Response
+namespace IEXSharp.Model.CoreData.Market.Response
 {
+	/// <summary>
+	/// Legacy
+	/// </summary>
 	public class HISTResponse
 	{
 		public string link { get; set; }
