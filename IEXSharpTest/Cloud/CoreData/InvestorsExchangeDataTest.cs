@@ -28,6 +28,26 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
+		[TestCase("AAPL", new object[]{"deep"})]
+		public async Task DeepStreamTest(string symbol, object[] channels)
+		{
+			using (var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepStream(symbol, channels.Cast<string>()))
+			{
+				sseClient.Error += (s, e) =>
+				{
+					sseClient.Close();
+					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+				};
+				sseClient.MessageReceived += (s, m) =>
+				{
+					sseClient.Close();
+					Assert.Pass(m.ToString());
+				};
+				await sseClient.StartAsync();
+			}
+		}
+
+		[Test]
 		[TestCase("ziext")]
 		public async Task DeepAuctionAsyncTest(params string[] symbols)
 		{

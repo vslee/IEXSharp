@@ -12,14 +12,19 @@ namespace IEXSharp.Service.Cloud.CoreData.InvestorsExchangeData
 	internal class InvestorsExchangeDataService : IInvestorsExchangeDataService
 	{
 		private readonly ExecutorREST executor;
+		private readonly ExecutorSSE executorSSE;
 
-		internal InvestorsExchangeDataService(ExecutorREST executor)
+		internal InvestorsExchangeDataService(ExecutorREST executor, ExecutorSSE executorSSE)
 		{
 			this.executor = executor;
+			this.executorSSE = executorSSE;
 		}
 
 		public async Task<IEXResponse<DeepResponse>> DeepAsync(IEnumerable<string> symbols)
 		   => await executor.SymbolsExecuteAsync<DeepResponse>("deep", symbols);
+
+		public SSEClient<DeepResponse> DeepStream(string symbol, IEnumerable<string> channels) =>
+			executorSSE.SymbolsChannelsSubscribeSSE<DeepResponse>("deep", new List<string>{symbol}, channels);
 
 		public async Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepAuctionAsync(IEnumerable<string> symbols)
 		  => await executor.SymbolsExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbols);

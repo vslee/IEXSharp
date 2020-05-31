@@ -41,5 +41,28 @@ namespace IEXSharp.Helper
 
 			return SubscribeToSSE<T>(urlPattern, pathNvc, qsb);
 		}
+
+		public SSEClient<T> SymbolsChannelsSubscribeSSE<T>(string urlPattern, IEnumerable<string> symbols, IEnumerable<string> channels, bool forceUseSecretToken = false)
+			where T : class
+		{
+			var qsb = new QueryStringBuilder();
+			if (!string.IsNullOrEmpty(publishableToken) && !forceUseSecretToken)
+			{
+				qsb.Add("token", publishableToken);
+			}
+
+			if (!string.IsNullOrEmpty(secretToken) && forceUseSecretToken)
+			{
+				qsb.Add("token", secretToken);
+			}
+
+			qsb.Add("symbols", string.Join(",", symbols));
+
+			qsb.Add("channels", string.Join(",", channels));
+
+			var pathNvc = new NameValueCollection();
+
+			return SubscribeToSSE<T>(urlPattern, pathNvc, qsb);
+		}
 	}
 }

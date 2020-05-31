@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using IEXSharp.Helper;
 using IEXSharp.Model;
 using IEXSharp.Model.CoreData.InvestorsExchangeData.Response;
 
@@ -14,6 +15,14 @@ namespace IEXSharp.Service.Cloud.CoreData.InvestorsExchangeData
 		/// <param name="symbols"></param>
 		/// <returns></returns>
 		Task<IEXResponse<DeepResponse>> DeepAsync(IEnumerable<string> symbols);
+
+		/// <summary>
+		/// <see cref="hhttps://iexcloud.io/docs/api/#deep" and cref="https://iexcloud.io/docs/api/#sse-streaming"/>
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <param name="channels"></param>
+		/// <returns></returns>
+		SSEClient<DeepResponse> DeepStream(string symbol, IEnumerable<string> channels);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-auction"/>

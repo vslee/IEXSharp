@@ -206,7 +206,7 @@ namespace IEXSharp
 		/// <see cref="https://iexcloud.io/docs/api/#investors-exchange-data"/>
 		/// </summary>
 		public IInvestorsExchangeDataService InvestorsExchangeDataService => investorsExchangeDataService
-			?? (investorsExchangeDataService = new InvestorsExchangeDataService(executor));
+			?? (investorsExchangeDataService = new InvestorsExchangeDataService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#wall-street-horizon"/>
