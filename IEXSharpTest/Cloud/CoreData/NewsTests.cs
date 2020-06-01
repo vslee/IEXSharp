@@ -45,20 +45,18 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase(new object[] { "AAPL", "FB" })]
 		public async Task StreamingNewsTest(object[] symbols)
 		{
-			using (var sseClient = sandBoxClient.News.SubscribeToNews(symbols.Cast<string>()))
+			using var sseClient = sandBoxClient.News.SubscribeToNews(symbols.Cast<string>());
+			sseClient.Error += (s, e) =>
 			{
-				sseClient.Error += (s, e) =>
-				{
-					sseClient.Close();
-					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
-				};
-				sseClient.MessageReceived += (s, m) =>
-				{
-					sseClient.Close();
-					Assert.Pass(m.ToString());
-				};
-				await sseClient.StartAsync();
-			}
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
 		}
 
 		[Test]
