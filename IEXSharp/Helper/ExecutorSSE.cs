@@ -57,7 +57,6 @@ namespace IEXSharp.Helper
 			}
 
 			qsb.Add("symbols", string.Join(",", symbols));
-
 			qsb.Add("channels", string.Join(",", channels));
 
 			var pathNvc = new NameValueCollection();
