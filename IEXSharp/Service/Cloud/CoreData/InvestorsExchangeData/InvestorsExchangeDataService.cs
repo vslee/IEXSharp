@@ -23,8 +23,8 @@ namespace IEXSharp.Service.Cloud.CoreData.InvestorsExchangeData
 		public async Task<IEXResponse<DeepResponse>> DeepAsync(IEnumerable<string> symbols)
 		   => await executor.SymbolsExecuteAsync<DeepResponse>("deep", symbols);
 
-		public SSEClient<DeepResponse> DeepStream(string symbol, IEnumerable<string> channels) =>
-			executorSSE.SymbolsChannelsSubscribeSSE<DeepResponse>("deep", new List<string>{symbol}, channels);
+		public SSEClient<DeepResponse> DeepStream(string symbol) =>
+			executorSSE.SymbolsChannelsSubscribeSSE<DeepResponse>("deep", new List<string>{symbol}, new List<string>{"deep"});
 
 		public async Task<IEXResponse<Dictionary<string, DeepAuctionResponse>>> DeepAuctionAsync(IEnumerable<string> symbols)
 		  => await executor.SymbolsExecuteAsync<Dictionary<string, DeepAuctionResponse>>("deep/auction", symbols);

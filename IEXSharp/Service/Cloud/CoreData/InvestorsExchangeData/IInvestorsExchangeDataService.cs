@@ -22,7 +22,7 @@ namespace IEXSharp.Service.Cloud.CoreData.InvestorsExchangeData
 		/// <param name="symbol"></param>
 		/// <param name="channels"></param>
 		/// <returns></returns>
-		SSEClient<DeepResponse> DeepStream(string symbol, IEnumerable<string> channels);
+		SSEClient<DeepResponse> DeepStream(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-auction"/>

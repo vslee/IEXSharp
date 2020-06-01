@@ -28,10 +28,10 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
-		[TestCase("AAPL", new object[]{"deep"})]
-		public async Task DeepStreamTest(string symbol, object[] channels)
+		[TestCase("AAPL")]
+		public async Task DeepStreamTest(string symbol)
 		{
-			using (var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepStream(symbol, channels.Cast<string>()))
+			using (var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepStream(symbol))
 			{
 				sseClient.Error += (s, e) =>
 				{
