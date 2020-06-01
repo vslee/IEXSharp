@@ -216,21 +216,19 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase(new object[] { "spy", "aapl" }, false, StockQuoteSSEInterval.OneSecond)]
 		public async Task StockQuoteUSSSETest(object[] symbols, bool UTP, StockQuoteSSEInterval interval)
 		{
-			using (var sseClient = sandBoxClient.StockPrices.SubscribeStockQuotesUS(
-										symbols.Cast<string>(), UTP: UTP, interval: interval))
+			using var sseClient = sandBoxClient.StockPrices.SubscribeStockQuotesUS(
+				symbols.Cast<string>(), UTP: UTP, interval: interval);
+			sseClient.Error += (s, e) =>
 			{
-				sseClient.Error += (s, e) =>
-				{
-					sseClient.Close();
-					Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
-				};
-				sseClient.MessageReceived += (s, m) =>
-				{
-					sseClient.Close();
-					Assert.Pass(m.ToString());
-				};
-				await sseClient.StartAsync();
-			}
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
 		}
 
 		[Test]

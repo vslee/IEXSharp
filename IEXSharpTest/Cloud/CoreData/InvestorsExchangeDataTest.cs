@@ -28,6 +28,26 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
+		[TestCase("AAPL")]
+		public async Task DeepStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.IsNotNull(m.First().symbol);
+				Assert.IsNotNull(m.First().marketPercent);
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
+		}
+
+		[Test]
 		[TestCase("ziext")]
 		public async Task DeepAuctionAsyncTest(params string[] symbols)
 		{
@@ -36,6 +56,27 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count, 1);
+		}
+
+		[Ignore("Test appears to hang due to lack of response.")]
+		[Test]
+		[TestCase("AAPL")]
+		public async Task DeepAuctionStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepAuctionStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.IsNotNull(m.First().auctionType);
+				Assert.IsNotNull(m.First().auctionBookPrice);
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
 		}
 
 		[Test]
@@ -52,6 +93,24 @@ namespace IEXSharpTest.Cloud.CoreData
 
 		[Test]
 		[TestCase("AAPL")]
+		public async Task DeepBookStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepBookStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
+		}
+
+		[Test]
+		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task DeepOperationHaltStatusAsyncTest(params string[] symbols)
 		{
@@ -60,6 +119,25 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count, 1);
+		}
+
+		[Ignore("Test appears to hang due to lack of response.")]
+		[Test]
+		[TestCase("AAPL")]
+		public async Task DeepOperationHaltStatusStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepOperationHaltStatusStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
 		}
 
 		[Test]
@@ -74,6 +152,25 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
+		[Ignore("Test appears to hang due to lack of response.")]
+		[Test]
+		[TestCase("AAPL")]
+		public async Task DeepOfficialPriceStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepOfficialPriceStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
+		}
+
 		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
@@ -84,6 +181,25 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count, 1);
+		}
+
+		[Ignore("Test appears to hang due to lack of response.")]
+		[Test]
+		[TestCase("AAPL")]
+		public async Task DeepSecurityEventStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepSecurityEventStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
 		}
 
 		[Test]
@@ -98,6 +214,25 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.GreaterOrEqual(response.Data.Count, 1);
 		}
 
+		[Ignore("Test appears to hang due to lack of response.")]
+		[Test]
+		[TestCase("AAPL")]
+		public async Task DeepShortSalePriceTestStatusStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepShortSalePriceTestStatusStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
+		}
+
 		[Test]
 		public async Task DeepSystemEventAsyncTest()
 		{
@@ -105,6 +240,25 @@ namespace IEXSharpTest.Cloud.CoreData
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
+		}
+
+		[Ignore("Test appears to hang due to lack of response.")]
+		[Test]
+		[TestCase("AAPL")]
+		public async Task DeepSystemEventStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepSystemEventStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
 		}
 
 		[Test]
@@ -121,6 +275,26 @@ namespace IEXSharpTest.Cloud.CoreData
 
 		[Test]
 		[TestCase("AAPL")]
+		public async Task DeepTradeStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepTradeStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.IsNotNull(m.First().Symbol);
+				Assert.IsNotNull(m.First().Data);
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
+		}
+
+		[Test]
+		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task DeepTradeBreaksAsyncTest(params string[] symbols)
 		{
@@ -129,6 +303,25 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count, 1);
+		}
+
+		[Ignore("Test appears to hang due to lack of response.")]
+		[Test]
+		[TestCase("AAPL")]
+		public async Task DeepTradeBreaksStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepTradeBreaksStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
 		}
 
 		[Test]
@@ -141,6 +334,25 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.Count, 1);
+		}
+
+		[Ignore("Test appears to hang due to lack of response.")]
+		[Test]
+		[TestCase("AAPL")]
+		public async Task DeepTradingStatusStreamTest(string symbol)
+		{
+			using var sseClient = sandBoxClient.InvestorsExchangeDataService.DeepTradingStatusStream(symbol);
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
 		}
 
 		[Test]
