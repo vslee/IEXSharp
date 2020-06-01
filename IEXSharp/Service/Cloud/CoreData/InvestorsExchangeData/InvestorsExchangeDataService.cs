@@ -71,20 +71,20 @@ namespace IEXSharp.Service.Cloud.CoreData.InvestorsExchangeData
 		public async Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeAsync(IEnumerable<string> symbols) =>
 			await executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades", symbols);
 
-		public SSEClient<Dictionary<string, DeepTradeResponse>> DeepTradeStream(string symbol) =>
-			executorSSE.SymbolsChannelsSubscribeSSE<Dictionary<string, DeepTradeResponse>>("deep", new List<string>{symbol}, new List<string>{"trades"});
+		public SSEClient<DeepTradeStreamResponse> DeepTradeStream(string symbol) =>
+			executorSSE.SymbolsChannelsSubscribeSSE<DeepTradeStreamResponse>("deep", new List<string>{symbol}, new List<string>{"trades"});
 
 		public async Task<IEXResponse<Dictionary<string, IEnumerable<DeepTradeResponse>>>> DeepTradeBreaksAsync(IEnumerable<string> symbols) =>
 			await executor.SymbolsExecuteAsync<Dictionary<string, IEnumerable<DeepTradeResponse>>>("deep/trades-breaks", symbols);
 
-		public SSEClient<Dictionary<string, DeepTradeResponse>> DeepTradeBreaksStream(string symbol) =>
-			executorSSE.SymbolsChannelsSubscribeSSE<Dictionary<string, DeepTradeResponse>>("deep", new List<string>{symbol}, new List<string>{"trade-breaks"});
+		public SSEClient<DeepTradeStreamResponse> DeepTradeBreaksStream(string symbol) =>
+			executorSSE.SymbolsChannelsSubscribeSSE<DeepTradeStreamResponse>("deep", new List<string>{symbol}, new List<string>{"trade-breaks"});
 
 		public async Task<IEXResponse<Dictionary<string, DeepTradingStatusResponse>>> DeepTradingStatusAsync(IEnumerable<string> symbols) =>
 			await executor.SymbolsExecuteAsync<Dictionary<string, DeepTradingStatusResponse>>("deep/trades-status", symbols);
 
-		public SSEClient<Dictionary<string, DeepTradingStatusResponse>> DeepTradingStatusStream(string symbol) =>
-			executorSSE.SymbolsChannelsSubscribeSSE<Dictionary<string, DeepTradingStatusResponse>>("deep", new List<string>{symbol}, new List<string>{"trading-status"});
+		public SSEClient<DeepTradingStatusStreamResponse> DeepTradingStatusStream(string symbol) =>
+			executorSSE.SymbolsChannelsSubscribeSSE<DeepTradingStatusStreamResponse>("deep", new List<string>{symbol}, new List<string>{"trading-status"});
 
 		public async Task<IEXResponse<IEnumerable<LastResponse>>> LastAsync(IEnumerable<string> symbols) =>
 			await executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);

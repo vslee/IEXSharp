@@ -133,7 +133,7 @@ namespace IEXSharp.Service.Cloud.CoreData.InvestorsExchangeData
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		SSEClient<Dictionary<string, DeepTradeResponse>> DeepTradeStream(string symbol);
+		SSEClient<DeepTradeStreamResponse> DeepTradeStream(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-trade-break"/>
@@ -147,7 +147,7 @@ namespace IEXSharp.Service.Cloud.CoreData.InvestorsExchangeData
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		SSEClient<Dictionary<string, DeepTradeResponse>> DeepTradeBreaksStream(string symbol);
+		SSEClient<DeepTradeStreamResponse> DeepTradeBreaksStream(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#deep-trading-status"/>
@@ -161,7 +161,7 @@ namespace IEXSharp.Service.Cloud.CoreData.InvestorsExchangeData
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <returns></returns>
-		SSEClient<Dictionary<string, DeepTradingStatusResponse>> DeepTradingStatusStream(string symbol);
+		SSEClient<DeepTradingStatusStreamResponse> DeepTradingStatusStream(string symbol);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#last"/>
