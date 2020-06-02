@@ -33,12 +33,32 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
+		[TestCase(new object[] { "BTCUSD" })]
+		[TestCase(new object[] { "BTCUSD", "ETHUSD" })]
+		public async Task SubscribeCryptoBookTest(object[] symbols)
+		{
+			using var sseClient = sandBoxClient.Crypto.SubscribeCryptoBook(symbols.Cast<string>());
+			sseClient.Error += (s, e) =>
+			{
+				sseClient.Close();
+				Assert.Fail("EventSource Error Occurred. Details: {0}", e.Exception.Message);
+			};
+			sseClient.MessageReceived += (s, m) =>
+			{
+				sseClient.Close();
+				Assert.IsNotNull(m.First().asks);
+				Assert.IsNotNull(m.First().bids);
+				Assert.Pass(m.ToString());
+			};
+			await sseClient.StartAsync();
+		}
+
+		[Test]
 		[TestCase(new object[] { "btcusdt" })]
 		[TestCase(new object[] { "btcusdt", "ethusdt" })]
 		public async Task CryptoEventSSETest(object[] symbols)
 		{
-			using var sseClient = sandBoxClient.Crypto.SubscribeCryptoEvents(
-				symbols.Cast<string>());
+			using var sseClient = sandBoxClient.Crypto.SubscribeCryptoEvents(symbols.Cast<string>());
 			sseClient.Error += (s, e) =>
 			{
 				sseClient.Close();
