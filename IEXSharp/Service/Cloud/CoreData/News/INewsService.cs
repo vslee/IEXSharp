@@ -29,7 +29,7 @@ namespace IEXSharp.Service.Cloud.CoreData.News
 		/// </summary>
 		/// <param name="symbols">One or more stock symbols.</param>
 		/// <returns></returns>
-		SSEClient<NewsResponse> SubscribeToNews(IEnumerable<string> symbols);
+		SSEClient<NewsResponse> NewsStream(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#historical-news"/>

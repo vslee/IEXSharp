@@ -18,7 +18,7 @@ namespace IEXSharp.Service.Cloud.CoreData.SocialSentiment
 			this.executorSSE = executorSSE;
 		}
 
-		public SSEClient<SentimentResponse> SubscribeToSentiment(IEnumerable<string> symbols) =>
+		public SSEClient<SentimentResponse> SentimentStream(IEnumerable<string> symbols) =>
 			executorSSE.SymbolsSubscribeSSE<SentimentResponse>("sentiment", symbols);
 
 		public async Task<IEXResponse<IEnumerable<SentimentMinuteResponse>>> SentimentByMinuteAsync(string symbol) =>

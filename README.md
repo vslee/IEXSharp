@@ -52,9 +52,9 @@ using (var iexCloudClient =
 }
 
 ```
-To use SSE streaming (only included with paid IEX subscription plans). Extended [example in wiki](https://github.com/vslee/IEXSharp/wiki/SSE-Streaming-Example).
+To use SSE streaming (only included with paid IEX subscription plans). Extended [example in the wiki](https://github.com/vslee/IEXSharp/wiki/SSE-Streaming-Example).
 ```c#
-using (var sseClient = iexCloudClient.StockPrices.SubscribeStockQuotesUS(symbols: new string[] { "spy", "aapl" }, 
+using (var sseClient = iexCloudClient.StockPrices.QuoteStream(symbols: new string[] { "spy", "aapl" }, 
 	UTP: false, interval: StockQuoteSSEInterval.OneSecond))
 {
 	sseClient.Error += (s, e) =>

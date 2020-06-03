@@ -103,12 +103,13 @@ namespace IEXSharp.Service.Cloud.CoreData.StockPrices
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#quote"/>
+		/// US Stock Quote SSE Stream
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <param name="UTP"></param>
 		/// <param name="interval"></param>
 		/// <returns></returns>
-		SSEClient<QuoteSSE> SubscribeStockQuotesUS(IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval);
+		SSEClient<QuoteSSE> QuoteStream(IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#volume-by-venue"/>

@@ -18,9 +18,9 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		[TestCase(new object[] { "AAPL" })]
 		[TestCase(new object[] { "AAPL", "FB" })]
-		public async Task StreamingSentimentTest(object[] symbols)
+		public async Task SentimentStreamTest(object[] symbols)
 		{
-			using var sseClient = sandBoxClient.SocialSentiment.SubscribeToSentiment(symbols.Cast<string>());
+			using var sseClient = sandBoxClient.SocialSentiment.SentimentStream(symbols.Cast<string>());
 			sseClient.Error += (s, e) =>
 			{
 				sseClient.Close();

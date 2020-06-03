@@ -109,7 +109,7 @@ namespace IEXSharp.Service.Cloud.CoreData.StockPrices
 			return await executor.ExecuteAsync<string>(urlPattern, pathNvc, qsb);
 		}
 
-		public SSEClient<QuoteSSE> SubscribeStockQuotesUS(
+		public SSEClient<QuoteSSE> QuoteStream(
 			IEnumerable<string> symbols, bool UTP, StockQuoteSSEInterval interval) =>
 			executorSSE.SymbolsSubscribeSSE<QuoteSSE>(
 				UTP ? $"stocksUS{interval.GetDescriptionFromEnum()}" : $"stocksUSNoUTP{interval.GetDescriptionFromEnum()}", symbols);

@@ -25,7 +25,7 @@ namespace IEXSharp.Service.Cloud.CoreData.News
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> NewsAsync(string symbol, int last) =>
 			await executor.SymbolLastExecuteAsync<IEnumerable<NewsResponse>>("stock/[symbol]/news/last/[last]", symbol, last);
 
-		public SSEClient<NewsResponse> SubscribeToNews(IEnumerable<string> symbols) =>
+		public SSEClient<NewsResponse> NewsStream(IEnumerable<string> symbols) =>
 			executorSSE.SymbolsSubscribeSSE<NewsResponse>("news-stream", symbols);
 
 		public async Task<IEXResponse<IEnumerable<NewsResponse>>> HistoricalNewsAsync(TimeSeriesRange? range = null, int? limit = null)

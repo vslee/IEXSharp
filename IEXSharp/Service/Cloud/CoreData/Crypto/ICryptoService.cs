@@ -19,7 +19,7 @@ namespace IEXSharp.Service.Cloud.CoreData.Crypto
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		SSEClient<CryptoBookResponse> SubscribeCryptoBook(IEnumerable<string> symbols);
+		SSEClient<CryptoBookResponse> BookStream(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#cryptocurrency-events"/>
@@ -27,7 +27,7 @@ namespace IEXSharp.Service.Cloud.CoreData.Crypto
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		SSEClient<EventCrypto> SubscribeCryptoEvents(IEnumerable<string> symbols);
+		SSEClient<EventCrypto> EventStream(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#cryptocurrency-price"/>
@@ -48,6 +48,6 @@ namespace IEXSharp.Service.Cloud.CoreData.Crypto
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <returns></returns>
-		SSEClient<QuoteCryptoResponse> SubscribeCryptoQuotes(IEnumerable<string> symbols);
+		SSEClient<QuoteCryptoResponse> QuoteStream(IEnumerable<string> symbols);
 	}
 }

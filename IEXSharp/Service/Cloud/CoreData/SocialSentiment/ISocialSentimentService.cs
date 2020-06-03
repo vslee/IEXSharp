@@ -13,7 +13,7 @@ namespace IEXSharp.Service.Cloud.CoreData.SocialSentiment
 		/// </summary>
 		/// <param name="symbols">One or more stock symbols.</param>
 		/// <returns></returns>
-		SSEClient<SentimentResponse> SubscribeToSentiment(IEnumerable<string> symbols);
+		SSEClient<SentimentResponse> SentimentStream(IEnumerable<string> symbols);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#social-sentiment"/>

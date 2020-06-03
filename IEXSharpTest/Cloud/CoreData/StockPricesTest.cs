@@ -216,7 +216,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase(new object[] { "spy", "aapl" }, false, StockQuoteSSEInterval.OneSecond)]
 		public async Task StockQuoteUSSSETest(object[] symbols, bool UTP, StockQuoteSSEInterval interval)
 		{
-			using var sseClient = sandBoxClient.StockPrices.SubscribeStockQuotesUS(
+			using var sseClient = sandBoxClient.StockPrices.QuoteStream(
 				symbols.Cast<string>(), UTP: UTP, interval: interval);
 			sseClient.Error += (s, e) =>
 			{

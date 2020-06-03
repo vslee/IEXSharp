@@ -20,10 +20,10 @@ namespace IEXSharp.Service.Cloud.CoreData.Crypto
 		public async Task<IEXResponse<CryptoBookResponse>> BookAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<CryptoBookResponse>("crypto/[symbol]/book", symbol);
 
-		public SSEClient<CryptoBookResponse> SubscribeCryptoBook(IEnumerable<string> symbols) =>
+		public SSEClient<CryptoBookResponse> BookStream(IEnumerable<string> symbols) =>
 			executorSSE.SymbolsSubscribeSSE<CryptoBookResponse>("cryptoBook", symbols);
 
-		public SSEClient<EventCrypto> SubscribeCryptoEvents(IEnumerable<string> symbols) =>
+		public SSEClient<EventCrypto> EventStream(IEnumerable<string> symbols) =>
 			executorSSE.SymbolsSubscribeSSE<EventCrypto>("cryptoEvents", symbols);
 
 		public async Task<IEXResponse<CryptoPriceResponse>> PriceAsync(string symbol) =>
@@ -32,7 +32,7 @@ namespace IEXSharp.Service.Cloud.CoreData.Crypto
 		public async Task<IEXResponse<QuoteCryptoResponse>> QuoteAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<QuoteCryptoResponse>("crypto/[symbol]/quote", symbol);
 
-		public SSEClient<QuoteCryptoResponse> SubscribeCryptoQuotes(IEnumerable<string> symbols) =>
+		public SSEClient<QuoteCryptoResponse> QuoteStream(IEnumerable<string> symbols) =>
 			executorSSE.SymbolsSubscribeSSE<QuoteCryptoResponse>("cryptoQuotes", symbols);
 	}
 }

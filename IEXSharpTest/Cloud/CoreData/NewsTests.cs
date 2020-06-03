@@ -43,9 +43,9 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		[TestCase(new object[] { "AAPL" })]
 		[TestCase(new object[] { "AAPL", "FB" })]
-		public async Task StreamingNewsTest(object[] symbols)
+		public async Task NewsStreamTest(object[] symbols)
 		{
-			using var sseClient = sandBoxClient.News.SubscribeToNews(symbols.Cast<string>());
+			using var sseClient = sandBoxClient.News.NewsStream(symbols.Cast<string>());
 			sseClient.Error += (s, e) =>
 			{
 				sseClient.Close();
