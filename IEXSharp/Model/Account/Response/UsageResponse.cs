@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 
 namespace IEXSharp.Model.Account.Response
 {
@@ -12,7 +13,7 @@ namespace IEXSharp.Model.Account.Response
 	{
 		public long monthlyUsage { get; set; }
 		public long monthlyPayAsYouGo { get; set; }
-		public Dictionary<string, long> dailyUsage { get; set; }
+		public Dictionary<DateTime, long> dailyUsage { get; set; }
 		public Dictionary<string, long> tokenUsage { get; set; }
 		public UsageResponseKeyUsage keyUsage { get; set; }
 	}

@@ -1,7 +1,7 @@
 using LaunchDarkly.EventSource;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace IEXSharp.Helper
@@ -11,7 +11,7 @@ namespace IEXSharp.Helper
 	public class SSEClient<T> : IDisposable //,IEventSource
 	{
 		EventSource eventSource;
-		readonly JsonSerializerSettings jsonSerializerSettings;
+		readonly JsonSerializerOptions jsonSerializerOptions;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SSEClient" /> class.
@@ -29,9 +29,9 @@ namespace IEXSharp.Helper
 			eventSource.MessageReceived += Evt_MessageReceived;
 			eventSource.CommentReceived += onCommentReceived;
 			eventSource.Error += onError;
-			jsonSerializerSettings = new JsonSerializerSettings
+			jsonSerializerOptions = new JsonSerializerOptions
 			{
-				NullValueHandling = NullValueHandling.Ignore
+				IgnoreNullValues = true
 			};
 		}
 
@@ -91,7 +91,7 @@ namespace IEXSharp.Helper
 			var content = e.Message.Data;
 			try
 			{
-				MessageReceived?.Invoke(this, JsonConvert.DeserializeObject<List<T>>(content, jsonSerializerSettings));
+				MessageReceived?.Invoke(this, JsonSerializer.Deserialize<List<T>>(content, jsonSerializerOptions));
 			}
 			catch (JsonException ex)
 			{

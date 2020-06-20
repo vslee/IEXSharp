@@ -1,70 +1,70 @@
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using IEXSharp.Model.CoreData.News.Response;
 using IEXSharp.Model.CoreData.StockFundamentals.Response;
 using IEXSharp.Model.CoreData.StockPrices.Response;
 using IEXSharp.Model.CoreData.StockProfiles.Response;
 using IEXSharp.Model.CoreData.StockResearch.Response;
 using IEXSharp.Model.Shared.Response;
-using Newtonsoft.Json;
 
 namespace IEXSharp.Model.CoreData.Batch.Response
 {
 	public class BatchResponse
 	{
-		[JsonProperty("advanced-stats")]
+		[JsonPropertyName("advanced-stats")]
 		public AdvancedStatsResponse AdvancedStats { get; set; }
 
-		[JsonProperty("balance-sheet")]
+		[JsonPropertyName("balance-sheet")]
 		public BalanceSheetResponse BalanceSheets { get; set; }
 
 		public BookResponse Book { get; set; }
 
-		[JsonProperty("cash-flow")]
+		[JsonPropertyName("cash-flow")]
 		public CashFlowsResponse CashFlows { get; set; }
 
 		public List<Chart> Chart { get; set; }
 		public CompanyResponse Company { get; set; }
 
-		[JsonProperty("delayed-quote")]
+		[JsonPropertyName("delayed-quote")]
 		public DelayedQuoteResponse DelayedQuote { get; set; }
 
 		/// <summary> only DividendsBasic is available in batches (not DividendsAdvanced) </summary>
-		[JsonProperty("dividends")]
+		[JsonPropertyName("dividends")]
 		public List<DividendBasicResponse> DividendsBasic { get; set; }
 
 		public EarningResponse Earnings { get; set; }
 
-		[JsonProperty("today-earnings")]
+		[JsonPropertyName("today-earnings")]
 		public List<EarningTodayResponse> EarningsToday { get; set; }
 
 		public EstimatesResponse Estimates { get; set; }
 		public FinancialResponse Financials { get; set; }
 
-		[JsonProperty("fund-ownership")]
+		[JsonPropertyName("fund-ownership")]
 		public List<FundOwnershipResponse> FundOwnership { get; set; }
 
-		[JsonProperty("income")]
+		[JsonPropertyName("income")]
 		public IncomeStatementResponse IncomeStatement { get; set; }
 
-		[JsonProperty("insider-roster")]
+		[JsonPropertyName("insider-roster")]
 		public List<InsiderRosterResponse> InsiderRoster { get; set; }
 
-		[JsonProperty("insider-summary")]
+		[JsonPropertyName("insider-summary")]
 		public List<InsiderSummaryResponse> InsiderSummary { get; set; }
 
-		[JsonProperty("insider-transactions")]
+		[JsonPropertyName("insider-transactions")]
 		public List<InsiderTransactionResponse> InsiderTransactions { get; set; }
 
-		[JsonProperty("institutional-ownership")]
+		[JsonPropertyName("institutional-ownership")]
 		public List<InstitutionalOwnershipResponse> InstitutionalOwnership { get; set; }
 
-		[JsonProperty("intraday-prices")]
+		[JsonPropertyName("intraday-prices")]
 		public List<IntradayPriceResponse> IntradayPrices { get; set; }
 
-		[JsonProperty("stats")]
+		[JsonPropertyName("stats")]
 		public KeyStatsResponse KeyStats { get; set; }
 
-		[JsonProperty("largest-trades")]
+		[JsonPropertyName("largest-trades")]
 		public List<LargestTradeResponse> LargestTrades { get; set; }
 
 		public LogoResponse Logo { get; set; }
@@ -73,21 +73,21 @@ namespace IEXSharp.Model.CoreData.Batch.Response
 		public List<string> Options { get; set; }
 		public List<string> Peers { get; set; }
 
-		[JsonProperty("previous")]
+		[JsonPropertyName("previous")]
 		public HistoricalPriceResponse PreviousDayPrice { get; set; }
 
 		public decimal Price { get; set; }
 		public PriceTargetResponse PriceTarget { get; set; }
 		public Quote Quote { get; set; }
 
-		[JsonProperty("recommendation-trends")]
+		[JsonPropertyName("recommendation-trends")]
 		public List<AnalystRecommendationsResponse> RecommendationTrends { get; set; }
 
 		/// <summary> only SplitsBasic is available in batches (not SplitsAdvanced) </summary>
-		[JsonProperty("splits")]
+		[JsonPropertyName("splits")]
 		public List<SplitBasicResponse> SplitsBasic { get; set; }
 
-		[JsonProperty("volume-by-venue")]
+		[JsonPropertyName("volume-by-venue")]
 		public List<VolumeByVenueResponse> VolumeByVenue { get; set; }
 	}
 }

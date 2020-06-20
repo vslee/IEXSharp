@@ -1,5 +1,4 @@
 using IEXSharp.Model;
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Polly;
 using Polly.Retry;
+using System.Text.Json;
 
 namespace IEXSharp.Helper
 {
@@ -21,7 +21,7 @@ namespace IEXSharp.Helper
 		private readonly Signer signer;
 		private readonly bool sign;
 
-		internal readonly JsonSerializerSettings JsonSerializerSettings;
+		internal readonly JsonSerializerOptions jsonSerializerOptions;
 
 		public ExecutorREST(HttpClient client, string publishableToken, string secretToken, bool sign)
 			: base(publishableToken: publishableToken, secretToken: secretToken)
@@ -34,10 +34,13 @@ namespace IEXSharp.Helper
 				signer = new Signer(client.BaseAddress.Host, secretToken);
 			}
 			this.sign = sign;
-			JsonSerializerSettings = new JsonSerializerSettings
+			jsonSerializerOptions = new JsonSerializerOptions
 			{
-				NullValueHandling = NullValueHandling.Ignore
+				IgnoreNullValues = true
 			};
+			jsonSerializerOptions.Converters.Add(new DictionaryDatetimeTValueConverter());
+			jsonSerializerOptions.Converters.Add(new Int32Converter());
+			jsonSerializerOptions.Converters.Add(new Int64Converter());
 		}
 
 		public async Task<IEXResponse<ReturnType>> ExecuteAsync<ReturnType>(
@@ -97,7 +100,7 @@ namespace IEXSharp.Helper
 						}
 						return new IEXResponse<ReturnType>()
 						{
-							Data = JsonConvert.DeserializeObject<ReturnType>(content, JsonSerializerSettings)
+							Data = JsonSerializer.Deserialize<ReturnType>(content, jsonSerializerOptions)
 						};
 					}
 					else

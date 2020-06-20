@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace IEXSharp.Model.CoreData.InvestorsExchangeData.Response
 {
@@ -7,13 +7,13 @@ namespace IEXSharp.Model.CoreData.InvestorsExchangeData.Response
 	{
 		public DateTime TradeDate { get; set; }
 
-		[JsonProperty("SymbolinINET Symbology")]
+		[JsonPropertyName("SymbolinINET Symbology")]
 		public string SymbolinINETSymbology { get; set; }
 
-		[JsonProperty("SymbolinCQS Symbology")]
+		[JsonPropertyName("SymbolinCQS Symbology")]
 		public string SymbolinCQSSymbology { get; set; }
 
-		[JsonProperty("SymbolinCMS Symbology")]
+		[JsonPropertyName("SymbolinCMS Symbology")]
 		public string SymbolinCMSSymbology { get; set; }
 
 		public string SecurityName { get; set; }

@@ -11,8 +11,10 @@ namespace IEXSharpTest.Helper
 
 		public MissingMemberHandling JsonMissingMemberHandling
 		{
-			get => executor.JsonSerializerSettings.MissingMemberHandling;
-			set => executor.JsonSerializerSettings.MissingMemberHandling = value;
+			// commenting out until  MissingMemberHandling gets implemented in System.Text.Json
+			// https://github.com/dotnet/runtime/issues/37483
+			get => default; //executor.jsonSerializerOptions.MissingMemberHandling;
+			set { } //executor.jsonSerializerOptions.MissingMemberHandling = value;
 		}
 	}
 }
