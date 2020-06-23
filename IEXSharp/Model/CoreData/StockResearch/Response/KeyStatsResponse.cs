@@ -12,18 +12,18 @@ namespace IEXSharp.Model.CoreData.StockResearch.Response
 		public long sharesOutstanding { get; set; }
 		public long @float { get; set; }
 		public string symbol { get; set; }
-		public long avg10Volume { get; set; }
-		public long avg30Volume { get; set; }
+		public decimal avg10Volume { get; set; }
+		public decimal avg30Volume { get; set; }
 		public decimal day200MovingAvg { get; set; }
 		public decimal day50MovingAvg { get; set; }
 		public long employees { get; set; }
-		public decimal ttmEPS { get; set; }
-		public decimal ttmDividendRate { get; set; }
-		public decimal dividendYield { get; set; }
+		public decimal? ttmEPS { get; set; }
+		public decimal? ttmDividendRate { get; set; }
+		public decimal? dividendYield { get; set; }
 		public DateTime? nextDividendDate { get; set; }
 		public DateTime? exDividendDate { get; set; }
 		public DateTime? nextEarningsDate { get; set; }
-		public long peRatio { get; set; }
+		public decimal peRatio { get; set; }
 		public decimal maxChangePercent { get; set; }
 		public decimal year5ChangePercent { get; set; }
 		public decimal year2ChangePercent { get; set; }

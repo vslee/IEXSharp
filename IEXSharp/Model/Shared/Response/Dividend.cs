@@ -28,9 +28,9 @@ namespace IEXSharp.Model.Shared.Response
 	public class Dividend
 	{
 		public DateTime exDate { get; set; }
-		public DateTime paymentDate { get; set; }
+		public DateTime? paymentDate { get; set; }
 		public DateTime recordDate { get; set; }
-		public DateTime declaredDate { get; set; }
+		public DateTime? declaredDate { get; set; }
 		public decimal amount { get; set; }
 		public string flag { get; set; }
 		public DividendFlag DividendFlag =>

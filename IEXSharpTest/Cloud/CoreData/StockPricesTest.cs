@@ -69,16 +69,22 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNotNull(response.Data);
 			foreach (var ohlc in response.Data)
 			{
-				Assert.NotZero(ohlc.open);
-				Assert.NotZero(ohlc.high);
-				Assert.NotZero(ohlc.low);
-				Assert.NotZero(ohlc.close);
+				assertNotZeroIfNotNull(ohlc.open);
+				assertNotZeroIfNotNull(ohlc.high);
+				assertNotZeroIfNotNull(ohlc.low);
+				assertNotZeroIfNotNull(ohlc.close);
 				Assert.NotZero(ohlc.volume);
-				Assert.NotZero(ohlc.uOpen);
-				Assert.NotZero(ohlc.uHigh);
-				Assert.NotZero(ohlc.uLow);
-				Assert.NotZero(ohlc.uClose);
-				Assert.NotZero(ohlc.uVolume);
+				assertNotZeroIfNotNull(ohlc.uOpen);
+				assertNotZeroIfNotNull(ohlc.uHigh);
+				assertNotZeroIfNotNull(ohlc.uLow);
+				assertNotZeroIfNotNull(ohlc.uClose);
+				Assert.NotZero(ohlc.uVolume.Value);
+			}
+
+			void assertNotZeroIfNotNull(decimal? num)
+			{
+				if (num != null)
+					Assert.NotZero(num.Value);
 			}
 		}
 

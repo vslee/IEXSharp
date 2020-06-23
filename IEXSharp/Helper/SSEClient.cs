@@ -11,7 +11,6 @@ namespace IEXSharp.Helper
 	public class SSEClient<T> : IDisposable //,IEventSource
 	{
 		EventSource eventSource;
-		readonly JsonSerializerOptions jsonSerializerOptions;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SSEClient" /> class.
@@ -29,10 +28,6 @@ namespace IEXSharp.Helper
 			eventSource.MessageReceived += Evt_MessageReceived;
 			eventSource.CommentReceived += onCommentReceived;
 			eventSource.Error += onError;
-			jsonSerializerOptions = new JsonSerializerOptions
-			{
-				IgnoreNullValues = true
-			};
 		}
 
 		#region Public Events
@@ -91,7 +86,8 @@ namespace IEXSharp.Helper
 			var content = e.Message.Data;
 			try
 			{
-				MessageReceived?.Invoke(this, JsonSerializer.Deserialize<List<T>>(content, jsonSerializerOptions));
+				MessageReceived?.Invoke(this, JsonSerializer.Deserialize<List<T>>(
+					content, ExecutorBase.JsonSerializerOptions));
 			}
 			catch (JsonException ex)
 			{

@@ -86,14 +86,8 @@ namespace IEXSharp.Service.Cloud.CoreData.StockPrices
 		public async Task<IEXResponse<HistoricalPriceResponse>> PreviousDayPriceAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<HistoricalPriceResponse>("stock/[symbol]/previous", symbol);
 
-		public async Task<IEXResponse<decimal>> PriceAsync(string symbol)
-		{
-			var returnValue = await executor.SymbolExecuteAsync<string>("stock/[symbol]/price", symbol);
-			if (returnValue.ErrorMessage != null)
-				return new IEXResponse<decimal>() { ErrorMessage = returnValue.ErrorMessage };
-			else
-				return new IEXResponse<decimal>() { Data = decimal.Parse(returnValue.Data) };
-		}
+		public async Task<IEXResponse<decimal>> PriceAsync(string symbol) =>
+			await executor.SymbolExecuteAsync<decimal>("stock/[symbol]/price", symbol);
 
 		public async Task<IEXResponse<Quote>> QuoteAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<Quote>("stock/[symbol]/quote", symbol);

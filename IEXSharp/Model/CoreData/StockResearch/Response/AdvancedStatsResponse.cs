@@ -15,11 +15,11 @@ namespace IEXSharp.Model.CoreData.StockResearch.Response
 		public decimal revenuePerEmployee { get; set; }
 		public decimal debtToEquity { get; set; }
 		public decimal profitMargin { get; set; }
-		public long enterpriseValue { get; set; }
+		public decimal enterpriseValue { get; set; }
 		public decimal enterpriseValueToRevenue { get; set; }
 		public decimal priceToSales { get; set; }
 		public decimal priceToBook { get; set; }
-		public decimal forwardPERatio { get; set; }
+		public decimal? forwardPERatio { get; set; }
 		public decimal pegRatio { get; set; }
 		public decimal peHigh { get; set; }
 		public decimal peLow { get; set; }

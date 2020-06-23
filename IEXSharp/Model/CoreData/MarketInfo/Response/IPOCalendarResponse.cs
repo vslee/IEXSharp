@@ -34,8 +34,8 @@ namespace IEXSharp.Model.CoreData.MarketInfo.Response
 		public long sharesOffered { get; set; }
 		public decimal priceLow { get; set; }
 		public decimal priceHigh { get; set; }
-		public long offerAmount { get; set; }
-		public long totalExpenses { get; set; }
+		public long? offerAmount { get; set; }
+		public decimal totalExpenses { get; set; }
 		public long sharesOverAlloted { get; set; }
 		public long shareholderShares { get; set; }
 		public long sharesOutstanding { get; set; }

@@ -11,19 +11,10 @@ namespace IEXSharp.Service.Cloud.CoreData.Treasuries
 	{
 		private readonly ExecutorREST executor;
 
-		internal TreasuriesService(ExecutorREST executor)
-		{
-			this.executor = executor;
-		}
+		internal TreasuriesService(ExecutorREST executor) => this.executor = executor;
 
-		public async Task<IEXResponse<decimal>> DataPointAsync(TreasuryRateSymbol symbol)
-		{
-			var returnValue = await executor.SymbolExecuteAsync<string>("data-points/market/[symbol]", symbol.GetDescriptionFromEnum());
-			if (returnValue.ErrorMessage != null)
-				return new IEXResponse<decimal>() { ErrorMessage = returnValue.ErrorMessage };
-			else
-				return new IEXResponse<decimal>() { Data = decimal.Parse(returnValue.Data) };
-		}
+		public async Task<IEXResponse<decimal>> DataPointAsync(TreasuryRateSymbol symbol) =>
+			await executor.SymbolExecuteAsync<decimal>("data-points/market/[symbol]", symbol.GetDescriptionFromEnum());
 
 		public async Task<IEXResponse<IEnumerable<TimeSeriesResponse>>> TimeSeriesAsync(TreasuryRateSymbol symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<TimeSeriesResponse>>("time-series/treasury/[symbol]", symbol.GetDescriptionFromEnum());

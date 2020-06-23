@@ -7,9 +7,25 @@ using System.Text.Json.Serialization;
 
 namespace IEXSharp.Helper
 {
-	/// <summary>
-	/// Allow both string and number values on deserialize.
-	/// </summary>
+	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
+	public class StringConverter : JsonConverter<String>
+	{
+		public override String Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		{
+			if (reader.TokenType == JsonTokenType.String)
+				return reader.GetString();
+			else if (reader.TokenType == JsonTokenType.Null)
+				return null;
+			else throw new JsonException();
+		}
+
+		public override void Write(Utf8JsonWriter writer, String value, JsonSerializerOptions options)
+		{
+			writer.WriteStringValue(value);
+		}
+	}
+
+	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
 	public class Int32Converter : JsonConverter<int>
 	{
 		public override int Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -18,14 +34,10 @@ namespace IEXSharp.Helper
 			{
 				string stringValue = reader.GetString();
 				if (int.TryParse(stringValue, out int value))
-				{
 					return value;
-				}
 			}
 			else if (reader.TokenType == JsonTokenType.Number)
-			{
 				return reader.GetInt32();
-			}
 
 			throw new JsonException();
 		}
@@ -36,9 +48,7 @@ namespace IEXSharp.Helper
 		}
 	}
 
-	/// <summary>
-	/// Allow both string and number values on deserialize.
-	/// </summary>
+	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
 	public class Int64Converter : JsonConverter<long>
 	{
 		public override long Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -52,14 +62,37 @@ namespace IEXSharp.Helper
 				}
 			}
 			else if (reader.TokenType == JsonTokenType.Number)
-			{
-				return reader.GetInt32();
-			}
+				return reader.GetInt64();
 
 			throw new JsonException();
 		}
 
 		public override void Write(Utf8JsonWriter writer, long value, JsonSerializerOptions options)
+		{
+			writer.WriteNumberValue(value);
+		}
+	}
+
+	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
+	public class DecimalConverter : JsonConverter<decimal>
+	{
+		public override decimal Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		{
+			if (reader.TokenType == JsonTokenType.String)
+			{
+				string stringValue = reader.GetString();
+				if (decimal.TryParse(stringValue, out decimal value))
+				{
+					return value;
+				}
+			}
+			else if (reader.TokenType == JsonTokenType.Number)
+				return reader.GetDecimal();
+
+			throw new JsonException();
+		}
+
+		public override void Write(Utf8JsonWriter writer, decimal value, JsonSerializerOptions options)
 		{
 			writer.WriteNumberValue(value);
 		}

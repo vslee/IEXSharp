@@ -40,7 +40,7 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 
-			Assert.NotNull(response.Data.FirstOrDefault()?.consensusEndDate);
+			Assert.NotNull(response.Data.FirstOrDefault()?.ratingBuy);
 			Assert.NotNull(response.Data.FirstOrDefault()?.consensusStartDate);
 		}
 

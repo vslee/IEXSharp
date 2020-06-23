@@ -21,8 +21,6 @@ namespace IEXSharp.Helper
 		private readonly Signer signer;
 		private readonly bool sign;
 
-		internal readonly JsonSerializerOptions jsonSerializerOptions;
-
 		public ExecutorREST(HttpClient client, string publishableToken, string secretToken, bool sign)
 			: base(publishableToken: publishableToken, secretToken: secretToken)
 		{
@@ -34,18 +32,10 @@ namespace IEXSharp.Helper
 				signer = new Signer(client.BaseAddress.Host, secretToken);
 			}
 			this.sign = sign;
-			jsonSerializerOptions = new JsonSerializerOptions
-			{
-				IgnoreNullValues = true
-			};
-			jsonSerializerOptions.Converters.Add(new DictionaryDatetimeTValueConverter());
-			jsonSerializerOptions.Converters.Add(new Int32Converter());
-			jsonSerializerOptions.Converters.Add(new Int64Converter());
 		}
 
 		public async Task<IEXResponse<ReturnType>> ExecuteAsync<ReturnType>(
 			string urlPattern, NameValueCollection pathNVC, QueryStringBuilder qsb, bool forceUseSecretToken = false)
-			where ReturnType : class
 		{
 			ValidateAndProcessParams(ref urlPattern, ref pathNVC, ref qsb);
 
@@ -100,7 +90,7 @@ namespace IEXSharp.Helper
 						}
 						return new IEXResponse<ReturnType>()
 						{
-							Data = JsonSerializer.Deserialize<ReturnType>(content, jsonSerializerOptions)
+							Data = JsonSerializer.Deserialize<ReturnType>(content, JsonSerializerOptions)
 						};
 					}
 					else
@@ -124,7 +114,6 @@ namespace IEXSharp.Helper
 		}
 
 		public async Task<IEXResponse<ReturnType>> SymbolExecuteAsync<ReturnType>(string urlPattern, string symbol)
-			where ReturnType : class
 		{
 			var qsb = new QueryStringBuilder();
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
