@@ -8,21 +8,30 @@ using System.Text.Json.Serialization;
 namespace IEXSharp.Helper
 {
 	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
-	public class StringConverter : JsonConverter<String>
+	public class StringConverter : JsonConverter<string>
 	{
-		public override String Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		public override string Read(ref Utf8JsonReader reader, Type typeToConvert,
+			JsonSerializerOptions options)
 		{
 			if (reader.TokenType == JsonTokenType.String)
 				return reader.GetString();
+			else if (reader.TokenType == JsonTokenType.True)
+				return "true";
+			else if (reader.TokenType == JsonTokenType.False)
+				return "false";
+			else if (reader.TokenType == JsonTokenType.Number)
+			{
+				if (reader.TryGetInt64(out long l))
+					return l.ToString();
+				else return reader.GetDecimal().ToString();
+			}
 			else if (reader.TokenType == JsonTokenType.Null)
 				return null;
 			else throw new JsonException();
 		}
 
-		public override void Write(Utf8JsonWriter writer, String value, JsonSerializerOptions options)
-		{
-			writer.WriteStringValue(value);
-		}
+		public override void Write(Utf8JsonWriter writer, string value,
+			JsonSerializerOptions options) => writer.WriteStringValue(value);
 	}
 
 	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
@@ -42,10 +51,8 @@ namespace IEXSharp.Helper
 			throw new JsonException();
 		}
 
-		public override void Write(Utf8JsonWriter writer, int value, JsonSerializerOptions options)
-		{
-			writer.WriteNumberValue(value);
-		}
+		public override void Write(Utf8JsonWriter writer, int value,
+			JsonSerializerOptions options) => writer.WriteNumberValue(value);
 	}
 
 	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
@@ -67,10 +74,8 @@ namespace IEXSharp.Helper
 			throw new JsonException();
 		}
 
-		public override void Write(Utf8JsonWriter writer, long value, JsonSerializerOptions options)
-		{
-			writer.WriteNumberValue(value);
-		}
+		public override void Write(Utf8JsonWriter writer, long value,
+			JsonSerializerOptions options) => writer.WriteNumberValue(value);
 	}
 
 	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
@@ -92,10 +97,8 @@ namespace IEXSharp.Helper
 			throw new JsonException();
 		}
 
-		public override void Write(Utf8JsonWriter writer, decimal value, JsonSerializerOptions options)
-		{
-			writer.WriteNumberValue(value);
-		}
+		public override void Write(Utf8JsonWriter writer, decimal value,
+			JsonSerializerOptions options) => writer.WriteNumberValue(value);
 	}
 
 	/// <summary>
