@@ -41,7 +41,8 @@ namespace IEXSharp
 			};
 			_client.DefaultRequestHeaders.Add("User-Agent", "IEXSharp IEX Legacy .Net");
 
-			executor = new ExecutorREST(_client, string.Empty, string.Empty, false);
+			executor = new ExecutorREST(client: _client, publishableToken: string.Empty,
+				secretToken: string.Empty, sign: false, retryPolicy: RetryPolicy.Exponential);
 		}
 
 		private bool disposed;

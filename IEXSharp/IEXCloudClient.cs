@@ -31,7 +31,7 @@ using IEXSharp.Service.Cloud.PremiumData.WallStreetHorizon;
 
 namespace IEXSharp
 {
-	/// <summary> https://iexcloud.io/docs/api/#api-versioning </summary>
+	/// <summary> <see cref="https://iexcloud.io/docs/api/#api-versioning"/> </summary>
 	public enum APIVersion
 	{
 		/// <summary> can be used to access the latest stable API version </summary>
@@ -42,6 +42,19 @@ namespace IEXSharp
 		beta,
 		/// <summary> current version </summary>
 		V1
+	}
+
+	/// <summary> How you want to handle error 429 <see cref="https://iexcloud.io/docs/api/#request-limits"/> </summary>
+	public enum RetryPolicy
+	{
+		/// <summary> No rate limiting, and pass errors through to the IEXResponse.ErrorMessage property </summary>
+		Manual,
+		/// <summary> No rate limiting, but eat error messages and print to Debug console instead </summary>
+		NoWait,
+		/// <summary> Linear backoff policy, which starts at 250ms and increases linearly with each successive "error 429" or "ServiceUnavailable". Eats error messages and prints to Debug console instead </summary>
+		Linear,
+		/// <summary> Exponential backoff policy, which starts at 250ms and increases exponentially with each successive "error 429" or "ServiceUnavailable". Eats error messages and prints to Debug console instead </summary>
+		Exponential
 	}
 
 	/// <summary> Main class for IEX Cloud REST and SSE streaming IDisposable </summary>
@@ -220,6 +233,7 @@ namespace IEXSharp
 		public IFraudFactorsService FraudFactorsService => fraudFactorsService
 		    ?? (fraudFactorsService = new FraudFactorsService(executor));
 
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#extractalpha"/>
 		/// </summary>
 		public IExtractAlphaService ExtractAlphaService => extractAlphaService
@@ -257,7 +271,9 @@ namespace IEXSharp
 		/// <param name="signRequest">only SCALE and GROW users should set this to true</param>
 		/// <param name="useSandBox">whether or not to use the sandbox endpoint</param>
 		/// <param name="version">whether to use stable or beta endpoint</param>
-		public IEXCloudClient(string publishableToken, string secretToken, bool signRequest, bool useSandBox, APIVersion version = APIVersion.stable)
+		/// <param name="retryPolicy">which backoff policy to use - applies only REST calls (not SSE)</param>
+		public IEXCloudClient(string publishableToken, string secretToken, bool signRequest, bool useSandBox,
+			APIVersion version = APIVersion.stable, RetryPolicy retryPolicy = RetryPolicy.Exponential)
 		{
 			if (string.IsNullOrWhiteSpace(publishableToken))
 			{
@@ -282,7 +298,8 @@ namespace IEXSharp
 			};
 			client.DefaultRequestHeaders.Add("User-Agent", "VSLee.IEXSharp IEX Cloud .Net");
 
-			executor = new ExecutorREST(client, publishableToken, secretToken, signRequest);
+			executor = new ExecutorREST(client, publishableToken, secretToken,
+				signRequest, retryPolicy);
 			executorSSE = new ExecutorSSE(baseSSEURL, publishableToken, secretToken);
 		}
 

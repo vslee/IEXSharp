@@ -14,7 +14,7 @@ IEX Cloud API for C# and other .net languages. Supports SSE streaming.
 ### IEX Cloud
 ```c#
 public IEXCloudClient(string publishableToken, string secretToken, bool signRequest, bool useSandBox,
-	APIVersion version = APIVersion.stable)
+	APIVersion version = APIVersion.stable, RetryPolicy retryPolicy = RetryPolicy.Exponential)
 ```
 First, create an instance of `IEXCloudClient`
 ```c#
