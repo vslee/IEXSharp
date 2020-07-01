@@ -3,15 +3,22 @@ namespace IEXSharp.Model.Shared.Response
 	public class QuoteSSE
 	{
 		/*
-		 * [{"symbol":"SPY","companyName":"SPDR S&P 500 ETF Trust","primaryExchange":"cA SYENar","calculationPrice":"close",
-		 * "open":315.4,"openTime":1584351961496,"close":317.2,"closeTime":1635176203741,"high":316.01,"low":315.82,
-		 * "latestPrice":312.3,"latestSource":"Close","latestTime":"November 13, 2019","latestUpdate":1587651085840,
-		 * "latestVolume":56344666,"iexRealtimePrice":315.54,"iexRealtimeSize":311,"iexLastUpdated":1630432623344,
-		 * "delayedPrice":315.7,"delayedPriceTime":1645925124673,"extendedPrice":316.3,"extendedChange":0.2,
-		 * "extendedChangePercent":0.00066,"extendedPriceTime":1641921532420,"previousClose":317,"previousVolume":48484000,
-		 * "change":0.1,"changePercent":0.00033,"volume":56925834,"iexMarketPercent":0.015919655622469,"iexVolume":884347,
-		 * "avgTotalVolume":58499185,"iexBidPrice":0,"iexBidSize":0,"iexAskPrice":0,"iexAskSize":0,"marketCap":0,"peRatio":null,
-		 * "week52High":321.43,"week52Low":234.07,"ytdChange":0.23867825294908238,"lastTradeTime":1646907527032}]
+		 * [{"symbol":"SPY","companyName":"SPDR S&P 500 ETF Trust","primaryExchange":"YrNEa cSA",
+		 * "calculationPrice":"iexlasttrade","open":311.08,"openTime":1651221934569,
+		 * "openSource":"cioiffla","close":317.99,"closeTime":1623982809221,"closeSource":"icfofila",
+		 * "high":315,"highTime":1649584430018,"highSource":"trrea ElmpIe icXei ","low":310.33,
+		 * "lowTime":1642350278876,"lowSource":"1re ydc ali5epint medeu","latestPrice":304.75,
+		 * "latestSource":"IEX Last Trade","latestTime":"June 29, 2020","latestUpdate":1614947647740,
+		 * "latestVolume":74072356,"iexRealtimePrice":317.21,"iexRealtimeSize":501,
+		 * "iexLastUpdated":1620197243749,"delayedPrice":317.25,"delayedPriceTime":1641914583414,
+		 * "oddLotDelayedPrice":307.18,"oddLotDelayedPriceTime":1658370935322,"extendedPrice":309.26,
+		 * "extendedChange":0.43,"extendedChangePercent":0.00145,"extendedPriceTime":1637375292137,
+		 * "previousClose":308.92,"previousVolume":130751620,"change":4.55,"changePercent":0.01505,
+		 * "volume":73307676,"iexMarketPercent":0.01201437292318108,"iexVolume":860954,
+		 * "avgTotalVolume":109282327,"iexBidPrice":314.78,"iexBidSize":524,"iexAskPrice":319.53,
+		 * "iexAskSize":512,"iexOpen":null,"iexOpenTime":null,"iexClose":317.18,
+		 * "iexCloseTime":1640052720926,"marketCap":279433374441,"peRatio":null,"week52High":343.44,
+		 * "week52Low":219.18,"ytdChange":-0.06286420219690594,"lastTradeTime":1594323831281}]
 		 */
 		public string symbol { get; set; }
 		public string companyName { get; set; }
@@ -19,10 +26,16 @@ namespace IEXSharp.Model.Shared.Response
 		public string calculationPrice { get; set; }
 		public decimal open { get; set; }
 		public long openTime { get; set; }
+		public string openSource { get; set; }
 		public decimal close { get; set; }
 		public long closeTime { get; set; }
+		public string closeSource { get; set; }
 		public decimal high { get; set; }
+		public long highTime { get; set; }
+		public string highSource { get; set; }
 		public decimal low { get; set; }
+		public long lowTime { get; set; }
+		public string lowSource { get; set; }
 		public decimal latestPrice { get; set; }
 		public string latestSource { get; set; }
 		public string latestTime { get; set; }
@@ -33,6 +46,8 @@ namespace IEXSharp.Model.Shared.Response
 		public long iexLastUpdated { get; set; }
 		public decimal delayedPrice { get; set; }
 		public long delayedPriceTime { get; set; }
+		public decimal oddLotDelayedPrice { get; set; }
+		public long oddLotDelayedPriceTime { get; set; }
 		public decimal extendedPrice { get; set; }
 		public decimal extendedChange { get; set; }
 		public decimal extendedChangePercent { get; set; }
@@ -49,8 +64,12 @@ namespace IEXSharp.Model.Shared.Response
 		public int iexBidSize { get; set; }
 		public decimal iexAskPrice { get; set; }
 		public int iexAskSize { get; set; }
+		public decimal? iexOpen { get; set; }
+		public long? iexOpenTime { get; set; }
+		public decimal? iexClose { get; set; }
+		public long? iexCloseTime { get; set; }
 		public long marketCap { get; set; }
-		public decimal peRatio { get; set; }
+		public decimal? peRatio { get; set; }
 		public decimal week52High { get; set; }
 		public decimal week52Low { get; set; }
 		public decimal ytdChange { get; set; }

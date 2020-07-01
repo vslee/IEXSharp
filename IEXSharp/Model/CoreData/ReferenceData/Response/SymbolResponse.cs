@@ -9,7 +9,7 @@ namespace IEXSharp.Model.CoreData.ReferenceData.Response
 		public string name { get; set; }
 		public DateTime date { get; set; }
 		public string type { get; set; }
-		public long iexId { get; set; }
+		public string iexId { get; set; } // eg. "IEX_46574843354B2D52"
 		public string region { get; set; }
 		public string currency { get; set; }
 		public bool isEnabled { get; set; }

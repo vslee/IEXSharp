@@ -21,7 +21,7 @@ namespace IEXSharp.Service.Legacy.ReferenceData
 		public async Task<IEXResponse<IEnumerable<IEXCorporateActionsResponse>>> IEXCorporateActionsAsync() =>
 			await executor.NoParamExecute<IEnumerable<IEXCorporateActionsResponse>>("ref-data/daily-list/corporate-actions");
 
-		public async Task<IEXResponse<IEnumerable<IEXDividendsResponse>>> IEXDividentsAsync() =>
+		public async Task<IEXResponse<IEnumerable<IEXDividendsResponse>>> IEXDividendsAsync() =>
 			await executor.NoParamExecute<IEnumerable<IEXDividendsResponse>>("ref-data/daily-list/dividends");
 
 		public async Task<IEXResponse<IEnumerable<IEXListedSymbolDirectoryResponse>>> IEXListedSymbolDirectoryAsync() =>

@@ -37,9 +37,9 @@ namespace IEXSharpTest.Legacy
 
 		[Test]
 		[Ignore("IEX are no longer listing symbols.")]
-		public async Task IEXDividentsAsyncTest()
+		public async Task IEXDividendsAsyncTest()
 		{
-			var response = await prodClient.ReferenceData.IEXDividentsAsync();
+			var response = await prodClient.ReferenceData.IEXDividendsAsync();
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

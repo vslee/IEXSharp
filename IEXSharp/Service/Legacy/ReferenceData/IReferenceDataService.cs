@@ -23,7 +23,7 @@ namespace IEXSharp.Service.Legacy.ReferenceData
 		/// <see cref="https://iextrading.com/developer/docs/#iex-dividends"/>
 		/// </summary>
 		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<IEXDividendsResponse>>> IEXDividentsAsync();
+		Task<IEXResponse<IEnumerable<IEXDividendsResponse>>> IEXDividendsAsync();
 
 		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#iex-next-day-ex-date"/>
