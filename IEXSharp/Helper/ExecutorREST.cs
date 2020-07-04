@@ -50,8 +50,6 @@ namespace IEXSharp.Helper
 				qsb.Add("token", secretToken);
 			}
 
-			var content = string.Empty;
-
 			if (sign)
 			{
 				client.DefaultRequestHeaders.Remove("x-iex-date");
@@ -64,6 +62,7 @@ namespace IEXSharp.Helper
 
 			using (var responseContent = await backOffPolicy.ExecuteAsync(() => client.GetAsync($"{urlPattern}{qsb.Build()}")))
 			{
+				var content = string.Empty;
 				try
 				{
 					content = await responseContent.Content.ReadAsStringAsync();

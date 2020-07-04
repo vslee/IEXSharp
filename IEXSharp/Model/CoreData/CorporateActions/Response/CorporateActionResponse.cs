@@ -8,9 +8,9 @@ namespace IEXSharp.Model.CoreData.CorporateActions.Response
 		public DateTime? exDate { get; set; }
 		public DateTime? recordDate { get; set; }
 		public DateTime? paymentDate { get; set; }
-		public decimal fromFactor { get; set; }
-		public decimal toFactor { get; set; }
-		public decimal ratio { get; set; }
+		public decimal? fromFactor { get; set; }
+		public decimal? toFactor { get; set; }
+		public decimal? ratio { get; set; }
 		public string description { get; set; }
 		public string flag { get; set; }
 		public string securityType { get; set; }

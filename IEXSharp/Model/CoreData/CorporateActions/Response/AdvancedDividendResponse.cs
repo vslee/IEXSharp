@@ -7,9 +7,9 @@ namespace IEXSharp.Model.CoreData.CorporateActions.Response
 		public DateTime? announceDate { get; set; }
 		public string currency { get; set; }
 		public string frequency { get; set; }
-		public decimal amount { get; set; }
-		public decimal netAmount { get; set; }
-		public decimal grossAmount { get; set; }
+		public decimal? amount { get; set; }
+		public decimal? netAmount { get; set; }
+		public decimal? grossAmount { get; set; }
 		public string marker { get; set; }
 		public decimal taxRate { get; set; }
 		public int adrFee { get; set; }
