@@ -113,7 +113,7 @@ namespace IEXSharpTest.Cloud.CoreData
 			var data = response.Data.First();
 			Assert.NotNull(data.type);
 			Assert.NotNull(data.name);
-			Assert.NotNull(data.performance);
+			// Assert.NotNull(data.performance); sometimes IEX does return a null performance :(
 			Assert.NotNull(data.lastUpdated);
 		}
 

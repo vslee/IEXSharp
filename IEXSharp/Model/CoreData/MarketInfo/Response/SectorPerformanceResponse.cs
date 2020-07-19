@@ -4,7 +4,7 @@ namespace IEXSharp.Model.CoreData.MarketInfo.Response
 	{
 		public string type { get; set; }
 		public string name { get; set; }
-		public decimal performance { get; set; }
+		public decimal? performance { get; set; }
 		public long lastUpdated { get; set; }
 	}
 }

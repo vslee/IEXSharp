@@ -33,7 +33,7 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 		}
 		public class Other
 		{
-			public long? consensusEPS { get; set; }
+			public decimal? consensusEPS { get; set; }
 			public string announceTime { get; set; }
 			public long numberOfEstimates { get; set; }
 			public string fiscalPeriod { get; set; }
