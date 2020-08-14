@@ -24,11 +24,11 @@ namespace IEXSharp.Model.Shared.Response
 		public string companyName { get; set; }
 		public string primaryExchange { get; set; }
 		public string calculationPrice { get; set; }
-		public decimal open { get; set; }
-		public long openTime { get; set; }
+		public decimal? open { get; set; }
+		public long? openTime { get; set; }
 		public string openSource { get; set; }
-		public decimal close { get; set; }
-		public long closeTime { get; set; }
+		public decimal? close { get; set; }
+		public long? closeTime { get; set; }
 		public string closeSource { get; set; }
 		public decimal high { get; set; }
 		public long highTime { get; set; }
@@ -44,14 +44,14 @@ namespace IEXSharp.Model.Shared.Response
 		public decimal iexRealtimePrice { get; set; }
 		public int iexRealtimeSize { get; set; }
 		public long iexLastUpdated { get; set; }
-		public decimal delayedPrice { get; set; }
-		public long delayedPriceTime { get; set; }
-		public decimal oddLotDelayedPrice { get; set; }
-		public long oddLotDelayedPriceTime { get; set; }
-		public decimal extendedPrice { get; set; }
-		public decimal extendedChange { get; set; }
-		public decimal extendedChangePercent { get; set; }
-		public long extendedPriceTime { get; set; }
+		public decimal? delayedPrice { get; set; }
+		public long? delayedPriceTime { get; set; }
+		public decimal? oddLotDelayedPrice { get; set; }
+		public long? oddLotDelayedPriceTime { get; set; }
+		public decimal? extendedPrice { get; set; }
+		public decimal? extendedChange { get; set; }
+		public decimal? extendedChangePercent { get; set; }
+		public long? extendedPriceTime { get; set; }
 		public decimal previousClose { get; set; }
 		public long previousVolume { get; set; }
 		public decimal change { get; set; }
