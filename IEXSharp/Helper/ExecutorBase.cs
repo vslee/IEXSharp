@@ -27,6 +27,7 @@ namespace IEXSharp.Helper
 					jsonSerializerOptions = new JsonSerializerOptions
 					{
 						IgnoreNullValues = true,
+						PropertyNameCaseInsensitive = true,
 					};
 					jsonSerializerOptions.Converters.Add(new DictionaryDatetimeTValueConverter());
 					jsonSerializerOptions.Converters.Add(new Int32Converter());
