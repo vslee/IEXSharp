@@ -27,12 +27,14 @@
 	<!--when prereleasing, embed symbols PDB in main nupkg bc GH Pakages doesn't have its own symbol server-->
 	<PropertyGroup Condition="'$(Configuration)'=='PreRelease'">
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
 
 	<!--when releasing to NuGet, create a separate snupkg-->
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
