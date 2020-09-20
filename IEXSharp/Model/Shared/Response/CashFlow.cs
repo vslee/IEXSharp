@@ -9,7 +9,7 @@ namespace IEXSharp.Model.Shared.Response
 		public string currency { get; set; }
 		public long netIncome { get; set; }
 		public long depreciation { get; set; }
-		public long changesInReceivables { get; set; }
+		public long? changesInReceivables { get; set; }
 		public long changesInInventories { get; set; }
 		public long cashChange { get; set; }
 		public long cashFlow { get; set; }
