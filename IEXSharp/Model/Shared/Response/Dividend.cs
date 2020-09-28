@@ -31,7 +31,7 @@ namespace IEXSharp.Model.Shared.Response
 		public DateTime? paymentDate { get; set; }
 		public DateTime recordDate { get; set; }
 		public DateTime? declaredDate { get; set; }
-		public decimal amount { get; set; }
+		public decimal? amount { get; set; }
 		public string flag { get; set; }
 		public DividendFlag DividendFlag =>
 			(DividendFlag)Enum.Parse(typeof(DividendFlag), flag);
