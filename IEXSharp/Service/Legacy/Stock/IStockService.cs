@@ -33,14 +33,6 @@ namespace IEXSharp.Service.Legacy.Stock
 		Task<IEXResponse<BookResponse>> BookAsync(string symbol);
 
 		/// <summary>
-		/// <see cref="https://iextrading.com/developer/docs/#dividends"/>
-		/// </summary>
-		/// <param name="symbol"></param>
-		/// <param name="range"></param>
-		/// <returns></returns>
-		Task<IEXResponse<IEnumerable<DividendV1Response>>> DividendAsync(string symbol, DividendRange range);
-
-		/// <summary>
 		/// <see cref="https://iextrading.com/developer/docs/#effective-spread"/>
 		/// </summary>
 		/// <param name="symbol"></param>

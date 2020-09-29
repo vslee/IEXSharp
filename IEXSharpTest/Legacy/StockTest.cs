@@ -41,22 +41,6 @@ namespace IEXSharpTest.Legacy
 		}
 
 		[Test]
-		[TestCase("AAPL", DividendRange.OneMonth)]
-		[TestCase("AAPL", DividendRange.OneYear)]
-		[TestCase("AAPL", DividendRange.TwoYears)]
-		[TestCase("AAPL", DividendRange.ThreeMonths)]
-		[TestCase("AAPL", DividendRange.FiveYears)]
-		[TestCase("AAPL", DividendRange.SixMonths)]
-		[TestCase("AAPL", DividendRange.Next)]
-		[TestCase("AAPL", DividendRange.Ytd)]
-		public async Task DividendAsyncTest(string symbol, DividendRange range)
-		{
-			var response = await prodClient.Stock.DividendAsync(symbol, range);
-
-			Assert.IsNotNull(response);
-		}
-
-		[Test]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task EffectiveSpreadAsyncTest(string symbol)

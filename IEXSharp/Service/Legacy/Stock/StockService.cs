@@ -76,18 +76,6 @@ namespace IEXSharp.Service.Legacy.Stock
 		public async Task<IEXResponse<BookResponse>> BookAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<BookResponse>("stock/[symbol]/book", symbol);
 
-		public async Task<IEXResponse<IEnumerable<DividendV1Response>>> DividendAsync(string symbol, DividendRange range)
-		{
-			const string urlPattern = "stock/[symbol]/dividends/[range]";
-			var qsb = new QueryStringBuilder();
-			var pathNvc = new NameValueCollection
-			{
-				{"symbol", symbol}, {"range", range.GetDescriptionFromEnum()}
-			};
-
-			return await executor.ExecuteAsync<IEnumerable<DividendV1Response>>(urlPattern, pathNvc, qsb);
-		}
-
 		public async Task<IEXResponse<IEnumerable<EffectiveSpreadResponse>>> EffectiveSpreadAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<EffectiveSpreadResponse>>(
 				"stock/[symbol]/effective-spread", symbol);
