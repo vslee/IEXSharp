@@ -21,7 +21,7 @@ namespace IEXSharp.Service.Cloud.CoreData.Batch
 
 		public async Task<IEXResponse<BatchResponse>>
 			BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types,
-			string range = "", int last = 1)
+			IReadOnlyDictionary<string, string> optionalParameters = null)
 		{
 			if (string.IsNullOrEmpty(symbol))
 			{
@@ -30,6 +30,13 @@ namespace IEXSharp.Service.Cloud.CoreData.Batch
 			else if (types?.Count() < 1)
 			{
 				throw new ArgumentNullException(nameof(types));
+			}
+
+			if (optionalParameters != null && optionalParameters.ContainsKey("types"))
+			{
+				throw new ArgumentException(
+					paramName: nameof(optionalParameters),
+					message: $"types key in {nameof(optionalParameters)} argument with value \"{optionalParameters["types"]}\" is in conflict with the {nameof(types)} argument. Remove it from the collection");
 			}
 
 			const string urlPattern = "stock/[symbol]/batch";
@@ -42,12 +49,14 @@ namespace IEXSharp.Service.Cloud.CoreData.Batch
 
 			var qsb = new QueryStringBuilder();
 			qsb.Add("types", string.Join(",", qsType));
-			if (!string.IsNullOrWhiteSpace(range))
-			{
-				qsb.Add("range", range);
-			}
 
-			qsb.Add("last", last);
+			if (optionalParameters != null)
+			{
+				foreach (var parameter in optionalParameters)
+				{
+					qsb.Add(parameter.Key, parameter.Value);
+				}
+			}
 
 			var pathNvc = new NameValueCollection { { "symbol", symbol } };
 
@@ -55,7 +64,7 @@ namespace IEXSharp.Service.Cloud.CoreData.Batch
 		}
 
 		public async Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols,
-			IEnumerable<BatchType> types, string range = "", int last = 1)
+			IEnumerable<BatchType> types, IReadOnlyDictionary<string, string> optionalParameters = null)
 		{
 			if (symbols?.Count() < 1)
 			{
@@ -64,6 +73,20 @@ namespace IEXSharp.Service.Cloud.CoreData.Batch
 			else if (types?.Count() < 1)
 			{
 				throw new ArgumentNullException("batchTypes cannot be null");
+			}
+
+			if (optionalParameters != null && optionalParameters.ContainsKey("types"))
+			{
+				throw new ArgumentException(
+					paramName: nameof(optionalParameters),
+					message: $"types key in {nameof(optionalParameters)} argument with value \"{optionalParameters["types"]}\" is in conflict with the {nameof(types)} argument. Remove it from the collection");
+			}
+
+			if (optionalParameters != null && optionalParameters.ContainsKey("symbols"))
+			{
+				throw new ArgumentException(
+					paramName: nameof(optionalParameters),
+					message: $"symbols key in {nameof(optionalParameters)} argument with value \"{optionalParameters["symbols"]}\" is in conflict with the {nameof(symbols)} argument. Remove it from the collection");
 			}
 
 			const string urlPattern = "stock/market/batch";
@@ -77,12 +100,14 @@ namespace IEXSharp.Service.Cloud.CoreData.Batch
 			var qsb = new QueryStringBuilder();
 			qsb.Add("symbols", string.Join(",", symbols));
 			qsb.Add("types", string.Join(",", qsType));
-			if (!string.IsNullOrWhiteSpace(range))
-			{
-				qsb.Add("range", range);
-			}
 
-			qsb.Add("last", last);
+			if (optionalParameters != null)
+			{
+				foreach (var parameter in optionalParameters)
+				{
+					qsb.Add(parameter.Key, parameter.Value);
+				}
+			}
 
 			var pathNvc = new NameValueCollection();
 

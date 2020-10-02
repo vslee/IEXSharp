@@ -25,7 +25,13 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("AAPL", new BatchType[] { BatchType.News, BatchType.Quote, BatchType.Chart, BatchType.Price })]
 		public async Task BatchBySymbolAsyncTest(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
-			var response = await sandBoxClient.Batch.BatchBySymbolAsync(symbol, types, range, last);
+			Dictionary<string, string> optionalParameters = new Dictionary<string, string>()
+			{
+				{ "range", range },
+				{ "last", last.ToString() },
+			};
+
+			var response = await sandBoxClient.Batch.BatchBySymbolAsync(symbol, types, optionalParameters);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
@@ -38,7 +44,13 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase(new string[] { "AAPL" }, new BatchType[] { BatchType.SplitsBasic, BatchType.DividendsBasic })]
 		public async Task BatchByMarketAsyncTest(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1)
 		{
-			var response = await sandBoxClient.Batch.BatchByMarketAsync(symbols, types, range, last);
+			Dictionary<string, string> optionalParameters = new Dictionary<string, string>()
+			{
+				{ "range", range },
+				{ "last", last.ToString() },
+			};
+
+			var response = await sandBoxClient.Batch.BatchByMarketAsync(symbols, types, optionalParameters);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

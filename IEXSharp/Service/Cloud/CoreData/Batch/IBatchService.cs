@@ -14,19 +14,17 @@ namespace IEXSharp.Service.Cloud.CoreData.Batch
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="types"></param>
-		/// <param name="range"></param>
-		/// <param name="last"></param>
+		/// <param name="optionalParameters"></param>
 		/// <returns></returns>
-		Task<IEXResponse<BatchResponse>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1);
+		Task<IEXResponse<BatchResponse>> BatchBySymbolAsync(string symbol, IEnumerable<BatchType> types, IReadOnlyDictionary<string, string> optionalParameters = null);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
 		/// </summary>
 		/// <param name="symbols"></param>
 		/// <param name="types"></param>
-		/// <param name="range"></param>
-		/// <param name="last"></param>
+		/// <param name="optionalParameters"></param>
 		/// <returns></returns>
-		Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1);
+		Task<IEXResponse<Dictionary<string, BatchResponse>>> BatchByMarketAsync(IEnumerable<string> symbols, IEnumerable<BatchType> types, IReadOnlyDictionary<string, string> optionalParameters = null);
 	}
 }
