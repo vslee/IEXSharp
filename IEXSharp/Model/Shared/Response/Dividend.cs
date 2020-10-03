@@ -4,12 +4,18 @@ namespace IEXSharp.Model.Shared.Response
 {
 	public enum DividendFlag : byte
 	{
-		Cash = 2, DividendIncome = 4,
+		Null = 0,
+		Cash = 2,
+		DividendIncome = 4,
+		Stock = 8,
+		Unknown = 255
 	}
 
 	public enum DividendFrequency : byte
 	{
 		quarterly = 2,
+		Null,
+		Unknown
 	}
 
 	public class Dividend
@@ -20,13 +26,34 @@ namespace IEXSharp.Model.Shared.Response
 		public DateTime? declaredDate { get; set; }
 		public decimal? amount { get; set; }
 		public string flag { get; set; }
-		public DividendFlag DividendFlag =>
-			(DividendFlag)Enum.Parse(typeof(DividendFlag), flag);
+		public DividendFlag DividendFlag
+		{
+			get
+			{
+				if ((flag ?? "") == "")
+				{
+					return DividendFlag.Null;
+				}
+				return Enum.TryParse<DividendFlag>(flag, out var result)
+					? result
+					: DividendFlag.Unknown;
+			}
+		}
+
 		public string currency { get; set; }
 		public string description { get; set; }
 		public string frequency { get; set; }
 		public string symbol { get; set; }
-		public DividendFrequency DividendFrequency =>
-			(DividendFrequency)Enum.Parse(typeof(DividendFrequency), frequency);
+		public DividendFrequency DividendFrequency
+		{
+			get
+			{
+				if ((frequency ?? "") == "")
+				{
+					return DividendFrequency.Null;
+				}
+				return Enum.TryParse<DividendFrequency>(frequency, out var result) ? result : DividendFrequency.Unknown;
+			}
+		}
 	}
 }
