@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using IEXSharp.Model.CoreData.News.Response;
+using IEXSharp.Model.CoreData.Options.Response;
 using IEXSharp.Model.CoreData.StockFundamentals.Response;
 using IEXSharp.Model.CoreData.StockPrices.Response;
 using IEXSharp.Model.CoreData.StockProfiles.Response;
@@ -70,7 +73,34 @@ namespace IEXSharp.Model.CoreData.Batch.Response
 		public LogoResponse Logo { get; set; }
 		public List<NewsResponse> News { get; set; }
 		public OHLCResponse Ohlc { get; set; }
-		public List<string> Options { get; set; }
+
+		[JsonPropertyName("options")]
+		public List<JsonElement> RawOptions { get; set; }
+
+		public List<OptionResponse> OptionContracts
+		{
+			get
+			{
+				return this.RawOptions != null
+					? this.RawOptions
+						.Select(option => JsonSerializer.Deserialize<OptionResponse>(option.GetRawText()))
+						.ToList()
+					: null;
+			}
+		}
+
+		public List<string> OptionExpirationDates
+		{
+			get
+			{
+				return this.RawOptions != null
+					? this.RawOptions
+						.Select(option => option.ToString())
+						.ToList()
+					: null;
+			}
+		}
+
 		public List<string> Peers { get; set; }
 
 		[JsonPropertyName("previous")]
