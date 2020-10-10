@@ -18,6 +18,7 @@ namespace IEXSharpTest.Cloud.CoreData
 
 		[Test]
 		[TestCase("AACG")]
+		[TestCase("AACQ")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task AdvancedStatsAsyncTest(string symbol)
@@ -99,6 +100,7 @@ namespace IEXSharpTest.Cloud.CoreData
 
 		[Test]
 		[TestCase("AACG")]
+		[TestCase("AACQ")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task KeyStatsAsyncTest(string symbol)
