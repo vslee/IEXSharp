@@ -10,7 +10,7 @@ namespace IEXSharp.Model.CoreData.StockResearch.Response
 		public decimal week52low { get; set; }
 		public decimal week52change { get; set; }
 		public long sharesOutstanding { get; set; }
-		public long @float { get; set; }
+		public long? @float { get; set; }
 		public string symbol { get; set; }
 		public decimal avg10Volume { get; set; }
 		public decimal avg30Volume { get; set; }
