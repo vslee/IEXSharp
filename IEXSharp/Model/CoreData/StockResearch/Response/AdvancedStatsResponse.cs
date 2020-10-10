@@ -20,11 +20,11 @@ namespace IEXSharp.Model.CoreData.StockResearch.Response
 		public decimal priceToSales { get; set; }
 		public decimal priceToBook { get; set; }
 		public decimal? forwardPERatio { get; set; }
-		public decimal pegRatio { get; set; }
+		public decimal? pegRatio { get; set; }
 		public decimal peHigh { get; set; }
 		public decimal peLow { get; set; }
 		public DateTime? week52highDate { get; set; }
 		public DateTime? week52lowDate { get; set; }
-		public decimal putCallRatio { get; set; }
+		public decimal? putCallRatio { get; set; }
 	}
 }
