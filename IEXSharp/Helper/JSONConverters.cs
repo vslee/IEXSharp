@@ -13,20 +13,36 @@ namespace IEXSharp.Helper
 			JsonSerializerOptions options)
 		{
 			if (reader.TokenType == JsonTokenType.String)
+			{
 				return reader.GetString();
+			}
 			else if (reader.TokenType == JsonTokenType.True)
+			{
 				return "true";
+			}
 			else if (reader.TokenType == JsonTokenType.False)
+			{
 				return "false";
+			}
 			else if (reader.TokenType == JsonTokenType.Number)
 			{
 				if (reader.TryGetInt64(out long l))
+				{
 					return l.ToString();
-				else return reader.GetDecimal().ToString();
+				}
+				else
+				{
+					return reader.GetDecimal().ToString();
+				}
 			}
 			else if (reader.TokenType == JsonTokenType.Null)
+			{
 				return null;
-			else throw new JsonException();
+			}
+			else
+			{
+				throw new JsonException();
+			}
 		}
 
 		public override void Write(Utf8JsonWriter writer, string value,
@@ -42,14 +58,15 @@ namespace IEXSharp.Helper
 			{
 				var stringValue = reader.GetString();
 				if (int.TryParse(stringValue, out var value))
+				{
 					return value;
-
+				}
 				return null;
 			}
-
 			if (reader.TokenType == JsonTokenType.Number)
+			{
 				return reader.GetInt32();
-
+			}
 			throw new JsonException();
 		}
 
@@ -59,6 +76,37 @@ namespace IEXSharp.Helper
 			if (input.HasValue)
 			{
 				writer.WriteNumberValue(input.Value);
+			}
+			else
+			{
+				writer.WriteNullValue();
+			}
+		}
+	}
+
+	public class DateTimeConverter : JsonConverter<DateTime?>
+	{
+		public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		{
+			if (reader.TokenType == JsonTokenType.String &&
+				typeToConvert == typeof(DateTime?))
+			{
+				var stringValue = reader.GetString();
+				if (DateTime.TryParse(stringValue, out var value))
+				{
+					return value;
+				}
+				return null;
+			}
+			throw new JsonException();
+		}
+
+		public override void Write(Utf8JsonWriter writer, DateTime? input,
+			JsonSerializerOptions options)
+		{
+			if (input.HasValue)
+			{
+				writer.WriteStringValue(input.Value);
 			}
 			else
 			{
@@ -79,13 +127,12 @@ namespace IEXSharp.Helper
 				{
 					return value;
 				}
-
 				return null;
 			}
-
 			if (reader.TokenType == JsonTokenType.Number)
+			{
 				return reader.GetInt64();
-
+			}
 			throw new JsonException();
 		}
 
@@ -115,13 +162,12 @@ namespace IEXSharp.Helper
 				{
 					return value;
 				}
-
 				return null;
 			}
-
 			if (reader.TokenType == JsonTokenType.Number)
+			{
 				return reader.GetDecimal();
-
+			}
 			throw new JsonException();
 		}
 

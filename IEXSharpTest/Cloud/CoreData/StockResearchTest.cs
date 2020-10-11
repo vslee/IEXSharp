@@ -19,6 +19,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		[TestCase("AACG")]
 		[TestCase("AACQ")]
+		[TestCase("AACQU")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task AdvancedStatsAsyncTest(string symbol)
@@ -28,8 +29,10 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 
-			Assert.NotNull(response.Data.marketcap);
-			Assert.NotNull(response.Data.beta);
+			// Removing these, as AACQU brings back everything as null, except for the company name
+			//Assert.NotNull(response.Data.marketcap);
+			//Assert.NotNull(response.Data.beta);
+			Assert.NotNull(response.Data.companyName);
 		}
 
 		[Test]
@@ -101,6 +104,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		[TestCase("AACG")]
 		[TestCase("AACQ")]
+		[TestCase("AACQU")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
 		public async Task KeyStatsAsyncTest(string symbol)
