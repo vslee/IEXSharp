@@ -44,6 +44,17 @@ namespace IEXSharp.Service.Cloud.Account
 			return await executor.ExecuteAsync<UsageResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);
 		}
 
+		public async Task<IEXResponse<MessageUsageResponse>> MessageUsageAsync()
+		{
+			var urlPattern = $"account/usage/messages";
+
+			var qsb = new QueryStringBuilder();
+
+			var pathNVC = new NameValueCollection();
+
+			return await executor.ExecuteAsync<MessageUsageResponse>(urlPattern, pathNVC, qsb, forceUseSecretToken: true);
+		}
+
 		public Task PayAsYouGoAsync(bool allow)
 		{
 			throw new NotImplementedException("Not implemented due to API failed");
