@@ -10,11 +10,11 @@ namespace IEXSharp.Model.Account.Request
 		Messages,
 		[Description("rules")]
 		Rules,
-		[Description("rulerecords")]
+		[Description("rule-records")]
 		RuleRecords,
 		[Description("alerts")]
 		Alerts,
-		[Description("alertrecords")]
+		[Description("alert-records")]
 		AlertRecords
 	}
 }

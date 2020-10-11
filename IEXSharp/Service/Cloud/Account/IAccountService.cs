@@ -2,6 +2,7 @@ using IEXSharp.Model;
 using System.Threading.Tasks;
 using IEXSharp.Model.Account.Request;
 using IEXSharp.Model.Account.Response;
+using System.Collections.Generic;
 
 namespace IEXSharp.Service.Cloud.Account
 {
@@ -18,6 +19,12 @@ namespace IEXSharp.Service.Cloud.Account
 		/// </summary>
 		/// <returns></returns>
 		Task<IEXResponse<UsageResponse>> UsageAsync(UsageType type);
+
+		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#usage"/>
+		/// </summary>
+		/// <returns></returns>
+		Task<IEXResponse<MessageUsageResponse>> MessageUsageAsync();
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#pay-as-you-go"/>
