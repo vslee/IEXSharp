@@ -21,7 +21,9 @@ namespace IEXSharp.Helper
 			get
 			{
 				if (jsonSerializerOptions != null)
+				{
 					return jsonSerializerOptions;
+				}
 				else
 				{
 					jsonSerializerOptions = new JsonSerializerOptions
@@ -34,6 +36,7 @@ namespace IEXSharp.Helper
 					jsonSerializerOptions.Converters.Add(new Int64Converter());
 					jsonSerializerOptions.Converters.Add(new DecimalConverter());
 					jsonSerializerOptions.Converters.Add(new StringConverter());
+					jsonSerializerOptions.Converters.Add(new DateTimeConverter());
 					return jsonSerializerOptions;
 				}
 			}
