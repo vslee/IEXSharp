@@ -6,8 +6,6 @@ using IEXSharp.Model.CoreData.Batch.Response;
 using IEXSharp.Model.CoreData.MarketInfo.Request;
 using IEXSharp.Model.CoreData.MarketInfo.Response;
 using IEXSharp.Model.CoreData.Stock.Response;
-using IEXSharp.Model.CoreData.StockFundamentals.Request;
-using IEXSharp.Model.CoreData.StockFundamentals.Response;
 using IEXSharp.Model.CoreData.StockPrices.Response;
 using IEXSharp.Model.CoreData.StockProfiles.Response;
 

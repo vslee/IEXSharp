@@ -5,7 +5,6 @@ using NUnit.Framework;
 using IEXSharp;
 using IEXSharp.Model.CoreData.Batch.Request;
 using IEXSharp.Model.CoreData.MarketInfo.Request;
-using IEXSharp.Model.CoreData.StockFundamentals.Request;
 
 namespace IEXSharpTest.Legacy
 {

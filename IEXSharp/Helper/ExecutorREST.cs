@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Polly;
-using Polly.Retry;
 using System.Text.Json;
 
 namespace IEXSharp.Helper
