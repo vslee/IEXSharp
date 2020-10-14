@@ -14,31 +14,31 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 		public DateTime reportDate { get; set; }
 		public DateTime fiscalDate { get; set; }
 		public string currency { get; set; }
-		public long? currentCash { get; set; }
-		public long? shortTermInvestments { get; set; }
-		public long? receivables { get; set; }
-		public long? inventory { get; set; }
-		public long? otherCurrentAssets { get; set; }
-		public long? currentAssets { get; set; }
-		public long? longTermInvestments { get; set; }
-		public long? propertyPlantEquipment { get; set; }
-		public long? goodwill { get; set; }
-		public long? intangibleAssets { get; set; }
-		public long? otherAssets { get; set; }
-		public long? totalAssets { get; set; }
-		public long? accountsPayable { get; set; }
-		public long? currentLongTermDebt { get; set; }
-		public long? otherCurrentLiabilities { get; set; }
-		public long? totalCurrentLiabilities { get; set; }
-		public long? longTermDebt { get; set; }
-		public long? otherLiabilities { get; set; }
-		public long? minorityInterest { get; set; }
-		public long? totalLiabilities { get; set; }
-		public long? commonStock { get; set; }
-		public long? retainedEarnings { get; set; }
-		public long? treasuryStock { get; set; }
-		public long? capitalSurplus { get; set; }
-		public long? shareholderEquity { get; set; }
-		public long? netTangibleAssets { get; set; }
+		public decimal? currentCash { get; set; }
+		public decimal? shortTermInvestments { get; set; }
+		public decimal? receivables { get; set; }
+		public decimal? inventory { get; set; }
+		public decimal? otherCurrentAssets { get; set; }
+		public decimal? currentAssets { get; set; }
+		public decimal? longTermInvestments { get; set; }
+		public decimal? propertyPlantEquipment { get; set; }
+		public decimal? goodwill { get; set; }
+		public decimal? intangibleAssets { get; set; }
+		public decimal? otherAssets { get; set; }
+		public decimal? totalAssets { get; set; }
+		public decimal? accountsPayable { get; set; }
+		public decimal? currentLongTermDebt { get; set; }
+		public decimal? otherCurrentLiabilities { get; set; }
+		public decimal? totalCurrentLiabilities { get; set; }
+		public decimal? longTermDebt { get; set; }
+		public decimal? otherLiabilities { get; set; }
+		public decimal? minorityInterest { get; set; }
+		public decimal? totalLiabilities { get; set; }
+		public decimal? commonStock { get; set; }
+		public decimal? retainedEarnings { get; set; }
+		public decimal? treasuryStock { get; set; }
+		public decimal? capitalSurplus { get; set; }
+		public decimal? shareholderEquity { get; set; }
+		public decimal? netTangibleAssets { get; set; }
 	}
 }

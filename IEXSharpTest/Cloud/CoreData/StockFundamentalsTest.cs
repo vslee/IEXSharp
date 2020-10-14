@@ -24,6 +24,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
+		[TestCase("CCM", Period.Quarter, 1)]
 		[TestCase("AAPL", Period.Quarter, 1)]
 		[TestCase("FB", Period.Quarter, 2)]
 		public async Task BalanceSheetAsyncTest(string symbol, Period period = Period.Quarter,
