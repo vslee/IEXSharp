@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<VersionPrefix>2.4.3</VersionPrefix>
+		<VersionPrefix>2.4.4</VersionPrefix>
 		<Authors>Victor Lee</Authors>
 		<Company />
 		<Description>IEX Cloud API for C# and other .net languages. Supports SSE streaming</Description>
