@@ -14,20 +14,20 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 		public DateTime reportDate { get; set; }
 		public DateTime fiscalDate { get; set; }
 		public string currency { get; set; }
-		public long? totalRevenue { get; set; }
-		public long? costOfRevenue { get; set; }
-		public long? grossProfit { get; set; }
-		public long? researchAndDevelopment { get; set; }
-		public long? sellingGeneralAndAdmin { get; set; }
+		public decimal? totalRevenue { get; set; }
+		public decimal? costOfRevenue { get; set; }
+		public decimal? grossProfit { get; set; }
+		public decimal? researchAndDevelopment { get; set; }
+		public decimal? sellingGeneralAndAdmin { get; set; }
 		public decimal? operatingExpense { get; set; }
-		public long? operatingIncome { get; set; }
+		public decimal? operatingIncome { get; set; }
 		public decimal? otherIncomeExpenseNet { get; set; }
-		public long? ebit { get; set; }
-		public long? interestIncome { get; set; }
-		public long? pretaxIncome { get; set; }
-		public long? incomeTax { get; set; }
-		public long? minorityInterest { get; set; }
-		public long? netIncome { get; set; }
-		public long? netIncomeBasic { get; set; }
+		public decimal? ebit { get; set; }
+		public decimal? interestIncome { get; set; }
+		public decimal? pretaxIncome { get; set; }
+		public decimal? incomeTax { get; set; }
+		public decimal? minorityInterest { get; set; }
+		public decimal? netIncome { get; set; }
+		public decimal? netIncomeBasic { get; set; }
 	}
 }
