@@ -152,6 +152,7 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNotNull(response.Data);
 		}
 		[Test]
+		[TestCase("BRPAU", Period.Annual, 1)]
 		[TestCase("AAPL", Period.Annual, 1)]
 		[TestCase("FB", Period.Quarter, 2)]
 		public async Task IncomeStatementAsyncTest(string symbol, Period period, int last)

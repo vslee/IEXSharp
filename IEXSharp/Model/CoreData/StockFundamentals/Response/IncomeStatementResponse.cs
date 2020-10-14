@@ -19,9 +19,9 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 		public long? grossProfit { get; set; }
 		public long? researchAndDevelopment { get; set; }
 		public long? sellingGeneralAndAdmin { get; set; }
-		public long? operatingExpense { get; set; }
+		public decimal? operatingExpense { get; set; }
 		public long? operatingIncome { get; set; }
-		public long? otherIncomeExpenseNet { get; set; }
+		public decimal? otherIncomeExpenseNet { get; set; }
 		public long? ebit { get; set; }
 		public long? interestIncome { get; set; }
 		public long? pretaxIncome { get; set; }
