@@ -24,6 +24,8 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
+		[TestCase("BEDU", Period.Annual, 1)]
+		[TestCase("BEDU", Period.Quarter, 1)]
 		[TestCase("CCM", Period.Quarter, 1)]
 		[TestCase("AAPL", Period.Quarter, 1)]
 		[TestCase("FB", Period.Quarter, 2)]
@@ -153,6 +155,8 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNotNull(response.Data);
 		}
 		[Test]
+		[TestCase("BEDU", Period.Annual, 1)]
+		[TestCase("BEDU", Period.Quarter, 1)]
 		[TestCase("BRPAU", Period.Annual, 1)]
 		[TestCase("BRPAU", Period.Quarter, 1)]
 		[TestCase("AAPL", Period.Annual, 1)]
@@ -177,8 +181,8 @@ namespace IEXSharpTest.Cloud.CoreData
 
 			var response = await sandBoxClient.StockFundamentals.IncomeStatementAsync(symbol, period, upToXStatements);
 
-			var firstStatementReportYear = response.Data.income.ElementAt(0).reportDate.Year;
-			var secondStatementReportYear = response.Data.income.ElementAt(1).reportDate.Year;
+			var firstStatementReportYear = response.Data.income.ElementAt(0).reportDate?.Year;
+			var secondStatementReportYear = response.Data.income.ElementAt(1).reportDate?.Year;
 
 			Assert.That(firstStatementReportYear != secondStatementReportYear);
 		}

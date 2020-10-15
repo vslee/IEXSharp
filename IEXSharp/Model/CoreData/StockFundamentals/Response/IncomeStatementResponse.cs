@@ -11,8 +11,8 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 
 	public class Income
 	{
-		public DateTime reportDate { get; set; }
-		public DateTime fiscalDate { get; set; }
+		public DateTime? reportDate { get; set; }
+		public DateTime? fiscalDate { get; set; }
 		public string currency { get; set; }
 		public decimal? totalRevenue { get; set; }
 		public decimal? costOfRevenue { get; set; }
