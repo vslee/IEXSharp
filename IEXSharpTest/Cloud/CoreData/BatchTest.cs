@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,13 +24,17 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("AAPL", new BatchType[] { BatchType.Peers, BatchType.AdvancedStats, BatchType.PreviousDayPrice })]
 		[TestCase("AAPL", new BatchType[] { BatchType.SplitsBasic, BatchType.DividendsBasic })]
 		[TestCase("AAPL", new BatchType[] { BatchType.News, BatchType.Quote, BatchType.Chart, BatchType.Price })]
-		public async Task BatchBySymbolAsyncTest(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1)
+		public async Task BatchBySymbolAsyncTest(string symbol, IEnumerable<BatchType> types, string range = "", int last = 1,
+			string optionalParamName = "", string optionalParamValue = "")
 		{
 			Dictionary<string, string> optionalParameters = new Dictionary<string, string>()
 			{
-				{ "range", range },
 				{ "last", last.ToString() },
 			};
+			if (!string.IsNullOrEmpty(range))
+				optionalParameters.Add("range", range);
+			if (!string.IsNullOrEmpty(optionalParamName))
+				optionalParameters.Add(optionalParamName, optionalParamValue);
 
 			var response = await sandBoxClient.Batch.BatchBySymbolAsync(symbol, types, optionalParameters);
 
@@ -42,13 +47,17 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase(new string[] { "AAPL", "FB" }, new BatchType[] { BatchType.Chart, BatchType.News, BatchType.Quote }, "1m", 2)]
 		[TestCase(new string[] { "AAPL" }, new BatchType[] { BatchType.Peers, BatchType.AdvancedStats, BatchType.PreviousDayPrice })]
 		[TestCase(new string[] { "AAPL" }, new BatchType[] { BatchType.SplitsBasic, BatchType.DividendsBasic })]
-		public async Task BatchByMarketAsyncTest(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1)
+		public async Task BatchByMarketAsyncTest(IEnumerable<string> symbols, IEnumerable<BatchType> types, string range = "", int last = 1,
+			string optionalParamName = "", string optionalParamValue = "")
 		{
 			Dictionary<string, string> optionalParameters = new Dictionary<string, string>()
 			{
-				{ "range", range },
 				{ "last", last.ToString() },
 			};
+			if (!string.IsNullOrEmpty(range))
+				optionalParameters.Add("range", range);
+			if (!string.IsNullOrEmpty(optionalParamName))
+				optionalParameters.Add(optionalParamName, optionalParamValue);
 
 			var response = await sandBoxClient.Batch.BatchByMarketAsync(symbols, types, optionalParameters);
 

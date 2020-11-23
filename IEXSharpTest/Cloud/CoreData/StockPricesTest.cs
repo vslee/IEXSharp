@@ -73,7 +73,7 @@ namespace IEXSharpTest.Cloud.CoreData
 				assertNotZeroIfNotNull(ohlc.high);
 				assertNotZeroIfNotNull(ohlc.low);
 				assertNotZeroIfNotNull(ohlc.close);
-				Assert.NotZero(ohlc.volume);
+				assertNotZeroIfNotNull(ohlc.volume);
 				assertNotZeroIfNotNull(ohlc.uOpen);
 				assertNotZeroIfNotNull(ohlc.uHigh);
 				assertNotZeroIfNotNull(ohlc.uLow);
@@ -89,11 +89,13 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
-		[TestCase("AAPL", true)]
-		[TestCase("AAPL", false)]
-		public async Task HistoricalPriceAsyncDateTest(string symbol, bool chartByDay)
+		[TestCase("AAPL", "", true)]
+		[TestCase("AAPL", "", false)]
+		[TestCase("AMER", "20201120", false)]
+		public async Task HistoricalPriceAsyncDateTest(string symbol, string date, bool chartByDay)
 		{
-			var response = await sandBoxClient.StockPrices.HistoricalPriceByDateAsync(symbol, getLatestWeekday(), chartByDay);
+			var dt = string.IsNullOrEmpty(date) ? getLatestWeekday() : DateTime.ParseExact(date, "yyyyMMdd", null);
+			var response = await sandBoxClient.StockPrices.HistoricalPriceByDateAsync(symbol, dt, chartByDay);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);

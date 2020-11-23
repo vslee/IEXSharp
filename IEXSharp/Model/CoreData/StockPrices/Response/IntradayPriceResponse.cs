@@ -9,7 +9,7 @@ namespace IEXSharp.Model.CoreData.StockPrices.Response
 		/// </summary>
 		public string date { get; set; }
 		public string minute { get; set; }
-		public string label { get; set; }
+		public string label { get; set; } // can be null
 		public decimal? marktOpen { get; set; }
 		public decimal? marketClose { get; set; }
 		public decimal? marktHigh { get; set; }
@@ -24,9 +24,9 @@ namespace IEXSharp.Model.CoreData.StockPrices.Response
 		public decimal? open { get; set; }
 		public decimal? close { get; set; }
 		public decimal? average { get; set; }
-		public long volume { get; set; }
-		public decimal notional { get; set; }
-		public long numberOfTrades { get; set; }
+		public long? volume { get; set; }
+		public decimal? notional { get; set; }
+		public long? numberOfTrades { get; set; }
 		public decimal? changeOverTime { get; set; }
 	}
 }

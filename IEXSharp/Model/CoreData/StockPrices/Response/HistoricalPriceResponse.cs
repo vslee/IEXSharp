@@ -15,7 +15,7 @@ namespace IEXSharp.Model.CoreData.StockPrices.Response
 		public decimal? close { get; set; }
 		public decimal? high { get; set; }
 		public decimal? low { get; set; }
-		public long volume { get; set; }
+		public long? volume { get; set; }
 		public decimal? uOpen { get; set; }
 		public decimal? uClose { get; set; }
 		public decimal? uHigh { get; set; }
