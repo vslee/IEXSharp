@@ -220,6 +220,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.FiveSeconds)]
 		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.OneMinute)]
 		[TestCase(new object[] { "spy" }, false, StockQuoteSSEInterval.OneSecond)]
+		[TestCase(new object[] { "pall" }, false, StockQuoteSSEInterval.OneSecond)]
 		[TestCase(new object[] { "spy" }, true, StockQuoteSSEInterval.OneSecond)]
 		[TestCase(new object[] { "spy", "aapl" }, false, StockQuoteSSEInterval.OneSecond)]
 		public async Task StockQuoteUSSSETest(object[] symbols, bool UTP, StockQuoteSSEInterval interval)

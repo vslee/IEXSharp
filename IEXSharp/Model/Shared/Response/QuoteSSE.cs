@@ -30,20 +30,20 @@ namespace IEXSharp.Model.Shared.Response
 		public decimal? close { get; set; }
 		public long? closeTime { get; set; }
 		public string closeSource { get; set; }
-		public decimal high { get; set; }
-		public long highTime { get; set; }
+		public decimal? high { get; set; }
+		public long? highTime { get; set; }
 		public string highSource { get; set; }
-		public decimal low { get; set; }
-		public long lowTime { get; set; }
+		public decimal? low { get; set; }
+		public long? lowTime { get; set; }
 		public string lowSource { get; set; }
-		public decimal latestPrice { get; set; }
+		public decimal? latestPrice { get; set; }
 		public string latestSource { get; set; }
 		public string latestTime { get; set; }
-		public long latestUpdate { get; set; }
-		public long latestVolume { get; set; }
-		public decimal iexRealtimePrice { get; set; }
-		public int iexRealtimeSize { get; set; }
-		public long iexLastUpdated { get; set; }
+		public long? latestUpdate { get; set; }
+		public long? latestVolume { get; set; }
+		public decimal? iexRealtimePrice { get; set; }
+		public int? iexRealtimeSize { get; set; }
+		public long? iexLastUpdated { get; set; }
 		public decimal? delayedPrice { get; set; }
 		public long? delayedPriceTime { get; set; }
 		public decimal? oddLotDelayedPrice { get; set; }
@@ -52,28 +52,28 @@ namespace IEXSharp.Model.Shared.Response
 		public decimal? extendedChange { get; set; }
 		public decimal? extendedChangePercent { get; set; }
 		public long? extendedPriceTime { get; set; }
-		public decimal previousClose { get; set; }
-		public long previousVolume { get; set; }
-		public decimal change { get; set; }
-		public decimal changePercent { get; set; }
-		public long volume { get; set; }
-		public decimal iexMarketPercent { get; set; }
-		public int iexVolume { get; set; }
-		public int avgTotalVolume { get; set; }
-		public decimal iexBidPrice { get; set; }
-		public int iexBidSize { get; set; }
-		public decimal iexAskPrice { get; set; }
-		public int iexAskSize { get; set; }
+		public decimal? previousClose { get; set; }
+		public long? previousVolume { get; set; }
+		public decimal? change { get; set; }
+		public decimal? changePercent { get; set; }
+		public long? volume { get; set; }
+		public decimal? iexMarketPercent { get; set; }
+		public int? iexVolume { get; set; }
+		public int? avgTotalVolume { get; set; }
+		public decimal? iexBidPrice { get; set; }
+		public int? iexBidSize { get; set; }
+		public decimal? iexAskPrice { get; set; }
+		public int? iexAskSize { get; set; }
 		public decimal? iexOpen { get; set; }
 		public long? iexOpenTime { get; set; }
 		public decimal? iexClose { get; set; }
 		public long? iexCloseTime { get; set; }
-		public long marketCap { get; set; }
+		public long? marketCap { get; set; }
 		public decimal? peRatio { get; set; }
-		public decimal week52High { get; set; }
-		public decimal week52Low { get; set; }
-		public decimal ytdChange { get; set; }
-		public long lastTradeTime { get; set; }
+		public decimal? week52High { get; set; }
+		public decimal? week52Low { get; set; }
+		public decimal? ytdChange { get; set; }
+		public long? lastTradeTime { get; set; }
 
 		public override string ToString() =>
 			$"{symbol},{latestTime},{latestPrice},{latestVolume}";
