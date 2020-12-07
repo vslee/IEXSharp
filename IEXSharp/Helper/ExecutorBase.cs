@@ -35,6 +35,7 @@ namespace IEXSharp.Helper
 					jsonSerializerOptions.Converters.Add(new Int32Converter());
 					jsonSerializerOptions.Converters.Add(new Int64Converter());
 					jsonSerializerOptions.Converters.Add(new DecimalConverter());
+					jsonSerializerOptions.Converters.Add(new DecimalNullableConverter());
 					jsonSerializerOptions.Converters.Add(new StringConverter());
 					jsonSerializerOptions.Converters.Add(new DateTimeConverter());
 					return jsonSerializerOptions;

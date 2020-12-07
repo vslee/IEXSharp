@@ -151,7 +151,35 @@ namespace IEXSharp.Helper
 	}
 
 	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
-	public class DecimalConverter : JsonConverter<decimal?>
+	public class DecimalConverter : JsonConverter<decimal>
+	{
+		public override decimal Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		{
+			if (reader.TokenType == JsonTokenType.String)
+			{
+				var stringValue = reader.GetString();
+				if (decimal.TryParse(stringValue, out var value))
+				{
+					return value;
+				}
+				throw new JsonException();
+			}
+			if (reader.TokenType == JsonTokenType.Number)
+			{
+				return reader.GetDecimal();
+			}
+			throw new JsonException();
+		}
+
+		public override void Write(Utf8JsonWriter writer, decimal input,
+			JsonSerializerOptions options)
+		{
+			writer.WriteNumberValue(input);
+		}
+	}
+
+	/// <summary> Allow both quoted and unquoted numbers on  deserialize. </summary>
+	public class DecimalNullableConverter : JsonConverter<decimal?>
 	{
 		public override decimal? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
