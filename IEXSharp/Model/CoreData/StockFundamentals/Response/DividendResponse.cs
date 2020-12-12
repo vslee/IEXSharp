@@ -5,6 +5,7 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 {
 	public class DividendBasicResponse : Dividend
 	{
-		public DateTime date { get; set; }
+		public long? date { get; set; }
+		public long updated { get; set; }
 	}
 }
