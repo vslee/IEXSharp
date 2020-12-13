@@ -10,6 +10,16 @@ namespace IEXSharp.Service.Cloud.CoreData.StockFundamentals
 	public interface IStockFundamentalsService
 	{
 		/// <summary>
+		/// <see cref="https://iexcloud.io/docs/api/#advanced-fundamentals"/>
+		/// Only included with paid subscription plans.
+		/// Financial information is limited for some financial firms.
+		/// </summary>
+		/// <param name="symbol"></param>
+		/// <param name="period"></param>
+		/// <returns></returns>
+		Task<IEXResponse<AdvancedFundamentalsResponse>> AdvancedFundamentalsAsync(string symbol, Period period = Period.Quarter);
+
+		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#balance-sheet"/>
 		/// Only included with paid subscription plans.
 		/// Financial information is limited for some financial firms.

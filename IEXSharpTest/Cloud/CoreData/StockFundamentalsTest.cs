@@ -24,13 +24,28 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
+		[TestCase("BEDU", Period.Annual)]
+		[TestCase("BEDU", Period.Quarter)]
+		[TestCase("CCM", Period.Quarter)]
+		[TestCase("AAPL", Period.Quarter)]
+		[TestCase("FB", Period.Quarter)]
+		public async Task AdvancedFundamentalsAsyncTest(string symbol, Period period = Period.Quarter)
+		{
+			var response = await sandBoxClient.StockFundamentals.AdvancedFundamentalsAsync(symbol, period);
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.IsNotNull(response.Data.accountsPayable);
+		}
+
+
+		[Test]
 		[TestCase("BEDU", Period.Annual, 1)]
 		[TestCase("BEDU", Period.Quarter, 1)]
 		[TestCase("CCM", Period.Quarter, 1)]
 		[TestCase("AAPL", Period.Quarter, 1)]
 		[TestCase("FB", Period.Quarter, 2)]
-		public async Task BalanceSheetAsyncTest(string symbol, Period period = Period.Quarter,
-			int last = 1)
+		public async Task BalanceSheetAsyncTest(string symbol, Period period = Period.Quarter, int last = 1)
 		{
 			var response = await sandBoxClient.StockFundamentals.BalanceSheetAsync(symbol, period, last);
 			Assert.IsNull(response.ErrorMessage);

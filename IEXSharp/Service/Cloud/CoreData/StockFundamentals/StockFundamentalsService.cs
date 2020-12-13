@@ -18,6 +18,21 @@ namespace IEXSharp.Service.Cloud.CoreData.StockFundamentals
 			this.executor = executor;
 		}
 
+		public async Task<IEXResponse<AdvancedFundamentalsResponse>> AdvancedFundamentalsAsync(string symbol, Period period = Period.Quarter)
+		{
+			const string urlPattern = "time-series/fundamentals/[symbol]/[period]";
+
+			var qsb = new QueryStringBuilder();
+
+			var pathNvc = new NameValueCollection
+			{
+				{"symbol", symbol},
+				{"period", period.GetDescriptionFromEnum()}
+			};
+
+			return await executor.ExecuteAsync<AdvancedFundamentalsResponse>(urlPattern, pathNvc, qsb);
+		}
+
 		public async Task<IEXResponse<BalanceSheetResponse>> BalanceSheetAsync(string symbol, Period period = Period.Quarter,
 			int last = 1)
 		{
