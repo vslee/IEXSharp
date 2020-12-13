@@ -40,5 +40,10 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 		public decimal? capitalSurplus { get; set; }
 		public decimal? shareholderEquity { get; set; }
 		public decimal? netTangibleAssets { get; set; }
+		public string id { get; set; }
+		public string key { get; set; }
+		public string subkey { get; set; }
+		public long date { get; set; }
+		public long updated { get; set; }
 	}
 }

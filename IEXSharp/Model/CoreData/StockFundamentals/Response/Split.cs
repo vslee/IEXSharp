@@ -15,12 +15,17 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 
 	public class Split
 	{
-		public DateTime exDate { get; set; }
 		public DateTime? declaredDate { get; set; }
-		public decimal ratio { get; set; }
-		public decimal toFactor { get; set; }
-		public decimal fromFactor { get; set; }
 		public string description { get; set; }
+		public DateTime exDate { get; set; }
+		public decimal fromFactor { get; set; }
+		public decimal ratio { get; set; }
+		public long refid { get; set; }
 		public string symbol { get; set; }
+		public decimal toFactor { get; set; }
+		public string id { get; set; }
+		public string key { get; set; }
+		public string subkey { get; set; }
+		public long? updated { get; set; }
 	}
 }

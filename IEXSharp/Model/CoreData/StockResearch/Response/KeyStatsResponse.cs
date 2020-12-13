@@ -10,7 +10,6 @@ namespace IEXSharp.Model.CoreData.StockResearch.Response
 		public decimal? week52low { get; set; }
 		public decimal? week52change { get; set; }
 		public long? sharesOutstanding { get; set; }
-		public long? @float { get; set; }
 		public string symbol { get; set; }
 		public decimal? avg10Volume { get; set; }
 		public decimal? avg30Volume { get; set; }
@@ -22,8 +21,8 @@ namespace IEXSharp.Model.CoreData.StockResearch.Response
 		public decimal? dividendYield { get; set; }
 		public DateTime? nextDividendDate { get; set; }
 		public DateTime? exDividendDate { get; set; }
-		public DateTime? nextEarningsDate { get; set; }
 		public decimal? peRatio { get; set; }
+		public decimal? beta { get; set; }
 		public decimal? maxChangePercent { get; set; }
 		public decimal? year5ChangePercent { get; set; }
 		public decimal? year2ChangePercent { get; set; }
