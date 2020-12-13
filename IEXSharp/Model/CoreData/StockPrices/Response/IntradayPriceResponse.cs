@@ -10,9 +10,9 @@ namespace IEXSharp.Model.CoreData.StockPrices.Response
 		public string date { get; set; }
 		public string minute { get; set; }
 		public string label { get; set; } // can be null
-		public decimal? marktOpen { get; set; }
+		public decimal? marketOpen { get; set; }
 		public decimal? marketClose { get; set; }
-		public decimal? marktHigh { get; set; }
+		public decimal? marketHigh { get; set; }
 		public decimal? marketLow { get; set; }
 		public decimal? marketAverage { get; set; }
 		public long? marketVolume { get; set; }
