@@ -4,7 +4,6 @@ namespace IEXSharp.Model.CoreData.StockResearch.Response
 {
 	public class AdvancedStatsResponse : KeyStatsResponse
 	{
-		public decimal? beta { get; set; }
 		public long? totalCash { get; set; }
 		public long? currentDebt { get; set; }
 		public long? revenue { get; set; }
