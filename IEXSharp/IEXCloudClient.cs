@@ -104,163 +104,163 @@ namespace IEXSharp
 		/// <see cref="https://iexcloud.io/docs/api/#batch-requests"/>
 		/// Currently only available for /stock endpoints
 		/// </summary>
-		public IBatchService Batch => batchService
+		public virtual IBatchService Batch => batchService
 		    ?? (batchService = new BatchService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#accounts"/>
 		/// </summary>
-		public IAccountService Account => accountService
+		public virtual IAccountService Account => accountService
 			?? (accountService = new AccountService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#api-system-metadata"/>
 		/// </summary>
-		public IAPISystemMetadataService ApiSystemMetadata => apiSystemMetadataService
+		public virtual IAPISystemMetadataService ApiSystemMetadata => apiSystemMetadataService
 			?? (apiSystemMetadataService = new APISystemMetadata(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-prices"/>
 		/// </summary>
-		public IStockPricesService StockPrices => stockPricesService
+		public virtual IStockPricesService StockPrices => stockPricesService
 			?? (stockPricesService = new StockPricesService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-profiles"/>
 		/// </summary>
-		public IStockProfilesService StockProfiles => stockProfilesService
+		public virtual IStockProfilesService StockProfiles => stockProfilesService
 			?? (stockProfilesService = new StockProfilesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-fundamentals"/>
 		/// </summary>
-		public IStockFundamentalsService StockFundamentals => stockFundamentalsService
+		public virtual IStockFundamentalsService StockFundamentals => stockFundamentalsService
 			?? (stockFundamentalsService = new StockFundamentalsService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#stock-research"/>
 		/// </summary>
-		public IStockResearchService StockResearch => stockResearchService
+		public virtual IStockResearchService StockResearch => stockResearchService
 		    ?? (stockResearchService = new StockResearchService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#corporate-actions"/>
 		/// </summary>
-		public ICorporateActionsService CorporateActions => corporateActionsService
+		public virtual ICorporateActionsService CorporateActions => corporateActionsService
 			?? (corporateActionsService = new CorporateActionsService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#market-info"/>
 		/// </summary>
-		public IMarketInfoService MarketInfoService => marketInfoService
+		public virtual IMarketInfoService MarketInfoService => marketInfoService
 			?? (marketInfoService = new MarketInfoService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#news"/>
 		/// </summary>
-		public INewsService News => newsService
+		public virtual INewsService News => newsService
 			?? (newsService = new NewsService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#cryptocurrency"/>
 		/// </summary>
-		public ICryptoService Crypto => cryptoService
+		public virtual ICryptoService Crypto => cryptoService
 		    ?? (cryptoService = new CryptoService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#forex-currencies"/>
 		/// </summary>
-		public IForexCurrenciesService ForexCurrencies => forexCurrenciesService
+		public virtual IForexCurrenciesService ForexCurrencies => forexCurrenciesService
 			?? (forexCurrenciesService = new ForexCurrenciesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#options"/>
 		/// </summary>
-		public IOptionsService Options => optionsService
+		public virtual IOptionsService Options => optionsService
 			?? (optionsService = new OptionsService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#social-sentiment"/>
 		/// </summary>
-		public ISocialSentimentService SocialSentiment => socialSentimentService
+		public virtual ISocialSentimentService SocialSentiment => socialSentimentService
 			?? (socialSentimentService = new SocialSentimentService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#ceo-compensation"/>
 		/// </summary>
-		public ICeoCompensationService CeoCompensation => ceoCompensationService
+		public virtual ICeoCompensationService CeoCompensation => ceoCompensationService
 			?? (ceoCompensationService = new CeoCompensationService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#treasuries"/>
 		/// </summary>
-		public ITreasuriesService Treasuries => treasuriesService
+		public virtual ITreasuriesService Treasuries => treasuriesService
 			?? (treasuriesService = new TreasuriesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#commodities"/>
 		/// </summary>
-		public ICommoditiesService Commodities => commoditiesService
+		public virtual ICommoditiesService Commodities => commoditiesService
 			?? (commoditiesService = new CommoditiesService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#economic-data"/>
 		/// </summary>
-		public IEconomicDataService EconomicData => economicDataService
+		public virtual IEconomicDataService EconomicData => economicDataService
 			?? (economicDataService = new EconomicDataService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#reference-data"/>
 		/// </summary>
-		public IReferenceDataService ReferenceData => referenceDataService
+		public virtual IReferenceDataService ReferenceData => referenceDataService
 			?? (referenceDataService = new ReferenceDataService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#investors-exchange-data"/>
 		/// </summary>
-		public IInvestorsExchangeDataService InvestorsExchangeDataService => investorsExchangeDataService
+		public virtual IInvestorsExchangeDataService InvestorsExchangeDataService => investorsExchangeDataService
 			?? (investorsExchangeDataService = new InvestorsExchangeDataService(executor, executorSSE));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#wall-street-horizon"/>
 		/// </summary>
-		public IWallStreetHorizonService WallStreetHorizonService => wallStreetHorizonService
+		public virtual IWallStreetHorizonService WallStreetHorizonService => wallStreetHorizonService
 			?? (wallStreetHorizonService = new WallStreetHorizonService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#fraud-factors"/>
 		/// </summary>
-		public IFraudFactorsService FraudFactorsService => fraudFactorsService
+		public virtual IFraudFactorsService FraudFactorsService => fraudFactorsService
 		    ?? (fraudFactorsService = new FraudFactorsService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#extractalpha"/>
 		/// </summary>
-		public IExtractAlphaService ExtractAlphaService => extractAlphaService
+		public virtual IExtractAlphaService ExtractAlphaService => extractAlphaService
 		    ?? (extractAlphaService = new ExtractAlphaService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#precision-alpha"/>
 		/// </summary>
-		public IPrecisionAlphaService PrecisionAlphaService => precisionAlphaService
+		public virtual IPrecisionAlphaService PrecisionAlphaService => precisionAlphaService
 		    ?? (precisionAlphaService = new PrecisionAlphaService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#kavout"/>
 		/// </summary>
-		public IKavoutService KavoutService => kavoutService
+		public virtual IKavoutService KavoutService => kavoutService
 		     ?? (kavoutService = new KavoutService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#audit-analytics"/>
 		/// </summary>
-		public IAuditAnalyticsService AuditAnalyticsService => auditAnalyticsService
+		public virtual IAuditAnalyticsService AuditAnalyticsService => auditAnalyticsService
 			?? (auditAnalyticsService = new AuditAnalyticsService(executor));
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#brain-company"/>
 		/// </summary>
-		public IBrainCompanyService BrainCompanyService => brainCompanyService
+		public virtual IBrainCompanyService BrainCompanyService => brainCompanyService
 			?? (brainCompanyService = new BrainCompanyService(executor));
 
 		/// <summary>
