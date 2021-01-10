@@ -11,6 +11,14 @@ namespace IEXSharp.Model
 		/// </summary>
 		public string ErrorMessage;
 		/// <summary>
+		/// Core Messages used by request
+		/// </summary>
+		public int CoreMessagesUsage;
+		/// <summary>
+		/// Premium Messages used by request
+		/// </summary>
+		public int PremiumMessagesUsage;
+		/// <summary>
 		/// Data returned by IEx (expect ErrorMessage to be null if there is Data)
 		/// </summary>
 		public T Data;
