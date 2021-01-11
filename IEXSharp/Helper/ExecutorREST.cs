@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -89,7 +90,10 @@ namespace IEXSharp.Helper
 						}
 						return new IEXResponse<ReturnType>()
 						{
-							Data = JsonSerializer.Deserialize<ReturnType>(content, JsonSerializerOptions)
+							Data = JsonSerializer.Deserialize<ReturnType>(content, JsonSerializerOptions),
+
+							CoreMessagesUsage = GetMessagesUsage(responseContent, "iexcloud-messages-used"),
+							PremiumMessagesUsage = GetMessagesUsage(responseContent, "iexcloud-premium-messages-used")
 						};
 					}
 					else
@@ -102,6 +106,18 @@ namespace IEXSharp.Helper
 					throw new JsonException(content, ex);
 				}
 			}
+		}
+
+		internal static int GetMessagesUsage(HttpResponseMessage responseContent, string headerName)
+		{
+			if (!responseContent.Headers.TryGetValues(headerName, out var values))
+			{
+				return -1;
+			}
+
+			var usage = values.SingleOrDefault();
+
+			return int.TryParse(usage, out var result) ? result : -2;
 		}
 
 		public async Task<IEXResponse<ReturnType>> NoParamExecute<ReturnType>(string url) where ReturnType : class

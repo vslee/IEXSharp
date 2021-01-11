@@ -1,6 +1,9 @@
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using IEXSharp;
+using IEXSharp.Helper;
 using IEXSharpTest.Cloud;
 using NUnit.Framework;
 
@@ -49,6 +52,57 @@ namespace IEXSharpTest.Helper
 
 			Assert.IsNotEmpty(result.Where(r => r.ErrorMessage != null && r.ErrorMessage.Contains(tooManyRequestsHttpCode)),
 				$"TooManyMessages errors (HTTP CODE = 429) are not expected");
+		}
+
+		[Test]
+		public void GivenAnIncorrectMessageUsageHeader_WhenGetMessageUsage_ThenItShouldNotThrow()
+		{
+			var responseContent = new HttpResponseMessage(HttpStatusCode.OK);
+
+			Assert.DoesNotThrow(() =>
+				{
+					var errorCode = ExecutorREST.GetMessagesUsage(responseContent, "wrong-header-name");
+					Assert.That(errorCode, Is.EqualTo(-1));
+				}
+			);
+		}
+
+		[Test]
+		public void GivenAMessageUsageHeaderWithNonParseableValue_WhenGetMessageUsage_ThenItShouldReturnSomeErrorCode()
+		{
+			//Arrange
+			var responseContent = new HttpResponseMessage(HttpStatusCode.OK)
+			{
+				Headers =
+				{
+					{"not-int-parseable", "abc"}
+				}
+			};
+
+			//Arrange
+			var result = ExecutorREST.GetMessagesUsage(responseContent, "not-int-parseable");
+
+			//Assert
+			Assert.That(result, Is.EqualTo(-2));
+		}
+
+		[Test]
+		public void GivenACorrectMessageUsageHeader_WhenGetMessageUsage_ThenItShouldReturnCorrectValue()
+		{
+			//Arrange
+			var responseContent = new HttpResponseMessage(HttpStatusCode.OK)
+			{
+				Headers =
+				{
+					{"iexcloud-messages-used", "1234"}
+				}
+			};
+
+			//Arrange
+			var result = ExecutorREST.GetMessagesUsage(responseContent, "iexcloud-messages-used");
+
+			//Assert
+			Assert.That(result, Is.EqualTo(1234));
 		}
 	}
 }
