@@ -19,6 +19,6 @@ namespace IEXSharp.Model.CoreData.Crypto.Response
 		public decimal? previousClose { get; set; }
 
 		public override string ToString() =>
-			$"{symbol},{latestUpdate},{latestPrice},{latestVolume}";
+			$"{latestUpdate}:{symbol},{latestPrice},{latestVolume}";
 	}
 }

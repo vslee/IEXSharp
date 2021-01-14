@@ -76,6 +76,6 @@ namespace IEXSharp.Model.Shared.Response
 		public long? lastTradeTime { get; set; }
 
 		public override string ToString() =>
-			$"{symbol},{latestTime},{latestPrice},{latestVolume}";
+			$"{latestTime}:{symbol},{latestPrice},{latestVolume}";
 	}
 }

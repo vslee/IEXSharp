@@ -11,6 +11,6 @@ namespace IEXSharp.Model.CoreData.Crypto.Response
 		public string side { get; set; }
 
 		public override string ToString() =>
-			$"{symbol},{eventType},{timestamp},{price}";
+			$"{timestamp}:{symbol},{eventType},{price}";
 	}
 }
