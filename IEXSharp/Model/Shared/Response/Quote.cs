@@ -35,13 +35,13 @@ namespace IEXSharp.Model.Shared.Response
 		public decimal? extendedChangePercent { get; set; }
 		public long? extendedPriceTime { get; set; }
 		public decimal? previousClose { get; set; }
-		public int? previousVolume { get; set; }
+		public long? previousVolume { get; set; }
 		public decimal? change { get; set; }
 		public decimal? changePercent { get; set; }
 		public decimal? volume { get; set; }
 		public decimal? iexMarketPercent { get; set; }
-		public int? iexVolume { get; set; }
-		public int? avgTotalVolume { get; set; }
+		public long? iexVolume { get; set; }
+		public long? avgTotalVolume { get; set; }
 		public decimal? iexBidPrice { get; set; }
 		public int? iexBidSize { get; set; }
 		public decimal? iexAskPrice { get; set; }
