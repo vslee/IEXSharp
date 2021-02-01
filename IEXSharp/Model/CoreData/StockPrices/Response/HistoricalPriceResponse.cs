@@ -6,9 +6,9 @@ namespace IEXSharp.Model.CoreData.StockPrices.Response
 	[DebuggerDisplay("date={date}, open={open}, close={close}, high={high}, low={low}, vol={volume}")]
 	public class HistoricalPriceResponse : ITimestampedDateMinute
 	{
-		/// <summary>
-		/// Use DateTimeExtensions.GetTimestampInUTC(), which takes into account both 'date' and 'minute' and timezone
-		/// </summary>
+		/// <summary> Use DateTimeExtensions.GetTimestampInUTC(), which takes into account both 'date' and 'minute' and timezone </summary>
+		public string date { get; set; }
+		/// <summary> Use DateTimeExtensions.GetTimestampInUTC(), which takes into account both 'date' and 'minute' and timezone </summary>
 		public string minute { get; set; }
 		public decimal? close { get; set; }
 		public decimal? high { get; set; }
@@ -19,7 +19,6 @@ namespace IEXSharp.Model.CoreData.StockPrices.Response
 		public string id { get; set; }
 		public string key { get; set; }
 		public string subkey { get; set; }
-		public string date { get; set; }
 		public long? updated { get; set; }
 		public decimal? changeOverTime { get; set; }
 		public decimal? marketChangeOverTime { get; set; }

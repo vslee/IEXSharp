@@ -4,10 +4,9 @@ namespace IEXSharp.Model.CoreData.StockPrices.Response
 {
 	public class IntradayPriceResponse : ITimestampedDateMinute
 	{
-		/// <summary>
-		/// Use DateTimeExtensions.GetTimestampInUTC(), which takes into account both 'date' and 'minute' and timezone
-		/// </summary>
+		/// <summary> Use DateTimeExtensions.GetTimestampInUTC(), which takes into account both 'date' and 'minute' and timezone </summary>
 		public string date { get; set; }
+		/// <summary> Use DateTimeExtensions.GetTimestampInUTC(), which takes into account both 'date' and 'minute' and timezone </summary>
 		public string minute { get; set; }
 		public string label { get; set; } // can be null
 		public decimal? marketOpen { get; set; }
