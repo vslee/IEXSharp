@@ -17,7 +17,7 @@ namespace IEXSharp.Service.Cloud.CoreData.StockFundamentals
 		/// <param name="symbol"></param>
 		/// <param name="period"></param>
 		/// <returns></returns>
-		Task<IEXResponse<AdvancedFundamentalsResponse>> AdvancedFundamentalsAsync(string symbol, Period period = Period.Quarter);
+		Task<IEXResponse<IEnumerable<AdvancedFundamentalsResponse>>> AdvancedFundamentalsAsync(string symbol, Period period = Period.Quarter);
 
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#balance-sheet"/>

@@ -26,6 +26,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[Test]
 		[TestCase("BEDU", Period.Annual)]
 		[TestCase("BEDU", Period.Quarter)]
+		[TestCase("F", Period.Annual)]
 		[TestCase("CCM", Period.Quarter)]
 		[TestCase("AAPL", Period.Quarter)]
 		[TestCase("FB", Period.Quarter)]
@@ -34,8 +35,11 @@ namespace IEXSharpTest.Cloud.CoreData
 			var response = await sandBoxClient.StockFundamentals.AdvancedFundamentalsAsync(symbol, period);
 
 			Assert.IsNull(response.ErrorMessage);
-			Assert.IsNotNull(response.Data);
-			Assert.IsNotNull(response.Data.accountsPayable);
+			foreach (var data in response.Data)
+			{
+				Assert.IsNotNull(data);
+				Assert.IsNotNull(data.accountsPayable);
+			}
 		}
 
 
