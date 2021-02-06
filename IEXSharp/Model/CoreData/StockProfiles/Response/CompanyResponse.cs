@@ -14,7 +14,7 @@ namespace IEXSharp.Model.CoreData.StockProfiles.Response
 		public string issueType { get; set; }
 		public string sector { get; set; }
 		public string primarySicCode { get; set; }
-		public int employees { get; set; }
+		public int? employees { get; set; }
 		public List<string> tags { get; set; }
 		public string address { get; set; }
 		public string address2 { get; set; }
