@@ -16,10 +16,10 @@ namespace IEXSharp.Model.CoreData.CorporateActions.Response
 		public int coupon { get; set; }
 		public string declaredCurrencyCD { get; set; }
 		public decimal declaredGrossAmount { get; set; }
-		public int isCapitalGains { get; set; }
-		public int isNetInvestmentIncome { get; set; }
-		public int isDAP { get; set; }
-		public int isApproximate { get; set; }
+		public int? isCapitalGains { get; set; }
+		public int? isNetInvestmentIncome { get; set; }
+		public int? isDAP { get; set; }
+		public int? isApproximate { get; set; }
 		public DateTime? fxDate { get; set; }
 		public DateTime? secondPaymentDate { get; set; }
 		public DateTime? secondExDate { get; set; }
