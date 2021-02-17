@@ -40,7 +40,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("AAPL", TimeSeriesPeriod.Quarterly, null, "2008-1-1", "2010-1-1")]
 		public async Task AdvancedFundamentalsAsyncTest(string symbol, TimeSeriesPeriod period = TimeSeriesPeriod.Quarterly, int range = 1, DateTime? from = null, DateTime? to = null)
 		{
-			var timeSeries = new TimeSeries(period).AddRange(range).AddDateRange(from, to);
+			var timeSeries = new TimeSeries(period).SetRange(range).SetDateRange(from, to);
 			var response = await sandBoxClient.StockFundamentals.AdvancedFundamentalsAsync(symbol, period, timeSeries);
 
 			Assert.IsNull(response.ErrorMessage);

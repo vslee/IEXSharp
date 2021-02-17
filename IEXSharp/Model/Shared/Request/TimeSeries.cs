@@ -13,8 +13,7 @@ namespace IEXSharp.Model.Shared.Request
 			this.period = period;
 		}
 
-		private int _Range { get; set; }
-		private string Range => period == TimeSeriesPeriod.Quarterly ? _Range + "q" : _Range + "y";
+		private string Range { get; set; }
 		private bool Calendar { get; set; }
 		private int Limit { get; set; }
 		private string From { get; set; }
@@ -22,13 +21,14 @@ namespace IEXSharp.Model.Shared.Request
 		private int Last { get; set; }
 		private int First { get; set; }
 
-		public TimeSeries AddRange(int range)
+		public TimeSeries SetRange(int range)
 		{
-			_Range = range;
+			if (range <= 0) return this;
+			Range = period == TimeSeriesPeriod.Quarterly ? range + "q" : range + "y";
 			return this;
 		}
 
-		public TimeSeries AddDateRange(DateTime? from, DateTime? to = default)
+		public TimeSeries SetDateRange(DateTime? from, DateTime? to = default)
 		{
 			if (from == null) return this;
 			From = from?.ToTimeSeriesDate();
@@ -46,7 +46,7 @@ namespace IEXSharp.Model.Shared.Request
 				nvc.Add("to", To);
 			}
 
-			if (_Range > 0 && string.IsNullOrEmpty(From))
+			if (!string.IsNullOrEmpty(Range) && string.IsNullOrEmpty(From))
 			{
 				nvc.Add("range", Range);
 			}
