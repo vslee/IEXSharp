@@ -22,6 +22,7 @@
 		<Product>VSLee.IEXSharp</Product>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<Copyright>2019 Victor Lee</Copyright>
+		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<!--when prereleasing, embed symbols PDB in main nupkg bc GH Pakages doesn't have its own symbol server-->
@@ -38,8 +39,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Model\CoreData" />
-		<Folder Include="Model\Shared\Request\" />
 		<Folder Include="Service\Cloud\CoreData" />
 	</ItemGroup>
 
