@@ -38,8 +38,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Model\CoreData" />
-		<Folder Include="Model\Shared\Request\" />
 		<Folder Include="Service\Cloud\CoreData" />
 	</ItemGroup>
 

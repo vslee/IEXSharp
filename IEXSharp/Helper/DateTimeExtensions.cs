@@ -25,6 +25,13 @@ namespace IEXSharp.Helper
 		/// <param name="unixTime"></param>
 		/// <returns></returns>
 		public static DateTime ConvertFromUnixMilliSecToDateTime(this long unixTime) => UnixEpoch.AddMilliseconds(unixTime);
+
+		/// <summary>
+		/// Converts DateTime object to time series endpoint compatible query param value
+		/// </summary>
+		/// <param name="date"></param>
+		/// <returns></returns>
+		public static string ToTimeSeriesDate(this DateTime date) => date.ToString("yyyy-MM-dd");
 	}
 
 	public interface ITimestampedDateMinute

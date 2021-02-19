@@ -24,15 +24,24 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
-		[TestCase("BEDU", Period.Annual)]
-		[TestCase("BEDU", Period.Quarter)]
-		[TestCase("F", Period.Annual)]
-		[TestCase("CCM", Period.Quarter)]
-		[TestCase("AAPL", Period.Quarter)]
-		[TestCase("FB", Period.Quarter)]
-		public async Task AdvancedFundamentalsAsyncTest(string symbol, Period period = Period.Quarter)
+		[TestCase("BEDU", TimeSeriesPeriod.Annual)]
+		[TestCase("BEDU", TimeSeriesPeriod.Quarterly)]
+		[TestCase("F", TimeSeriesPeriod.Annual)]
+		[TestCase("CCM", TimeSeriesPeriod.Quarterly)]
+		[TestCase("AAPL", TimeSeriesPeriod.Annual)]
+		[TestCase("AAPL", TimeSeriesPeriod.Quarterly)]
+		[TestCase("FB", TimeSeriesPeriod.Quarterly)]
+		[TestCase("BEDU", TimeSeriesPeriod.Annual, 2)]
+		[TestCase("BEDU", TimeSeriesPeriod.Quarterly, 2)]
+		[TestCase("F", TimeSeriesPeriod.Annual, 3)]
+		[TestCase("CCM", TimeSeriesPeriod.Quarterly, 4)]
+		[TestCase("AAPL", TimeSeriesPeriod.Quarterly, 3)]
+		[TestCase("FB", TimeSeriesPeriod.Quarterly, 5)]
+		[TestCase("AAPL", TimeSeriesPeriod.Quarterly, null, "2008-1-1", "2010-1-1")]
+		public async Task AdvancedFundamentalsAsyncTest(string symbol, TimeSeriesPeriod period = TimeSeriesPeriod.Quarterly, int range = 1, DateTime? from = null, DateTime? to = null)
 		{
-			var response = await sandBoxClient.StockFundamentals.AdvancedFundamentalsAsync(symbol, period);
+			var timeSeries = new TimeSeries(period).SetRange(range).SetDateRange(from, to);
+			var response = await sandBoxClient.StockFundamentals.AdvancedFundamentalsAsync(symbol, period, timeSeries);
 
 			Assert.IsNull(response.ErrorMessage);
 			foreach (var data in response.Data)
