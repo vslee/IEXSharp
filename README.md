@@ -92,6 +92,7 @@ Data provided for free by [IEX](https://iextrading.com/) via their [IEX Cloud AP
 Per their [guidelines](https://iexcloud.io/docs/api/#disclaimers):
 - Required: If you display any delayed price data, you must display “15 minute delayed price” as a disclaimer.
 - Required: If you display latestVolume you must display “Consolidated Volume in Real-time” as a disclaimer.
+- Required: If you use cash flow, income statement, balance sheet, financials, or fundamentals endpoints, use must display “Data provided by New Constructs, LLC © All rights reserved.”
 - Note on pricing data: All CTA and UTP pricing data is delayed at least 15 minutes.
 
 This project is not related to the similarly named [IEX-Sharp](https://iexsharp.com/)
