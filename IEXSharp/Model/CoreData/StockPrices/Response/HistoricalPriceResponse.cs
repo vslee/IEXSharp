@@ -15,7 +15,7 @@ namespace IEXSharp.Model.CoreData.StockPrices.Response
 		public decimal? low { get; set; }
 		public decimal? open { get; set; }
 		public string symbol { get; set; }
-		public long? volume { get; set; }
+		public decimal? volume { get; set; }
 		public string id { get; set; }
 		public string key { get; set; }
 		public string subkey { get; set; }
@@ -26,12 +26,12 @@ namespace IEXSharp.Model.CoreData.StockPrices.Response
 		public decimal? uClose { get; set; }
 		public decimal? uHigh { get; set; }
 		public decimal? uLow { get; set; }
-		public long? uVolume { get; set; }
+		public decimal? uVolume { get; set; }
 		public decimal? fOpen { get; set; }
 		public decimal? fClose { get; set; }
 		public decimal? fHigh { get; set; }
 		public decimal? fLow { get; set; }
-		public long? fVolume { get; set; }
+		public decimal? fVolume { get; set; }
 		public string label { get; set; }
 		public decimal? change { get; set; }
 		public decimal? changePercent { get; set; }
