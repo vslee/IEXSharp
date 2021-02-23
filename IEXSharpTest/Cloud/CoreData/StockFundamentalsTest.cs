@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IEXSharp;
@@ -159,6 +160,29 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
 			Assert.GreaterOrEqual(response.Data.financials.Count, 1);
+		}
+
+		public static List<TestCaseData> ReportedFinancialsTestCaseSourceData()
+		{
+			return new List<TestCaseData>{
+				new TestCaseData("AAPL", Filing.Quarterly, new TimeSeries(TimeSeriesPeriod.Quarterly).SetLast(2)),
+				new TestCaseData("AAPL", Filing.Quarterly, new TimeSeries(TimeSeriesPeriod.Annual).SetLast(2)),
+				new TestCaseData("AAPL", Filing.Quarterly, new TimeSeries(TimeSeriesPeriod.Quarterly).SetDateRange(new DateTime(2019,1,1), new DateTime(2021,1,1)))
+			};
+		}
+
+		[Test]
+		[TestCaseSource("ReportedFinancialsTestCaseSourceData")]
+		public async Task ReportedFinancialsTest(string symbol, Filing filing, TimeSeries timeSeries = null)
+		{
+			var response = await sandBoxClient.StockFundamentals.ReportedFinancialsAsync(symbol, filing, timeSeries);
+
+			Assert.IsNull(response.ErrorMessage);
+			foreach (var data in response.Data)
+			{
+				Assert.IsNotNull(data);
+				Assert.IsNotNull(data.AccountsPayableCurrent);
+			}
 		}
 
 		[Test]

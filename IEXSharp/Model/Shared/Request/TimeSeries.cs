@@ -36,6 +36,12 @@ namespace IEXSharp.Model.Shared.Request
 			return this;
 		}
 
+		public TimeSeries SetLast(int last)
+		{
+			Last = last;
+			return this;
+		}
+
 		public NameValueCollection TimeSeriesQueryParams()
 		{
 			var nvc = new NameValueCollection();
@@ -50,6 +56,8 @@ namespace IEXSharp.Model.Shared.Request
 			{
 				nvc.Add("range", Range);
 			}
+
+			if (Last > 0) nvc.Add("last", Last.ToString());
 
 			return nvc;
 		}
