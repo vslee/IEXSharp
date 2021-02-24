@@ -1,5 +1,4 @@
 using System;
-using Common.Logging.Configuration;
 using IEXSharp.Helper;
 
 namespace IEXSharp.Model.Shared.Request
@@ -36,22 +35,32 @@ namespace IEXSharp.Model.Shared.Request
 			return this;
 		}
 
-		public NameValueCollection TimeSeriesQueryParams()
+		public TimeSeries SetLast(int last)
 		{
-			var nvc = new NameValueCollection();
+			Last = last;
+			return this;
+		}
+
+		/// <summary>
+		/// Updates give query string builder class with required Time series query params
+		/// </summary>
+		/// <param name="qsb"></param>
+		public void AddTimeSeriesQueryParams(QueryStringBuilder qsb)
+		{
+			if (qsb == null) return;
 
 			if (From != null)
 			{
-				nvc.Add("from", From);
-				nvc.Add("to", To);
+				qsb.Add("from", From);
+				qsb.Add("to", To);
 			}
 
 			if (!string.IsNullOrEmpty(Range) && string.IsNullOrEmpty(From))
 			{
-				nvc.Add("range", Range);
+				qsb.Add("range", Range);
 			}
 
-			return nvc;
+			if (Last > 0) qsb.Add("last", Last.ToString());
 		}
 	}
 }
