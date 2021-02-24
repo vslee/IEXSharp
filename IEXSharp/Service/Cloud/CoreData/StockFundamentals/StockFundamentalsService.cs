@@ -24,14 +24,7 @@ namespace IEXSharp.Service.Cloud.CoreData.StockFundamentals
 
 			var qsb = new QueryStringBuilder();
 
-			if (timeSeries != null)
-			{
-				var queryParams = timeSeries.TimeSeriesQueryParams();
-				foreach (var nameValue in queryParams)
-				{
-					qsb.Add(nameValue.Key, nameValue.Value);
-				}
-			}
+			timeSeries?.AddTimeSeriesQueryParams(qsb);
 
 			var pathNvc = new NameValueCollection
 			{
@@ -125,14 +118,7 @@ namespace IEXSharp.Service.Cloud.CoreData.StockFundamentals
 
 			var qsb = new QueryStringBuilder();
 
-			if (timeSeries != null)
-			{
-				var queryParams = timeSeries.TimeSeriesQueryParams();
-				foreach (var nameValue in queryParams)
-				{
-					qsb.Add(nameValue.Key, nameValue.Value);
-				}
-			}
+			timeSeries?.AddTimeSeriesQueryParams(qsb);
 
 			var pathNvc = new NameValueCollection
 			{
