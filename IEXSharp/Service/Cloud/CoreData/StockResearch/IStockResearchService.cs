@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IEXSharp.Model;
+using IEXSharp.Model.CoreData.StockPrices.Request;
 using IEXSharp.Model.CoreData.StockResearch.Response;
 using IEXSharp.Model.Shared.Request;
 
@@ -83,7 +84,10 @@ namespace IEXSharp.Service.Cloud.CoreData.StockResearch
 		/// </summary>
 		/// <param name="symbol"></param>
 		/// <param name="indicator"></param>
+		/// <param name="range"></param>
+		/// <param name="lastIndicator"></param>
+		/// <param name="indicatorOnly"></param>
 		/// <returns></returns>
-		Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator);
+		Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator, ChartRange range, bool lastIndicator = false, bool indicatorOnly = false);
 	}
 }

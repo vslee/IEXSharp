@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using IEXSharp;
+using IEXSharp.Model.CoreData.StockPrices.Request;
 using IEXSharp.Model.Shared.Request;
 using NUnit.Framework;
 
@@ -139,11 +140,12 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
-		[TestCase("AAPL", "adxr")]
-		[TestCase("FB", "abs")]
-		public async Task TechnicalIndicatorsAsyncTest(string symbol, string indicator)
+		[TestCase("AAPL", "adxr", ChartRange.FiveDayMinute, false, false)]
+		[TestCase("FB", "abs", ChartRange.FiveDayMinute, true, false)]
+		[TestCase("GME", "rsi", ChartRange.FiveDayMinute, false, true)]
+		public async Task TechnicalIndicatorsAsyncTest(string symbol, string indicator, ChartRange range, bool lastIndicator = false, bool indicatorOnly = false)
 		{
-			var response = await sandBoxClient.StockResearch.TechnicalIndicatorsAsync(symbol, indicator);
+			var response = await sandBoxClient.StockResearch.TechnicalIndicatorsAsync(symbol, indicator, range, lastIndicator, indicatorOnly);
 
 			Assert.IsNull(response.ErrorMessage);
 			Assert.IsNotNull(response.Data);
