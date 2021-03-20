@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.Threading.Tasks;
 using IEXSharp.Helper;
 using IEXSharp.Model;
+using IEXSharp.Model.CoreData.StockPrices.Request;
 using IEXSharp.Model.CoreData.StockResearch.Response;
 using IEXSharp.Model.Shared.Request;
 
@@ -80,7 +81,18 @@ namespace IEXSharp.Service.Cloud.CoreData.StockResearch
 		public async Task<IEXResponse<PriceTargetResponse>> PriceTargetAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<PriceTargetResponse>("stock/[symbol]/price-target", symbol);
 
-		public async Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator) =>
-			await executor.SymbolExecuteAsync<TechnicalIndicatorsResponse>($"stock/[symbol]/indicator/{indicator}", symbol);
+		public async Task<IEXResponse<TechnicalIndicatorsResponse>> TechnicalIndicatorsAsync(string symbol, string indicator, ChartRange range, bool lastIndicator = false, bool indicatorOnly = false)
+		{
+			const string urlPattern = "stock/[symbol]/indicator/[indicator]";
+
+			var qsb = new QueryStringBuilder();
+			qsb.Add("range", range.GetDescriptionFromEnum());
+			qsb.Add("lastIndicator", lastIndicator);
+			qsb.Add("indicatorOnly", indicatorOnly);
+			
+			var pathNvc = new NameValueCollection { { "symbol", symbol }, { "indicator", indicator } };
+
+			return await executor.ExecuteAsync<TechnicalIndicatorsResponse>(urlPattern, pathNvc, qsb);
+		}
 	}
 }

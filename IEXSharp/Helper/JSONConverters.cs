@@ -39,6 +39,13 @@ namespace IEXSharp.Helper
 			{
 				return null;
 			}
+			else if (reader.TokenType == JsonTokenType.StartArray)
+			{
+				using (var doc = JsonDocument.ParseValue(ref reader))
+				{
+					return doc.RootElement.GetRawText();
+				}
+			}
 			else
 			{
 				throw new JsonException();
