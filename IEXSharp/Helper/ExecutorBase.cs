@@ -26,16 +26,8 @@ namespace IEXSharp.Helper
 				}
 				else
 				{
-					jsonSerializerOptions = new JsonSerializerOptions
-					{
-						IgnoreNullValues = true,
-						PropertyNameCaseInsensitive = true,
-					};
+					jsonSerializerOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web);
 					jsonSerializerOptions.Converters.Add(new DictionaryDatetimeTValueConverter());
-					jsonSerializerOptions.Converters.Add(new Int32Converter());
-					jsonSerializerOptions.Converters.Add(new Int64Converter());
-					jsonSerializerOptions.Converters.Add(new DecimalConverter());
-					jsonSerializerOptions.Converters.Add(new DecimalNullableConverter());
 					jsonSerializerOptions.Converters.Add(new StringConverter());
 					jsonSerializerOptions.Converters.Add(new DateTimeConverter());
 					return jsonSerializerOptions;

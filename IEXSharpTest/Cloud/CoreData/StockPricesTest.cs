@@ -47,6 +47,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("AAPL", ChartRange.Max)]
 		[TestCase("AAPL", ChartRange.Ytd)]
 		[TestCase("AAPL", ChartRange.OneMonth)]
+		[TestCase("WWR", ChartRange.TwoYears)]
 		public async Task HistoricalPriceAsync(string symbol,
 			ChartRange range = ChartRange.OneMonth, QueryStringBuilder qsb = null)
 		{
