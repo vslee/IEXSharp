@@ -17,7 +17,7 @@ namespace IEXSharp.Model.CoreData.CorporateActions.Response
 		public string declaredCurrencyCD { get; set; }
 		public decimal declaredGrossAmount { get; set; }
 		public int? isCapitalGains { get; set; }
-		public int? isNetInvestmentIncome { get; set; }
+		public bool? isNetInvestmentIncome { get; set; }
 		public int? isDAP { get; set; }
 		public int? isApproximate { get; set; }
 		public DateTime? fxDate { get; set; }

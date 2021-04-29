@@ -91,6 +91,7 @@ namespace IEXSharpTest.Cloud.CoreData
 		[TestCase("AAPL", TimeSeriesRange.LastQuarter, false, null, "")]
 		[TestCase("AAPL", TimeSeriesRange.OneMonth, false, null, "")]
 		[TestCase("AAPL", null, false, null, "")]
+		[TestCase("PFF", null, false, null, "")]
 		public async Task DividendsAdvancedAsyncTest(string symbol, TimeSeriesRange range, bool calendar, int last, string refId)
 		{
 			var response = await sandBoxClient.CorporateActions.DividendsAdvancedAsync(symbol, range, calendar, last, refId);
@@ -108,8 +109,6 @@ namespace IEXSharpTest.Cloud.CoreData
 			Assert.Greater(data.grossAmount, 0);
 
 			Assert.IsFalse(string.IsNullOrEmpty(data.currency));
-			Assert.IsFalse(string.IsNullOrEmpty(data.marker));
-			Assert.IsFalse(string.IsNullOrEmpty(data.flag));
 			Assert.IsFalse(string.IsNullOrEmpty(data.securityType));
 		}
 
