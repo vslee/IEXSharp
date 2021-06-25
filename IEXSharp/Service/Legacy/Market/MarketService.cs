@@ -30,7 +30,13 @@ namespace IEXSharp.Service.Legacy.Market
 		}
 
 		public async Task<IEXResponse<IEnumerable<LastResponse>>> LastAsync(IEnumerable<string> symbols)
-			=> await executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);
+		{
+			if (symbols.Any())
+			{
+				return await executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);
+			}
+			return await executor.NoParamExecute<IEnumerable<LastResponse>>("tops/last");
+		}
 
 		public async Task<IEXResponse<Dictionary<string, IEnumerable<HISTResponse>>>> HISTAsync()
 		{
