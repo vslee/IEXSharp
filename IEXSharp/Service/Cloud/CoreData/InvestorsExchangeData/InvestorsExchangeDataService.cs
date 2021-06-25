@@ -86,8 +86,14 @@ namespace IEXSharp.Service.Cloud.CoreData.InvestorsExchangeData
 		public SSEClient<DeepTradingStatusStreamResponse> DeepTradingStatusStream(string symbol) =>
 			executorSSE.SymbolsChannelsSubscribeSSE<DeepTradingStatusStreamResponse>("deep", new List<string>{symbol}, new List<string>{"trading-status"});
 
-		public async Task<IEXResponse<IEnumerable<LastResponse>>> LastAsync(IEnumerable<string> symbols) =>
-			await executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);
+		public async Task<IEXResponse<IEnumerable<LastResponse>>> LastAsync(IEnumerable<string> symbols)
+		{
+			if (symbols.Any())
+			{
+				return await executor.SymbolsExecuteAsync<IEnumerable<LastResponse>>("tops/last", symbols);
+			}
+			return await executor.NoParamExecute<IEnumerable<LastResponse>>("tops/last");
+		}
 
 		public async Task<IEXResponse<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>> ListedRegulationSHOThresholdSecuritiesListAsync(string symbol) =>
 			await executor.SymbolExecuteAsync<IEnumerable<ListedRegulationSHOThresholdSecuritiesListResponse>>("stock/[symbol]/threshold-securities", symbol);
