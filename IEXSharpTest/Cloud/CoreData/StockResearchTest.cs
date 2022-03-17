@@ -104,10 +104,11 @@ namespace IEXSharpTest.Cloud.CoreData
 
 		[Test]
 		[TestCase("AACG")]
-		[TestCase("AACQ")]
+		[TestCase("AACQX")]
 		[TestCase("AACQU")]
 		[TestCase("AAPL")]
 		[TestCase("FB")]
+		[TestCase("TSLA")]
 		public async Task KeyStatsAsyncTest(string symbol)
 		{
 			var response = await sandBoxClient.StockResearch.KeyStatsAsync(symbol);
