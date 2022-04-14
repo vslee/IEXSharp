@@ -29,6 +29,6 @@ namespace IEXSharp.Model.Shared.Response
         public string filingType { get; set; }
         public int fiscalQuarter { get; set; }
         public int fiscalYear { get; set; }
-        public long updated { get; set; }
+        public decimal updated { get; set; }
     }
 }

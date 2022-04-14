@@ -11,7 +11,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public object earlyclosetime { get; set; }
 		public string countrycode { get; set; }
 		public string financialcentername { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 		public string symbol { get; set; }
 		public string id { get; set; }
 		public string source { get; set; }

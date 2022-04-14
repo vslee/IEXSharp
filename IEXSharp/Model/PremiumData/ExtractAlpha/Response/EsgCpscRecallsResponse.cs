@@ -14,7 +14,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string Title { get; set; }
 		public string ConsumerContact { get; set; }
 		public DateTime LastPublishDate { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string key { get; set; }

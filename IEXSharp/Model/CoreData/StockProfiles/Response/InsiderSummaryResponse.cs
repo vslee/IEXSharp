@@ -11,6 +11,6 @@ namespace IEXSharp.Model.CoreData.StockProfiles.Response
 		public string id { get; set; }
 		public string key { get; set; }
 		public string subkey { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 	}
 }

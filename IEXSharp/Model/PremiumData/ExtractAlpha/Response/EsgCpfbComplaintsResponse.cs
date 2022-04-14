@@ -19,7 +19,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string TimelyResponse { get; set; }
 		public string ConsumerDisputed { get; set; }
 		public string ComplaintId { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }

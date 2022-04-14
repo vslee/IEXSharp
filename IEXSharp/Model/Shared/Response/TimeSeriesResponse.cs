@@ -8,6 +8,6 @@ namespace IEXSharp.Model.Shared.Response
 		public string key { get; set; }
 		public string subkey { get; set; }
 		public long date { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 	}
 }

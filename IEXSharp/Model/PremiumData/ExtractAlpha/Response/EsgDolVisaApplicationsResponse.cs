@@ -15,7 +15,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public DateTime? DemploymentStartDate { get; set; }
 		public DateTime? DemploymentEndDate { get; set; }
 		public string CaseStatus { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }

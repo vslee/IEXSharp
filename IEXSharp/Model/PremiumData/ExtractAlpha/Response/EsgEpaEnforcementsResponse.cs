@@ -31,7 +31,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string VoluntarySelfDisclosureFlag { get; set; }
 		public string MultimediaFlag { get; set; }
 		public string EnfSummaryText { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }

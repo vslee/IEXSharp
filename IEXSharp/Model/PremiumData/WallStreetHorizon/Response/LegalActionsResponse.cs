@@ -22,7 +22,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public long classperiodend { get; set; }
 		public string prurl { get; set; }
 		public string stage { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 		public string id { get; set; }
 		public string source { get; set; }
 		public string key { get; set; }

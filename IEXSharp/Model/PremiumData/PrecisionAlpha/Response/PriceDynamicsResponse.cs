@@ -18,6 +18,6 @@ namespace IEXSharp.Model.PremiumData.PrecisionAlpha.Response
 		public decimal MarketResistance { get; set; }
 		public decimal MarketNoise { get; set; }
 		public long Date { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 	}
 }

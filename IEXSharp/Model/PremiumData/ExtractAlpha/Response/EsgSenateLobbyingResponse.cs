@@ -11,7 +11,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string Year { get; set; }
 		public string Received { get; set; }
 		public string Amount { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string TemperatureId { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }

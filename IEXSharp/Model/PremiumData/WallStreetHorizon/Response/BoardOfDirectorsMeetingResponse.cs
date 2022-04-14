@@ -10,7 +10,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public DateTime announcedate { get; set; }
 		public DateTime startdate { get; set; }
 		public DateTime enddate { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 		public string id { get; set; }
 		public string source { get; set; }
 		public string key { get; set; }
