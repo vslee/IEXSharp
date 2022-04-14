@@ -11,6 +11,6 @@ namespace IEXSharp.Model.CoreData.StockResearch.Response
 		public string filingDate { get; set; }
 		public long? reportedHolding { get; set; }
 		public long date { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 	}
 }

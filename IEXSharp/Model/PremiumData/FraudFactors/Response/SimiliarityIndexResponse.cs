@@ -6,7 +6,7 @@ namespace IEXSharp.Model.PremiumData.FraudFactors.Response
 	{
 		public string symbol { get; set; }
 		public long cik { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 		public double cosineScore { get; set; }
 		public double jaccardScore { get; set; }
 		public DateTime periodDate { get; set; }

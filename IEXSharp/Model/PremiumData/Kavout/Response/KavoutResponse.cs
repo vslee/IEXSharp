@@ -17,6 +17,6 @@ namespace IEXSharp.Model.PremiumData.Kavout.Response
 		public decimal ValueScore { get; set; }
 		public decimal MomentumScore { get; set; }
 		public long Date { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 	}
 }

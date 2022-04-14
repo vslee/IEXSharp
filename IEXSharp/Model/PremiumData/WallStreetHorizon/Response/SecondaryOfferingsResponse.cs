@@ -20,7 +20,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string underwritermanager { get; set; }
 		public string prospectuslink { get; set; }
 		public string linktopublication { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 		public string id { get; set; }
 		public string source { get; set; }
 		public string key { get; set; }

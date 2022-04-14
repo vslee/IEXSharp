@@ -12,7 +12,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string PatentNumber { get; set; }
 		public DateTime FilingDate { get; set; }
 		public DateTime PublicationDate { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }

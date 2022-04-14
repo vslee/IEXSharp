@@ -12,7 +12,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string region { get; set; }
 		public string distributor { get; set; }
 		public string accuracy { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 		public string id { get; set; }
 		public string source { get; set; }
 		public string key { get; set; }

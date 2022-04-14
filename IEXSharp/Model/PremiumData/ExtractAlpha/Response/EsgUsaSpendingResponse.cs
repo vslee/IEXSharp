@@ -16,7 +16,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string DollarsObligated { get; set; }
 		public DateTime SignedDate { get; set; }
 		public string MajAgencyCat { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }

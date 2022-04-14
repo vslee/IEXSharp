@@ -37,6 +37,6 @@ namespace IEXSharp.Model.PremiumData.AuditAnalytics.Response
         public int NonAuditFeesSeverity { get; set; }
         public int AuditFeesOutlierSeverity { get; set; }
         public long Date { get; set; }
-        public long Updated { get; set; }
+        public decimal updated { get; set; }
 	}
 }

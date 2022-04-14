@@ -9,7 +9,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string EstabName { get; set; }
 		public string ActivityNr { get; set; }
 		public string InspType { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }

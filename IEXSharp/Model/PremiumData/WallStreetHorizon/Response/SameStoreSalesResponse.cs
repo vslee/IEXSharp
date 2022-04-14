@@ -13,7 +13,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public DateTime samestoresalesdate { get; set; }
 		public string samestoresalesdatestatus { get; set; }
 		public string publicationlink { get; set; }
-		public long updated { get; set; }
+		public decimal updated { get; set; }
 		public string id { get; set; }
 		public string source { get; set; }
 		public string key { get; set; }

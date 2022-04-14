@@ -26,7 +26,7 @@ namespace IEXSharp.Model.PremiumData.WallStreetHorizon.Response
 		public string NewsReferences { get; set; }
 		public string ExternalNotes { get; set; }
 		public string Created { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }

@@ -11,7 +11,7 @@ namespace IEXSharp.Model.PremiumData.ExtractAlpha.Response
 		public string TransactionAmt { get; set; }
 		public string TranId { get; set; }
 		public string FileNum { get; set; }
-		public long Updated { get; set; }
+		public decimal updated { get; set; }
 		public string Id { get; set; }
 		public string Source { get; set; }
 		public string Key { get; set; }

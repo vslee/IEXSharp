@@ -55,6 +55,6 @@ namespace IEXSharp.Model.PremiumData.AuditAnalytics.Response
         public string HttpFileNameHtml { get; set; }
         public string HttpFileNameText { get; set; }
         public long Date { get; set; }
-        public long Updated { get; set; }
+        public decimal updated { get; set; }
 	}
 }
