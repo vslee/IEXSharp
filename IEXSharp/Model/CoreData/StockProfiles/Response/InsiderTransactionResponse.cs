@@ -8,13 +8,13 @@ namespace IEXSharp.Model.CoreData.StockProfiles.Response
 		public string filingDate { get; set; }
 		public string fullName { get; set; }
 		public bool is10b51 { get; set; }
-		public long? postShares { get; set; }
+		public decimal? postShares { get; set; }
 		public string reportedTitle { get; set; }
 		public string symbol { get; set; }
 		public string transactionCode { get; set; }
 		public string transactionDate { get; set; }
 		public decimal? transactionPrice { get; set; }
-		public long? transactionShares { get; set; }
+		public decimal? transactionShares { get; set; }
 		public decimal? transactionValue { get; set; }
 		public string id { get; set; }
 		public string key { get; set; }
@@ -22,7 +22,7 @@ namespace IEXSharp.Model.CoreData.StockProfiles.Response
 		public long date { get; set; }
 		public long updated { get; set; }
 		public decimal? tranPrice { get; set; }
-		public long? tranShares { get; set; }
+		public decimal? tranShares { get; set; }
 		public decimal? tranValue { get; set; }
 	}
 }
