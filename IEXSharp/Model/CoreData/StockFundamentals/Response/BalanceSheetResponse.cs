@@ -13,6 +13,8 @@ namespace IEXSharp.Model.CoreData.StockFundamentals.Response
 	{
 		public DateTime? reportDate { get; set; }
 		public DateTime? fiscalDate { get; set; }
+		public int fiscalQuarter { get; set; }
+		public int fiscalYear { get; set; }
 		public string currency { get; set; }
 		public decimal? currentCash { get; set; }
 		public decimal? shortTermInvestments { get; set; }
