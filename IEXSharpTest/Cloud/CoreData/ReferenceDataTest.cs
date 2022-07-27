@@ -132,6 +132,38 @@ namespace IEXSharpTest.Cloud.CoreData
 		}
 
 		[Test]
+		public async Task SymbolsOptionsAsyncTest2()
+		{
+			var response = await sandBoxClient.ReferenceData.SymbolsOptionsAsync("vixm");
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			Assert.IsNotNull(response.Data.First().expirationDate);
+			Assert.IsNotNull(response.Data.First().cfiCode);
+			Assert.IsNotNull(response.Data.First().exercise);
+			Assert.IsNotNull(response.Data.First().contractSize);
+			Assert.IsNotNull(response.Data.First().currency);
+		}
+
+		[Test]
+		public async Task SymbolsOptionsAsyncTest3()
+		{
+			var response = await sandBoxClient.ReferenceData.SymbolsOptionsAsync("vixm", "20230317");
+
+			Assert.IsNull(response.ErrorMessage);
+			Assert.IsNotNull(response.Data);
+			Assert.GreaterOrEqual(response.Data.Count(), 1);
+
+			Assert.IsNotNull(response.Data.First().expirationDate);
+			Assert.IsNotNull(response.Data.First().cfiCode);
+			Assert.IsNotNull(response.Data.First().exercise);
+			Assert.IsNotNull(response.Data.First().contractSize);
+			Assert.IsNotNull(response.Data.First().currency);
+		}
+
+		[Test]
 		public async Task SymbolsOTCAsyncTest()
 		{
 			var response = await sandBoxClient.ReferenceData.SymbolsOTCAsync();
