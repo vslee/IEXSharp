@@ -108,5 +108,32 @@ namespace IEXSharp.Service.Cloud.CoreData.ReferenceData
 
 			return await executor.ExecuteAsync<IEnumerable<HolidaysAndTradingDatesUSResponse>>(urlPattern, pathNvc, qsb);
 		}
+
+		public async Task<IEXResponse<IEnumerable<SymbolOptionResponse>>> SymbolsOptionsAsync(string optionName)
+		{
+			const string urlPattern = "ref-data/options/symbols/[optionName]";
+			var qsb = new QueryStringBuilder();
+
+			var pathNvc = new NameValueCollection
+			{
+				{"optionName", optionName}
+			};
+
+			return await executor.ExecuteAsync<IEnumerable<SymbolOptionResponse>>(urlPattern, pathNvc, qsb);
+		}
+
+		public async Task<IEXResponse<IEnumerable<SymbolOptionResponse>>> SymbolsOptionsAsync(string optionName, string expiration)
+		{
+			const string urlPattern = "ref-data/options/symbols/[optionName]/[expiration]";
+			var qsb = new QueryStringBuilder();
+
+			var pathNvc = new NameValueCollection
+			{
+				{"optionName", optionName},
+				{"expiration", expiration }
+			};
+
+			return await executor.ExecuteAsync<IEnumerable<SymbolOptionResponse>>(urlPattern, pathNvc, qsb);
+		}
 	}
 }

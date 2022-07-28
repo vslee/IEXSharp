@@ -65,7 +65,8 @@ namespace IEXSharp.Service.Cloud.CoreData.ReferenceData
 		/// </summary>
 		/// <returns></returns>
 		Task<IEXResponse<Dictionary<string, string[]>>> SymbolsOptionsAsync();
-
+		Task<IEXResponse<IEnumerable<SymbolOptionResponse>>> SymbolsOptionsAsync(string optionName);
+		Task<IEXResponse<IEnumerable<SymbolOptionResponse>>> SymbolsOptionsAsync(string optionName, string expiration);
 		/// <summary>
 		/// <see cref="https://iexcloud.io/docs/api/#otc-symbols"/>
 		/// </summary>
